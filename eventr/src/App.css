@@ -1,11 +1,14 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+
+html { font-family: 'Roboto', sans-serif; }
+
+
+
 .App {
+  font-family: 'Roboto', sans-serif;
   text-align: center;
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px;
-}
 
 .App-header {
   background-color: #222;
@@ -22,3 +25,4 @@
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
 }
+
