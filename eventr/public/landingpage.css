@@ -3,8 +3,22 @@ body {
 }
 .landing-header-container {
   height: 600px;
-  background-image: url("/images/landingpage1.jpg");
+  background-image: url("/images/threegirls.jpg");
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
+}
+
+.about-container {
+  display: flex;
+  margin-top: 130px;
+}
+
+.about-description,
+.about-image {
+  width: 50%;
+}
+
+.about-image img {
+  width: 100%;
 }
