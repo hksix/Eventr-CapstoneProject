@@ -5,7 +5,7 @@ import ReactDOM from 'react-dom';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import MyAwesomeReactComponent from './MyAwesomeReactComponent';
 
-import MenuItem from './MenuOptions.js'
+
 
 const Thing = () => (
   <MuiThemeProvider>
