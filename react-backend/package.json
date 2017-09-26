@@ -4,6 +4,7 @@
   "private": true,
   "scripts": {
     "start": "PORT=3001 node ./bin/www",
+    "dev": "PORT=3001 nodemon ./bin/www",
     "test": "mocha"
   },
   "dependencies": {
@@ -17,6 +18,7 @@
     "serve-favicon": "~2.4.2"
   },
   "devDependencies": {
-    "mocha": "^3.5.3"
+    "mocha": "^3.5.3",
+    "nodemon": "^1.12.1"
   }
 }
