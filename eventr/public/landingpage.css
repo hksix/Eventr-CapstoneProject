@@ -9,16 +9,20 @@ body {
   background-repeat: no-repeat;
 }
 
+.call-to-action-container,
 .about-container {
   display: flex;
-  margin-top: 130px;
+  margin-top: 200px;
 }
 
+.call-description,
+.call-image,
 .about-description,
 .about-image {
   width: 50%;
 }
 
+.call-image img,
 .about-image img {
   width: 100%;
 }
