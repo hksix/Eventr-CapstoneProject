@@ -15,9 +15,8 @@ body {
   margin-top: 200px;
 }
 
-.call-description,
+.description-container,
 .call-image,
-.about-description,
 .about-image {
   width: 50%;
 }
@@ -25,4 +24,13 @@ body {
 .call-image img,
 .about-image img {
   width: 100%;
+}
+
+.description-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.landing-description {
+  width: 60%;
 }
