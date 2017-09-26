@@ -1,0 +1,10 @@
+body {
+  margin: 0;
+}
+.landing-header-container {
+  height: 600px;
+  background-image: url("/images/landingpage1.jpg");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
