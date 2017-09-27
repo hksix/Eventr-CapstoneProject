@@ -7,6 +7,8 @@ import {orange500, blue500} from 'material-ui/styles/colors';
 import DatePicker from 'material-ui/DatePicker';
 import TimePicker from 'material-ui/TimePicker';
 import {Table,TableBody,TableHeader,TableHeaderColumn,TableRow,TableRowColumn,} from 'material-ui/Table';
+import SelectField from 'material-ui/SelectField';
+import MenuItem from 'material-ui/MenuItem';
 
 
 const styles = {
@@ -26,6 +28,19 @@ const styles = {
     color: blue500,
   },
 };
+
+const persons = [
+    {value: 0, name: 'Oliver Hansen'},
+    {value: 1, name: 'Van Henry'},
+    {value: 2, name: 'April Tucker'},
+    {value: 3, name: 'Ralph Hubbard'},
+    {value: 4, name: 'Omar Alexander'},
+    {value: 5, name: 'Carlos Abbott'},
+    {value: 6, name: 'Miriam Wagner'},
+    {value: 7, name: 'Bradley Wilkerson'},
+    {value: 8, name: 'Virginia Andrews'},
+    {value: 9, name: 'Kelly Snyder'},
+  ];
 
 class DateSelector extends Component {
       constructor(props) {
@@ -80,7 +95,7 @@ class TimeSelector extends Component {
           }
         }
 
-class TypeTable extends Component {
+class PartyTypeTable extends Component {
     state = {
       selected: [1],
     };
@@ -98,8 +113,8 @@ class TypeTable extends Component {
     render() {
       return (
         <div>
-          <div>   
-          <h3 style={{textAlign: 'center'}}>Select type of event</h3>
+          <div>
+          <h2 style={styles.headline} style={{textAlign: 'center'}}>Select type of event</h2>   
           </div>
         <Table onRowSelection={this.handleRowSelection}>
           <TableBody>
@@ -118,6 +133,51 @@ class TypeTable extends Component {
           </TableBody>
         </Table>
         </div>
+      );
+    }
+  }
+
+class SelectFriends extends Component {
+    state = {
+      values: [],
+    };
+  
+    handleChange = (event, index, values) => this.setState({values});
+  
+    selectionRenderer = (values) => {
+      switch (values.length) {
+        case 0:
+          return '';
+        case 1:
+          return persons[values[0]].name;
+        default:
+          return `${values.length} names selected`;
+      }
+    }
+  
+    menuItems(persons) {
+      return persons.map((person) => (
+        <MenuItem
+          key={person.value}
+          insetChildren={true}
+          checked={this.state.values.indexOf(person.value) > -1}
+          value={person.value}
+          primaryText={person.name}
+        />
+      ));
+    }
+  
+    render() {
+      return (
+        <SelectField
+          multiple={true}
+          hintText="Select a name"
+          value={this.state.values}
+          onChange={this.handleChange}
+          selectionRenderer={this.selectionRenderer}
+        >
+          {this.menuItems(persons)}
+        </SelectField>
       );
     }
   }
@@ -155,8 +215,7 @@ export class SetEvent extends Component {
         >
             <div>
                 <div>
-                    <h2 style={styles.headline}>Where and when?</h2>
-                    <hr/>
+                <h2 style={styles.headline} style={{textAlign: 'center'}}>When and where?</h2> 
                     Type in the details below.<br />
                     <TextField
                         floatingLabelText="Address"
@@ -172,10 +231,11 @@ export class SetEvent extends Component {
                 </div>
             </div>
           <div style={styles.slide}>
-            <TypeTable/>
+            <PartyTypeTable/>
           </div>
           <div style={styles.slide}>
-            slide n°3
+          <h2 style={styles.headline} style={{textAlign: 'center'}}>Invite your peeps</h2> 
+            <SelectFriends/>
           </div>
         </SwipeableViews>
       </div>
