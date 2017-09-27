@@ -51,16 +51,6 @@ function initialize() {
         scaledSize: new google.maps.Size(25, 25)
       };
 
-      // Create a marker for each place.
-      // markers.push(new google.maps.Marker({
-      //   event: event,
-      //   map: map,
-      //   icon: icon,
-      //   name: name,
-      //   position: place.geometry.location,
-      //   address: place.formatted_address,
-      // }));
-
       var marker = new google.maps.Marker({
         map: map,
         icon: icon,
@@ -99,11 +89,3 @@ function closeInfos(infos) {
       infos.length = 0;
   }
 }
-
-// function createMarker(markers) {
-//   google.maps.event.addListener(markers, 'click', function() {
-//     infowindow.setContent('<div><strong>' + markers.title + '</strong><br>' +
-//       markers.icon + '</div>');
-//     infowindow.open(map, this);
-//   });
-// }
