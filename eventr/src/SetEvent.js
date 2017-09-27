@@ -6,7 +6,7 @@ import TextField from 'material-ui/TextField';
 import {orange500, blue500} from 'material-ui/styles/colors';
 import DatePicker from 'material-ui/DatePicker';
 import TimePicker from 'material-ui/TimePicker';
-
+import {Table,TableBody,TableHeader,TableHeaderColumn,TableRow,TableRowColumn,} from 'material-ui/Table';
 
 
 const styles = {
@@ -80,6 +80,48 @@ class TimeSelector extends Component {
           }
         }
 
+class TypeTable extends Component {
+    state = {
+      selected: [1],
+    };
+  
+    isSelected = (index) => {
+      return this.state.selected.indexOf(index) !== -1;
+    };
+  
+    handleRowSelection = (selectedRows) => {
+      this.setState({
+        selected: selectedRows,
+      });
+    };
+  
+    render() {
+      return (
+        <div>
+          <div>   
+          <h3 style={{textAlign: 'center'}}>Select type of event</h3>
+          </div>
+        <Table onRowSelection={this.handleRowSelection}>
+          <TableBody>
+            <TableRow selected={this.isSelected(0)}>
+              <TableRowColumn>Birthday Party!</TableRowColumn>
+            </TableRow>
+            <TableRow selected={this.isSelected(1)}>
+              <TableRowColumn>Movie Night</TableRowColumn>
+            </TableRow>
+            <TableRow selected={this.isSelected(2)}>
+              <TableRowColumn>BBQ</TableRowColumn>
+            </TableRow>
+            <TableRow selected={this.isSelected(3)}>
+              <TableRowColumn>Graduation</TableRowColumn>
+            </TableRow>
+          </TableBody>
+        </Table>
+        </div>
+      );
+    }
+  }
+        
 export class SetEvent extends Component {
 
   constructor(props) {
@@ -130,7 +172,7 @@ export class SetEvent extends Component {
                 </div>
             </div>
           <div style={styles.slide}>
-            slide n°2
+            <TypeTable/>
           </div>
           <div style={styles.slide}>
             slide n°3
