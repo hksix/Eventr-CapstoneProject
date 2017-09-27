@@ -26,12 +26,14 @@ var IconMenuExampleSimple = (
       </IconMenu>
     </div>
   );
-
+function handleActive(tab){
+    alert('hey')
+}
 var menuOptions = 
-
-    <Tabs>
-        <PopoverExampleSimple />
-        
+    <Tabs className="menubar">
+        <Tab icon={<FontIcon className="material-icons"><i class="material-icons">format_list_bulleted</i></FontIcon>}
+        onActive={handleActive}
+        />
     <Tab
       icon={<FontIcon className="material-icons">home</FontIcon>}
       label="HOME"
