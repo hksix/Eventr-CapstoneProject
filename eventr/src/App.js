@@ -7,7 +7,7 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import MyAwesomeReactComponent from './MyAwesomeReactComponent';
 
 
-import Thing from './Menubar.js'
+import { MenuHeader } from './Menubar.js'
 
 class App extends Component {
   state = {users:[]}
@@ -20,7 +20,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <Thing />
+        <MenuHeader />
        <h1>Users</h1>
        {this.state.users.map(user=>
        <div key={user.id}>{user.username}{user.id}</div>)}
