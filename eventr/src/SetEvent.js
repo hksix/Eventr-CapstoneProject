@@ -151,7 +151,7 @@ class SelectFriends extends Component {
         case 1:
           return persons[values[0]].name;
         default:
-          return `${values.length} names selected`;
+          return `${values.length} friends invited`;
       }
     }
   
