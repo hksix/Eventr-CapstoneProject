@@ -9,6 +9,9 @@ import TimePicker from 'material-ui/TimePicker';
 import {Table,TableBody,TableHeader,TableHeaderColumn,TableRow,TableRowColumn,} from 'material-ui/Table';
 import SelectField from 'material-ui/SelectField';
 import MenuItem from 'material-ui/MenuItem';
+import Dialog from 'material-ui/Dialog';
+import FlatButton from 'material-ui/FlatButton';
+import RaisedButton from 'material-ui/RaisedButton';
 
 
 const styles = {
@@ -97,14 +100,16 @@ class TimeSelector extends Component {
 
 class PartyTypeTable extends Component {
     state = {
-      selected: [1],
+      selected: [3],
     };
   
     isSelected = (index) => {
+        // console.log(this.state.selected.indexOf(index))
       return this.state.selected.indexOf(index) !== -1;
     };
   
     handleRowSelection = (selectedRows) => {
+        // console.log(selectedRows)
       this.setState({
         selected: selectedRows,
       });
@@ -181,6 +186,57 @@ class SelectFriends extends Component {
       );
     }
   }
+
+  /**
+ * Dialog with action buttons. The actions are passed in as an array of React objects,
+ * in this example [FlatButtons](/#/components/flat-button).
+ *
+ * You can also close this dialog by clicking outside the dialog, or with the 'Esc' key.
+ */
+class SubmitButton extends Component {
+    state = {
+      open: false,
+    };
+  
+    handleOpen = () => {
+      this.setState({open: true});
+    };
+  
+    handleClose = () => {
+      this.setState({open: false});
+    };
+  
+    render() {
+      const actions = [
+        <FlatButton
+          label="Cancel"
+          primary={true}
+          onClick={this.handleClose}
+        />,
+        <FlatButton
+          label="Submit"
+          primary={true}
+          keyboardFocused={true}
+          onClick={this.handleClose}
+        />,
+      ];
+  
+      return (
+        <div>
+          <RaisedButton label="Sumbit" onClick={this.handleOpen} />
+          <Dialog
+            title="Lets do this"
+            actions={actions}
+            modal={false}
+            open={this.state.open}
+            onRequestClose={this.handleClose}
+          >
+            Ready to party?
+          </Dialog>
+        </div>
+      );
+    }
+  }
         
 export class SetEvent extends Component {
 
@@ -208,15 +264,16 @@ export class SetEvent extends Component {
           <Tab label="Type of Event" value={1} />
           <Tab label="Invite!" value={2} />
           <Tab label="Items needed!" value={3} />
+          <Tab label="Finish" value={4} />
         </Tabs>
         <SwipeableViews
-          index={this.state.slideIndex}
-          onChangeIndex={this.handleChange}
+            index={this.state.slideIndex}
+            onChangeIndex={this.handleChange}
         >
             <div>
                 <div>
-                <h2 style={styles.headline} style={{textAlign: 'center'}}>When and where?</h2> 
-                    Type in the details below.<br />
+                    <h2 style={styles.headline} style={{textAlign: 'center'}}>When and where?</h2> 
+                        Type in the details below.<br />
                     <TextField
                         floatingLabelText="Address"
                         floatingLabelStyle={styles.floatingLabelStyle}
@@ -230,13 +287,25 @@ export class SetEvent extends Component {
                     <TimeSelector/>
                 </div>
             </div>
-          <div style={styles.slide}>
-            <PartyTypeTable/>
-          </div>
-          <div style={styles.slide}>
-          <h2 style={styles.headline} style={{textAlign: 'center'}}>Invite your peeps</h2> 
-            <SelectFriends/>
-          </div>
+
+            <div style={styles.slide}>
+                <PartyTypeTable/>
+            </div>
+
+            <div style={styles.slide}>
+                <h2 style={styles.headline} style={{textAlign: 'center'}}>Invite your peeps</h2> 
+                <SelectFriends/>
+            </div>
+
+            <div style={styles.slide}>
+                <h2 style={styles.headline} style={{textAlign: 'center'}}>Items page</h2> 
+            </div>
+
+            <div style={styles.slide}>
+                <SubmitButton />
+                <h2 style={styles.headline} style={{textAlign: 'center'}}>Summary page</h2> 
+            </div>
+
         </SwipeableViews>
       </div>
     );
