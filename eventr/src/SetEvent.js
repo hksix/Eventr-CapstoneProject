@@ -270,7 +270,7 @@ export class SetEvent extends Component {
             index={this.state.slideIndex}
             onChangeIndex={this.handleChange}
         >
-            <div>
+            <div style={{textAlign: 'center'}}>
                 <div>
                     <h2 style={styles.headline} style={{textAlign: 'center'}}>When and where?</h2> 
                         Type in the details below.<br />
@@ -301,9 +301,9 @@ export class SetEvent extends Component {
                 <h2 style={styles.headline} style={{textAlign: 'center'}}>Items page</h2> 
             </div>
 
-            <div style={styles.slide}>
-                <SubmitButton />
-                <h2 style={styles.headline} style={{textAlign: 'center'}}>Summary page</h2> 
+            <div style={styles.slide} style={{textAlign: 'center'}}>
+                <h2 style={styles.headline} style={{textAlign: 'center'}}>Summary page</h2>
+                <SubmitButton /> 
             </div>
 
         </SwipeableViews>
