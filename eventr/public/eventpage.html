@@ -8,10 +8,36 @@
   <link rel="stylesheet" href="/map.css">
 </head>
 <body>
+
+  <script>
+    window.fbAsyncInit = function() {
+      FB.init({
+        appId            : '1508838699165629',
+        autoLogAppEvents : true,
+        xfbml            : true,
+        version          : 'v2.10',
+        status           : true
+      });
+      FB.AppEvents.logPageView();
+    };
   
+    (function(d, s, id){
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) {return;}
+        js = d.createElement(s); js.id = id;
+        js.src = "//connect.facebook.net/en_US/sdk.js";
+        fjs.parentNode.insertBefore(js, fjs);
+      }(document, 'script', 'facebook-jssdk'));
+  </script>
+  
+
+
   <div id="map"></div>
   <input id="input" placeholder="enter your search" type="text"></input>
+  <div id="fb-root"></div>
   
+
+  <div class="fb-login-button" data-max-rows="1" data-size="large" data-button-type="login_with" data-show-faces="false" data-auto-logout-link="false" data-use-continue-as="false"></div>
 
 
 
@@ -20,5 +46,6 @@
   src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAAOcyB-GjFLa4ck2GfeIQksgtunFbxpow&libraries=places&callback=initialize">
   </script>
   <script src="/map.js" charset="utf-8"></script>
+  <script src="/facebook.js" charset="utf-8"></script>
 </body>
 </html>
