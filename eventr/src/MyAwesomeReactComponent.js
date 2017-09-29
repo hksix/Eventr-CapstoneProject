@@ -10,7 +10,8 @@ import {
     Link,
     withRouter
   } from 'react-router-dom'
-import Welcome from './Welcome.js'
+import { Sidebar } from './Welcome.js'
+import {SetEvent} from './SetEvent.js'
 
 export default class MenuOptions extends Component {
       constructor(props) {
@@ -39,7 +40,8 @@ export default class MenuOptions extends Component {
                     value="a"
                     containerElement={<Link to="/home" />}
                 >
-                    <Route exact path="/home" component={Welcome}/>
+                    {/* <Route exact path="/home" component={Sidebar}/> */}
+                    <Sidebar/>
                     
                 </Tab>
                 <Tab
@@ -49,9 +51,7 @@ export default class MenuOptions extends Component {
                     containerElement={<Link to="/events" />}
                     >
                     <Route exact path="/events" component={event}/>
-                    <div>
-                        <h2>Controllable Tab B</h2>
-                    </div>
+                    <SetEvent/>
                 </Tab>
                   <Tab
                       icon={<FontIcon className="material-icons">face</FontIcon>}
@@ -84,9 +84,9 @@ export default class MenuOptions extends Component {
       )
 
 export const MyAwesomeReactComponent = () => (
-    <Paper zDepth={3}>
+    // <Paper zDepth={3}>
     <MenuOptions/>
-</Paper>
+// </Paper>
 );
 
 // export default MyAwesomeReactComponent;

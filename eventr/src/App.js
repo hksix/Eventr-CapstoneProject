@@ -5,6 +5,7 @@ import logo from './logo.svg';
 import './App.css';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import MyAwesomeReactComponent from './MyAwesomeReactComponent';
+import ItemRegistry from './itemRegistry';
 
 
 import { MenuHeader } from './Menubar.js'
@@ -20,10 +21,12 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <MenuHeader />
+        <Thing />
        <h1>Users</h1>
+        <MenuHeader />
+       {/* <h1>Users</h1>
        {this.state.users.map(user=>
-       <div key={user.id}>{user.username}{user.id}</div>)}
+       <div key={user.id}>{user.username}{user.id}</div>)} */}
        
       </div>
     );
