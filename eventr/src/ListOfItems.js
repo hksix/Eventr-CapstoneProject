@@ -81,7 +81,8 @@ const Todo = ({todo, remove}) => {
             <FloatingActionButton mini={true} secondary={true}>
                 <ContentRemove onClick={()=> {
 				    remove(todo.id)
-				}} />
+				    }} 
+                />
             </FloatingActionButton>
         </div>
     );
@@ -89,15 +90,7 @@ const Todo = ({todo, remove}) => {
 	return (
 		<p>
 			{todo.value}
-            <FloatingButtonRemove/>
-			{/* <span 
-				className="removeBtn"
-				onClick={()=> {
-				    remove(todo.id)
-				}}>
-				x
-			</span> */}
-            
+            <FloatingButtonRemove/>            
 		</p>
 	);
 };

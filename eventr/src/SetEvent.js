@@ -14,6 +14,7 @@ import FlatButton from 'material-ui/FlatButton';
 import RaisedButton from 'material-ui/RaisedButton';
 
 import ItemList from './ListOfItems.js'
+import SubmitSnackBar from './Submit.js'
 
 
 const styles = {
@@ -234,8 +235,8 @@ class SubmitButton extends Component {
           label="Submit"
           primary={true}
           keyboardFocused={true}
-          onClick={this.handleClose}
-        />,
+          onClick={this.handleClose}>
+        </FlatButton>,
       ];
   
       return (
@@ -250,6 +251,7 @@ class SubmitButton extends Component {
           >
             Ready to party?
           </Dialog>
+          
         </div>
       );
     }
