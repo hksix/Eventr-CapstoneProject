@@ -49,36 +49,27 @@ class Form extends Component {
 		return (
 			// ref should be passed a callback
 			// with underlying dom element as its
-            // argument to get its reference 
+            // argument to get its reference
+            // id="blank" is there to comunicate with the TextField box. This is needed but its a hidden element 
             <div id='form'>
-                <input 
-					ref={node => {
-						this.input = node;
-					}}/>
             <TextField
               hintText="Type in items needed..."
               value={this.state.value}
               onChange={this.handleChange}
-              
             /><br />
-			{/* <div id="form">
+			<div id="blank" style={{display:'none' }}>
 				<input 
 					ref={node => {
 						this.input = node;
 					}}
 					value={this.state.value}
-					placeholder="Type in items needed..."
-					autocomplete="off"
-					onChange={this.handleChange}
-				/> */}
-
+					onChange={this.handleChange}/>
+                </div>
 				<button 
-					onClick={this.handleNewTodoAddition}
-				>	
+					onClick={this.handleNewTodoAddition}>	
 					+
 				</button>	
-			</div>
-            // </div>
+        </div>
 		);
 	}
 }

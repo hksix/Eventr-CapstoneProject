@@ -21,8 +21,6 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <Thing />
-       <h1>Users</h1>
         <MenuHeader />
        {/* <h1>Users</h1>
        {this.state.users.map(user=>
