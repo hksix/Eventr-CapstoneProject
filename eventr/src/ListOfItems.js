@@ -1,11 +1,17 @@
 import React, {Component} from 'react';
 import TextField from 'material-ui/TextField';
+import FloatingActionButton from 'material-ui/FloatingActionButton';
+import ContentAdd from 'material-ui/svg-icons/content/add';
+import ContentRemove from 'material-ui/svg-icons/content/clear';
+
 // Component Structure
 // --------------------
 // Container
 // --> Form
 // --> List
 // ----> Todo
+
+
 
 class Form extends Component {
 	constructor(props) {
@@ -35,6 +41,13 @@ class Form extends Component {
 	}
 	
 	render() {
+        const FloatingButtonAdd = () => (
+            <div>
+                <FloatingActionButton mini={true}>
+                    <ContentAdd onClick={this.handleNewTodoAddition} />
+                </FloatingActionButton>
+            </div>
+        );
 		return (
 			// ref should be passed a callback
 			// with underlying dom element as its
@@ -46,6 +59,7 @@ class Form extends Component {
                     value={this.state.value}
                     onChange={this.handleChange}
                 />
+                <FloatingButtonAdd  />
                 <br />
 			    <div id="blank" style={{display:'none' }}>
 			    	<input 
@@ -55,27 +69,35 @@ class Form extends Component {
 			    		value={this.state.value}
 			    		onChange={this.handleChange}/>
                 </div>
-			    <button 
-			        onClick={this.handleNewTodoAddition}>	
-			        +
-			    </button>	
+                
             </div>
 		);
 	}
 }
 
 const Todo = ({todo, remove}) => {
+    const FloatingButtonRemove = () => (
+        <div>
+            <FloatingActionButton mini={true} secondary={true}>
+                <ContentRemove onClick={()=> {
+				    remove(todo.id)
+				}} />
+            </FloatingActionButton>
+        </div>
+    );
 	// single todo 
 	return (
 		<p>
 			{todo.value}
-			<span 
+            <FloatingButtonRemove/>
+			{/* <span 
 				className="removeBtn"
 				onClick={()=> {
 				    remove(todo.id)
 				}}>
 				x
-			</span>
+			</span> */}
+            
 		</p>
 	);
 };
