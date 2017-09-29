@@ -13,6 +13,8 @@ import Dialog from 'material-ui/Dialog';
 import FlatButton from 'material-ui/FlatButton';
 import RaisedButton from 'material-ui/RaisedButton';
 
+import ItemList from './ListOfItems.js'
+
 
 const styles = {
   headline: {
@@ -45,6 +47,23 @@ const persons = [
     {value: 9, name: 'Kelly Snyder'},
   ];
 
+class EventSummary extends Component{
+    constructor(props){
+        super(props);
+
+        this.state = {
+            EventAddress: null,
+            EventDate: null,
+            EventTime: null,
+            EventType: null,
+            EventPeepNames: [],
+            EventPeepCount: null,
+
+
+        }
+    }
+}
+
 class DateSelector extends Component {
       constructor(props) {
         super(props);
@@ -70,33 +89,31 @@ class DateSelector extends Component {
         );
       }
     }
+
 class TimeSelector extends Component {
-          constructor(props) {
-            super(props);
-            this.state = {value24: null, value12: null};
-          }
-        
-          handleChangeTimePicker24 = (event, date) => {
-            this.setState({value24: date});
-          };
-        
-          handleChangeTimePicker12 = (event, date) => {
-            this.setState({value12: date});
-          };
-        
-          render() {
-            return (
-              <div>
+    constructor(props) {
+        super(props);
+        this.state = { value12: null};
+    }
+
+
+    handleChangeTimePicker12 = (event, date) => {
+        this.setState({value12: date});
+    };
+
+    render() {
+        return (
+            <div>
                 <TimePicker
                   format="ampm"
                   hintText="Set Time"
                   value={this.state.value12}
                   onChange={this.handleChangeTimePicker12}
                 />
-              </div>
-            );
-          }
-        }
+        </div>
+      );
+    }
+}
 
 class PartyTypeTable extends Component {
     state = {
@@ -298,7 +315,8 @@ export class SetEvent extends Component {
             </div>
 
             <div style={styles.slide}>
-                <h2 style={styles.headline} style={{textAlign: 'center'}}>Items page</h2> 
+                <h2 style={styles.headline} style={{textAlign: 'center'}}>Items page</h2>
+                <ItemList/> 
             </div>
 
             <div style={styles.slide} style={{textAlign: 'center'}}>
