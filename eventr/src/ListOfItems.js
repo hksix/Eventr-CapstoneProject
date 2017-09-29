@@ -35,6 +35,7 @@ class Form extends Component {
 	}
 	
 	handleNewTodoAddition() {
+        console.log(this.input.value);
 		if(this.input.value !== '') {
 			this.props.addTodo(this.input.value);
 			this.setState({
@@ -58,9 +59,7 @@ class Form extends Component {
               hintText="Type in items needed..."
               value={this.state.value}
               onChange={this.handleChange}
-              ref={node => {
-						this.input = node;
-					}}
+              
             /><br />
 			{/* <div id="form">
 				<input 
