@@ -25,4 +25,14 @@ html { font-family: 'Roboto', sans-serif; }
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
 }
+.menubar{
 
+}
+
+.seteventtoggle{
+  border: 2px solid blueviolet;
+  /* margin-top: 65px; */
+  padding-bottom: 80px;
+  width:50%;
+  margin:100px auto auto;
+}

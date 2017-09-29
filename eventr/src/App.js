@@ -8,7 +8,7 @@ import MyAwesomeReactComponent from './MyAwesomeReactComponent';
 import ItemRegistry from './itemRegistry';
 
 
-import Thing from './Menubar.js'
+import { MenuHeader } from './Menubar.js'
 
 class App extends Component {
   state = {users:[]}
@@ -22,16 +22,11 @@ class App extends Component {
     return (
       <div className="App">
         <Thing />
-        <div>
-          <form className="App" onSubmit={this.onSubmit}>
-            <input value={this.state.term} onChange={this.onChange} />
-            <button>Submit</button>
-          </form>
-          <ItemRegistry items={this.state.items} />
-        </div>
        <h1>Users</h1>
+        <MenuHeader />
+       {/* <h1>Users</h1>
        {this.state.users.map(user=>
-       <div key={user.id}>{user.username}{user.id}</div>)}
+       <div key={user.id}>{user.username}{user.id}</div>)} */}
        
       </div>
     );

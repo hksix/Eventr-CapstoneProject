@@ -24,6 +24,7 @@ main {
   align-items: center;
   margin-top: 100px;
 }
+
 .img-right {
   display: flex;
   flex-direction: column;
@@ -73,13 +74,19 @@ main {
   .image-container {
     width: 50%;
   }
-  
+  .section-container,
+  .about-container,
+  .img-right {
+    display: flex;
+    flex-direction: row;
+  }
   .image-container img {
     width: 100%;
     box-shadow: -10px 10px 15px 00b4ce;
   }
   .landing-description {
     width: 70%;
+    font-size: 18px;
   }
   .landing-footer-container {
     height: 300px;
