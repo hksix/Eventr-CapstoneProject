@@ -25,6 +25,25 @@
 <img src="" alt="whiteboard with multiple pages of wireframes"/>
 
 
+# Features
+* Create Event: Name, Type, Date, Time, Location
+* Invite Friends
+* Add Items
+* Sign up for items
+* Post on event message board
+* manage events
+* See upcoming and past events hosted and attended
+* manage profile
+* notifications for invites, event updates
+
+* Convert web app into react native mobile application
+* Survey invitees for when/where is good for an event
+* Allow businesses to add promotional deals
+* Suggest promotions based on event and items
+* Suggest events to host next?
+* Suggest public events to attend based on location or similar events attend in the past
+
+
 # Architecture
 * Frontend: React, Redux
 * Backend API: Node.js, Express, PostgreSQL    
