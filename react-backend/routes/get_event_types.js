@@ -7,7 +7,6 @@ router.get('/', function(req, res, next) {
       select * from event_categories;
     `)
       .then((result)=>{
-          console.log(result);
         res.json(results)
 
       });

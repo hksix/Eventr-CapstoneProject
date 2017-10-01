@@ -4,7 +4,7 @@ const db = require('../db');
 
 router.get('/', function(req, res, next) {
     db.query(`
-      select * from item_categories;
+      select * from suggested_items;
     `)
       .then((result)=>{
         res.json(results)
