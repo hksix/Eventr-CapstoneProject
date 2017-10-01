@@ -1,28 +1,13 @@
 import React, { Component } from 'react';
 import {BrowserRouter, Route, Switch, Link} from 'react-router-dom';
 import ReactDOM from 'react-dom';
-import logo from './logo.svg';
 import './App.css';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import MyAwesomeReactComponent from './MyAwesomeReactComponent';
 import ItemRegistry from './itemRegistry';
-import {GridList, GridTile} from 'material-ui/GridList';
 
 
 import { MenuHeader } from './Menubar.js'
-
-const styles = {
-  root: {
-    display: 'flex',
-    flexWrap: 'wrap',
-    justifyContent: 'space-around',
-  },
-  gridList: {
-    width: 500,
-    height: 450,
-    overflowY: 'auto',
-  },
-};
 
 class App extends Component {
   state = {users:[]}
@@ -34,11 +19,11 @@ class App extends Component {
   }
   render() {
     return (
-      <GridList style={styles.gridList} className="App">
+      <div className="App">
         <MenuHeader />
-        <hi>Users</hi>
+        <h1>Users</h1>
         {this.state.users.map(user =>
-          <GridList key={user.user_id}>
+          <div key={user.user_id}>
               <ul>
                 <li>{user.fname} {user.lname}</li>
                 <li>Picture {user.picture}</li>
@@ -48,9 +33,9 @@ class App extends Component {
                 <li>Location: {user.location}</li>
                 <li>User Name: {user.user_name}</li>
                </ul>
-            </GridList>
+            </div>
         )}
-      </GridList>
+      </div>
     );
   }
 }
