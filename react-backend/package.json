@@ -7,6 +7,7 @@
     "dev": "PORT=3001 nodemon ./bin/www",
     "test": "mocha"
   },
+  "proxy": "http://localhost:3001",
   "dependencies": {
     "body-parser": "~1.17.1",
     "chai": "^4.1.2",
