@@ -5,20 +5,14 @@ const db = require('../db');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('index', { title: 'HELLO' });
+  db.any(`
+  select * from event_categories ORDER BY category_id;
+  `)
+  .then((results)=>{
+      res.json(results)
+  });
 });
 
-
-// router.get('/', function(req, res, next) {
-//     db.query(`
-//       select * from users;
-//     `)
-//       .then((result)=>{
-//         res.render('index',{
-//           users: result
-//         });
-//       });
-// });
 
 
 module.exports = router;
