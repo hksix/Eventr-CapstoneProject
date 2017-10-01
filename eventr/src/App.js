@@ -22,11 +22,21 @@ class App extends Component {
     return (
       <div className="App">
         <MenuHeader />
-       {/* <h1>Users</h1>
-       {this.state.users.map(user=>
-       <div key={user.id}>{user.username}{user.id}</div>)} */}
-       
-      </div>
+        <h1>Users</h1>
+        {this.state.users.map(user =>
+          <div key={user.user_id}>
+              <ul>
+                <li>{user.fname} {user.lname}</li>
+                <li>Picture {user.picture}</li>
+                <li>Email: {user.email}</li>
+                <li>Join-date: {user.join_date}</li>
+                <li>Telephone: {user.phone}</li>
+                <li>Location: {user.location}</li>
+                <li>User Name: {user.user_name}</li>
+               </ul>
+            </div>
+        )}
+          </div>
     );
   }
 }
