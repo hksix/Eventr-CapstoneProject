@@ -7,7 +7,6 @@ router.get('/:table/:order', function(req, res, next) {
     select * from ${req.params.table} ORDER BY ${req.params.order};
     `)
       .then((results)=>{
-        console.log(results)
         res.json(results)
 
       });

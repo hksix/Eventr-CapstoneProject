@@ -7,8 +7,6 @@ var bodyParser = require('body-parser');
 var hbs = require('express-handlebars');
 
 var index = require('./routes/index');
-var users = require('./routes/users');
-var event_types = require('./routes/get_event_types');
 var get_tables_data = require('./routes/get_tables_data');
 var app = express();
 
@@ -43,8 +41,6 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', index);
-app.use('/users', users);
-app.use('/get_event_types',event_types)
 app.use('/get_tables_data', get_tables_data);
 
 // catch 404 and forward to error handler
