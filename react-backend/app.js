@@ -44,7 +44,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', index);
 app.use('/users', users);
-app.use('/get_event_types', event_types);
+app.use('/get_event_types',event_types)
 app.use('/get_tables_data', get_tables_data);
 
 // catch 404 and forward to error handler

@@ -123,7 +123,7 @@ class PartyTypeTable extends Component {
       types:[]
     };
     componentDidMount(){
-      fetch('/event_types')
+      fetch('/get_tables_data/event_categories/category_id')
         .then(res=> res.json())
         .then(types => this.setState({types}));
     }
