@@ -12,6 +12,9 @@ import MenuItem from 'material-ui/MenuItem';
 import Dialog from 'material-ui/Dialog';
 import FlatButton from 'material-ui/FlatButton';
 import RaisedButton from 'material-ui/RaisedButton';
+import FloatingActionButton from 'material-ui/FloatingActionButton';
+import ContentAdd from 'material-ui/svg-icons/content/add';
+import ContentRemove from 'material-ui/svg-icons/content/clear';
 
 import ItemList from './ListOfItems.js'
 import SubmitSnackBar from './Submit.js'
@@ -132,30 +135,75 @@ class PartyTypeTable extends Component {
         selected: selectedRows,
       });
     };
+
+
+
+
+//STEPH IS WORKING ON THIS...
+//for handling change to event type form
+    handleChange(event) {
+      this.setState({
+        value: event.target.value
+      });
+    }
+//for handling new event type addition by user
+    handleNewEventTypeAdd() {
+      // console.log(this.input.value);
+      if(this.input.value !== '') {
+        this.props.addEventType(this.input.value);
+        this.setState({
+          value: ''
+        });
+      }
+    }
+
+
+
+
+
+
   
     render() {
+
+//STEPH WORKING ON THIS...
+      const FloatingButtonAdd = () => (
+            <div>
+              <FloatingActionButton mini>
+                    <ContentAdd onClick={this.handleNewEventTypeAdd} />
+              </FloatingActionButton>
+            </div>
+        );
+
+
       return (
         <div>
           <div>
-          <h2 style={styles.headline} style={{textAlign: 'center'}}>Select type of event</h2>   
+          <h2 style={styles.headline} style={{textAlign: 'center'}}>Select Type of Event</h2>   
           </div>
-        <Table onRowSelection={this.handleRowSelection}>
-          <TableBody>
-            <TableRow selected={this.isSelected(0)}>
-              <TableRowColumn>Birthday Party!</TableRowColumn>
-            </TableRow>
-            <TableRow selected={this.isSelected(1)}>
-              <TableRowColumn>Movie Night</TableRowColumn>
-            </TableRow>
-            <TableRow selected={this.isSelected(2)}>
-              <TableRowColumn>BBQ</TableRowColumn>
-            </TableRow>
-            <TableRow selected={this.isSelected(3)}>
-              <TableRowColumn>Graduation</TableRowColumn>
-            </TableRow>
-          </TableBody>
-        </Table>
+          <Table onRowSelection={this.handleRowSelection}>
+            <TableBody>
+              <TableRow selected={this.isSelected(0)}>
+                <TableRowColumn>Birthday Party!</TableRowColumn>
+              </TableRow>
+              <TableRow selected={this.isSelected(1)}>
+                <TableRowColumn>Movie Night</TableRowColumn>
+              </TableRow>
+              <TableRow selected={this.isSelected(2)}>
+                <TableRowColumn>BBQ</TableRowColumn>
+              </TableRow>
+              <TableRow selected={this.isSelected(3)}>
+                <TableRowColumn>Graduation</TableRowColumn>
+              </TableRow>
+            </TableBody>
+          </Table>
+          <div>
+            <TextField
+                hintText="Create New Event Type"
+            />
+            <FloatingButtonAdd/>
+          </div>
         </div>
+
       );
     }
   }
@@ -292,7 +340,7 @@ export class SetEvent extends Component {
             <div style={{textAlign: 'center'}}>
                 <div>
                     <h2 style={styles.headline} style={{textAlign: 'center'}}>Event Info</h2> 
-                        Type in the details below.<br />
+                        Type in event details below.<br />
                     <TextField
                         floatingLabelText="Event Name"
                         floatingLabelStyle={styles.floatingLabelStyle}
@@ -324,17 +372,17 @@ export class SetEvent extends Component {
             </div>
 
             <div style={styles.slide}>
-                <h2 style={styles.headline} style={{textAlign: 'center'}}>Invite your peeps</h2> 
+                <h2 style={styles.headline} style={{textAlign: 'center'}}>Invite Your Peeps</h2> 
                 <SelectFriends/>
             </div>
 
             <div style={styles.slide}>
-                <h2 style={styles.headline} style={{textAlign: 'center'}}>Items page</h2>
+                <h2 style={styles.headline} style={{textAlign: 'center'}}>Party Items</h2>
                 <ItemList/> 
             </div>
 
             <div style={styles.slide} style={{textAlign: 'center'}}>
-                <h2 style={styles.headline} style={{textAlign: 'center'}}>Summary page</h2>
+                <h2 style={styles.headline} style={{textAlign: 'center'}}>Event Summary</h2>
                 <SubmitButton /> 
             </div>
 
