@@ -279,7 +279,7 @@ export class SetEvent extends Component {
           onChange={this.handleChange}
           value={this.state.slideIndex}
         >
-          <Tab label="Location/Date/Time" value={0} />
+          <Tab label="Event Info" value={0} />
           <Tab label="Type of Event" value={1} />
           <Tab label="Invite!" value={2} />
           <Tab label="Items needed!" value={3} />
@@ -291,8 +291,13 @@ export class SetEvent extends Component {
         >
             <div style={{textAlign: 'center'}}>
                 <div>
-                    <h2 style={styles.headline} style={{textAlign: 'center'}}>When and where?</h2> 
+                    <h2 style={styles.headline} style={{textAlign: 'center'}}>Event Info</h2> 
                         Type in the details below.<br />
+                    <TextField
+                        floatingLabelText="Event Name"
+                        floatingLabelStyle={styles.floatingLabelStyle}
+                        floatingLabelFocusStyle={styles.floatingLabelFocusStyle}
+                    /><br/>
                     <TextField
                         floatingLabelText="Address"
                         floatingLabelStyle={styles.floatingLabelStyle}
@@ -301,10 +306,17 @@ export class SetEvent extends Component {
                 </div>
                 <div>
                     <DateSelector/>
+                    
                 </div>
                 <div>
                     <TimeSelector/>
                 </div>
+                <TextField
+                        hintText="Description"
+                        floatingLabelText="Description"
+                        floatingLabelStyle={styles.floatingLabelStyle}
+                        floatingLabelFocusStyle={styles.floatingLabelFocusStyle}
+                />
             </div>
 
             <div style={styles.slide}>
