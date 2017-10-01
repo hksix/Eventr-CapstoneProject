@@ -138,7 +138,6 @@ class PartyTypeTable extends Component {
 
 
 
-
 //STEPH IS WORKING ON THIS...
 //for handling change to event type form
     handleChange(event) {
@@ -148,7 +147,7 @@ class PartyTypeTable extends Component {
     }
 //for handling new event type addition by user
     handleNewEventTypeAdd() {
-      // console.log(this.input.value);
+      console.log(this.input.value);
       if(this.input.value !== '') {
         this.props.addEventType(this.input.value);
         this.setState({
@@ -159,20 +158,20 @@ class PartyTypeTable extends Component {
 
 
 
-
-
-
   
     render() {
 
 //STEPH WORKING ON THIS...
       const FloatingButtonAdd = () => (
             <div>
-              <FloatingActionButton mini>
+              <FloatingActionButton mini={true}>
                     <ContentAdd onClick={this.handleNewEventTypeAdd} />
               </FloatingActionButton>
             </div>
         );
+      // return (
+
+      // )
 
 
       return (
