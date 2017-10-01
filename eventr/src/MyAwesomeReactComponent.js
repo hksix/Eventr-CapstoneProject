@@ -33,7 +33,7 @@ export default class MenuOptions extends Component {
                 className="menubar"
                 value={this.state.value}
                 onChange={this.handleChange}>
-                <Tab icon={<FontIcon className="material-icons"><i class="material-icons">format_list_bulleted</i></FontIcon>}/>
+                <Tab icon={<FontIcon className="material-icons"><i className="material-icons">format_list_bulleted</i></FontIcon>}/>
                 <Tab label="Tab A" 
                     icon={<FontIcon className="material-icons">home</FontIcon>}
                     label="HOME"
