@@ -13,7 +13,8 @@ class App extends Component {
   state = {users:[]}
 
   componentDidMount(){
-    fetch('/users')
+    // fetch('/users')
+    fetch('/get_tables_data/users/user_id')
       .then(res=> res.json())
       .then(users => this.setState({users}));
   }
@@ -21,7 +22,7 @@ class App extends Component {
     return (
       <div className="App">
         <MenuHeader />
-        <h1>Users</h1>
+        <h1>Users Table example info</h1>
         {this.state.users.map(user =>
           <div key={user.user_id}>
               <ul>

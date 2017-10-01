@@ -119,13 +119,14 @@ const List = ({todos, remove}) => {
 
 class ItemList extends Component {
 	constructor(props) {
-		super(props);
-		const introData = [
-            {
-                id: -3, 
-                value: `This is where your stuff will go`
-            },
-        ];
+        super(props);	
+        const introData = [
+			{
+				id: -3, 
+				value: "This is where your stuff will go"
+			},
+		];
+        
 		const localData = localStorage.todos && JSON.parse(localStorage.todos);
 		this.state = { 
 			data: localData || introData

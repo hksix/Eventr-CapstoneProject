@@ -120,16 +120,21 @@ class TimeSelector extends Component {
 
 class PartyTypeTable extends Component {
     state = {
+      height: '300px',
       selected: [3],
+      types:[]
     };
-  
+    componentDidMount(){
+      fetch('/get_tables_data/event_categories/category_id')
+        .then(res=> res.json())
+        .then(types => this.setState({types}));
+    }
+    
     isSelected = (index) => {
-        // console.log(this.state.selected.indexOf(index))
       return this.state.selected.indexOf(index) !== -1;
     };
   
     handleRowSelection = (selectedRows) => {
-        // console.log(selectedRows)
       this.setState({
         selected: selectedRows,
       });
@@ -138,25 +143,16 @@ class PartyTypeTable extends Component {
     render() {
       return (
         <div>
-          <div>
           <h2 style={styles.headline} style={{textAlign: 'center'}}>Select type of event</h2>   
-          </div>
-        <Table onRowSelection={this.handleRowSelection}>
-          <TableBody>
-            <TableRow selected={this.isSelected(0)}>
-              <TableRowColumn>Birthday Party!</TableRowColumn>
-            </TableRow>
-            <TableRow selected={this.isSelected(1)}>
-              <TableRowColumn>Movie Night</TableRowColumn>
-            </TableRow>
-            <TableRow selected={this.isSelected(2)}>
-              <TableRowColumn>BBQ</TableRowColumn>
-            </TableRow>
-            <TableRow selected={this.isSelected(3)}>
-              <TableRowColumn>Graduation</TableRowColumn>
-            </TableRow>
-          </TableBody>
-        </Table>
+            <Table onRowSelection={this.handleRowSelection} height={this.state.height}>
+              <TableBody>
+              {this.state.types.map(type=>
+                <TableRow selected={this.isSelected(type.category_id)}>
+                  <TableRowColumn>{type.category_name}</TableRowColumn>
+                </TableRow>
+              )}
+              </TableBody>
+            </Table>
         </div>
       );
     }
