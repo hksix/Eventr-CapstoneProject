@@ -118,23 +118,23 @@ const List = ({todos, remove}) => {
 
 
 class ItemList extends Component {
-    constructor(props) {
-        super(props);    
-       const introData = [
-            {
-                id: -3, 
-                value: "This is where your stuff will go"
-            },
-        ];
+	constructor(props) {
+        super(props);	
+        const introData = [
+			{
+				id: -3, 
+				value: "This is where your stuff will go"
+			},
+		];
         
-        const localData = localStorage.todos && JSON.parse(localStorage.todos);
-        this.state = { 
-            data: localData || introData
-        };
-        // binding methods
-        this.addTodo = this.addTodo.bind(this);
-        this.removeTodo = this.removeTodo.bind(this);
-    }
+		const localData = localStorage.todos && JSON.parse(localStorage.todos);
+		this.state = { 
+			data: localData || introData
+		};
+		// binding methods
+		this.addTodo = this.addTodo.bind(this);
+		this.removeTodo = this.removeTodo.bind(this);
+	}
 	// Handler to update localStorage
 	updateLocalStorage() {
 		if (typeof(Storage) !== "undefined")
