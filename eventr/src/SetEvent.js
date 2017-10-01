@@ -279,11 +279,11 @@ export class SetEvent extends Component {
           onChange={this.handleChange}
           value={this.state.slideIndex}
         >
-          <Tab label="Location/Date/Time" value={0} />
-          <Tab label="Type of Event" value={1} />
-          <Tab label="Invite!" value={2} />
-          <Tab label="Items needed!" value={3} />
-          <Tab label="Finish" value={4} />
+          <Tab className="tab-container" label="When & Where" value={0} />
+          <Tab className="tab-container" label="Event Type" value={1} />
+          <Tab className="tab-container" label="Invite" value={2} />
+          <Tab className="tab-container" label="Items" value={3} />
+          <Tab className="tab-container" label="Finish" value={4} />
         </Tabs>
         <SwipeableViews
             index={this.state.slideIndex}

@@ -33,6 +33,12 @@ html { font-family: 'Roboto', sans-serif; }
   border: 2px solid blueviolet;
   /* margin-top: 65px; */
   padding-bottom: 80px;
-  width:50%;
-  margin:100px auto auto;
+  width: 98%;
+  margin: 100px auto auto;
+}
+
+@media screen and (min-width: 964px){
+  .seteventtoggle {
+    width: 60%;
+  }
 }
