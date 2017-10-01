@@ -118,6 +118,7 @@ class TimeSelector extends Component {
 
 class PartyTypeTable extends Component {
     state = {
+      height: '300px',
       selected: [3],
       types:[]
     };
@@ -128,12 +129,10 @@ class PartyTypeTable extends Component {
     }
     
     isSelected = (index) => {
-        // console.log(this.state.selected.indexOf(index))
       return this.state.selected.indexOf(index) !== -1;
     };
   
     handleRowSelection = (selectedRows) => {
-        // console.log(selectedRows)
       this.setState({
         selected: selectedRows,
       });
@@ -143,7 +142,7 @@ class PartyTypeTable extends Component {
       return (
         <div>
           <h2 style={styles.headline} style={{textAlign: 'center'}}>Select type of event</h2>   
-            <Table onRowSelection={this.handleRowSelection}>
+            <Table onRowSelection={this.handleRowSelection} height={this.state.height}>
               <TableBody>
               {this.state.types.map(type=>
                 <TableRow selected={this.isSelected(type.category_id)}>
