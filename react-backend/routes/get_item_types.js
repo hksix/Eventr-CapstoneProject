@@ -4,7 +4,7 @@ const db = require('../db');
 
 router.get('/', function(req, res, next) {
     db.query(`
-      select * from event_categories;
+      select * from item_categories;
     `)
       .then((result)=>{
           console.log(result);
