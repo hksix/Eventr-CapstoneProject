@@ -36,6 +36,7 @@
 * manage profile
 * notifications for invites, event updates
 
+### Stretch Features
 * Convert web app into react native mobile application
 * Survey invitees for when/where is good for an event
 * Allow businesses to add promotional deals
@@ -51,8 +52,9 @@
 * Keywords: Modular Architecture, Progressive Web App, Microsystems, Machine Learning, User Experience
 
 ### Frontend Stages
-* Stage 1:
-
+* Stage 1: Build event creation components
+* Stage 2: Connect to backend api for data
+* Stage 3: Build interface in react-native and connect to backend api
 
 
 ### Backend Stages
