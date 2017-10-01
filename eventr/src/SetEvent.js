@@ -16,6 +16,8 @@ import RaisedButton from 'material-ui/RaisedButton';
 import ItemList from './ListOfItems.js'
 import SubmitSnackBar from './Submit.js'
 
+import './App.css';
+
 
 const styles = {
   headline: {
@@ -278,12 +280,16 @@ export class SetEvent extends Component {
         <Tabs
           onChange={this.handleChange}
           value={this.state.slideIndex}
+          style={{
+            justifyContent: 'space-between',
+            width: '100%'
+          }}
         >
-          <Tab className="tab-container" label="When & Where" value={0} />
-          <Tab className="tab-container" label="Event Type" value={1} />
-          <Tab className="tab-container" label="Invite" value={2} />
-          <Tab className="tab-container" label="Items" value={3} />
-          <Tab className="tab-container" label="Finish" value={4} />
+          <Tab style={{flexWrap:'wrap'}}label="When & Where" value={0} />
+          <Tab style={{flexWrap:'wrap'}}label="Event Type" value={1} />
+          <Tab style={{flexWrap:'wrap'}}label="Invite" value={2} />
+          <Tab style={{flexWrap:'wrap'}}label="Items" value={3} />
+          <Tab style={{flexWrap:'wrap'}}label="Finish" value={4} />
         </Tabs>
         <SwipeableViews
             index={this.state.slideIndex}
