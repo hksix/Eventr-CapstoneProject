@@ -28,8 +28,11 @@
 # Architecture
 * Frontend: React, Redux
 * Backend API: Node.js, Express, PostgreSQL    
+* Server: AWS EC2, Nginx, SSL
+* Keywords: Modular Architecture, Progressive Web App, Microsystems, Machine Learning, User Experience
 
-
+### Frontend Stages
+* Stage 1:
 
 
 
@@ -37,4 +40,4 @@
 * Stage 1: Create SQL database and connect with express router
 * Stage 2: Create data api with separate routers for common CRUD operations needed for frontend functionality
 * Stage 3: Convert direct SQL Queries to sequalize ORM
-* Stage 4: Break modular routes and components into microsystems for scalability
+* Stage 4: Convert modular routes and components into microsystems for scalability
