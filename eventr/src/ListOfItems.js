@@ -1,21 +1,16 @@
 import React, {Component} from 'react';
 import TextField from 'material-ui/TextField';
+import FloatingActionButton from 'material-ui/FloatingActionButton';
+import ContentAdd from 'material-ui/svg-icons/content/add';
+import ContentRemove from 'material-ui/svg-icons/content/clear';
+
 // Component Structure
 // --------------------
 // Container
-// --> Title
 // --> Form
 // --> List
 // ----> Todo
 
-// stateless component
-// const Title = () => {
-// 	return (
-// 		<div id="titleWrapper">
-// 			<h2 className="textCenter">To-do List</h2>
-// 		</div>
-// 	);
-// };
 
 
 class Form extends Component {
@@ -35,7 +30,7 @@ class Form extends Component {
 	}
 	
 	handleNewTodoAddition() {
-        console.log(this.input.value);
+        // console.log(this.input.value);
 		if(this.input.value !== '') {
 			this.props.addTodo(this.input.value);
 			this.setState({
@@ -46,46 +41,56 @@ class Form extends Component {
 	}
 	
 	render() {
+        const FloatingButtonAdd = () => (
+            <div>
+                <FloatingActionButton mini={true}>
+                    <ContentAdd onClick={this.handleNewTodoAddition} />
+                </FloatingActionButton>
+            </div>
+        );
 		return (
 			// ref should be passed a callback
 			// with underlying dom element as its
             // argument to get its reference
-            // id="blank" is there to comunicate with the TextField box. This is needed but its a hidden element 
-            <div id='form'>
-            <TextField
-              hintText="Type in items needed..."
-              value={this.state.value}
-              onChange={this.handleChange}
-            /><br />
-			<div id="blank" style={{display:'none' }}>
-				<input 
-					ref={node => {
-						this.input = node;
-					}}
-					value={this.state.value}
-					onChange={this.handleChange}/>
+            // id="blank" is there to comunicate with the TextField box. This is needed but its a hidden element cause I suck at coding
+            <div>
+                <TextField
+                    hintText="Type in items needed..."
+                    value={this.state.value}
+                    onChange={this.handleChange}
+                />
+                <FloatingButtonAdd  />
+                <br />
+			    <div id="blank" style={{display:'none' }}>
+			    	<input 
+			    		ref={node => {
+			    			this.input = node;
+			    		}}
+			    		value={this.state.value}
+			    		onChange={this.handleChange}/>
                 </div>
-				<button 
-					onClick={this.handleNewTodoAddition}>	
-					+
-				</button>	
-        </div>
+                
+            </div>
 		);
 	}
 }
 
 const Todo = ({todo, remove}) => {
+    const FloatingButtonRemove = () => (
+        <div>
+            <FloatingActionButton mini={true} secondary={true}>
+                <ContentRemove onClick={()=> {
+				    remove(todo.id)
+				    }} 
+                />
+            </FloatingActionButton>
+        </div>
+    );
 	// single todo 
 	return (
-		<p className="todos">
+		<p>
 			{todo.value}
-			<span 
-				className="removeBtn"
-				onClick={()=> {
-					remove(todo.id)
-				}}>
-				x
-			</span>
+            <FloatingButtonRemove/>            
 		</p>
 	);
 };
@@ -100,12 +105,12 @@ const List = ({todos, remove}) => {
 			//return (<p>{todo.value}</p>);
 		});
 	} else {
-		allTodos.push(<h3 id="acu">No items added!</h3>);	
+		allTodos.push(<h3>No items added!</h3>);	
 	}
 	
 	return (
-		<div id="list">
-			<p id="info"> Items: </p>
+		<div>
+			<p> Items: </p>
 			{allTodos}
 		</div>
 	);
@@ -114,19 +119,11 @@ const List = ({todos, remove}) => {
 
 class ItemList extends Component {
 	constructor(props) {
-		super(props);
-		// data for introduction to app
-		// for new users
-		const introData = [
-            {}
-		];
-		
+		super(props);		
 		const localData = localStorage.todos && JSON.parse(localStorage.todos);
-
 		this.state = { 
-			data: localData || introData
+			data: localData
 		};
-		
 		// binding methods
 		this.addTodo = this.addTodo.bind(this);
 		this.removeTodo = this.removeTodo.bind(this);
@@ -189,8 +186,6 @@ class ItemList extends Component {
 			}
 
 		} else {
-			 console.log("%cApp will not remember todos created as LocalStorage Is Not Available",
-							 "color: hotpink; background: #333; font-size: x-large;font-family: Courier;");
 			window.id = 0;
 		}
 	}
@@ -198,7 +193,6 @@ class ItemList extends Component {
 	render() {
 		return (
 			<div id="container">
-				{/* <Title /> */}
 				<Form addTodo={this.addTodo} />
 				<List todos={this.state.data} remove={this.removeTodo} />
 			</div>
@@ -206,4 +200,3 @@ class ItemList extends Component {
 	}
 }
 export default ItemList;
-// ReactDOM.render(<Container />, app);
