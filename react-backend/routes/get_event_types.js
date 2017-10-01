@@ -5,7 +5,7 @@ const db = require('../db');
 
 /* GET home page. */
 // router.get('/', function(req, res, next) {
-//   res.render('event_types', { title: 'HELLO' });
+//   res.render('event_types', { title: 'HALP' });
 // });
 
 
@@ -14,12 +14,11 @@ router.get('/', function(req, res, next) {
       select * from event_categories;
     `)
       .then((result)=>{
+          console.log(result);
         res.render('event_types',{
-          users: result
-        })
-        .catch((error) => {
+          events: result
+        });
 
-          });
       });
 });
 
