@@ -4,6 +4,7 @@ import {blue500, red500, greenA200} from 'material-ui/styles/colors';
 import './App.css';
 
 import ProfileBox from './ProfileBox'
+import UserMenu from './sidemenu/UserMenu.js';
 
 
 const header = {
@@ -48,6 +49,7 @@ export class Sidebar extends Component {
             <div className="homepg">
                 <Welcome />
                 <ProfileBox/>
+                
             </div>
         )
     }

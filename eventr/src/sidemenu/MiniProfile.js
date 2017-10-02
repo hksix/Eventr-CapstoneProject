@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
-import Grid from 'material-ui/Grid';
+import {Card, CardActions, CardHeader, CardMedia, CardTitle, CardText} from 'material-ui/Card';
+import FlatButton from 'material-ui/FlatButton';
 
 export default class MiniProfile extends Component {
 

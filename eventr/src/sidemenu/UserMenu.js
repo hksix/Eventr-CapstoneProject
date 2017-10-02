@@ -11,7 +11,7 @@ import MiniEvents from './MiniEvents.js';
 // }
 
 
-export class ConsistentMenu extends Component {
+export default class UserMenu extends Component {
   constructor(props){
     super(props);
 
