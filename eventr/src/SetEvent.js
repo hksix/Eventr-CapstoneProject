@@ -57,48 +57,29 @@ const persons = [
     {value: 8, name: 'Virginia Andrews'},
     {value: 9, name: 'Kelly Snyder'},
   ];
-
-class EventSummary extends Component{
-    constructor(props){
-        super(props);
-
-        this.state = {
-            EventAddress: null,
-            EventDate: null,
-            EventTime: null,
-            EventType: null,
-            EventPeepNames: [],
-            EventPeepCount: null,
-
-
-        }
-    }
-}
+    
 
 class DateSelector extends Component {
       constructor(props) {
         super(props);
     
-        this.state = {
-          controlledDate: null,
-        };
-      }
-    
-      handleChange = (event, date) => {
-        this.setState({
-          controlledDate: date,
-        });
-      };
-    
+      //   this.state = {
+      //     controlledDate: null,
+      //   };
+       }
       render() {
         return (
           <DatePicker
             hintText="Select Date"
-            value={this.state.controlledDate}
-            onChange={this.handleChange}
+            value={this.props.date}
+            onChange={this._handleChange}
           />
         );
       }
+
+      _handleChange = (event, date) => {
+        this.props.changeHandler(date);
+      };
     }
 
 class TimeSelector extends Component {
@@ -269,6 +250,14 @@ export class SetEvent extends Component {
     super(props);
     this.state = {
       slideIndex: 0,
+      eventName: "",
+      eventDiscription:'',
+      eventLocation: "",
+      eventTime: "",
+      eventDate: new Date(),
+      eventType: "",
+      eventPeople:'',
+      eventItems:'',
     };
   }
 
@@ -279,6 +268,8 @@ export class SetEvent extends Component {
   };
 
   render() {
+    // console.log(<EventSummary date={this.props.EventDate}/>)
+    
     return (
       <Card>
         <Tabs
@@ -289,17 +280,43 @@ export class SetEvent extends Component {
             width: '100%'
           }}
         >
-          <Tab label="When & Where" value={0} />
-          <Tab label="Event Type" value={1} />
-          <Tab label="Invite" value={2} />
-          <Tab label="Items" value={3} />
-          <Tab label="Finish" value={4} />
+          <Tab label="Name & Description" value={0} />
+          <Tab label="When & Where" value={1} />
+          <Tab label="Event Type" value={2} />
+          <Tab label="Invite" value={3} />
+          <Tab label="Items" value={4} />
+          <Tab label="Finish" value={5} />
         </Tabs>
 
         <SwipeableViews
             index={this.state.slideIndex}
             onChangeIndex={this.handleChange}
         >
+        <div>
+          <div style={{textAlign: 'center'}}>
+          <h2 style={styles.headline} style={{textAlign: 'center'}}>Name and Description of your event.</h2> 
+              <TextField
+                
+                floatingLabelText="Name"
+                floatingLabelStyle={styles.floatingLabelStyle}
+                floatingLabelFocusStyle={styles.floatingLabelFocusStyle}
+              >
+              </TextField>
+              </div>
+              <br/>
+              <div style={{textAlign: 'center'}}>
+                    {/* <h2 style={styles.headline} style={{textAlign: 'center'}}>Description.</h2> */}
+              <TextField
+                style={{textAlign: 'left', width: "50%", border:"1px solid gray"}}
+                floatingLabelText="Description"
+                floatingLabelStyle={styles.floatingLabelStyle}
+                floatingLabelFocusStyle={styles.floatingLabelFocusStyle}
+                multiLine={true}
+                rows={2}
+                >
+              </TextField>
+              </div>
+            </div>
             <div style={{textAlign: 'center'}}>
                 <div>
                     <h2 style={styles.headline} style={{textAlign: 'center'}}>When and where?</h2> 
@@ -311,7 +328,9 @@ export class SetEvent extends Component {
                     />
                 </div>
                 <div>
-                    <DateSelector/>
+                    <DateSelector date={this.state.eventDate}
+                    changeHandler={this._handleDateChange}
+                      />
                 </div>
                 <div>
                     <TimeSelector/>
@@ -334,11 +353,28 @@ export class SetEvent extends Component {
 
             <div style={styles.slide} style={{textAlign: 'center'}}>
                 <h2 style={styles.headline} style={{textAlign: 'center'}}>Summary page</h2>
+                <p>Name: {this.state.eventName}</p>
+                <p>Description</p>
+                <p>Location</p>
+                <p>Time</p>
+                <p>Date: {this.state.eventDate.toString()}</p>
+                <p>Type</p>
+                <p>Number of people invited</p>
+                <p>Number of required items needed</p>
                 <SubmitButton /> 
             </div>
-
         </SwipeableViews>
       </Card>
     );
+  }
+  _handleDateChange=(newDate)=>{
+    this.setState({
+      eventDate: newDate
+    })
+  }
+  _handleNameChange=(newName)=>{
+    this.setState({
+      eventName: newName
+    })
   }
 }
