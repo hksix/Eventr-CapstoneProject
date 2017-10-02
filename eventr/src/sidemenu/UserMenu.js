@@ -19,7 +19,7 @@ export default class UserMenu extends Component {
 
   render(){
     return(
-      <div className="side-menu-container">
+      <div>
         <MiniProfile />
         <Alerts />
         <MiniEvents />

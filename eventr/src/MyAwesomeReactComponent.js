@@ -13,6 +13,9 @@ import {
 import { Sidebar } from './Welcome.js'
 import {SetEvent} from './SetEvent.js'
 
+import UserMenu from './sidemenu/UserMenu.js';
+import './index.css';
+
 export default class MenuOptions extends Component {
       constructor(props) {
         super(props);
@@ -29,7 +32,7 @@ export default class MenuOptions extends Component {
       render(){
         return (
             <Router>
-            <Tabs
+              <Tabs
                 className="menubar"
                 value={this.state.value}
                 onChange={this.handleChange}>
@@ -41,7 +44,7 @@ export default class MenuOptions extends Component {
                     containerElement={<Link to="/home" />}
                 >
                     {/* <Route exact path="/home" component={Sidebar}/> */}
-                    <Sidebar/>
+                    <Sidebar className="main-content-container"/>
                     
                 </Tab>
                 <Tab
@@ -51,7 +54,7 @@ export default class MenuOptions extends Component {
                     containerElement={<Link to="/events" />}
                     >
                     <Route exact path="/events" component={event}/>
-                    <SetEvent/>
+                    <SetEvent className="main-content-container"/>
                 </Tab>
                   <Tab
                       icon={<FontIcon className="material-icons">face</FontIcon>}
@@ -71,7 +74,7 @@ export default class MenuOptions extends Component {
                         <h2>Controllable Tab D</h2>
                     </div>
                 </Tab>
-            </Tabs>
+              </Tabs>
             </Router>
           );
         }
@@ -85,7 +88,14 @@ export default class MenuOptions extends Component {
 
 export const MyAwesomeReactComponent = () => (
     // <Paper zDepth={3}>
-    <MenuOptions/>
+    <div>
+      <div>
+        <MenuOptions />
+      </div>
+      <div className="side-content-container">
+        <UserMenu />
+      </div>
+    </div>
 // </Paper>
 );
 

@@ -3,8 +3,8 @@ import {Card, CardActions, CardHeader, CardMedia, CardTitle, CardText} from 'mat
 import FlatButton from 'material-ui/FlatButton';
 
 const styles = {
-      width:'20%',
-      marginLeft:'10%',
+      // width:'20%',
+      // marginLeft:'10%',
 }
 
 

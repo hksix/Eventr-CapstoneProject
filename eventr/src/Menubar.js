@@ -4,11 +4,13 @@ import { CSSTransitionGroup } from 'react-transition-group';
 import ReactDOM from 'react-dom';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import {MyAwesomeReactComponent} from './MyAwesomeReactComponent';
+import './index.css';
+
 
 
 export const MenuHeader = () => (
   <MuiThemeProvider>
-    <MyAwesomeReactComponent />
+    <MyAwesomeReactComponent className="full-page-container"/>
   </MuiThemeProvider>
 );
 
