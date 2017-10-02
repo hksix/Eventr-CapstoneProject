@@ -2,10 +2,12 @@ import React, {Component} from 'react';
 import FontIcon from 'material-ui/FontIcon';
 import {blue500, red500, greenA200} from 'material-ui/styles/colors';
 
+import ProfileBox from './ProfileBox'
+import GridListExampleComplex from './Testing.js'
 
 const header = {
     paddingTop: 40,
-    border: '1px solid black',
+    // border: '1px solid black',
     width: '30%',
     marginLeft: 20,
     color: 'blue',
@@ -22,6 +24,7 @@ const Welcome = (props) =>(
     <h3 className="welcome">Home</h3>
     <div style={SubHeader}>
         <div>
+            <GridListExampleComplex/>
     {/* <FontIcon className="material-icons">home</FontIcon> */}
     </div>
     <div>
@@ -42,6 +45,7 @@ export class Sidebar extends Component {
         return(
             <div className="homepg">
                 <Welcome />
+                <ProfileBox/>
             </div>
         )
     }

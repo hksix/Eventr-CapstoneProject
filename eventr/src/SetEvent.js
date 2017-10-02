@@ -15,7 +15,15 @@ import RaisedButton from 'material-ui/RaisedButton';
 
 import ItemList from './ListOfItems.js'
 import SubmitSnackBar from './Submit.js'
+// google maps drawer for example
+// request invite
+// public event toggle - radius from current location  but doesnt show actual location // trending parties in area 
+// attendees 100/150 
+// parent teacher meetings
+// set cover for party entry
+// dress code
 
+// taking the guess work out of your event
 
 const styles = {
   headline: {
