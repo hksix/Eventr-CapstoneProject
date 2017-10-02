@@ -109,7 +109,7 @@ class TimeSelector extends Component {
 
 class PartyTypeTable extends Component {
     state = {
-      height: '300px',
+      height: '100px',
       selected: [3],
       types:[]
     };
@@ -280,12 +280,11 @@ export class SetEvent extends Component {
             width: '100%'
           }}
         >
-          <Tab label="Name & Description" value={0} />
+          <Tab label="Description" value={0} />
           <Tab label="When & Where" value={1} />
-          <Tab label="Event Type" value={2} />
-          <Tab label="Invite" value={3} />
-          <Tab label="Items" value={4} />
-          <Tab label="Finish" value={5} />
+          <Tab label="Invite" value={2} />
+          <Tab label="Items" value={3} />
+          <Tab label="Finish" value={4} />
         </Tabs>
 
         <SwipeableViews
@@ -338,16 +337,13 @@ export class SetEvent extends Component {
             </div>
 
             <div style={styles.slide}>
-                <PartyTypeTable/>
-            </div>
-
-            <div style={styles.slide}>
                 <h2 style={styles.headline} style={{textAlign: 'center'}}>Invite your peeps</h2> 
                 <SelectFriends/>
             </div>
 
             <div style={styles.slide}>
                 <h2 style={styles.headline} style={{textAlign: 'center'}}>Items page</h2>
+                <PartyTypeTable/>
                 <ItemList/> 
             </div>
 

@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "google-maps-react": "^1.1.0",
     "material-design-icons": "^3.0.1",
     "material-ui": "^0.19.3",
     "react": "^15.6.2",
