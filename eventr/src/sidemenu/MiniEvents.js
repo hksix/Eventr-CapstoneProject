@@ -8,22 +8,9 @@ export default class MiniEvents extends Component {
   render(){
     return(
       <Card >
-        <CardHeader
-          title="URL Avatar"
-          subtitle="Subtitle"
-          avatar="images/twogirlsatpicnic.jpg"
-        />
-        {/* <CardMedia
-          overlay={<CardTitle title="Overlay title" subtitle="Overlay subtitle" />}
-        >
-          <img src="images/twogirlsatpicnic.jpg" alt="" />
-        </CardMedia> */}
-        <CardTitle title="Profile" subtitle="Card subtitle" />
+        <CardTitle title="Events" subtitle="These are your upcomming events" />
         <CardText>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-          Donec mattis pretium massa. Aliquam erat volutpat. Nulla facilisi.
-          Donec vulputate interdum sollicitudin. Nunc lacinia auctor quam sed pellentesque.
-          Aliquam dui mauris, mattis quis lacus id, pellentesque lobortis odio.
+          Birthday Party at Bob's house on Friday
         </CardText>
         <CardActions>
           <FlatButton label="Action1" />
