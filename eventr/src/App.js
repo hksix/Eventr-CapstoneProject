@@ -35,13 +35,8 @@ class App extends Component {
                 <li>User Name: {user.user_name}</li>
                </ul>
             </div>
-<<<<<<< HEAD
         )} */}
           </div>
-=======
-        )}
-      </div>
->>>>>>> cf2f994544d694422363ad87030709f02aa675d0
     );
   }
 }

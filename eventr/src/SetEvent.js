@@ -23,12 +23,7 @@ import SubmitSnackBar from './Submit.js'
 // set cover for party entry
 // dress code
 
-<<<<<<< HEAD
 // taking the guess work out of your event
-=======
-import './App.css';
-
->>>>>>> cf2f994544d694422363ad87030709f02aa675d0
 
 const styles = {
   headline: {
