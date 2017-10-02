@@ -3,7 +3,6 @@ import FontIcon from 'material-ui/FontIcon';
 import {blue500, red500, greenA200} from 'material-ui/styles/colors';
 import './App.css';
 
-import ProfileBox from './ProfileBox'
 import UserMenu from './sidemenu/UserMenu.js';
 
 
@@ -48,8 +47,7 @@ export class Sidebar extends Component {
         return(
             <div className="homepg">
                 <Welcome />
-                <ProfileBox/>
-                
+                <UserMenu />
             </div>
         )
     }
