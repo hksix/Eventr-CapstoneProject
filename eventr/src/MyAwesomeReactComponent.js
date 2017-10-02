@@ -16,6 +16,10 @@ import {SetEvent} from './SetEvent.js'
 import UserMenu from './sidemenu/UserMenu.js';
 import './index.css';
 
+
+
+
+
 export default class MenuOptions extends Component {
       constructor(props) {
         super(props);
@@ -31,6 +35,7 @@ export default class MenuOptions extends Component {
 
       render(){
         return (
+            //Renders home(welcome) section 
             <Router>
               <Tabs
                 className="menubar"
@@ -54,6 +59,8 @@ export default class MenuOptions extends Component {
                     </div>
                     
                 </Tab>
+
+                {/* renders events page */}
                 <Tab
                     icon={<FontIcon className="material-icons">event</FontIcon>}
                     label="Events"
@@ -77,9 +84,13 @@ export default class MenuOptions extends Component {
                       label="PROFILE"
                       value="c"
                       containerElement={<Link to="/profile" />}>
-                      <div>
-
-                          <h2>Controllable Tab c</h2>
+                      <div className="main-content-container">
+                        <div className="side-content-container">
+                          <UserMenu />
+                        </div>
+                        <div className="changing-content-container" >
+                         
+                        </div>
                       </div>
                 </Tab>
                 <Tab
@@ -87,8 +98,13 @@ export default class MenuOptions extends Component {
                     label="NEARBY"
                     value="d"
                     containerElement={<Link to="/nearby" />}>
-                    <div>
-                        <h2>Controllable Tab D</h2>
+                    <div className="main-content-container">
+                      <div className="side-content-container">
+                        <UserMenu />
+                      </div>
+                      <div className="changing-content-container" >
+                        
+                      </div>
                     </div>
                 </Tab>
               </Tabs>
@@ -106,12 +122,9 @@ export default class MenuOptions extends Component {
 export const MyAwesomeReactComponent = () => (
     // <Paper zDepth={3}>
     <div>
-      <div >
-        <MenuOptions />
-      </div>
-      <div className="side-content-container">
 
-      </div>
+        <MenuOptions />
+
     </div>
 // </Paper>
 );

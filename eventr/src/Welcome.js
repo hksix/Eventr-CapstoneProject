@@ -7,32 +7,26 @@ import './App.css';
 
 
 const header = {
-    paddingTop: 40,
+    // paddingTop: 40,
     // border: '1px solid black',
-    width: '30%',
-    marginLeft: 'auto',
-    marginRight: 'auto',
-    color: 'blue',
+    // width: '30%',
+    // marginLeft: 'auto',
+    // marginRight: 'auto',
+    // color: 'blue',
     // display: 'flex',
   };
 
 const SubHeader = {
-    display: 'flex',
-    justifyContent: 'center',
+    // display: 'flex',
+    // justifyContent: 'center',
 }
 
 const Welcome2 = (props) =>(
     <header style={header}>
-    <h3 className="welcome">Home</h3>
-    <div style={SubHeader}>
-        <div>
+        <h3 className="welcome">Welcome Bob</h3>
+        <div style={SubHeader}>
 
-    {/* <FontIcon className="material-icons">home</FontIcon> */}
-    </div>
-    <div>
-    <h2>Home</h2>
-    </div>
-    </div>
+        </div>
     </header>
 );
 
@@ -47,7 +41,6 @@ export class Welcome extends Component {
         return(
             <div>
                 <Welcome2 />
-                {/* <UserMenu/> */}
             </div>
         )
     }
