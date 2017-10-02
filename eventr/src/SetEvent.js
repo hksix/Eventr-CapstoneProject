@@ -288,16 +288,41 @@ export class SetEvent extends Component {
             width: '100%'
           }}
         >
-          <Tab style={{flexWrap:'wrap'}}label="When & Where" value={0} />
-          <Tab style={{flexWrap:'wrap'}}label="Event Type" value={1} />
-          <Tab style={{flexWrap:'wrap'}}label="Invite" value={2} />
-          <Tab style={{flexWrap:'wrap'}}label="Items" value={3} />
-          <Tab style={{flexWrap:'wrap'}}label="Finish" value={4} />
+          <Tab style={{flexWrap:'wrap'}}label="Name & Description" value={0} />
+          <Tab style={{flexWrap:'wrap'}}label="When & Where" value={1} />
+          <Tab style={{flexWrap:'wrap'}}label="Event Type" value={2} />
+          <Tab style={{flexWrap:'wrap'}}label="Invite" value={3} />
+          <Tab style={{flexWrap:'wrap'}}label="Items" value={4} />
+          <Tab style={{flexWrap:'wrap'}}label="Finish" value={5} />
         </Tabs>
         <SwipeableViews
             index={this.state.slideIndex}
             onChangeIndex={this.handleChange}
         >
+        <div>
+          <div style={{textAlign: 'center'}}>
+          <h2 style={styles.headline} style={{textAlign: 'center'}}>Name and Description of your event.</h2> 
+              <TextField
+                floatingLabelText="Name"
+                floatingLabelStyle={styles.floatingLabelStyle}
+                floatingLabelFocusStyle={styles.floatingLabelFocusStyle}
+              >
+              </TextField>
+              </div>
+              <br/>
+              <div style={{textAlign: 'center'}}>
+                    {/* <h2 style={styles.headline} style={{textAlign: 'center'}}>Description.</h2> */}
+              <TextField
+                style={{textAlign: 'left', width: "50%", border:"1px solid gray"}}
+                floatingLabelText="Description"
+                floatingLabelStyle={styles.floatingLabelStyle}
+                floatingLabelFocusStyle={styles.floatingLabelFocusStyle}
+                multiLine={true}
+                rows={2}
+                >
+              </TextField>
+              </div>
+            </div>
             <div style={{textAlign: 'center'}}>
                 <div>
                     <h2 style={styles.headline} style={{textAlign: 'center'}}>When and where?</h2> 
@@ -332,6 +357,14 @@ export class SetEvent extends Component {
 
             <div style={styles.slide} style={{textAlign: 'center'}}>
                 <h2 style={styles.headline} style={{textAlign: 'center'}}>Summary page</h2>
+                <p>Name</p>
+                <p>Description</p>
+                <p>Location</p>
+                <p>Time</p>
+                <p>Date</p>
+                <p>Type</p>
+                <p>Number of people invited</p>
+                <p>Number of required items needed</p>
                 <SubmitButton /> 
             </div>
 
