@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import {BrowserRouter, Route, Switch, Link} from 'react-router-dom';
 import ReactDOM from 'react-dom';
-import logo from './logo.svg';
 import './App.css';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import MyAwesomeReactComponent from './MyAwesomeReactComponent';
@@ -36,8 +35,13 @@ class App extends Component {
                 <li>User Name: {user.user_name}</li>
                </ul>
             </div>
+<<<<<<< HEAD
         )} */}
           </div>
+=======
+        )}
+      </div>
+>>>>>>> cf2f994544d694422363ad87030709f02aa675d0
     );
   }
 }
