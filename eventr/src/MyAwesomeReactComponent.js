@@ -11,9 +11,10 @@ import {
     withRouter
   } from 'react-router-dom'
 import { Welcome } from './Welcome.js'
-import {SetEvent} from './SetEvent.js'
-
+import { SetEvent } from './SetEvent.js'
 import UserMenu from './sidemenu/UserMenu.js';
+import Footer from './Footer.js';
+
 import './index.css';
 
 
@@ -35,7 +36,6 @@ export default class MenuOptions extends Component {
 
       render(){
         return (
-            
             <Router>
               <Tabs
                 className="menubar"
@@ -127,6 +127,7 @@ export const MyAwesomeReactComponent = () => (
 
     <div>
       <MenuOptions />
+      <Footer />
     </div>
 
 );

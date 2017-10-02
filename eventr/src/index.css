@@ -20,7 +20,9 @@ body {
   display: flex;
   margin: 0 auto;
 }
-
+.footer-container {
+  height: 150px;
+}
 
 @media screen and (min-width: 764px){
   .main-content-container {

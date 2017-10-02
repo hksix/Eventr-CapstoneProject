@@ -280,7 +280,7 @@ export class SetEvent extends Component {
 
   render() {
     return (
-      <Card className='seteventtoggle'>
+      <Card>
         <Tabs
           onChange={this.handleChange}
           value={this.state.slideIndex}
