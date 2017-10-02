@@ -15,6 +15,8 @@ import RaisedButton from 'material-ui/RaisedButton';
 
 import ItemList from './ListOfItems.js'
 import SubmitSnackBar from './Submit.js'
+
+import Card from 'material-ui/Card';
 // google maps drawer for example
 // request invite
 // public event toggle - radius from current location  but doesnt show actual location // trending parties in area 
@@ -278,7 +280,7 @@ export class SetEvent extends Component {
 
   render() {
     return (
-      <div className='seteventtoggle'>
+      <Card className='seteventtoggle'>
         <Tabs
           onChange={this.handleChange}
           value={this.state.slideIndex}
@@ -287,12 +289,13 @@ export class SetEvent extends Component {
             width: '100%'
           }}
         >
-          <Tab style={{flexWrap:'wrap'}}label="When & Where" value={0} />
-          <Tab style={{flexWrap:'wrap'}}label="Event Type" value={1} />
-          <Tab style={{flexWrap:'wrap'}}label="Invite" value={2} />
-          <Tab style={{flexWrap:'wrap'}}label="Items" value={3} />
-          <Tab style={{flexWrap:'wrap'}}label="Finish" value={4} />
+          <Tab label="When & Where" value={0} />
+          <Tab label="Event Type" value={1} />
+          <Tab label="Invite" value={2} />
+          <Tab label="Items" value={3} />
+          <Tab label="Finish" value={4} />
         </Tabs>
+
         <SwipeableViews
             index={this.state.slideIndex}
             onChangeIndex={this.handleChange}
@@ -335,7 +338,7 @@ export class SetEvent extends Component {
             </div>
 
         </SwipeableViews>
-      </div>
+      </Card>
     );
   }
 }

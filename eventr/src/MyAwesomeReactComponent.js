@@ -35,7 +35,7 @@ export default class MenuOptions extends Component {
 
       render(){
         return (
-            //Renders home(welcome) section 
+            
             <Router>
               <Tabs
                 className="menubar"
@@ -79,20 +79,24 @@ export default class MenuOptions extends Component {
                     </div>
 
                 </Tab>
-                  <Tab
-                      icon={<FontIcon className="material-icons">face</FontIcon>}
-                      label="PROFILE"
-                      value="c"
-                      containerElement={<Link to="/profile" />}>
-                      <div className="main-content-container">
-                        <div className="side-content-container">
-                          <UserMenu />
-                        </div>
-                        <div className="changing-content-container" >
-                         
-                        </div>
+
+                {/* renders user's profile */}
+                <Tab
+                    icon={<FontIcon className="material-icons">face</FontIcon>}
+                    label="PROFILE"
+                    value="c"
+                    containerElement={<Link to="/profile" />}>
+                    <div className="main-content-container">
+                      <div className="side-content-container">
+                        <UserMenu />
                       </div>
+                      <div className="changing-content-container" >
+                        
+                      </div>
+                    </div>
                 </Tab>
+
+                {/* renders map */}
                 <Tab
                     icon={<MapsPersonPin />}
                     label="NEARBY"
@@ -120,13 +124,9 @@ export default class MenuOptions extends Component {
       // )
 
 export const MyAwesomeReactComponent = () => (
-    // <Paper zDepth={3}>
+
     <div>
-
-        <MenuOptions />
-
+      <MenuOptions />
     </div>
-// </Paper>
-);
 
-// export default MyAwesomeReactComponent;
+);
