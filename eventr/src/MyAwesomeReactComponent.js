@@ -10,8 +10,16 @@ import {
     Link,
     withRouter
   } from 'react-router-dom'
-import { Sidebar } from './Welcome.js'
-import {SetEvent} from './SetEvent.js'
+import { Welcome } from './Welcome.js'
+import { SetEvent } from './SetEvent.js'
+import UserMenu from './sidemenu/UserMenu.js';
+import Footer from './Footer.js';
+
+import './index.css';
+
+
+
+
 
 export default class MenuOptions extends Component {
       constructor(props) {
@@ -29,7 +37,7 @@ export default class MenuOptions extends Component {
       render(){
         return (
             <Router>
-            <Tabs
+              <Tabs
                 className="menubar"
                 value={this.state.value}
                 onChange={this.handleChange}>
@@ -41,52 +49,85 @@ export default class MenuOptions extends Component {
                     containerElement={<Link to="/home" />}
                 >
                     {/* <Route exact path="/home" component={Sidebar}/> */}
-                    <Sidebar/>
+                    <div className="main-content-container">
+                      <div className="side-content-container">
+                        <UserMenu />
+                      </div>
+                      <div className="changing-content-container" >
+                        <Welcome/>
+                      </div>
+                    </div>
                     
                 </Tab>
+
+                {/* renders events page */}
                 <Tab
                     icon={<FontIcon className="material-icons">event</FontIcon>}
                     label="Events"
                     value="b"
                     containerElement={<Link to="/events" />}
                     >
-                    <Route exact path="/events" component={event}/>
-                    <SetEvent/>
-                </Tab>
-                  <Tab
-                      icon={<FontIcon className="material-icons">face</FontIcon>}
-                      label="PROFILE"
-                      value="c"
-                      containerElement={<Link to="/profile" />}>
-                      <div>
-                          <h2>Controllable Tab c</h2>
+                    <Route exact path="/events"/>
+
+                    <div className="main-content-container">
+                      <div className="side-content-container">
+                        <UserMenu />
                       </div>
+                      <div className="changing-content-container" >
+                        <SetEvent />
+                      </div>
+                    </div>
+
                 </Tab>
+
+                {/* renders user's profile */}
+                <Tab
+                    icon={<FontIcon className="material-icons">face</FontIcon>}
+                    label="PROFILE"
+                    value="c"
+                    containerElement={<Link to="/profile" />}>
+                    <div className="main-content-container">
+                      <div className="side-content-container">
+                        <UserMenu />
+                      </div>
+                      <div className="changing-content-container" >
+                        
+                      </div>
+                    </div>
+                </Tab>
+
+                {/* renders map */}
                 <Tab
                     icon={<MapsPersonPin />}
                     label="NEARBY"
                     value="d"
                     containerElement={<Link to="/nearby" />}>
-                    <div>
-                        <h2>Controllable Tab D</h2>
+                    <div className="main-content-container">
+                      <div className="side-content-container">
+                        <UserMenu />
+                      </div>
+                      <div className="changing-content-container" >
+                        
+                      </div>
                     </div>
                 </Tab>
-            </Tabs>
+              </Tabs>
             </Router>
           );
         }
       }
 
-      const event = () => (
-        <div>
-          <h2>Event page</h2>
-        </div>
-      )
+      // const event = () => (
+      //   <div>
+      //     <h2>Event page</h2>
+      //   </div>
+      // )
 
 export const MyAwesomeReactComponent = () => (
-    // <Paper zDepth={3}>
-    <MenuOptions/>
-// </Paper>
-);
 
-// export default MyAwesomeReactComponent;
+    <div>
+      <MenuOptions />
+      <Footer />
+    </div>
+
+);

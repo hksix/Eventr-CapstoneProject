@@ -4,12 +4,6 @@ html { font-family: 'Roboto', sans-serif; }
 
 
 
-.App {
-  font-family: 'Roboto', sans-serif;
-  text-align: center;
-}
-
-
 .App-header {
   background-color: #222;
   height: 150px;
@@ -19,31 +13,4 @@ html { font-family: 'Roboto', sans-serif; }
 
 .App-intro {
   font-size: large;
-}
-
-@keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
-}
-.homepg {
-  display: flex;
-}
-
-
-.seteventtoggle{
-  border: 2px solid blueviolet;
-  /* margin-top: 65px; */
-  padding-bottom: 80px;
-  width: 98%;
-  margin: 100px auto auto;
-}
-.seteventtoggle button > div > div {
-  min-width: 40px;
-  overflow-wrap: normal;
-}
-
-@media screen and (min-width: 964px){
-  .seteventtoggle {
-    width: 60%;
-  }
 }
