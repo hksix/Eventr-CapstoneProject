@@ -18,7 +18,18 @@ import ContentRemove from 'material-ui/svg-icons/content/clear';
 
 import ItemList from './ListOfItems.js'
 import SubmitSnackBar from './Submit.js'
+// google maps drawer for example
+// request invite
+// public event toggle - radius from current location  but doesnt show actual location // trending parties in area 
+// attendees 100/150 
+// parent teacher meetings
+// set cover for party entry
+// dress code
 
+// taking the guess work out of your event
+import './App.css';
+
+cf2f994544d694422363ad87030709f02aa675d0
 
 const styles = {
   headline: {
@@ -340,12 +351,16 @@ export class SetEvent extends Component {
         <Tabs
           onChange={this.handleChange}
           value={this.state.slideIndex}
+          style={{
+            justifyContent: 'space-between',
+            width: '100%'
+          }}
         >
-          <Tab label="Event Info" value={0} />
-          <Tab label="Type of Event" value={1} />
-          <Tab label="Invite!" value={2} />
-          <Tab label="Items needed!" value={3} />
-          <Tab label="Finish" value={4} />
+          <Tab style={{flexWrap:'wrap'}}label="When & Where" value={0} />
+          <Tab style={{flexWrap:'wrap'}}label="Event Type" value={1} />
+          <Tab style={{flexWrap:'wrap'}}label="Invite" value={2} />
+          <Tab style={{flexWrap:'wrap'}}label="Items" value={3} />
+          <Tab style={{flexWrap:'wrap'}}label="Finish" value={4} />
         </Tabs>
         <SwipeableViews
             index={this.state.slideIndex}
