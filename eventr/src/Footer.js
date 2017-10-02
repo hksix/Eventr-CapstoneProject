@@ -3,9 +3,12 @@ import {cyan400} from 'material-ui/styles/colors';
 
 const footer = {
   backgroundColor: cyan400,
+  color: 'white',
   display: 'flex',
   alignItems: 'center',
-  justifyContent: 'center'
+  justifyContent: 'center',
+  fontSize: '14px',
+  fontWeight: 500,
 }
 export default class Footer extends Component {
 

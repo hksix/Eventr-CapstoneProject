@@ -1,29 +1,30 @@
 import React, {Component} from 'react';
 import FontIcon from 'material-ui/FontIcon';
-import {blue500, red500, greenA200} from 'material-ui/styles/colors';
+import {cyan400} from 'material-ui/styles/colors';
+import {Card, CardActions, CardHeader, CardMedia, CardTitle, CardText} from 'material-ui/Card';
 import './App.css';
 
 // import UserMenu from './sidemenu/UserMenu.js';
 
 
 const header = {
-    // paddingTop: 40,
-    // border: '1px solid black',
-    // width: '30%',
-    // marginLeft: 'auto',
-    // marginRight: 'auto',
-    // color: 'blue',
-    // display: 'flex',
-  };
+    textAlign: 'center',
+    backgroundColor: cyan400,
+    color: 'white',
+    paddingTop: '15px',
+    paddingBottom: '15px',
+    fontSize: '14px',
+    fontWeight: 500,
+};
 
 const SubHeader = {
-    // display: 'flex',
-    // justifyContent: 'center',
-}
+    height: '300px',
+    
+};
 
 const Welcome2 = (props) =>(
-    <header style={header}>
-        <h3 className="welcome">Welcome Bob</h3>
+    <header >
+        <h3 style={header} className="welcome">Welcome Bob</h3>
         <div style={SubHeader}>
 
         </div>
@@ -39,9 +40,9 @@ export class Welcome extends Component {
     }
     render(){
         return(
-            <div>
+            <Card>
                 <Welcome2 />
-            </div>
+            </Card>
         )
     }
 }
