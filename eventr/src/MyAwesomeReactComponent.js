@@ -10,7 +10,7 @@ import {
     Link,
     withRouter
   } from 'react-router-dom'
-import { Sidebar } from './Welcome.js'
+import { Welcome } from './Welcome.js'
 import {SetEvent} from './SetEvent.js'
 
 import UserMenu from './sidemenu/UserMenu.js';
@@ -44,7 +44,14 @@ export default class MenuOptions extends Component {
                     containerElement={<Link to="/home" />}
                 >
                     {/* <Route exact path="/home" component={Sidebar}/> */}
-                    <Sidebar className="main-content-container"/>
+                    <div className="main-content-container">
+                      <div className="side-content-container">
+                        <UserMenu />
+                      </div>
+                      <div className="changing-content-container" >
+                        <Welcome/>
+                      </div>
+                    </div>
                     
                 </Tab>
                 <Tab
@@ -53,8 +60,17 @@ export default class MenuOptions extends Component {
                     value="b"
                     containerElement={<Link to="/events" />}
                     >
-                    <Route exact path="/events" component={event}/>
-                    <SetEvent className="main-content-container"/>
+                    <Route exact path="/events"/>
+
+                    <div className="main-content-container">
+                      <div className="side-content-container">
+                        <UserMenu />
+                      </div>
+                      <div className="changing-content-container" >
+                        <SetEvent />
+                      </div>
+                    </div>
+
                 </Tab>
                   <Tab
                       icon={<FontIcon className="material-icons">face</FontIcon>}
@@ -62,6 +78,7 @@ export default class MenuOptions extends Component {
                       value="c"
                       containerElement={<Link to="/profile" />}>
                       <div>
+
                           <h2>Controllable Tab c</h2>
                       </div>
                 </Tab>
@@ -80,20 +97,20 @@ export default class MenuOptions extends Component {
         }
       }
 
-      const event = () => (
-        <div>
-          <h2>Event page</h2>
-        </div>
-      )
+      // const event = () => (
+      //   <div>
+      //     <h2>Event page</h2>
+      //   </div>
+      // )
 
 export const MyAwesomeReactComponent = () => (
     // <Paper zDepth={3}>
     <div>
-      <div>
+      <div >
         <MenuOptions />
       </div>
       <div className="side-content-container">
-        <UserMenu />
+
       </div>
     </div>
 // </Paper>

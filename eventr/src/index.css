@@ -8,6 +8,29 @@ body {
   display: flex;
 }
 .side-content-container {
-  width: 300px;
+  width: 30%;
   border: 2px solid yellow;
+}
+.changing-content-container {
+  width: 60%;
+  border: 1px solid aqua;
+}
+.main-content-container {
+  display: flex;
+  width: 100%;
+  border: 1px solid purple;
+  justify-content: center;
+}
+
+/* .seteventtoggle{
+  border: 2px solid blueviolet;
+  padding-bottom: 80px;
+  width: 98%;
+  margin: 100px auto auto;
+} */
+
+@media screen and (min-width: 964px){
+  .seteventtoggle {
+
+  }
 }

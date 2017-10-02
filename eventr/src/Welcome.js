@@ -21,7 +21,7 @@ const SubHeader = {
     justifyContent: 'center',
 }
 
-const Welcome = (props) =>(
+const Welcome2 = (props) =>(
     <header style={header}>
     <h3 className="welcome">Home</h3>
     <div style={SubHeader}>
@@ -36,7 +36,7 @@ const Welcome = (props) =>(
     </header>
 );
 
-export class Sidebar extends Component {
+export class Welcome extends Component {
     constructor(props){
         super(props);
         this.state = {
@@ -45,8 +45,8 @@ export class Sidebar extends Component {
     }
     render(){
         return(
-            <div className="homepg">
-                <Welcome />
+            <div>
+                <Welcome2 />
                 {/* <UserMenu/> */}
             </div>
         )

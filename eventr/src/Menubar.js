@@ -10,7 +10,7 @@ import './index.css';
 
 export const MenuHeader = () => (
   <MuiThemeProvider>
-    <MyAwesomeReactComponent className="full-page-container"/>
+    <MyAwesomeReactComponent/>
   </MuiThemeProvider>
 );
 
