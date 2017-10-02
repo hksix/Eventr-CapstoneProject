@@ -51,6 +51,8 @@
 * Server: AWS EC2, Nginx, SSL
 * Keywords: Modular Architecture, Progressive Web App, Microsystems, Machine Learning, User Experience
 
+![alt text](planning-board.jpg "planning board")
+
 ### Frontend Stages
 * Stage 1: Build event creation components
 * Stage 2: Connect to backend api for data
