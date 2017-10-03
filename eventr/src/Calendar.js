@@ -6,26 +6,26 @@ BigCalendar.setLocalizer(
   BigCalendar.momentLocalizer(moment)
 );
 
-const events = [
-	{
-		'event_id': '1',
-    'host_id': '1',
-    'name': 'Demo Day',
-		'date': '2017-10-17',
-		'time': '17:00:00',
-    'location': 'ATV',
-    'category_id': '1'
-	}
-]
 
 export class Calendar extends Component {
     constructor(props){
         super(props);
         this.state = {
-            name: '',
-            date: '',
-            time: '',
-            location: ''
+            // name: '',
+            // date: '',
+            // time: '',
+            // location: '',
+            events: [
+              {
+                'event_id': '1',
+                'host_id': '1',
+                'name': 'Demo Day',
+                'date': '2017-10-17',
+                'time': '17:00:00',
+                'location': 'ATV',
+                'category_id': '1'
+              }
+            ]
         };
     }
 
@@ -35,7 +35,7 @@ export class Calendar extends Component {
     // }
 
 
-    // findEventById(eventId) {
+    // findEventById(event_id, host_id) {
     //   axios.get("/api/event/event_id")
     //     .then(res => {
     //       const event = res.data;
@@ -52,19 +52,16 @@ export class Calendar extends Component {
 
 
 
-
     render() {
       return (
         <div>
           <h2>Event Calendar</h2>
           <BigCalendar 
-            culture='en'
-            events={this.state.events}
-            defaultDate={new Date()}/>
+          culture='en'
+          events={this.state.events} />
         </div>
       );
     }
   }
-
 
 
