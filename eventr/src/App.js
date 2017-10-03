@@ -22,7 +22,7 @@ class App extends Component {
     return (
       <div className="App">
         <MenuHeader />
-        {/* <h1>Users Table example info</h1>
+        <h1>Users Table example info</h1>
         {this.state.users.map(user =>
           <div key={user.user_id}>
               <ul>
@@ -35,13 +35,8 @@ class App extends Component {
                 <li>User Name: {user.user_name}</li>
                </ul>
             </div>
-<<<<<<< HEAD
-        )} */}
-          </div>
-=======
         )}
-      </div>
->>>>>>> cf2f994544d694422363ad87030709f02aa675d0
+          </div>
     );
   }
 }

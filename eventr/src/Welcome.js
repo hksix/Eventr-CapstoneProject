@@ -23,18 +23,6 @@ const SubHeader = {
 
 const Welcome = (props) =>(
     <header style={header}>
-<<<<<<< HEAD
-    <h3 className="welcome">Home</h3>
-    <div style={SubHeader}>
-        <div>
-            <GridListExampleComplex/>
-    {/* <FontIcon className="material-icons">home</FontIcon> */}
-    </div>
-    <div>
-    <h2>Home</h2>
-    </div>
-    </div>
-=======
         <h3 className="welcome">Home</h3>
         <div style={SubHeader}>
             <div>
@@ -44,7 +32,6 @@ const Welcome = (props) =>(
                 <h2>Home</h2>
             </div>
         </div>
->>>>>>> cf2f994544d694422363ad87030709f02aa675d0
     </header>
 );
 
