@@ -4,8 +4,8 @@ import {Tabs, Tab} from 'material-ui/Tabs';
 import SwipeableViews from 'react-swipeable-views';
 import TextField from 'material-ui/TextField';
 import {orange500, blue500} from 'material-ui/styles/colors';
-import DatePicker from 'material-ui/DatePicker';
-import TimePicker from 'material-ui/TimePicker';
+// import DatePicker from 'material-ui/DatePicker';
+// import TimePicker from 'material-ui/TimePicker';
 import {Table,TableBody,TableHeader,TableHeaderColumn,TableRow,TableRowColumn,} from 'material-ui/Table';
 import SelectField from 'material-ui/SelectField';
 import MenuItem from 'material-ui/MenuItem';
@@ -17,6 +17,9 @@ import ItemList from './ListOfItems.js'
 import SubmitSnackBar from './Submit.js'
 
 import Card from 'material-ui/Card';
+
+
+import {DateSelector, TimeSelector} from './setevent/WhenWhere.js'
 // google maps drawer for example
 // request invite
 // public event toggle - radius from current location  but doesnt show actual location // trending parties in area 
@@ -59,53 +62,53 @@ const persons = [
   ];
     
 
-class DateSelector extends Component {
-      constructor(props) {
-        super(props);
+// class DateSelector extends Component {
+//       constructor(props) {
+//         super(props);
     
-      //   this.state = {
-      //     controlledDate: null,
-      //   };
-       }
-      render() {
-        return (
-          <DatePicker
-            hintText="Select Date"
-            value={this.props.date}
-            onChange={this._handleChange}
-          />
-        );
-      }
+//       //   this.state = {
+//       //     controlledDate: null,
+//       //   };
+    //    }
+    //   render() {
+    //     return (
+    //       <DatePicker
+    //         hintText="Select Date"
+    //         value={this.props.date}
+    //         onChange={this._handleChange}
+    //       />
+    //     );
+    //   }
 
-      _handleChange = (event, date) => {
-        this.props.changeHandler(date);
-      };
-    }
+    //   _handleChange = (event, date) => {
+    //     this.props.changeHandler(date);
+    //   };
+    // }
 
-class TimeSelector extends Component {
-    constructor(props) {
-        super(props);
-        this.state = { value12: null};
-    }
+// class TimeSelector extends Component {
+//     constructor(props) {
+//         super(props);
+//         this.state = { value12: null};
+//     }
 
 
-    handleChangeTimePicker12 = (event, date) => {
-        this.setState({value12: date});
-    };
+//     handleChangeTimePicker12 = (event, date) => {
+//         this.setState({value12: date});
+//     };
 
-    render() {
-        return (
-            <div>
-                <TimePicker
-                  format="ampm"
-                  hintText="Set Time"
-                  value={this.state.value12}
-                  onChange={this.handleChangeTimePicker12}
-                />
-        </div>
-      );
-    }
-}
+//     render() {
+//         return (
+//             <div>
+//                 <TimePicker
+//                   format="ampm"
+//                   hintText="Set Time"
+//                   value={this.state.value12}
+//                   onChange={this.handleChangeTimePicker12}
+//                 />
+//         </div>
+//       );
+//     }
+// }
 
 class PartyTypeTable extends Component {
     state = {
@@ -253,8 +256,8 @@ export class SetEvent extends Component {
       eventName: "",
       eventDiscription:'',
       eventLocation: "",
-      eventTime: "",
-      eventDate: new Date(),
+      eventTime: '',
+      eventDate: '',
       eventType: "",
       eventPeople:'',
       eventItems:'',
@@ -277,15 +280,16 @@ export class SetEvent extends Component {
           value={this.state.slideIndex}
           style={{
             justifyContent: 'space-between',
-            width: '100%'
+            width: '100%',
+        
           }}
         >
-          <Tab label="Name & Description" value={0} />
-          <Tab label="When & Where" value={1} />
-          <Tab label="Event Type" value={2} />
-          <Tab label="Invite" value={3} />
-          <Tab label="Items" value={4} />
-          <Tab label="Finish" value={5} />
+          <Tab style={{fontSize: '12px', paddingLeft:"5px"}} label="Name & Description" value={0} />
+          <Tab style={{fontSize: '12px'}} label="When & Where" value={1} />
+          <Tab style={{fontSize: '12px'}} label="Event Type" value={2} />
+          <Tab style={{fontSize: '12px'}} label="Invite" value={3} />
+          <Tab style={{fontSize: '12px'}} label="Items" value={4} />
+          <Tab style={{fontSize: '12px'}} label="Finish" value={5} />
         </Tabs>
 
         <SwipeableViews
@@ -333,7 +337,9 @@ export class SetEvent extends Component {
                       />
                 </div>
                 <div>
-                    <TimeSelector/>
+                    <TimeSelector time={this.state.eventTime}
+                    changeHandler={this._handleTimeChange}
+                    />
                 </div>
             </div>
 
@@ -356,7 +362,7 @@ export class SetEvent extends Component {
                 <p>Name: {this.state.eventName}</p>
                 <p>Description</p>
                 <p>Location</p>
-                <p>Time</p>
+                <p>Time: {this.state.eventTime.toString()}</p>
                 <p>Date: {this.state.eventDate.toString()}</p>
                 <p>Type</p>
                 <p>Number of people invited</p>
@@ -370,6 +376,11 @@ export class SetEvent extends Component {
   _handleDateChange=(newDate)=>{
     this.setState({
       eventDate: newDate
+    })
+  }
+  _handleTimeChange=(newTime)=>{
+    this.setState({
+      eventTime: newTime
     })
   }
   _handleNameChange=(newName)=>{
