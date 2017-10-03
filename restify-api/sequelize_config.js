@@ -1,8 +1,9 @@
-const Secret = require('./secret_info');
+// const Secret = require('./secret_info');
+const dotenv = require('dotenv').config()
 var Sequelize = require('sequelize');
-const sequelize = new Sequelize( Secret.DB , Secret.USER, Secret.PW, {
-    operatorAlisases: false,
-    host: Secret.HOST,
+const sequelize = new Sequelize( dotenv.DB , dotenv.USER, dotenv.PW, {
+    operatorAliases: false,
+    host: dotenv.HOST,
     dialect: 'postgres',
     pool: {
       max: 5,
@@ -19,3 +20,9 @@ const sequelize = new Sequelize( Secret.DB , Secret.USER, Secret.PW, {
   .catch(err => {
     console.error('Unable to connect to the database:', err);
   });
+
+
+
+
+  
+  

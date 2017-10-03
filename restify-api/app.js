@@ -1,13 +1,16 @@
 //https://tutorials.kode-blog.com/nodejs-rest-api
 //http://mcavage.me/node-restify/
 //https://scotch.io/tutorials/test-a-node-restful-api-with-mocha-and-chai
+//http://docs.sequelizejs.com/manual/tutorial/migrations.html
+
+
 
 var restify = require('restify');
 
 var restifyValidator = require('restify-validator');
 var util = require('util');
 
-// var models = require('./models/index');
+var models = require('./models/index');
 
 var error_messages = null;
 
@@ -64,18 +67,18 @@ function getAllEventsByHost(request, response, next) {
 }
 
 
-// function getAllContacts(request,response,next){
-//     models.Contact.findAll({})
-//         .then(function(contacts) {
-//         var data = {
-//             error: "false",
-//             data: contacts
-//         };
+function getAllUsers(request,response,next){
+    models.User.findAll({})
+        .then(function(user) {
+        var data = {
+            error: "false",
+            data: user
+        };
 
-//         response.send(data);
-//         next();
-//     });
-// }
+        response.send(data);
+        next();
+    });
+}
 
 // function getContact(request,response,next){
 
@@ -192,7 +195,7 @@ server.use(restifyValidator);
 
 server.get('/api/v1/events', getAllEvents); //http://localhost:8080/api/events
 server.get('/api/v1/events/hostid/:host_id', getAllEventsByHost); //http://localhost:8080/api/events/hostid/1
-
+server.get('/api/v1/users', getAllUsers);
 // server.get('/api/events/inviteeid/:invitee_id', getAllEventsByInvitee); //http://localhost:8080/api/events/inviteeid/1
 // server.get('/api/events/:event_id', getEvent);
 // server.post('/api/events', addEvent);
