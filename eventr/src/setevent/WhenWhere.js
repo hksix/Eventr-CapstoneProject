@@ -1,7 +1,19 @@
 import React, {Component} from 'react';
+import TextField from 'material-ui/TextField';
+import {orange500, blue500} from 'material-ui/styles/colors';
 import DatePicker from 'material-ui/DatePicker';
-
 import TimePicker from 'material-ui/TimePicker';
+
+
+
+const styles = {
+    floatingLabelStyle: {
+      color: orange500,
+    },
+    floatingLabelFocusStyle: {
+      color: blue500,
+    },
+  };
 
 export class DateSelector extends Component {
     constructor(props) {
@@ -66,5 +78,25 @@ export class TimeSelector extends Component {
                 />
         </div>
       );
+    }
+}
+
+export class LocationSelector extends Component{
+    constructor(props){
+        super(props);
+    }
+
+    _handleChangeLocation = (event, address)=>{
+        this.props.changeHandler(address);
+    }
+    render(){
+        return(
+            <TextField
+            floatingLabelText="Address"
+            floatingLabelStyle={styles.floatingLabelStyle}
+            floatingLabelFocusStyle={styles.floatingLabelFocusStyle}
+            onChange={this._handleChangeLocation}
+        />
+        )
     }
 }

@@ -4,8 +4,7 @@ import {Tabs, Tab} from 'material-ui/Tabs';
 import SwipeableViews from 'react-swipeable-views';
 import TextField from 'material-ui/TextField';
 import {orange500, blue500} from 'material-ui/styles/colors';
-// import DatePicker from 'material-ui/DatePicker';
-// import TimePicker from 'material-ui/TimePicker';
+
 import {Table,TableBody,TableHeader,TableHeaderColumn,TableRow,TableRowColumn,} from 'material-ui/Table';
 import SelectField from 'material-ui/SelectField';
 import MenuItem from 'material-ui/MenuItem';
@@ -19,7 +18,7 @@ import SubmitSnackBar from './Submit.js'
 import Card from 'material-ui/Card';
 
 
-import {DateSelector, TimeSelector} from './setevent/WhenWhere.js'
+import {DateSelector, TimeSelector, LocationSelector} from './setevent/WhenWhere.js'
 // google maps drawer for example
 // request invite
 // public event toggle - radius from current location  but doesnt show actual location // trending parties in area 
@@ -62,53 +61,6 @@ const persons = [
   ];
     
 
-// class DateSelector extends Component {
-//       constructor(props) {
-//         super(props);
-    
-//       //   this.state = {
-//       //     controlledDate: null,
-//       //   };
-    //    }
-    //   render() {
-    //     return (
-    //       <DatePicker
-    //         hintText="Select Date"
-    //         value={this.props.date}
-    //         onChange={this._handleChange}
-    //       />
-    //     );
-    //   }
-
-    //   _handleChange = (event, date) => {
-    //     this.props.changeHandler(date);
-    //   };
-    // }
-
-// class TimeSelector extends Component {
-//     constructor(props) {
-//         super(props);
-//         this.state = { value12: null};
-//     }
-
-
-//     handleChangeTimePicker12 = (event, date) => {
-//         this.setState({value12: date});
-//     };
-
-//     render() {
-//         return (
-//             <div>
-//                 <TimePicker
-//                   format="ampm"
-//                   hintText="Set Time"
-//                   value={this.state.value12}
-//                   onChange={this.handleChangeTimePicker12}
-//                 />
-//         </div>
-//       );
-//     }
-// }
 
 class PartyTypeTable extends Component {
     state = {
@@ -325,21 +277,17 @@ export class SetEvent extends Component {
                 <div>
                     <h2 style={styles.headline} style={{textAlign: 'center'}}>When and where?</h2> 
                         Type in the details below.<br />
-                    <TextField
-                        floatingLabelText="Address"
-                        floatingLabelStyle={styles.floatingLabelStyle}
-                        floatingLabelFocusStyle={styles.floatingLabelFocusStyle}
-                    />
+
+                    <LocationSelector location={this.state.eventLocation}
+                      changeHandler={this._handleLocationChange}/>    
                 </div>
                 <div>
                     <DateSelector date={this.state.eventDate}
-                    changeHandler={this._handleDateChange}
-                      />
+                      changeHandler={this._handleDateChange}/>
                 </div>
                 <div>
                     <TimeSelector time={this.state.eventTime}
-                    changeHandler={this._handleTimeChange}
-                    />
+                    changeHandler={this._handleTimeChange}/>
                 </div>
             </div>
 
@@ -361,7 +309,7 @@ export class SetEvent extends Component {
                 <h2 style={styles.headline} style={{textAlign: 'center'}}>Summary page</h2>
                 <p>Name: {this.state.eventName}</p>
                 <p>Description</p>
-                <p>Location</p>
+                <p>Location: {this.state.eventLocation.toString()}</p>
                 <p>Time: {this.state.eventTime.toString()}</p>
                 <p>Date: {this.state.eventDate.toString()}</p>
                 <p>Type</p>
@@ -372,6 +320,11 @@ export class SetEvent extends Component {
         </SwipeableViews>
       </Card>
     );
+  }
+  _handleLocationChange=(newLocation)=>{
+    this.setState({
+      eventLocation: newLocation
+    })
   }
   _handleDateChange=(newDate)=>{
     this.setState({
