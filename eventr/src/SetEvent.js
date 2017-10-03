@@ -2,9 +2,6 @@ import React, {Component} from 'react';
 import {Tabs, Tab} from 'material-ui/Tabs';
 // From https://github.com/oliviertassinari/react-swipeable-views
 import SwipeableViews from 'react-swipeable-views';
-import TextField from 'material-ui/TextField';
-import {orange500, blue500} from 'material-ui/styles/colors';
-
 import {Table,TableBody,TableHeader,TableHeaderColumn,TableRow,TableRowColumn,} from 'material-ui/Table';
 import SelectField from 'material-ui/SelectField';
 import MenuItem from 'material-ui/MenuItem';
@@ -14,11 +11,11 @@ import RaisedButton from 'material-ui/RaisedButton';
 
 import ItemList from './ListOfItems.js'
 import SubmitSnackBar from './Submit.js'
-
 import Card from 'material-ui/Card';
 
 
 import {DateSelector, TimeSelector, LocationSelector} from './setevent/WhenWhere.js'
+import {NameSelector, DescriptionSelector} from './setevent/NameDesc.js'
 // google maps drawer for example
 // request invite
 // public event toggle - radius from current location  but doesnt show actual location // trending parties in area 
@@ -38,12 +35,6 @@ const styles = {
   },
   slide: {
     padding: 10,
-  },
-  floatingLabelStyle: {
-    color: orange500,
-  },
-  floatingLabelFocusStyle: {
-    color: blue500,
   },
 };
 
@@ -233,7 +224,6 @@ export class SetEvent extends Component {
           style={{
             justifyContent: 'space-between',
             width: '100%',
-        
           }}
         >
           <Tab style={{fontSize: '12px', paddingLeft:"5px"}} label="Name & Description" value={0} />
@@ -248,36 +238,18 @@ export class SetEvent extends Component {
             index={this.state.slideIndex}
             onChangeIndex={this.handleChange}
         >
-        <div>
-          <div style={{textAlign: 'center'}}>
-          <h2 style={styles.headline} style={{textAlign: 'center'}}>Name and Description of your event.</h2> 
-              <TextField
-                
-                floatingLabelText="Name"
-                floatingLabelStyle={styles.floatingLabelStyle}
-                floatingLabelFocusStyle={styles.floatingLabelFocusStyle}
-              >
-              </TextField>
+        <div id="name&Description">
+          <NameSelector name={this.state.eventName}
+            changeHandler={this._handleNameChange}/>
+            <br/>
+            <DescriptionSelector disc={this.state.eventDiscription}
+            changeHandler={this._handleDiscripChange}/>
               </div>
-              <br/>
-              <div style={{textAlign: 'center'}}>
-                    {/* <h2 style={styles.headline} style={{textAlign: 'center'}}>Description.</h2> */}
-              <TextField
-                style={{textAlign: 'left', width: "50%", border:"1px solid gray"}}
-                floatingLabelText="Description"
-                floatingLabelStyle={styles.floatingLabelStyle}
-                floatingLabelFocusStyle={styles.floatingLabelFocusStyle}
-                multiLine={true}
-                rows={2}
-                >
-              </TextField>
-              </div>
-            </div>
-            <div style={{textAlign: 'center'}}>
+
+            <div id="When&where" style={{textAlign: 'center'}}>
                 <div>
                     <h2 style={styles.headline} style={{textAlign: 'center'}}>When and where?</h2> 
                         Type in the details below.<br />
-
                     <LocationSelector location={this.state.eventLocation}
                       changeHandler={this._handleLocationChange}/>    
                 </div>
@@ -308,8 +280,8 @@ export class SetEvent extends Component {
             <div style={styles.slide} style={{textAlign: 'center'}}>
                 <h2 style={styles.headline} style={{textAlign: 'center'}}>Summary page</h2>
                 <p>Name: {this.state.eventName}</p>
-                <p>Description</p>
-                <p>Location: {this.state.eventLocation.toString()}</p>
+                <p>Description: {this.state.eventDiscription}</p>
+                <p>Location: {this.state.eventLocation}</p>
                 <p>Time: {this.state.eventTime.toString()}</p>
                 <p>Date: {this.state.eventDate.toString()}</p>
                 <p>Type</p>
@@ -320,6 +292,16 @@ export class SetEvent extends Component {
         </SwipeableViews>
       </Card>
     );
+  }
+  _handleNameChange=(newName)=>{
+    this.setState({
+      eventName: newName
+    })
+  }
+  _handleDiscripChange=(newDiscrip)=>{
+    this.setState({
+      eventDiscription: newDiscrip
+    })
   }
   _handleLocationChange=(newLocation)=>{
     this.setState({
@@ -336,9 +318,5 @@ export class SetEvent extends Component {
       eventTime: newTime
     })
   }
-  _handleNameChange=(newName)=>{
-    this.setState({
-      eventName: newName
-    })
-  }
+
 }
