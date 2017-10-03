@@ -1,53 +1,40 @@
-// import React, {Component} from 'react';
+import React, {Component} from 'react';
 
-// export default class Map extends Component {
-//   render() {
-//     return (
-//       <div ref='map'>
-//         Loading map...
-//       </div>
-//     )
-//   }
-// }
+var google;
+export default class Map extends Component {
 
 
-React.createClass({
-  fetchPlaces: function(mapProps, map) {
-    const {google} = mapProps;
-    const service = new google.maps.places.PlacesService(map);
-    // ... 
-  },
-  render: function() {
+  componentDidMount = () => {
+    const googleInterval = setInterval(function(){
+      if (window.google){
+        clearInterval(googleInterval)
+        
+        this.map = new google.maps.Map(this.refs.map, {
+          center: {
+            lat: 48.858608,
+            lng: 2.294471
+          },
+          zoom: 16
+        });
+      }
+    }, 100)
+  }
+
+
+  render() {
     return (
-      <Map google={this.props.google}
-        onReady={this.fetchPlaces}
-        visible={false}>
-          <Listing places={this.state.places} />
-      </Map>
+      <div>
+        <h1>Map</h1>
+        <button>Go to Arc De Triophe</button>
+        <div ref="map" style={{width: 500, height: 500, border: '1ps solid black'}}>
+          {/* <pre>{JSON.stringify(this.props.initialPosition, null, 2)}</pre> */}
+        </div>
+      </div>
     )
   }
-});
+}
 
-React.createClass({
-  mapClicked: function(mapProps, map, clickEvent) {
-    // ... 
-  },
-  render: function() {
-    return (
-      <Map google={this.props.google}
-        onClick={this.mapClicked} />
-    )
-  }
-});
 
-React.createClass({
-  centerMoved: function(mapProps, map) {
-    // ... 
-  },
-  render: function() {
-    return (
-      <Map google={this.props.google}
-        onDragend={this.centerMoved} />
-    )
-  }
-});
+Map.propTypes={
+  initialPosition: React.PropTypes.object.isRequired
+};
