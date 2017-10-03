@@ -1,14 +1,22 @@
 import React, {Component} from 'react';
+import {Card, CardActions, CardHeader, CardMedia, CardTitle, CardText} from 'material-ui/Card';
+import FlatButton from 'material-ui/FlatButton';
 
 
-
-export class Alerts extends Component {
+export default class Alerts extends Component {
 
   render(){
     return(
-      <div className="alerts-container">
-      
-      </div>
+      <Card >
+        <CardTitle title="Alerts" subtitle="These are your upcomming alerts" /> 
+        <CardText>
+          Pick up cake from Publix on Friday
+        </CardText>
+        <CardActions>
+          <FlatButton label="Action1" />
+          <FlatButton label="Action2" />
+        </CardActions>
+      </Card>
     )
   }
 }

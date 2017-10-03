@@ -4,22 +4,13 @@ import MiniProfile from './MiniProfile.js';
 import MiniEvents from './MiniEvents.js';
 
 
-const SideMenu = {
-  display: 'flex',
-  justifyContent: 'center',
-  float: 'left',
-}
 
+export default class UserMenu extends Component {
 
-export class ConsistentMenu extends Component {
-  constructor(props){
-    super(props);
-
-  }
 
   render(){
     return(
-      <div styles={SideMenu} className="side-menu-container">
+      <div>
         <MiniProfile />
         <Alerts />
         <MiniEvents />

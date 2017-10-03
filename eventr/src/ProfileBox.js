@@ -3,8 +3,8 @@ import {Card, CardActions, CardHeader, CardMedia, CardTitle, CardText} from 'mat
 import FlatButton from 'material-ui/FlatButton';
 
 const styles = {
-      width:'20%',
-      marginLeft:'10%',
+      // width:'20%',
+      // marginLeft:'10%',
 }
 
 
@@ -21,12 +21,12 @@ const ProfileBox = () => (
       <img src="images/twogirlsatpicnic.jpg" alt="" />
     </CardMedia> */}
     <CardTitle title="Profile" subtitle="Card subtitle" />
-    <CardText>
+    {/* <CardText>
       Lorem ipsum dolor sit amet, consectetur adipiscing elit.
       Donec mattis pretium massa. Aliquam erat volutpat. Nulla facilisi.
       Donec vulputate interdum sollicitudin. Nunc lacinia auctor quam sed pellentesque.
       Aliquam dui mauris, mattis quis lacus id, pellentesque lobortis odio.
-    </CardText>
+    </CardText> */}
     <CardActions>
       <FlatButton label="Action1" />
       <FlatButton label="Action2" />

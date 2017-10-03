@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import {BrowserRouter, Route, Switch, Link} from 'react-router-dom';
 import ReactDOM from 'react-dom';
-import './App.css';
+// import './App.css';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import MyAwesomeReactComponent from './MyAwesomeReactComponent';
 import ItemRegistry from './itemRegistry';
@@ -35,8 +35,8 @@ class App extends Component {
                 <li>User Name: {user.user_name}</li>
                </ul>
             </div>
-        )}
-          </div>
+        )} */}
+      </div>
     );
   }
 }
