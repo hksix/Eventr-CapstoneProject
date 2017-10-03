@@ -14,35 +14,20 @@ export class MapContainer extends Component {
   
   }
   // did mount means component has already rendered and have access to the dom
-
-
   render(){
-    const style = {
-      width: '100%',
-      height: '100%'
-    }
-    const mapStyle = {
-      width: 500,
-      height: 300,
-      border: '1px solid black'
-    };
-    
     return(
       <div >
         <Map 
-          style={style}
           google={this.props.google} 
           initialCenter={{
             lat: 40.854885,
             lng: -88.081807
           }}
-          zoom={12}
+          zoom={5}
           onClick={this._onMapClicked}
         >
           <Marker onClick={this._onMarkerClick} name={'Current location'}/>
           <InfoWindow 
-            onOpen={this.windowHasOpened}
-            onClose={this.windowHasClosed}
             marker={this.state.activeMarker}
             visible={this.state.showingInfoWindow} >
             <div>
@@ -65,7 +50,7 @@ export class MapContainer extends Component {
     this.setState({
       selectedPlace: props,
       activeMarker: marker,
-      showingInfoWindow: true``
+      showingInfoWindow: true
     });
   }
   
