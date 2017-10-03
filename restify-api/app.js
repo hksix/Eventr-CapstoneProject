@@ -68,11 +68,11 @@ function getAllEventsByHost(request, response, next) {
 
 
 function getAllUsers(request,response,next){
-    models.User.findAll({})
-        .then(function(user) {
+    models.Users.findAll({})
+        .then(function(Users) {
         var data = {
             error: "false",
-            data: user
+            data: Users
         };
 
         response.send(data);

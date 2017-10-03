@@ -34,7 +34,14 @@ Object.keys(db).forEach(modelName => {
 db.sequelize = sequelize;
 db.Sequelize = Sequelize;
 var models = [
-  'User'
+  'Users',
+  'Events',
+  'EventInventory',
+  'Invited',
+  'ItemCategories',
+  'ItemsForEventCategories',
+  'SuggestedItems',
+  'EventCategories'
 ];
 
 module.exports = db;
