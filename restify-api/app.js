@@ -190,8 +190,8 @@ var server = restify.createServer();
 // server.use(restify.queryParser());
 server.use(restifyValidator);
 
-server.get('/api/events', getAllEvents); //http://localhost:8080/api/events
-server.get('/api/events/hostid/:host_id', getAllEventsByHost); //http://localhost:8080/api/events/hostid/1
+server.get('/api/v1/events', getAllEvents); //http://localhost:8080/api/events
+server.get('/api/v1/events/hostid/:host_id', getAllEventsByHost); //http://localhost:8080/api/events/hostid/1
 
 // server.get('/api/events/inviteeid/:invitee_id', getAllEventsByInvitee); //http://localhost:8080/api/events/inviteeid/1
 // server.get('/api/events/:event_id', getEvent);
