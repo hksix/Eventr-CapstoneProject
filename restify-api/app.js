@@ -321,9 +321,16 @@ server.del('/api/v1/users/:id', deleteUser);
 // server.del('/api/v1/invitees/eventid/:event_id/:invitee_id', deleteInvitee);
 
 //************************************************** EVENT TYPES ****************************** 
-
+server.get('/api/v1/event_categories', getAllEventCategories);
+server.get('/api/v1/event_categories/:id', getEventCategory);
+server.get('/api/v1/event_categories/:id/items', getAllItemsInEventCategory);
 
 //************************************************** INVENTORY ****************************** 
+server.get('/api/v1/event_inventory/:event_id', getInventoryForEvent);
+server.post('/api/v1/event_inventory/:event_id', addItemToInventory);
+server.put('/api/v1/event_inventory/:id', updateItemInInventory);
+server.del('/api/v1/event_inventory/:id', deleteItemFromInventory);
+
 
 
 

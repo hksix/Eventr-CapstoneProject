@@ -2,6 +2,10 @@ import React, {Component} from 'react';
 import SelectField from 'material-ui/SelectField';
 import MenuItem from 'material-ui/MenuItem';
 
+import Drawer from 'material-ui/Drawer';
+import AppBar from 'material-ui/AppBar';
+import RaisedButton from 'material-ui/RaisedButton';
+
 const persons = [
     {value: 0, name: 'Oliver Hansen'},
     {value: 1, name: 'Van Henry'},
@@ -24,11 +28,26 @@ export class SelectFriends extends Component {
       values: [],
     };
   
-    handleChange = (event, index, values) =>( 
-        this.props.changeHandler(values.length),
-      this.setState({values}));
+    handleChange = (event, index, values) =>{ 
+
+        
+
+      // this.props.changeHandler(),
+      // console.log([this.state.values])
+      this.setState({values})
+      this.sendNames(values)
+    };
+    sendNames = (values)=>{
+      // console.log(values)
+      const listOnames = values.map((number) =>{
+        return (persons[number].name)}
+    )
+      this.props.changeHandler(values.length, listOnames)
+    }
+    
   
     selectionRenderer = (values) => {
+      
       switch (values.length) {
         case 0:
           return '';
@@ -65,3 +84,27 @@ export class SelectFriends extends Component {
       );
     }
   }
+
+
+// export class DrawerOfFriends extends Component {
+//       constructor(props) {
+//         super(props);
+//         this.state = {open: false};
+//       }
+    
+//       handleToggle = () => this.setState({open: !this.state.open});
+    
+//       render() {
+//         return (
+//           <div>
+//             <RaisedButton
+//               label="Toggle Drawer"
+//               onClick={this.handleToggle.bind(this)}
+//             />
+//             <Drawer width={500} openSecondary={true} open={this.state.open} >
+//               <AppBar title="AppBar" />
+//             </Drawer>
+//           </div>
+//         );
+//       }
+    // }
