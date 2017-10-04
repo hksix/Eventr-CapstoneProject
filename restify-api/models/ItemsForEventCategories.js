@@ -2,16 +2,15 @@
 module.exports = (sequelize, DataTypes) => {
   var ItemsForEventCategories = sequelize.define('ItemsForEventCategories', {
     events_category_id: DataTypes.INTEGER,
-    item_id: DataTypes.INTEGER
-  }, {
-    classMethods: {
-      associate: function(models) {
-        events_category_id.belongsTo(EventCategories, {foreignKey: 'id'});
-        item_id.belongsTo(SuggestedItems, {foreignKey: 'id'});
-        // associations can be defined here
-      }
-    }
+    item_id: DataTypes.INTEGER,
+    createdAt: {
+      type: DataTypes.DATE(3),
+      defaultValue: sequelize.literal('CURRENT_TIMESTAMP(3)'),
+    },
+    updatedAt: {
+      type: DataTypes.DATE(3),
+      defaultValue: sequelize.literal('CURRENT_TIMESTAMP(3) ON UPDATE CURRENT_TIMESTAMP(3)'),
+    },
   });
-  ItemsForEventCategories.removeAttribute('id');
   return ItemsForEventCategories;
 };

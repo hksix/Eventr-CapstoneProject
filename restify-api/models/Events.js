@@ -8,14 +8,15 @@ module.exports = (sequelize, DataTypes) => {
     date: DataTypes.DATE,
     time: DataTypes.TIME,
     location: DataTypes.TEXT,
-    category_id: DataTypes.INTEGER
-  }, {
-    classMethods: {
-      associate: function(models) {
-        host_id.belongsTo(Users, {foreignKey: 'id'});
-        category_id.belongsTo(EventCategories, {foreignKey: 'id'});
-      }
-    }
+    category_id: DataTypes.INTEGER,
+    createdAt: {
+      type: DataTypes.DATE(3),
+      defaultValue: sequelize.literal('CURRENT_TIMESTAMP(3)'),
+    },
+    updatedAt: {
+      type: DataTypes.DATE(3),
+      defaultValue: sequelize.literal('CURRENT_TIMESTAMP(3) ON UPDATE CURRENT_TIMESTAMP(3)'),
+    },
   });
   return Events;
 };

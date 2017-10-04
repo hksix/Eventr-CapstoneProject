@@ -15,29 +15,16 @@ var models = require('./models/index');
 var error_messages = null;
 
 function getAllEvents(request, response, next) {
-    var data = {
-        1: {
-            event_id: 1,
-            name: 'My Birthday Bash',
-            host_id: 1,
-            description: 'woot!',
-            date: '2017-10-20',
-            time: '14:00:00',
-            location: 'club havana',
-            category_id: 1
-        },
-        2: {
-            event_id: 2,
-            name: 'My Birthday Bash2',
-            host_id: 2,
-            description: 'woot2!',
-            date: '2017-10-22',
-            time: '15:00:00',
-            location: 'gold room',
-            category_id: 1
+    models.Events.findAll({})
+    .then(function(Events) {
+        var data = {
+            error: "no events",
+            data: Events
         }
-    }
-    response.send(data)
+
+    response.send(data);
+    next();
+    });
 }
 
 function getAllEventsByHost(request, response, next) {

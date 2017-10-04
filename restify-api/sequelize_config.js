@@ -1,15 +1,11 @@
 // const Secret = require('./secret_info');
 const dotenv = require('dotenv').config()
 var Sequelize = require('sequelize');
-const sequelize = new Sequelize( dotenv.DB , dotenv.USER, dotenv.PW, {
+const sequelize = new Sequelize( dotenv.DB_NAME , dotenv.DB_USERNAME, dotenv.DB_PASSWORD, {
     operatorAliases: false,
-    host: dotenv.HOST,
+    host: dotenv.DB_HOST,
     dialect: 'postgres',
-    pool: {
-      max: 5,
-      min: 0,
-      idle: 10000
-    }
+    port: dotenv.DB_PORT
   });
 
   sequelize
@@ -23,6 +19,3 @@ const sequelize = new Sequelize( dotenv.DB , dotenv.USER, dotenv.PW, {
 
 
 
-
-  
-  

@@ -8,15 +8,16 @@ module.exports = (sequelize, DataTypes) => {
     quantity: DataTypes.INTEGER,
     categoryid: DataTypes.INTEGER,
     ownerid: DataTypes.INTEGER,
-    description: DataTypes.STRING
-  }, {
-    classMethods: {
-      associate: function(models) {
-      }
-    }
-  });
-  EventInventory.hasOne(Event);
-  EventInventory.hasMany(Users);  
+    description: DataTypes.STRING,
+    createdAt: {
+      type: DataTypes.DATE(3),
+      defaultValue: sequelize.literal('CURRENT_TIMESTAMP(3)'),
+    },
+    updatedAt: {
+      type: DataTypes.DATE(3),
+      defaultValue: sequelize.literal('CURRENT_TIMESTAMP(3) ON UPDATE CURRENT_TIMESTAMP(3)'),
+    },
+  }); 
   return EventInventory;
 };
 
