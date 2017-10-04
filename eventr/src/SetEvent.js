@@ -2,10 +2,6 @@ import React, {Component} from 'react';
 import {Tabs, Tab} from 'material-ui/Tabs';
 // From https://github.com/oliviertassinari/react-swipeable-views
 import SwipeableViews from 'react-swipeable-views';
-import TextField from 'material-ui/TextField';
-import {orange500, blue500} from 'material-ui/styles/colors';
-import DatePicker from 'material-ui/DatePicker';
-import TimePicker from 'material-ui/TimePicker';
 import {Table,TableBody,TableHeader,TableHeaderColumn,TableRow,TableRowColumn,} from 'material-ui/Table';
 import SelectField from 'material-ui/SelectField';
 import MenuItem from 'material-ui/MenuItem';
@@ -15,8 +11,11 @@ import RaisedButton from 'material-ui/RaisedButton';
 
 import ItemList from './ListOfItems.js'
 import SubmitSnackBar from './Submit.js'
-
 import Card from 'material-ui/Card';
+
+
+import {DateSelector, TimeSelector, LocationSelector} from './setevent/WhenWhere.js'
+import {NameSelector, DescriptionSelector} from './setevent/NameDesc.js'
 // google maps drawer for example
 // request invite
 // public event toggle - radius from current location  but doesnt show actual location // trending parties in area 
@@ -37,12 +36,6 @@ const styles = {
   slide: {
     padding: 10,
   },
-  floatingLabelStyle: {
-    color: orange500,
-  },
-  floatingLabelFocusStyle: {
-    color: blue500,
-  },
 };
 
 const persons = [
@@ -59,53 +52,6 @@ const persons = [
   ];
     
 
-class DateSelector extends Component {
-      constructor(props) {
-        super(props);
-    
-      //   this.state = {
-      //     controlledDate: null,
-      //   };
-       }
-      render() {
-        return (
-          <DatePicker
-            hintText="Select Date"
-            value={this.props.date}
-            onChange={this._handleChange}
-          />
-        );
-      }
-
-      _handleChange = (event, date) => {
-        this.props.changeHandler(date);
-      };
-    }
-
-class TimeSelector extends Component {
-    constructor(props) {
-        super(props);
-        this.state = { value12: null};
-    }
-
-
-    handleChangeTimePicker12 = (event, date) => {
-        this.setState({value12: date});
-    };
-
-    render() {
-        return (
-            <div>
-                <TimePicker
-                  format="ampm"
-                  hintText="Set Time"
-                  value={this.state.value12}
-                  onChange={this.handleChangeTimePicker12}
-                />
-        </div>
-      );
-    }
-}
 
 class PartyTypeTable extends Component {
     state = {
@@ -253,8 +199,8 @@ export class SetEvent extends Component {
       eventName: "",
       eventDiscription:'',
       eventLocation: "",
-      eventTime: "",
-      eventDate: new Date(),
+      eventTime: '',
+      eventDate: '',
       eventType: "",
       eventPeople:'',
       eventItems:'',
@@ -277,62 +223,44 @@ export class SetEvent extends Component {
           value={this.state.slideIndex}
           style={{
             justifyContent: 'space-between',
-            width: '100%'
+            width: '100%',
           }}
         >
-          <Tab label="Description" value={0} />
-          <Tab label="When & Where" value={1} />
-          <Tab label="Invite" value={2} />
-          <Tab label="Items" value={3} />
-          <Tab label="Finish" value={4} />
+
+          <Tab style={{fontSize: '12px', paddingLeft:"5px"}} label="Name & Description" value={0} />
+          <Tab style={{fontSize: '12px'}} label="When & Where" value={1} />
+          <Tab style={{fontSize: '12px'}} label="Event Type" value={2} />
+          <Tab style={{fontSize: '12px'}} label="Invite" value={3} />
+          <Tab style={{fontSize: '12px'}} label="Items" value={4} />
+          <Tab style={{fontSize: '12px'}} label="Finish" value={5} />
         </Tabs>
 
         <SwipeableViews
             index={this.state.slideIndex}
             onChangeIndex={this.handleChange}
         >
-        <div>
-          <div style={{textAlign: 'center'}}>
-          <h2 style={styles.headline} style={{textAlign: 'center'}}>Name and Description of your event.</h2> 
-              <TextField
-                
-                floatingLabelText="Name"
-                floatingLabelStyle={styles.floatingLabelStyle}
-                floatingLabelFocusStyle={styles.floatingLabelFocusStyle}
-              >
-              </TextField>
+        <div id="name&Description">
+          <NameSelector name={this.state.eventName}
+            changeHandler={this._handleNameChange}/>
+            <br/>
+            <DescriptionSelector disc={this.state.eventDiscription}
+            changeHandler={this._handleDiscripChange}/>
               </div>
-              <br/>
-              <div style={{textAlign: 'center'}}>
-                    {/* <h2 style={styles.headline} style={{textAlign: 'center'}}>Description.</h2> */}
-              <TextField
-                style={{textAlign: 'left', width: "50%", border:"1px solid gray"}}
-                floatingLabelText="Description"
-                floatingLabelStyle={styles.floatingLabelStyle}
-                floatingLabelFocusStyle={styles.floatingLabelFocusStyle}
-                multiLine={true}
-                rows={2}
-                >
-              </TextField>
-              </div>
-            </div>
-            <div style={{textAlign: 'center'}}>
+
+            <div id="When&where" style={{textAlign: 'center'}}>
                 <div>
                     <h2 style={styles.headline} style={{textAlign: 'center'}}>When and where?</h2> 
                         Type in the details below.<br />
-                    <TextField
-                        floatingLabelText="Address"
-                        floatingLabelStyle={styles.floatingLabelStyle}
-                        floatingLabelFocusStyle={styles.floatingLabelFocusStyle}
-                    />
+                    <LocationSelector location={this.state.eventLocation}
+                      changeHandler={this._handleLocationChange}/>    
                 </div>
                 <div>
                     <DateSelector date={this.state.eventDate}
-                    changeHandler={this._handleDateChange}
-                      />
+                      changeHandler={this._handleDateChange}/>
                 </div>
                 <div>
-                    <TimeSelector/>
+                    <TimeSelector time={this.state.eventTime}
+                    changeHandler={this._handleTimeChange}/>
                 </div>
             </div>
 
@@ -350,9 +278,9 @@ export class SetEvent extends Component {
             <div style={styles.slide} style={{textAlign: 'center'}}>
                 <h2 style={styles.headline} style={{textAlign: 'center'}}>Summary page</h2>
                 <p>Name: {this.state.eventName}</p>
-                <p>Description</p>
-                <p>Location</p>
-                <p>Time</p>
+                <p>Description: {this.state.eventDiscription}</p>
+                <p>Location: {this.state.eventLocation}</p>
+                <p>Time: {this.state.eventTime.toString()}</p>
                 <p>Date: {this.state.eventDate.toString()}</p>
                 <p>Type</p>
                 <p>Number of people invited</p>
@@ -363,14 +291,30 @@ export class SetEvent extends Component {
       </Card>
     );
   }
-  _handleDateChange=(newDate)=>{
-    this.setState({
-      eventDate: newDate
-    })
-  }
   _handleNameChange=(newName)=>{
     this.setState({
       eventName: newName
     })
   }
+  _handleDiscripChange=(newDiscrip)=>{
+    this.setState({
+      eventDiscription: newDiscrip
+    })
+  }
+  _handleLocationChange=(newLocation)=>{
+    this.setState({
+      eventLocation: newLocation
+    })
+  }
+  _handleDateChange=(newDate)=>{
+    this.setState({
+      eventDate: newDate
+    })
+  }
+  _handleTimeChange=(newTime)=>{
+    this.setState({
+      eventTime: newTime
+    })
+  }
+
 }

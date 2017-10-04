@@ -25,7 +25,7 @@ class App extends Component {
     return (
       <div className="App">
         <MenuHeader />
-        {/* <h1>Users Table example info</h1>
+        <h1>Users Table example info</h1>
         {this.state.users.map(user =>
           <div key={user.user_id}>
               <ul>
