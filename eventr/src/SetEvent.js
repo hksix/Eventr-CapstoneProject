@@ -55,7 +55,7 @@ const persons = [
 
 class PartyTypeTable extends Component {
     state = {
-      height: '300px',
+      height: '100px',
       selected: [3],
       types:[]
     };
@@ -226,6 +226,7 @@ export class SetEvent extends Component {
             width: '100%',
           }}
         >
+
           <Tab style={{fontSize: '12px', paddingLeft:"5px"}} label="Name & Description" value={0} />
           <Tab style={{fontSize: '12px'}} label="When & Where" value={1} />
           <Tab style={{fontSize: '12px'}} label="Event Type" value={2} />
@@ -264,16 +265,13 @@ export class SetEvent extends Component {
             </div>
 
             <div style={styles.slide}>
-                <PartyTypeTable/>
-            </div>
-
-            <div style={styles.slide}>
                 <h2 style={styles.headline} style={{textAlign: 'center'}}>Invite your peeps</h2> 
                 <SelectFriends/>
             </div>
 
             <div style={styles.slide}>
                 <h2 style={styles.headline} style={{textAlign: 'center'}}>Items page</h2>
+                <PartyTypeTable/>
                 <ItemList/> 
             </div>
 

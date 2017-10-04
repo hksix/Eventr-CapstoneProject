@@ -3,18 +3,40 @@ body {
 }
 nav {
   height: 80px;
-  background-color: #00b4ce;
+  background-color: #50B9D1;
   border-bottom: 1px solid #007884;
 }
 main {
   margin-bottom: 150px;
 }
 .landing-header-container {
-  height: 500px;
-  background-image: url("/images/threegirls.jpg");
-  background-position: center;
-  background-size: cover;
-  background-repeat: no-repeat;
+  max-height: 500px;
+}
+
+.video-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background-attachment: scroll;
+  overflow: hidden;
+}
+.fillWidth {
+  width: 100%;
+  position: relative;
+  z-index: 1;
+}
+.filter {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  z-index: 10;
+  background: #50B9D1;
+  opacity: 0.5;
+}
+.hidden {
+  display: none;
 }
 
 .section-container,
@@ -38,7 +60,7 @@ main {
 
 .image-container img {
   width: 100%;
-  box-shadow: -10px 10px 15px 00b4ce;
+  box-shadow: -10px 10px 15px #00b4ce;
 }
 
 .description-container {
@@ -50,7 +72,7 @@ main {
 
 .landing-footer-container {
   height: 200px;
-  background-color: #00b4ce;
+  background-color: #50B9D1;
   border-top: 1px solid #007884;
   display: flex;
   justify-content: center;
