@@ -20,8 +20,8 @@ export class Calendar extends Component {
               {
                 "title": "Hamza Job Day",
                 "allDay": false,
-                "start": new Date(2017, 9, 03),//JS dates are indexed from 0-11, 9 == october
-                "end": new Date(2017, 9, 03)
+                "start": new Date(2017, 9, 3),//JS dates are indexed from 0-11, 9 == october
+                "end": new Date(2017, 9, 3)
               },
               {
                 "title": "Friday the 13th",
@@ -53,7 +53,7 @@ export class Calendar extends Component {
           defaultDate={new Date()}
           views={{month: true}}
           defaultView="month"
-          style={{height: "400px"}}
+          style={{height: "500px"}}
           />
         </div>
       );
