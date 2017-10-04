@@ -3,6 +3,7 @@
 module.exports = {
   up: (queryInterface, Sequelize) => {
       return queryInterface.bulkInsert('Users', [{
+        user_id: 135,
         fName: 'Hamaz',
         lName: 'Haseeb',
         profPic: 'hh.jpg',
@@ -11,6 +12,7 @@ module.exports = {
         location: 'Atlanta'
       },
       {
+        user_id: 246,
         fName: 'Steph',
         lName: 'Asmar',
         profPic: 'sh.jpg',
@@ -19,6 +21,7 @@ module.exports = {
         location: 'Atlanta'
       },
       {
+        user_id: 357,
         fName: 'Katie',
         lName: 'Lane',
         profPic: 'kl.jpg',
@@ -27,6 +30,7 @@ module.exports = {
         location: 'Atlanta'
       },
       {
+        user_id: 468,
         fName: 'Jen',
         lName: 'Johnson',
         profPic: 'jj.jpg',
