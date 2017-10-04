@@ -9,7 +9,7 @@ module.exports = {
       //   type: Sequelize.INTEGER
       // },
       events_category_id: {
-        type: Sequelize.BIGINT
+        type: Sequelize.INTEGER
       },
       item_id: {
         type: Sequelize.INTEGER

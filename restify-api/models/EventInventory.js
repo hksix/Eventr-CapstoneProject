@@ -2,20 +2,21 @@
 module.exports = (sequelize, DataTypes) => {
   var EventInventory = sequelize.define('EventInventory', {
     // itemid: DataTypes.INTEGER,
-    eventid: DataTypes.BIGINT,
+    eventid: DataTypes.INTEGER,
     defaultitemid: DataTypes.INTEGER,
     itemname: DataTypes.STRING,
     quantity: DataTypes.INTEGER,
     categoryid: DataTypes.INTEGER,
-    ownerid: DataTypes.BIGINT,
+    ownerid: DataTypes.INTEGER,
     description: DataTypes.STRING
   }, {
     classMethods: {
       associate: function(models) {
-        // associations can be defined here
       }
     }
   });
+  EventInventory.hasOne(Event);
+  EventInventory.hasMany(Users);  
   return EventInventory;
 };
 
