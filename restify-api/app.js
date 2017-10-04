@@ -39,62 +39,62 @@ function getAllEventsByHost(request, response, next) {
         next();
     });
 }
+
+
+
 function getAllEventsByInvitee(request, response, next) {
+
+
 }
 
-// host_id: DataTypes.INTEGER,
-// name: DataTypes.STRING,
-// description: DataTypes.STRING,
-// date: DataTypes.DATE,
-// time: DataTypes.TIME,
-// location: DataTypes.TEXT,
-// category_id: DataTypes.INTEGER,
 
-// function verifyRequiredParamsForEvent(request){
-//     request.assert('fName', 'First Name field is required').notEmpty();
-//     request.assert('lName', 'Last Name field is required').notEmpty();
-//     request.assert('profPic', 'mobile_no field is required').notEmpty();
-//     request.assert('email', 'Email field is required').notEmpty();
-//     request.assert('email', 'Valid email address is required').isEmail();
-//     request.asser('phone', 'Phone field is required').notEmpty();
-//     request.assert('location', 'Location field is required').notEmpty();
+function verifyRequiredParamsForEvent(request){
+    // request.assert('fName', 'First Name field is required').notEmpty();
+    // request.assert('lName', 'Last Name field is required').notEmpty();
+    // request.assert('profPic', 'mobile_no field is required').notEmpty();
+    // request.assert('email', 'Email field is required').notEmpty();
+    // request.assert('email', 'Valid email address is required').isEmail();
+    // request.asser('phone', 'Phone field is required').notEmpty();
+    // request.assert('location', 'Location field is required').notEmpty();
 
-//     var errors = request.validationErrors();
-//     if (errors) {
-//         error_messages = {
-//             error: "true",
-//             message : util.inspect(errors)
-//         };
-//         return false;
-//     }else{
-//         return true;
-//     }
-// }
+    // var errors = request.validationErrors();
+    // if (errors) {
+    //     error_messages = {
+    //         error: "true",
+    //         message : util.inspect(errors)
+    //     };
+    //     return false;
+    // }else{
+    //     return true;
+    // }
+    return true;
+}
 
-// function addUser(request,response,next){
-//     if (!verifyRequiredParams(request)){
-//         response.send(422,error_messages);
-//         return;
-//     }
+function addEvent(request,response,next){
+    if (!verifyRequiredParamsForEvent(request)){
+        response.send(422,error_messages);
+        return;
+    }
 
-//     models.Users.create({
-//         fName: request.params['fName'],
-//         lName: request.params['lName'],
-//         profPic: request.params['profPic'],
-//         email: request.params['email'],
-//         phone: request.params['phone'],
-//         location: request.params['location']
-//     }).then(function(user) {
-//         var data = {
-//             error: "false",
-//             message: "New user created successfully",
-//             data: user
-//         };
+    models.Events.create({
+        host_id: request.params['host_id'],
+        name: request.params['name'],
+        description: request.params['description'],
+        date: request.params['date'],
+        time: request.params['time'],
+        location: request.params['location'],
+        category_id: request.params['category_id'],
+    }).then(function(user) {
+        var data = {
+            // error: "false",
+            message: "New event created successfully",
+            data: user
+        };
 
-//         response.send(data);
-//         next();
-//     });
-// }
+        response.send(data);
+        next();
+    });
+}
 
 // function updateUser(request,response,next){
 //     if (!verifyRequiredParams(request)){
@@ -173,28 +173,29 @@ function getUser(request, response, next) {
 
 
 function verifyRequiredParamsForUser(request){
-    request.assert('fName', 'First Name field is required').notEmpty();
-    request.assert('lName', 'Last Name field is required').notEmpty();
-    request.assert('profPic', 'mobile_no field is required').notEmpty();
-    request.assert('email', 'Email field is required').notEmpty();
-    request.assert('email', 'Valid email address is required').isEmail();
-    request.asser('phone', 'Phone field is required').notEmpty();
-    request.assert('location', 'Location field is required').notEmpty();
+    // request.assert('fName', 'First Name field is required').notEmpty();
+    // request.assert('lName', 'Last Name field is required').notEmpty();
+    // request.assert('profPic', 'mobile_no field is required').notEmpty();
+    // request.assert('email', 'Email field is required').notEmpty();
+    // request.assert('email', 'Valid email address is required').isEmail();
+    // request.asser('phone', 'Phone field is required').notEmpty();
+    // request.assert('location', 'Location field is required').notEmpty();
 
-    var errors = request.validationErrors();
-    if (errors) {
-        error_messages = {
-            error: "true",
-            message : util.inspect(errors)
-        };
-        return false;
-    }else{
-        return true;
-    }
+    // var errors = request.validationErrors();
+    // if (errors) {
+    //     error_messages = {
+    //         error: "true",
+    //         message : util.inspect(errors)
+    //     };
+    //     return false;
+    // }else{
+    //     return true;
+    // }
+    return true;
 }
 
 function addUser(request,response,next){
-    if (!verifyRequiredParams(request)){
+    if (!verifyRequiredParamsForUser(request)){
         response.send(422,error_messages);
         return;
     }
@@ -219,7 +220,7 @@ function addUser(request,response,next){
 }
 
 function updateUser(request,response,next){
-    if (!verifyRequiredParams(request)){
+    if (!verifyRequiredParamsForUser(request)){
         response.send(422,error_messages);
         return;
     }
@@ -315,15 +316,11 @@ server.del('/api/v1/users/:id', deleteUser);
 
 
 //************************************************** INVITEES ****************************** 
-server.get('/api/v1/invitees/eventid/:event_id', getAllInviteesByEvent);
-server.post('/api/v1/invitees/eventid/:event_id', addInvitee);
-server.del('/api/v1/invitees/eventid/:event_id/:invitee_id', deleteInvitee);
-
-
+// server.get('/api/v1/invitees/eventid/:event_id', getAllInviteesByEvent);
+// server.post('/api/v1/invitees/eventid/:event_id', addInvitee);
+// server.del('/api/v1/invitees/eventid/:event_id/:invitee_id', deleteInvitee);
 
 //************************************************** EVENT TYPES ****************************** 
-
-
 
 
 //************************************************** INVENTORY ****************************** 
