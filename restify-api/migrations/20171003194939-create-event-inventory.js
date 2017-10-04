@@ -12,7 +12,7 @@ module.exports = {
       //   type: Sequelize.INTEGER
       // },
       eventid: {
-        type: Sequelize.BIGINT
+        type: Sequelize.INTEGER
       },
       defaultitemid: {
         type: Sequelize.INTEGER
@@ -27,7 +27,7 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       ownerid: {
-        type: Sequelize.BIGINT
+        type: Sequelize.INTEGER
       },
       description: {
         type: Sequelize.STRING

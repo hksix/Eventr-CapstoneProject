@@ -7,6 +7,8 @@ module.exports = (sequelize, DataTypes) => {
   }, {
     classMethods: {
       associate: function(models) {
+        category_id.belongsTo(ItemCategories, {foreignKey: 'id'});
+        
         // associations can be defined here
       }
     }

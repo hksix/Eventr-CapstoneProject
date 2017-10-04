@@ -2,7 +2,7 @@
 module.exports = (sequelize, DataTypes) => {
   var Events = sequelize.define('Events', {
     // event_id: DataTypes.BIGINT,
-    host_id: DataTypes.BIGINT,
+    host_id: DataTypes.INTEGER,
     name: DataTypes.STRING,
     description: DataTypes.STRING,
     date: DataTypes.DATE,
@@ -12,7 +12,8 @@ module.exports = (sequelize, DataTypes) => {
   }, {
     classMethods: {
       associate: function(models) {
-        // associations can be defined here
+        host_id.belongsTo(Users, {foreignKey: 'id'});
+        category_id.belongsTo(EventCategories, {foreignKey: 'id'});
       }
     }
   });
