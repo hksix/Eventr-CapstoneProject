@@ -16,6 +16,7 @@ import Card from 'material-ui/Card';
 
 import {DateSelector, TimeSelector, LocationSelector} from './setevent/WhenWhere.js'
 import {NameSelector, DescriptionSelector} from './setevent/NameDesc.js'
+import { PartyTypeTable } from './setevent/EventType.js'
 // google maps drawer for example
 // request invite
 // public event toggle - radius from current location  but doesnt show actual location // trending parties in area 
@@ -51,47 +52,6 @@ const persons = [
     {value: 9, name: 'Kelly Snyder'},
   ];
     
-
-
-class PartyTypeTable extends Component {
-    state = {
-      height: '300px',
-      selected: [3],
-      types:[]
-    };
-    componentDidMount(){
-      fetch('/get_tables_data/event_categories/category_id')
-        .then(res=> res.json())
-        .then(types => this.setState({types}));
-    }
-    
-    isSelected = (index) => {
-      return this.state.selected.indexOf(index) !== -1;
-    };
-  
-    handleRowSelection = (selectedRows) => {
-      this.setState({
-        selected: selectedRows,
-      });
-    };
-  
-    render() {
-      return (
-        <div>
-          <h2 style={styles.headline} style={{textAlign: 'center'}}>Select type of event</h2>   
-            <Table onRowSelection={this.handleRowSelection} height={this.state.height}>
-              <TableBody>
-              {this.state.types.map(type=>
-                <TableRow selected={this.isSelected(type.category_id)}>
-                  <TableRowColumn>{type.category_name}</TableRowColumn>
-                </TableRow>
-              )}
-              </TableBody>
-            </Table>
-        </div>
-      );
-    }
-  }
 
 class SelectFriends extends Component {
     state = {
@@ -263,8 +223,9 @@ export class SetEvent extends Component {
                 </div>
             </div>
 
-            <div style={styles.slide}>
-                <PartyTypeTable/>
+            <div id="EventType" style={styles.slide}>
+                <PartyTypeTable type={this.state.eventType}
+                changeHandler={this._handleTypeChange}/>
             </div>
 
             <div style={styles.slide}>
@@ -284,7 +245,7 @@ export class SetEvent extends Component {
                 <p>Location: {this.state.eventLocation}</p>
                 <p>Time: {this.state.eventTime.toString()}</p>
                 <p>Date: {this.state.eventDate.toString()}</p>
-                <p>Type</p>
+                <p>Type:{this.state.eventType.toString()}</p>
                 <p>Number of people invited</p>
                 <p>Number of required items needed</p>
                 <SubmitButton /> 
@@ -316,6 +277,11 @@ export class SetEvent extends Component {
   _handleTimeChange=(newTime)=>{
     this.setState({
       eventTime: newTime
+    })
+  }
+  _handleTypeChange=(newType)=>{
+    this.setState({
+      eventType: newType
     })
   }
 
