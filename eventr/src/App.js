@@ -7,17 +7,20 @@ import MyAwesomeReactComponent from './MyAwesomeReactComponent';
 import ItemRegistry from './itemRegistry';
 
 
+
 import { MenuHeader } from './Menubar.js'
 
 class App extends Component {
   state = {users:[]}
 
   componentDidMount(){
+
     // fetch('/users')
     fetch('/get_tables_data/users/user_id')
       .then(res=> res.json())
       .then(users => this.setState({users}));
   }
+
   render() {
     return (
       <div className="App">
@@ -36,6 +39,8 @@ class App extends Component {
                </ul>
             </div>
         )} */}
+        <div>
+        </div>
       </div>
     );
   }

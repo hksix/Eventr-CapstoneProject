@@ -16,6 +16,7 @@ import UserMenu from './sidemenu/UserMenu.js';
 import Footer from './Footer.js';
 
 import './index.css';
+import MapContainer from "./MapContainer.js";
 
 
 
@@ -107,8 +108,8 @@ export default class MenuOptions extends Component {
                       <div className="side-content-container">
                         <UserMenu />
                       </div>
-                      <div className="changing-content-container" >
-                        
+                      <div >
+                        <MapContainer />
                       </div>
                     </div>
                 </Tab>
