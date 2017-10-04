@@ -8,14 +8,13 @@ module.exports = (sequelize, DataTypes) => {
     phone: DataTypes.STRING,
     location: DataTypes.STRING,
     createdAt: {
-      type: DataTypes.DATE,
-      defaultValue: sequelize.literal('NOW()')
+      type: DataTypes.DATE(3),
+      defaultValue: sequelize.literal('CURRENT_TIMESTAMP(3)'),
     },
-    classMethods: {
-      associate: function(models) {
-        // associations can be defined here
-      }
-    }
+    updatedAt: {
+      type: DataTypes.DATE(3),
+      defaultValue: sequelize.literal('CURRENT_TIMESTAMP(3) ON UPDATE CURRENT_TIMESTAMP(3)'),
+    },
   });
   return Users;
 };
