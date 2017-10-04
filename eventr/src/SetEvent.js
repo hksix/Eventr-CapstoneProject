@@ -2,9 +2,6 @@ import React, {Component} from 'react';
 import {Tabs, Tab} from 'material-ui/Tabs';
 // From https://github.com/oliviertassinari/react-swipeable-views
 import SwipeableViews from 'react-swipeable-views';
-import {Table,TableBody,TableHeader,TableHeaderColumn,TableRow,TableRowColumn,} from 'material-ui/Table';
-import SelectField from 'material-ui/SelectField';
-import MenuItem from 'material-ui/MenuItem';
 import Dialog from 'material-ui/Dialog';
 import FlatButton from 'material-ui/FlatButton';
 import RaisedButton from 'material-ui/RaisedButton';
@@ -17,6 +14,7 @@ import Card from 'material-ui/Card';
 import {DateSelector, TimeSelector, LocationSelector} from './setevent/WhenWhere.js'
 import {NameSelector, DescriptionSelector} from './setevent/NameDesc.js'
 import { PartyTypeTable } from './setevent/EventType.js'
+import { SelectFriends} from './setevent/SelectFriends.js'
 // google maps drawer for example
 // request invite
 // public event toggle - radius from current location  but doesnt show actual location // trending parties in area 
@@ -38,65 +36,6 @@ const styles = {
     padding: 10,
   },
 };
-
-const persons = [
-    {value: 0, name: 'Oliver Hansen'},
-    {value: 1, name: 'Van Henry'},
-    {value: 2, name: 'April Tucker'},
-    {value: 3, name: 'Ralph Hubbard'},
-    {value: 4, name: 'Omar Alexander'},
-    {value: 5, name: 'Carlos Abbott'},
-    {value: 6, name: 'Miriam Wagner'},
-    {value: 7, name: 'Bradley Wilkerson'},
-    {value: 8, name: 'Virginia Andrews'},
-    {value: 9, name: 'Kelly Snyder'},
-  ];
-    
-
-class SelectFriends extends Component {
-    state = {
-      values: [],
-    };
-  
-    handleChange = (event, index, values) => this.setState({values});
-  
-    selectionRenderer = (values) => {
-      switch (values.length) {
-        case 0:
-          return '';
-        case 1:
-          return persons[values[0]].name;
-        default:
-          return `${values.length} friends invited`;
-      }
-    }
-  
-    menuItems(persons) {
-      return persons.map((person) => (
-        <MenuItem
-          key={person.value}
-          insetChildren={true}
-          checked={this.state.values.indexOf(person.value) > -1}
-          value={person.value}
-          primaryText={person.name}
-        />
-      ));
-    }
-  
-    render() {
-      return (
-        <SelectField
-          multiple={true}
-          hintText="Select a name"
-          value={this.state.values}
-          onChange={this.handleChange}
-          selectionRenderer={this.selectionRenderer}
-        >
-          {this.menuItems(persons)}
-        </SelectField>
-      );
-    }
-  }
 
   /**
  * Dialog with action buttons. The actions are passed in as an array of React objects,
@@ -231,7 +170,8 @@ export class SetEvent extends Component {
 
             <div style={styles.slide}>
                 <h2 style={styles.headline} style={{textAlign: 'center'}}>Invite your peeps</h2> 
-                <SelectFriends/>
+                <SelectFriends invited={this.state.eventPeople}
+                changeHandler={this._handleInviteChange}/>
             </div>
 
             <div style={styles.slide}>
@@ -248,7 +188,7 @@ export class SetEvent extends Component {
                 <p>Time: {this.state.eventTime.toString()}</p>
                 <p>Date: {this.state.eventDate.toString()}</p>
                 <p>Type:{this.state.eventType.toString()}</p>
-                <p>Number of people invited</p>
+                <p>Number of people invited: {this.state.eventPeople}</p>
                 <p>Number of required items needed</p>
                 <SubmitButton /> 
             </div>
@@ -284,6 +224,11 @@ export class SetEvent extends Component {
   _handleTypeChange=(newType)=>{
     this.setState({
       eventType: newType
+    })
+  }
+  _handleInviteChange=(newInvites)=>{
+    this.setState({
+      eventPeople: newInvites
     })
   }
 
