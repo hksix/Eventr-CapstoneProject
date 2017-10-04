@@ -2,16 +2,97 @@
 
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    /*
-      Add altering commands here.
-      Return a promise to correctly handle asynchronicity.
-
-      Example:
-      return queryInterface.bulkInsert('Person', [{
-        name: 'John Doe',
-        isBetaMember: false
-      }], {});
-    */
+    return queryInterface.bulkInsert('Users', [{
+      user_id: 135,
+      attending: true,
+      event_id: 1
+    },
+    {
+      user_id: 246,
+      attending: true,
+      event_id: 1
+    },
+    {
+      user_id: 357,
+      attending: false,
+      event_id: 1
+    },
+    {
+     user_id: 468,
+      attending: false,
+      event_id: 2
+    },
+    {
+      user_id: 246,
+      attending: true,
+      event_id: 2
+    },
+    {
+      user_id: 357,
+      attending: false,
+      event_id: 2
+    },
+    {
+      user_id: 468,
+       attending: false,
+       event_id: 3
+     },
+     {
+       user_id: 246,
+       attending: true,
+       event_id: 3
+    },
+    {
+      user_id: 357,
+      attending: false,
+      event_id: 3
+    },
+    {
+      user_id: 135,
+      attending: false,
+      event_id: 3
+    },
+    {
+      user_id: 468,
+       attending: false,
+       event_id: 4
+     },
+     {
+       user_id: 246,
+       attending: true,
+       event_id: 4
+    },
+    {
+      user_id: 357,
+      attending: true,
+      event_id: 4
+    },
+    {
+      user_id: 135,
+      attending: true,
+      event_id: 4
+    },
+    {
+      user_id: 468,
+       attending: true,
+       event_id: 5
+     },
+     {
+       user_id: 246,
+       attending: true,
+       event_id: 5
+    },
+    {
+      user_id: 357,
+      attending: false,
+      event_id: 5
+    },
+    {
+      user_id: 135,
+      attending: true,
+      event_id: 5
+    },
+    ])
   },
 
   down: (queryInterface, Sequelize) => {
