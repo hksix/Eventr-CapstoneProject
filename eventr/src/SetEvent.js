@@ -11,6 +11,9 @@ import SubmitSnackBar from './Submit.js'
 import Card from 'material-ui/Card';
 
 
+// import RaisedButton from 'material-ui/RaisedButton';
+
+
 import {DateSelector, TimeSelector, LocationSelector} from './setevent/WhenWhere.js'
 import {NameSelector, DescriptionSelector} from './setevent/NameDesc.js'
 import { PartyTypeTable } from './setevent/EventType.js'
@@ -36,6 +39,8 @@ const styles = {
     padding: 10,
   },
 };
+
+
 
   /**
  * Dialog with action buttons. The actions are passed in as an array of React objects,
@@ -101,7 +106,8 @@ export class SetEvent extends Component {
       eventTime: '',
       eventDate: '',
       eventType: "",
-      eventPeople:'',
+      eventPeopleCount:'',
+      eventPeopleNames:'',
       eventItems:'',
     };
   }
@@ -116,6 +122,7 @@ export class SetEvent extends Component {
     // console.log(<EventSummary date={this.props.EventDate}/>)
     
     return (
+      
       <Card>
         <Tabs
           onChange={this.handleChange}
@@ -170,8 +177,9 @@ export class SetEvent extends Component {
 
             <div style={styles.slide}>
                 <h2 style={styles.headline} style={{textAlign: 'center'}}>Invite your peeps</h2> 
-                <SelectFriends invited={this.state.eventPeople}
+                <SelectFriends invited={this.state.eventPeopleCount} names={this.state.eventPeopleNames}
                 changeHandler={this._handleInviteChange}/>
+                
             </div>
 
             <div style={styles.slide}>
@@ -179,7 +187,6 @@ export class SetEvent extends Component {
                 {/* <PartyTypeTable/> */}
                 <ItemList/> 
             </div>
-
             <div style={styles.slide} style={{textAlign: 'center'}}>
                 <h2 style={styles.headline} style={{textAlign: 'center'}}>Summary page</h2>
                 <p>Name: {this.state.eventName}</p>
@@ -188,11 +195,12 @@ export class SetEvent extends Component {
                 <p>Time: {this.state.eventTime.toString()}</p>
                 <p>Date: {this.state.eventDate.toString()}</p>
                 <p>Type:{this.state.eventType.toString()}</p>
-                <p>Number of people invited: {this.state.eventPeople}</p>
+                <p>Number of people invited: {this.state.eventPeopleCount} {this.state.eventPeopleNames}</p>
                 <p>Number of required items needed</p>
                 <SubmitButton /> 
             </div>
         </SwipeableViews>
+        
       </Card>
     );
   }
@@ -226,9 +234,10 @@ export class SetEvent extends Component {
       eventType: newType
     })
   }
-  _handleInviteChange=(newInvites)=>{
+  _handleInviteChange=(newInvites, names)=>{
     this.setState({
-      eventPeople: newInvites
+      eventPeopleCount: newInvites,
+      eventPeopleNames: names
     })
   }
 
