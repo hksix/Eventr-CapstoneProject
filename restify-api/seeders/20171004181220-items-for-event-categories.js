@@ -2,16 +2,35 @@
 
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    /*
-      Add altering commands here.
-      Return a promise to correctly handle asynchronicity.
+    return queryInterface.bulkInsert('ItemsForEventCategories', [{
+      //food
+        //cups
+      events_category_id: 1,
+      item_id: 1
+    },
+    {
+        //plates
+      events_category_id: 1,
+      item_id: 12
+    },
+    {
+      //cupcake
+      events_category_id: 1,
+      item_id: 13
+    },
+    {
+      //Beer
+      events_category_id: 1,
+      item_id: 12
+    },
+    {
+      //wine
+      events_category_id: 1,
+      item_id: 17
+    },
 
-      Example:
-      return queryInterface.bulkInsert('Person', [{
-        name: 'John Doe',
-        isBetaMember: false
-      }], {});
-    */
+  ])
+
   },
 
   down: (queryInterface, Sequelize) => {
