@@ -1,77 +1,5 @@
 import React, {Component} from 'react';
 
-// class Map extends Component {
-//   state = { 
-//     forecast:{} 
-//   };
- 
-//   propTypes = {
-//     np_url: React.PropTypes.string,
-//     init_lat: React.PropTypes.number,
-//     init_lng: React.PropTypes.number
-//   };
-//   markers = [];
-
-//   render(){
-//     return <div className="NpsForecastMap" ref="mapdiv"></div>
-//   }
-//   componentDidMount() {
-//     this.map = this.createMap()
-//     this.loadFeatures()
-//   }
-  
-//   createMap() {
-//     let mapOptions = {
-//       zoom: 3,
-//       center: this.mapCenter()
-//     }
-//     return new google.maps.Map(this.refs.mapdiv, mapOptions)
-//   }
-  
-//   mapCenter() {
-//     return new google.maps.LatLng(
-//       this.props.init_lat,
-//       this.props.init_lng
-//     )
-//   }
-//   loadFeatures() {
-//     let self = this
-//     let infoWindow = new google.maps.InfoWindow()
-//     axios.get(self.props.nps_source)
-//         .then(function(result) {   
-//            for (let val of result.data.features) {
-//              let marker = self.createMarker(val, self.map)
-             
-//              marker.addListener('click', function() {
-//                 infoWindow.close()
-//                 let title = this.title
-//                 let infoContent = ""
-//                 let getWeather = false
-
-//                 infoWindow.setContent(infoContent)
-//                 infoWindow.open(self.map, this)
-//              })
-//              self.markers.push(marker)
-             
-//               } // for
-//         }); //then
-//     }
-//   createMarker(val, map) {
-//       let pointval = new google.maps.LatLng(
-//         parseFloat(val['geometry']['coordinates'][1]),
-//         parseFloat(val['geometry']['coordinates'][0]));
-//       let titleText = val['properties']['title']       
-//       let marker = new google.maps.Marker({
-//         position: pointval,
-//         map: map,
-//         title: titleText
-//       });
-     
-//      return marker
-//    }
-// }
-// export default Map
-// var google = window.google;
 
 
 function loadJS(src) {
@@ -116,7 +44,6 @@ export default class Map extends Component {
           map.addListener('bounds_changed', function() {
             searchBox.setBounds(map.getBounds());
           });
-
           searchBox.addListener('places_changed', function() {
             var places = searchBox.getPlaces();
         
@@ -178,7 +105,7 @@ export default class Map extends Component {
             });
             map.fitBounds(bounds);
           });
-
+          
           console.log("hi!")
           // console.log(window.map)  
           clearInterval(googleInterval)
