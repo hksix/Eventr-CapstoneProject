@@ -13,9 +13,7 @@ function loadJS(src) {
 export default class Map extends Component {
   constructor(props) {
     super(props);
-    this.state = {
 
-    }
     this.initMap = this.initMap.bind(this);
   } 
 
@@ -44,6 +42,7 @@ export default class Map extends Component {
           map.addListener('bounds_changed', function() {
             searchBox.setBounds(map.getBounds());
           });
+
           searchBox.addListener('places_changed', function() {
             var places = searchBox.getPlaces();
         
@@ -82,7 +81,9 @@ export default class Map extends Component {
                 address: place.formatted_address,
               });
               console.log(place)
+
               var infowindow = new window.google.maps.InfoWindow();
+
               window.google.maps.event.addListener(marker, 'click', (function(marker, infowindow) {
                 return function() {
                   if (infos.length > 0) {

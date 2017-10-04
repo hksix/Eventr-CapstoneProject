@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 
-import Map from './MapTesting.js'
+import Map from './Map.js'
 
 export default class MapContainer extends Component {
   constructor(props) {
