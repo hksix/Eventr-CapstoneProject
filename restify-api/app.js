@@ -39,15 +39,13 @@ function getAllEventsByHost(request, response, next) {
 }
 
 
-
 function getAllEventsByGuest(request, response, next) {
-   console.log(request.params.id)
     models.Users.find({
         where: {
             'id': request.params.id
         }
     }).then(function(user) {
-        console.log(user)
+        // console.log(user)
         var options = {}
         user.getEvents(options).then(results => {
             response.send(results);
@@ -299,7 +297,61 @@ function getAllGuestsByEvent(request,response,next) {
 
 //************************************************** EVENT TYPES ****************************** 
 
+function getAllEventCategories(request,response,next) {
+    models.EventCategories.findAll({})
+    .then(function(categories) {
+        var data = {
+            data: categories
+        };
+        response.send(data);
+        next();
+    });
+}
 
+function getEventCategory(request,response,next) {
+    models.EventCategories.find({
+        where: {
+            id: request.params.id
+        }
+    })
+    .then(function(category) {
+        var data = {
+            data: category
+        };
+        response.send(data);
+        next();
+    });    
+
+}
+
+function getAllItemsInEventCategory(request,response,next) {
+    models.EventCategories.find({
+        where: {
+            'id': request.params.id
+        }
+    }).then(function(user) {
+        var options = {}
+        user.getItems(options).then(results => {
+            response.send(results);
+            next();
+        });  
+    });    
+    // models.ItemsForEventCategories.findAll({
+    //     attributes: ['events_category_id', 'item_id'],
+    //     where: {
+    //         events_category_id: request.params.id
+    //     }
+    // })
+    // .then(function(items) {
+    //     var data = {
+    //         data: items
+    //     };
+    //     response.send(data);
+    //     next();
+    // });       
+}
+
+// server.get('/api/v1/event_categories/:id/items', getAllItemsInEventCategory);
 
 
 //************************************************** INVENTORY ****************************** 
@@ -338,9 +390,9 @@ server.get('/api/v1/guests/event/:eventid', getAllGuestsByEvent);
 // server.del('/api/v1/invitees/eventid/:event_id/:invitee_id', deleteInvitee);
 
 //************************************************** EVENT TYPES ****************************** 
-// server.get('/api/v1/event_categories', getAllEventCategories);
-// server.get('/api/v1/event_categories/:id', getEventCategory);
-// server.get('/api/v1/event_categories/:id/items', getAllItemsInEventCategory);
+server.get('/api/v1/event_categories', getAllEventCategories);
+server.get('/api/v1/event_categories/:id', getEventCategory);
+server.get('/api/v1/event_categories/:id/items', getAllItemsInEventCategory);
 
 //************************************************** INVENTORY ****************************** 
 // server.get('/api/v1/event_inventory/:event_id', getInventoryForEvent);
