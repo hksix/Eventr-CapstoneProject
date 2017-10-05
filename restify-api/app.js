@@ -3,8 +3,6 @@
 //https://scotch.io/tutorials/test-a-node-restful-api-with-mocha-and-chai
 //http://docs.sequelizejs.com/manual/tutorial/migrations.html
 
-
-
 var restify = require('restify');
 var restifyValidator = require('restify-validator');
 var util = require('util');
@@ -43,13 +41,20 @@ function getAllEventsByHost(request, response, next) {
 }
 
 
+<<<<<<< HEAD
 //server.get('/api/v1/events/guest/:id', getAllEventsByGuest); 
+=======
+>>>>>>> 9fe2bc968e354bd4f2fe323e683bf611173ff9bb
 function getAllEventsByGuest(request, response, next) {
     models.Users.find({
         where: {
             'id': request.params.id
         }
     }).then(function(user) {
+<<<<<<< HEAD
+=======
+        // console.log(user)
+>>>>>>> 9fe2bc968e354bd4f2fe323e683bf611173ff9bb
         var options = {}
         user.getEvents(options).then(results => {
             response.send(results);
@@ -363,11 +368,50 @@ function deleteGuest(request,response,next) {
 
 //************************************************** EVENT TYPES ****************************** 
 
+function getAllEventCategories(request,response,next) {
+    models.EventCategories.findAll({})
+    .then(function(categories) {
+        var data = {
+            data: categories
+        };
+        response.send(data);
+        next();
+    });
+}
 
+function getEventCategory(request,response,next) {
+    models.EventCategories.find({
+        where: {
+            id: request.params.id
+        }
+    })
+    .then(function(category) {
+        var data = {
+            data: category
+        };
+        response.send(data);
+        next();
+    });    
 
+}
+
+function getAllItemsInEventCategory(request,response,next) {
+    models.EventCategories.find({
+        where: {
+            'id': request.params.id
+        }
+    }).then(function(user) {
+        var options = {}
+        user.getItems(options).then(results => {
+            response.send(results);
+            next();
+        });  
+    });          
+}
 
 //************************************************** INVENTORY ****************************** 
 
+<<<<<<< HEAD
 //server.post('/api/v1/event_inventory/:eventid', addItemToInventory);
 function addItemToInventory(request,response,next){
     models.EventInventory.create({
@@ -389,7 +433,29 @@ function addItemToInventory(request,response,next){
         console.log(err)
     });
 }
+=======
+// server.get('/api/v1/event_inventory/:event_id', getInventoryForEvent);
+function getInventoryForEvent(request,response,next) {
+    models.EventInventory.findAll({
+        attributes: ['itemname', 'quantity', 'ownerid', 'description'],
+        where: {
+            eventid: request.params.event_id
+        }
+    })
+    .then(function(inventory) {
+        var data = {
+            data: inventory
+        };
+        response.send(data);
+        next();
+    });
+}
 
+
+
+>>>>>>> 9fe2bc968e354bd4f2fe323e683bf611173ff9bb
+
+//************************************************** SERVER ****************************** 
 
 var server = restify.createServer();
 
@@ -397,9 +463,7 @@ server.use(restify.plugins.bodyParser());
 server.use(restify.plugins.queryParser());
 server.use(restifyValidator);
 
-
-
-//************************************************** EVENTS ****************************** 
+//************************************************** EVENTS ENDPOINTS ****************************** 
 server.get('/api/v1/events', getAllEvents); //http://localhost:8080/api/events
 server.get('/api/v1/events/host/:id', getAllEventsByHost); //http://localhost:8080/api/events/hostid/1
 server.get('/api/v1/events/guest/:id', getAllEventsByGuest); 
@@ -408,27 +472,32 @@ server.put('/api/v1/events/:id', updateEvent);
 server.del('/api/events/:id', deleteEvent);
 
 
-//************************************************** USERS ****************************** 
+//************************************************** USERS ENDPOINTS ****************************** 
 server.get('/api/v1/users', getAllUsers);
 server.get('/api/v1/users/:id', getUser);
 server.post('/api/v1/users', addUser);
 server.put('/api/v1/users/:id', updateUser);
 server.del('/api/v1/users/:id', deleteUser);
 
-
-//************************************************** GUESTS ****************************** 
+//************************************************** GUESTS ENDPOINTS****************************** 
 server.get('/api/v1/guests/event/:eventid', getAllGuestsByEvent);
 server.post('/api/v1/guests/:eventid/:guestid', addGuest);
 server.del('/api/v1/guests/eventid/:eventid/:guestid', deleteGuest);
 
-//************************************************** EVENT TYPES ****************************** 
-// server.get('/api/v1/event_categories', getAllEventCategories);
-// server.get('/api/v1/event_categories/:id', getEventCategory);
-// server.get('/api/v1/event_categories/:id/items', getAllItemsInEventCategory);
+//************************************************** EVENT TYPES ENDPOINTS ****************************** 
+server.get('/api/v1/event_categories', getAllEventCategories);
+server.get('/api/v1/event_categories/:id', getEventCategory);
+server.get('/api/v1/event_categories/:id/items', getAllItemsInEventCategory);
 
+<<<<<<< HEAD
 //************************************************** INVENTORY ****************************** 
 // server.get('/api/v1/event_inventory/:event_id', getInventoryForEvent);
 server.post('/api/v1/event_inventory/:eventid', addItemToInventory);
+=======
+//************************************************** INVENTORY ENDPOINTS ****************************** 
+server.get('/api/v1/event_inventory/:event_id', getInventoryForEvent);
+// server.post('/api/v1/event_inventory/:event_id', addItemToInventory);
+>>>>>>> 9fe2bc968e354bd4f2fe323e683bf611173ff9bb
 // server.put('/api/v1/event_inventory/:id', updateItemInInventory);
 // server.del('/api/v1/event_inventory/:id', deleteItemFromInventory);
 
