@@ -14,6 +14,7 @@ import { Welcome } from './Welcome.js'
 import { SetEvent } from './SetEvent.js'
 import UserMenu from './sidemenu/UserMenu.js';
 import Footer from './Footer.js';
+import { Calendar } from './Calendar.js'
 
 import './index.css';
 import MapContainer from "./MapContainer.js";
@@ -53,6 +54,9 @@ export default class MenuOptions extends Component {
                     <div className="main-content-container">
                       <div className="side-content-container">
                         <UserMenu />
+                      </div>
+                      <div>
+                        <Calendar />
                       </div>
                       <div className="changing-content-container" >
                         <Welcome/>
