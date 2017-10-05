@@ -269,7 +269,15 @@ function deleteUser(request,response,next){
 //************************************************** INVITEES ****************************** 
 
 function getAllInviteesByEvent() {
-
+    models.Invited.findAll({})
+    .then(function(invitee) {
+        var data = {
+            error: "false",
+            data: invitee
+        };
+        response.send(data);
+        next();
+    });
 }
 
 function addInvitee() {
@@ -316,20 +324,20 @@ server.del('/api/v1/users/:id', deleteUser);
 
 
 //************************************************** INVITEES ****************************** 
-// server.get('/api/v1/invitees/eventid/:event_id', getAllInviteesByEvent);
+server.get('/api/v1/invitees/eventid/:event_id', getAllInviteesByEvent);
 // server.post('/api/v1/invitees/eventid/:event_id', addInvitee);
 // server.del('/api/v1/invitees/eventid/:event_id/:invitee_id', deleteInvitee);
 
 //************************************************** EVENT TYPES ****************************** 
-server.get('/api/v1/event_categories', getAllEventCategories);
-server.get('/api/v1/event_categories/:id', getEventCategory);
-server.get('/api/v1/event_categories/:id/items', getAllItemsInEventCategory);
+// server.get('/api/v1/event_categories', getAllEventCategories);
+// server.get('/api/v1/event_categories/:id', getEventCategory);
+// server.get('/api/v1/event_categories/:id/items', getAllItemsInEventCategory);
 
 //************************************************** INVENTORY ****************************** 
-server.get('/api/v1/event_inventory/:event_id', getInventoryForEvent);
-server.post('/api/v1/event_inventory/:event_id', addItemToInventory);
-server.put('/api/v1/event_inventory/:id', updateItemInInventory);
-server.del('/api/v1/event_inventory/:id', deleteItemFromInventory);
+// server.get('/api/v1/event_inventory/:event_id', getInventoryForEvent);
+// server.post('/api/v1/event_inventory/:event_id', addItemToInventory);
+// server.put('/api/v1/event_inventory/:id', updateItemInInventory);
+// server.del('/api/v1/event_inventory/:id', deleteItemFromInventory);
 
 
 
