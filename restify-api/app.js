@@ -411,7 +411,6 @@ function getAllItemsInEventCategory(request,response,next) {
 
 //************************************************** INVENTORY ****************************** 
 
-<<<<<<< HEAD
 //server.post('/api/v1/event_inventory/:eventid', addItemToInventory);
 function addItemToInventory(request,response,next){
     models.EventInventory.create({
@@ -433,7 +432,6 @@ function addItemToInventory(request,response,next){
         console.log(err)
     });
 }
-=======
 // server.get('/api/v1/event_inventory/:event_id', getInventoryForEvent);
 function getInventoryForEvent(request,response,next) {
     models.EventInventory.findAll({
@@ -453,7 +451,6 @@ function getInventoryForEvent(request,response,next) {
 
 
 
->>>>>>> 9fe2bc968e354bd4f2fe323e683bf611173ff9bb
 
 //************************************************** SERVER ****************************** 
 
@@ -489,15 +486,12 @@ server.get('/api/v1/event_categories', getAllEventCategories);
 server.get('/api/v1/event_categories/:id', getEventCategory);
 server.get('/api/v1/event_categories/:id/items', getAllItemsInEventCategory);
 
-<<<<<<< HEAD
 //************************************************** INVENTORY ****************************** 
 // server.get('/api/v1/event_inventory/:event_id', getInventoryForEvent);
 server.post('/api/v1/event_inventory/:eventid', addItemToInventory);
-=======
 //************************************************** INVENTORY ENDPOINTS ****************************** 
 server.get('/api/v1/event_inventory/:event_id', getInventoryForEvent);
 // server.post('/api/v1/event_inventory/:event_id', addItemToInventory);
->>>>>>> 9fe2bc968e354bd4f2fe323e683bf611173ff9bb
 // server.put('/api/v1/event_inventory/:id', updateItemInInventory);
 // server.del('/api/v1/event_inventory/:id', deleteItemFromInventory);
 
