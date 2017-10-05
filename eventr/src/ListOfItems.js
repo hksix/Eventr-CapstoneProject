@@ -36,6 +36,7 @@ class Form extends Component {
 			this.setState({
 				value: ''
 			});
+			
 			this.input.placeholder = "Add Items here...";
 		}
 	}

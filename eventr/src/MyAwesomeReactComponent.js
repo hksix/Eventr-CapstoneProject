@@ -22,7 +22,6 @@ import MapContainer from "./MapContainer.js";
 
 
 
-
 export default class MenuOptions extends Component {
       constructor(props) {
         super(props);
@@ -62,6 +61,7 @@ export default class MenuOptions extends Component {
                       <div className="changing-content-container" >
                         <Welcome/>
                       </div>
+                      
                     </div>
                     
                 </Tab>

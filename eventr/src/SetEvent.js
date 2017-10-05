@@ -10,7 +10,7 @@ import ItemList from './ListOfItems.js'
 import SubmitSnackBar from './Submit.js'
 import Card from 'material-ui/Card';
 
-
+import Snackbar from 'material-ui/Snackbar';
 // import RaisedButton from 'material-ui/RaisedButton';
 
 
@@ -52,13 +52,27 @@ class SubmitButton extends Component {
     state = {
       open: false,
     };
+    
   
     handleOpen = () => {
       this.setState({open: true});
     };
   
     handleClose = () => {
+      
       this.setState({open: false});
+      
+    };
+    handleTouchTap = () => {
+      this.setState({
+        open: true,
+      });
+    };
+  
+    handleRequestClose = () => {
+      this.setState({
+        open: false,
+      });
     };
   
     render() {
@@ -75,6 +89,15 @@ class SubmitButton extends Component {
           onClick={this.handleClose}>
         </FlatButton>,
       ];
+      const Snack=[
+        <Snackbar
+        open={this.state.open}
+        message="Event added to your calendar"
+        autoHideDuration={4000}
+        onRequestClose={this.handleRequestClose}
+      />
+      ]
+      
   
       return (
         <div>
@@ -86,12 +109,15 @@ class SubmitButton extends Component {
             open={this.state.open}
             onRequestClose={this.handleClose}
           >
+          
             Ready to party?
           </Dialog>
           
         </div>
       );
     }
+
+    
   }
         
 export class SetEvent extends Component {
