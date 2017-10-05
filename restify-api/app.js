@@ -27,7 +27,7 @@ function getAllEvents(request, response, next) {
 function getAllEventsByHost(request, response, next) {
     models.Events.findAll({
         where: {
-            'host': request.params.id
+            'host_id': request.params.id
         }
     }).then(function(events) {
         var data = {
@@ -41,18 +41,19 @@ function getAllEventsByHost(request, response, next) {
 
 
 function getAllEventsByGuest(request, response, next) {
-    models.Events.findAll({
+   console.log(request.params.id)
+    models.Users.find({
         where: {
-            
+            'id': request.params.id
         }
-    }).then(function(events) {
-        var data = {
-            data: events
-        };  
-        response.send(data);
-        next();
+    }).then(function(user) {
+        console.log(user)
+        var options = {}
+        user.getEvents(options).then(results => {
+            response.send(results);
+            next();
+        });  
     });    
-
 }
 
 
