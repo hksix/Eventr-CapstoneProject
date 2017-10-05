@@ -29,11 +29,6 @@ export class SelectFriends extends Component {
     };
   
     handleChange = (event, index, values) =>{ 
-
-        
-
-      // this.props.changeHandler(),
-      // console.log([this.state.values])
       this.setState({values})
       this.sendNames(values)
     };
