@@ -20,6 +20,7 @@ body {
   padding-top: 20px;
 }
 .footer-container {
+  /* position: relative; */
   height: 150px;
 }
 
@@ -27,11 +28,11 @@ body {
   .main-content-container {
     /* border: 1px solid violet; */
     width: 100%;
-    min-height: 1000px;
+    min-height: 1300px;
     display: flex;
     margin: 0 auto;
     justify-content: space-around;
-    align-items: center;
+    /* align-items: center; */
     margin: 0 auto;
   }
   .changing-content-container {
@@ -65,8 +66,21 @@ body {
 }
 
 .changing-content-container > div > div > div {
-  border: 1px solid red;
+  /* border: 1px solid red; */
   position: unset; 
   width: 100%; 
   height: 100%;
+}
+.event-calendar{
+
+}
+.welcomebox{
+
+}
+.profilepg{
+  padding: 50px;
+
+}
+.menubar > div{
+  box-shadow: 3px 3px 4px lightgrey;
 }
