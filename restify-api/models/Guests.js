@@ -12,8 +12,6 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.DATE(3),
       defaultValue: sequelize.literal('CURRENT_TIMESTAMP(3)'),
     },
-    freezeTableName: true,
-    tableName: 'Invited',
   });
   return Guests;
 };

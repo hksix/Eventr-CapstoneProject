@@ -21,6 +21,8 @@ function getAllEvents(request, response, next) {
         };
         response.send(data);
         next();
+    }).catch(function (err) {
+        console.log(err)
     });
 }
 
@@ -35,6 +37,8 @@ function getAllEventsByHost(request, response, next) {
         };  
         response.send(data);
         next();
+    }).catch(function (err) {
+        console.log(err)
     });
 }
 
@@ -52,6 +56,8 @@ function getAllEventsByGuest(request, response, next) {
         user.getEvents(options).then(results => {
             response.send(results);
             next();
+        }).catch(function (err) {
+            console.log(err)
         });  
     });    
 }
@@ -96,12 +102,15 @@ function addEvent(request,response,next){
         var data = {
             data: event
         };
-
         response.send(data);
         next();
+    }).catch(function (err) {
+        console.log(err)
     });
 }
 
+
+//server.put('/api/v1/events/:id', updateEvent);
 function updateEvent(request,response,next){
     if (!verifyRequiredParams(request)){
         response.send(422,error_messages);
@@ -127,6 +136,8 @@ function updateEvent(request,response,next){
                 };
                 response.send(data);
                 next();
+            }).catch(function (err) {
+                console.log(err)
             });
         }
     });
@@ -139,28 +150,30 @@ function deleteEvent(request,response,next){
         }
     }).then(function(event) {
         var data = {
-            error: "false",
             message: "Deleted event successfully",
             data: event
         };
         response.send(data);
         next();
+    }).catch(function (err) {
+        console.log(err)
     });
 }
 //************************************************** USERS ****************************** 
-
+//server.get('/api/v1/users', getAllUsers);
 function getAllUsers(request,response,next){
     models.Users.findAll({})
     .then(function(Users) {
         var data = {
-            error: "false",
             data: Users
         };
         response.send(data);
         next();
+    }).catch(function (err) {
+        console.log(err)
     });
 }
-
+//server.get('/api/v1/users/:id', getUser);
 function getUser(request, response, next) {
     models.Users.find({
         where: {
@@ -173,6 +186,8 @@ function getUser(request, response, next) {
         };  
         response.send(data);
         next();
+    }).catch(function (err) {
+        console.log(err)
     });
 }
 
@@ -199,6 +214,7 @@ function verifyRequiredParamsForUser(request){
     return true;
 }
 
+//server.post('/api/v1/users', addUser);
 function addUser(request,response,next){
     if (!verifyRequiredParamsForUser(request)){
         response.send(422,error_messages);
@@ -206,24 +222,24 @@ function addUser(request,response,next){
     }
 
     models.Users.create({
-        fName: request.params['fName'],
-        lName: request.params['lName'],
-        profPic: request.params['profPic'],
-        email: request.params['email'],
-        phone: request.params['phone'],
-        location: request.params['location']
+        fName: request.params.fName,
+        lName: request.params.lName,
+        profPic: request.params.profPic,
+        email: request.params.email,
+        phone: request.params.phone,
+        location: request.params.location
     }).then(function(user) {
         var data = {
-            error: "false",
             message: "New user created successfully",
             data: user
         };
-
         response.send(data);
         next();
+    }).catch(function (err) {
+        console.log(err)
     });
 }
-
+//server.put('/api/v1/users/:id', updateUser);
 function updateUser(request,response,next){
     if (!verifyRequiredParamsForUser(request)){
         response.send(422,error_messages);
@@ -244,17 +260,20 @@ function updateUser(request,response,next){
                 location: request.params['location']
             }).then(function(user) {
                 var data = {
-                    error: "false",
+    
                     message: "Updated user successfully",
                     data: user
                 };
                 response.send(data);
                 next();
+            }).catch(function (err) {
+                console.log(err)
             });
         }
     });
 }
 
+//server.del('/api/v1/users/:id', deleteUser);
 function deleteUser(request,response,next){
     models.Users.destroy({
         where: {
@@ -262,12 +281,13 @@ function deleteUser(request,response,next){
         }
     }).then(function(user) {
         var data = {
-            error: "false",
             message: "Deleted user successfully",
             data: user
         };
         response.send(data);
         next();
+    }).catch(function (err) {
+        console.log(err)
     });
 }
 
@@ -278,24 +298,54 @@ function getAllGuestsByEvent(request,response,next) {
         where: {
             eventid: request.params.eventid
         }
-    })
-    .then(function(guests) {
+    }).then(function(guests) {
         var data = {
-            error: "false",
             data: guests
         };
         response.send(data);
         next();
+    }).catch(function (err) {
+        console.log(err)
     });
 }
 
-// function addGuest() {
+//server.post('/api/v1/guests/:eventid/:guestid', addGuest);
+function addGuest(request,response,next){
+    models.Guests.create({
+        eventid: request.params.eventid,
+        userid: request.params.guestid,
+    }).then(function(guest) {
+        console.log(guest)
+        var data = {
+            message: "New guest successfully added to event",
+            data: guest
+        };
+        response.send(data);
+        next();
+    }).catch(function (err) {
+        console.log(err)
+    });
+}
 
-// }
+//server.del('/api/v1/guests/eventid/:eventid/:guestid', deleteGuest);
+function deleteGuest(request,response,next) {
+    models.Guests.destroy({
+        where: {
+            eventid: request.params.eventid,
+            userid: request.params.guestid,
+        }
+    }).then(function(guest) {
+        var data = {
+            message: `Deleted guest from event ${request.params.eventid} successfully`,
+            data: guest
+        };
+        response.send(data);
+        next();
+    }).catch(function (err) {
+        console.log(err)
+    });
 
-// function deleteGuest() {
-
-// }
+}
 
 //************************************************** EVENT TYPES ****************************** 
 
@@ -334,8 +384,8 @@ server.del('/api/v1/users/:id', deleteUser);
 
 //************************************************** GUESTS ****************************** 
 server.get('/api/v1/guests/event/:eventid', getAllGuestsByEvent);
-// server.post('/api/v1/invitees/eventid/:event_id', addInvitee);
-// server.del('/api/v1/invitees/eventid/:event_id/:invitee_id', deleteInvitee);
+server.post('/api/v1/guests/:eventid/:guestid', addGuest);
+server.del('/api/v1/guests/eventid/:eventid/:guestid', deleteGuest);
 
 //************************************************** EVENT TYPES ****************************** 
 // server.get('/api/v1/event_categories', getAllEventCategories);
