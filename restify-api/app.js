@@ -40,28 +40,12 @@ function getAllEventsByHost(request, response, next) {
     });
 }
 
-
-<<<<<<< HEAD
-<<<<<<< HEAD
-//server.get('/api/v1/events/guest/:id', getAllEventsByGuest); 
-=======
->>>>>>> 9fe2bc968e354bd4f2fe323e683bf611173ff9bb
-=======
-//server.get('/api/v1/events/guest/:id', getAllEventsByGuest); 
->>>>>>> maedae11/Oct5
 function getAllEventsByGuest(request, response, next) {
     models.Users.find({
         where: {
             'id': request.params.id
         }
     }).then(function(user) {
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-        // console.log(user)
->>>>>>> 9fe2bc968e354bd4f2fe323e683bf611173ff9bb
-=======
->>>>>>> maedae11/Oct5
         var options = {}
         user.getEvents(options).then(results => {
             response.send(results);
@@ -328,7 +312,6 @@ function isGuestInvited(eventid, userid){
         return true;
     })
 }
-<<<<<<< HEAD
 
 //server.post('/api/v1/guests/:eventid/:guestid', addGuest);
 function addGuest(request,response,next){
@@ -372,51 +355,6 @@ function deleteGuest(request,response,next) {
         console.log(err)
     });
 
-=======
-
-//server.post('/api/v1/guests/:eventid/:guestid', addGuest);
-function addGuest(request,response,next){
-    var isInvited = isGuestInvited(request.params.eventid, request.params.guestid)
-    .then(isInvited => {
-        if (isInvited === false){
-            response.send('This person is already invited')
-        } else {
-        models.Guests.create({
-            eventid: request.params.eventid,
-            userid: request.params.guestid,
-        }).then(function(guest) {
-            var data = {
-                message: "New guest successfully added to event",
-                data: guest
-            };
-            response.send(data);
-            next();
-        }).catch(function (err) {
-            console.log(err)
-        });
-    }})
-}
-
-
-//server.del('/api/v1/guests/eventid/:eventid/:guestid', deleteGuest);
-function deleteGuest(request,response,next) {
-    models.Guests.destroy({
-        where: {
-            eventid: request.params.eventid,
-            userid: request.params.guestid,
-        }
-    }).then(function(guest) {
-        var data = {
-            message: `Deleted guest from event ${request.params.eventid} successfully`,
-            data: guest
-        };
-        response.send(data);
-        next();
-    }).catch(function (err) {
-        console.log(err)
-    });
-
->>>>>>> maedae11/Oct5
 }
 
 //************************************************** EVENT TYPES ****************************** 
@@ -464,6 +402,7 @@ function getAllItemsInEventCategory(request,response,next) {
 
 //************************************************** INVENTORY ****************************** 
 
+
 //server.post('/api/v1/event_inventory/:eventid', addItemToInventory);
 function addItemToInventory(request,response,next){
     models.EventInventory.create({
@@ -485,7 +424,7 @@ function addItemToInventory(request,response,next){
         console.log(err)
     });
 }
-<<<<<<< HEAD
+
 // server.get('/api/v1/event_inventory/:event_id', getInventoryForEvent);
 function getInventoryForEvent(request,response,next) {
     models.EventInventory.findAll({
@@ -503,10 +442,6 @@ function getInventoryForEvent(request,response,next) {
     });
 }
 
-
-
-=======
->>>>>>> maedae11/Oct5
 
 //************************************************** SERVER ****************************** 
 
@@ -545,12 +480,9 @@ server.get('/api/v1/event_categories/:id/items', getAllItemsInEventCategory);
 //************************************************** INVENTORY ****************************** 
 // server.get('/api/v1/event_inventory/:event_id', getInventoryForEvent);
 server.post('/api/v1/event_inventory/:eventid', addItemToInventory);
-<<<<<<< HEAD
 //************************************************** INVENTORY ENDPOINTS ****************************** 
 server.get('/api/v1/event_inventory/:event_id', getInventoryForEvent);
 // server.post('/api/v1/event_inventory/:event_id', addItemToInventory);
-=======
->>>>>>> maedae11/Oct5
 // server.put('/api/v1/event_inventory/:id', updateItemInInventory);
 // server.del('/api/v1/event_inventory/:id', deleteItemFromInventory);
 
