@@ -16,5 +16,16 @@ module.exports = (sequelize, DataTypes) => {
       defaultValue: sequelize.literal('CURRENT_TIMESTAMP(3)'),
     },
   });
+  Users.prototype.getEvents = function(options) {
+    options.include = [{
+      model: sequelize.models.Guests,
+      attributes: [],
+      where: {
+        userid: this.get('id')
+      }
+    }];
+    return sequelize.models.Events.findAll(options);
+    
+  };
   return Users;
 };

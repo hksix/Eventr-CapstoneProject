@@ -15,10 +15,9 @@ var error_messages = null;
 //************************************************** EVENTS ****************************** 
 function getAllEvents(request, response, next) {
     models.Events.findAll({})
-    .then(function(Events) {
+    .then(function(events) {
         var data = {
-            error: "no events",
-            data: Events
+            data: events
         };
         response.send(data);
         next();
@@ -30,10 +29,9 @@ function getAllEventsByHost(request, response, next) {
         where: {
             'host_id': request.params.id
         }
-    }).then(function(user) {
+    }).then(function(events) {
         var data = {
-            error: `no events by id ${request.params.id}`,
-            data: Events
+            data: events
         };  
         response.send(data);
         next();
@@ -42,9 +40,20 @@ function getAllEventsByHost(request, response, next) {
 
 
 
-function getAllEventsByInvitee(request, response, next) {
-
-
+function getAllEventsByGuest(request, response, next) {
+   console.log(request.params.id)
+    models.Users.find({
+        where: {
+            'id': request.params.id
+        }
+    }).then(function(user) {
+        console.log(user)
+        var options = {}
+        user.getEvents(options).then(results => {
+            response.send(results);
+            next();
+        });  
+    });    
 }
 
 
@@ -75,7 +84,6 @@ function addEvent(request,response,next){
         response.send(422,error_messages);
         return;
     }
-
     models.Events.create({
         host_id: request.params['host_id'],
         name: request.params['name'],
@@ -84,11 +92,9 @@ function addEvent(request,response,next){
         time: request.params['time'],
         location: request.params['location'],
         category_id: request.params['category_id'],
-    }).then(function(user) {
+    }).then(function(event) {
         var data = {
-            // error: "false",
-            message: "New event created successfully",
-            data: user
+            data: event
         };
 
         response.send(data);
@@ -96,36 +102,35 @@ function addEvent(request,response,next){
     });
 }
 
-// function updateUser(request,response,next){
-//     if (!verifyRequiredParams(request)){
-//         response.send(422,error_messages);
-//         return;
-//     }
-//     models.Users.find({
-//         where: {
-//             'id': request.params.id
-//         }
-//     }).then(function(user) {
-//         if(user){
-//             user.updateAttributes({
-//                 fName: request.params['fName'],
-//                 lName: request.params['lName'],
-//                 profPic: request.params['profPic'],
-//                 email: request.params['email'],
-//                 phone: request.params['phone'],
-//                 location: request.params['location']
-//             }).then(function(user) {
-//                 var data = {
-//                     error: "false",
-//                     message: "Updated user successfully",
-//                     data: user
-//                 };
-//                 response.send(data);
-//                 next();
-//             });
-//         }
-//     });
-// }
+function updateEvent(request,response,next){
+    if (!verifyRequiredParams(request)){
+        response.send(422,error_messages);
+        return;
+    }
+    models.Events.find({
+        where: {
+            'id': request.params.id
+        }
+    }).then(function(event) {
+        if(event){
+            event.updateAttributes({
+                host_id: request.params['host_id'],
+                name: request.params['name'],
+                description: request.params['description'],
+                date: request.params['date'],
+                time: request.params['time'],
+                location: request.params['location'],
+                category_id: request.params['category_id'],
+            }).then(function(event) {
+                var data = {
+                    data: event
+                };
+                response.send(data);
+                next();
+            });
+        }
+    });
+}
 
 function deleteEvent(request,response,next){
     models.Events.destroy({
@@ -266,6 +271,7 @@ function deleteUser(request,response,next){
     });
 }
 
+<<<<<<< HEAD
 //************************************************** INVITEES ****************************** 
 
 function getAllInviteesByEvent() {
@@ -274,19 +280,33 @@ function getAllInviteesByEvent() {
         var data = {
             error: "false",
             data: invitee
+=======
+//************************************************** GUESTS ****************************** 
+
+function getAllGuestsByEvent(request,response,next) {
+    models.Guests.findAll({
+        where: {
+            eventid: request.params.eventid
+        }
+    })
+    .then(function(guests) {
+        var data = {
+            error: "false",
+            data: guests
+>>>>>>> d366c6ef564b9c5e390d4bb5cd2eab7769edf75c
         };
         response.send(data);
         next();
     });
 }
 
-function addInvitee() {
+// function addGuest() {
 
-}
+// }
 
-function deleteInvitee() {
+// function deleteGuest() {
 
-}
+// }
 
 //************************************************** EVENT TYPES ****************************** 
 
@@ -308,10 +328,10 @@ server.use(restifyValidator);
 
 //************************************************** EVENTS ****************************** 
 server.get('/api/v1/events', getAllEvents); //http://localhost:8080/api/events
-server.get('/api/v1/events/hostid/:id', getAllEventsByHost); //http://localhost:8080/api/events/hostid/1
-// server.get('/api/v1/events/inviteeid/:id', getAllEventsByInvitee); 
-// server.post('/api/v1/events', addEvent); 
-// server.put('/api/v1/events/:id', updateEvent);
+server.get('/api/v1/events/host/:id', getAllEventsByHost); //http://localhost:8080/api/events/hostid/1
+server.get('/api/v1/events/guest/:id', getAllEventsByGuest); 
+server.post('/api/v1/events', addEvent); 
+server.put('/api/v1/events/:id', updateEvent);
 server.del('/api/events/:id', deleteEvent);
 
 
@@ -323,8 +343,13 @@ server.put('/api/v1/users/:id', updateUser);
 server.del('/api/v1/users/:id', deleteUser);
 
 
+<<<<<<< HEAD
 //************************************************** INVITEES ****************************** 
 server.get('/api/v1/invitees/eventid/:event_id', getAllInviteesByEvent);
+=======
+//************************************************** GUESTS ****************************** 
+server.get('/api/v1/guests/event/:eventid', getAllGuestsByEvent);
+>>>>>>> d366c6ef564b9c5e390d4bb5cd2eab7769edf75c
 // server.post('/api/v1/invitees/eventid/:event_id', addInvitee);
 // server.del('/api/v1/invitees/eventid/:event_id/:invitee_id', deleteInvitee);
 
