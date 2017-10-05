@@ -18,5 +18,8 @@ module.exports = (sequelize, DataTypes) => {
       defaultValue: sequelize.literal('CURRENT_TIMESTAMP(3) ON UPDATE CURRENT_TIMESTAMP(3)'),
     },
   });
+  Events.associate = function(models) {
+    
+  }
   return Events;
 };

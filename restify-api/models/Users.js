@@ -16,5 +16,8 @@ module.exports = (sequelize, DataTypes) => {
       defaultValue: sequelize.literal('CURRENT_TIMESTAMP(3)'),
     },
   });
+  Users.associate = function(models) {
+    // Users.belongsTo(models.Events)
+  };
   return Users;
 };
