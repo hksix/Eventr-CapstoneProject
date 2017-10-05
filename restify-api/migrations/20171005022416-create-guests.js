@@ -1,21 +1,21 @@
 'use strict';
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    return queryInterface.createTable('Invited', {
-      // id: {
-      //   allowNull: false,
-      //   autoIncrement: true,
-      //   primaryKey: true,
-      //   type: Sequelize.INTEGER
-      // },
-      user_id: {
+    return queryInterface.createTable('Guests', {
+      id: {
+        allowNull: false,
+        autoIncrement: true,
+        primaryKey: true,
+        type: Sequelize.INTEGER
+      },
+      eventid: {
+        type: Sequelize.INTEGER
+      },
+      userid: {
         type: Sequelize.INTEGER
       },
       attending: {
         type: Sequelize.BOOLEAN
-      },
-      event_id: {
-        type: Sequelize.INTEGER
       },
       createdAt: {
         allowNull: true,
@@ -28,6 +28,6 @@ module.exports = {
     });
   },
   down: (queryInterface, Sequelize) => {
-    return queryInterface.dropTable('Invited');
+    return queryInterface.dropTable('Guests');
   }
 };

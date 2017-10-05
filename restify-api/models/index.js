@@ -38,6 +38,7 @@ var models = [
   'Events',
   'EventInventory',
   'Invited',
+  'Guests',
   'ItemCategories',
   'ItemsForEventCategories',
   'SuggestedItems',
