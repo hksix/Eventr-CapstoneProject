@@ -271,16 +271,6 @@ function deleteUser(request,response,next){
     });
 }
 
-<<<<<<< HEAD
-//************************************************** INVITEES ****************************** 
-
-function getAllInviteesByEvent() {
-    models.Invited.findAll({})
-    .then(function(invitee) {
-        var data = {
-            error: "false",
-            data: invitee
-=======
 //************************************************** GUESTS ****************************** 
 
 function getAllGuestsByEvent(request,response,next) {
@@ -293,7 +283,6 @@ function getAllGuestsByEvent(request,response,next) {
         var data = {
             error: "false",
             data: guests
->>>>>>> d366c6ef564b9c5e390d4bb5cd2eab7769edf75c
         };
         response.send(data);
         next();
@@ -343,13 +332,8 @@ server.put('/api/v1/users/:id', updateUser);
 server.del('/api/v1/users/:id', deleteUser);
 
 
-<<<<<<< HEAD
-//************************************************** INVITEES ****************************** 
-server.get('/api/v1/invitees/eventid/:event_id', getAllInviteesByEvent);
-=======
 //************************************************** GUESTS ****************************** 
 server.get('/api/v1/guests/event/:eventid', getAllGuestsByEvent);
->>>>>>> d366c6ef564b9c5e390d4bb5cd2eab7769edf75c
 // server.post('/api/v1/invitees/eventid/:event_id', addInvitee);
 // server.del('/api/v1/invitees/eventid/:event_id/:invitee_id', deleteInvitee);
 
