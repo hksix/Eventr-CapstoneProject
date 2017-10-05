@@ -36,7 +36,7 @@ db.Sequelize = Sequelize;
 
 db.Users = require('./Users.js')(sequelize, Sequelize); 
 db.Events = require('./Events.js')(sequelize, Sequelize); 
-db.EventInventory = require('./EventInventory.js')(sequelize, Sequelize); 
+db.EventInventory = require('./EventInventories.js')(sequelize, Sequelize); 
 db.Guests = require('./Guests.js')(sequelize, Sequelize); 
 db.ItemCategories = require('./ItemCategories.js')(sequelize, Sequelize); 
 db.ItemsForEventCategories = require('./ItemsForEventCategories.js')(sequelize, Sequelize); 

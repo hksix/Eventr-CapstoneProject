@@ -3,8 +3,6 @@
 //https://scotch.io/tutorials/test-a-node-restful-api-with-mocha-and-chai
 //http://docs.sequelizejs.com/manual/tutorial/migrations.html
 
-
-
 var restify = require('restify');
 var restifyValidator = require('restify-validator');
 var util = require('util');
@@ -335,29 +333,32 @@ function getAllItemsInEventCategory(request,response,next) {
             response.send(results);
             next();
         });  
-    });    
-    // models.ItemsForEventCategories.findAll({
-    //     attributes: ['events_category_id', 'item_id'],
-    //     where: {
-    //         events_category_id: request.params.id
-    //     }
-    // })
-    // .then(function(items) {
-    //     var data = {
-    //         data: items
-    //     };
-    //     response.send(data);
-    //     next();
-    // });       
+    });          
 }
-
-// server.get('/api/v1/event_categories/:id/items', getAllItemsInEventCategory);
-
 
 //************************************************** INVENTORY ****************************** 
 
+// server.get('/api/v1/event_inventory/:event_id', getInventoryForEvent);
+function getInventoryForEvent(request,response,next) {
+    models.EventInventory.findAll({
+        attributes: ['itemname', 'quantity', 'ownerid', 'description'],
+        where: {
+            eventid: request.params.event_id
+        }
+    })
+    .then(function(inventory) {
+        var data = {
+            data: inventory
+        };
+        response.send(data);
+        next();
+    });
+}
 
 
+
+
+//************************************************** SERVER ****************************** 
 
 var server = restify.createServer();
 
@@ -365,9 +366,7 @@ server.use(restify.plugins.bodyParser());
 server.use(restify.plugins.queryParser());
 server.use(restifyValidator);
 
-
-
-//************************************************** EVENTS ****************************** 
+//************************************************** EVENTS ENDPOINTS ****************************** 
 server.get('/api/v1/events', getAllEvents); //http://localhost:8080/api/events
 server.get('/api/v1/events/host/:id', getAllEventsByHost); //http://localhost:8080/api/events/hostid/1
 server.get('/api/v1/events/guest/:id', getAllEventsByGuest); 
@@ -376,26 +375,25 @@ server.put('/api/v1/events/:id', updateEvent);
 server.del('/api/events/:id', deleteEvent);
 
 
-//************************************************** USERS ****************************** 
+//************************************************** USERS ENDPOINTS ****************************** 
 server.get('/api/v1/users', getAllUsers);
 server.get('/api/v1/users/:id', getUser);
 server.post('/api/v1/users', addUser);
 server.put('/api/v1/users/:id', updateUser);
 server.del('/api/v1/users/:id', deleteUser);
 
-
-//************************************************** GUESTS ****************************** 
+//************************************************** GUESTS ENDPOINTS****************************** 
 server.get('/api/v1/guests/event/:eventid', getAllGuestsByEvent);
 // server.post('/api/v1/invitees/eventid/:event_id', addInvitee);
 // server.del('/api/v1/invitees/eventid/:event_id/:invitee_id', deleteInvitee);
 
-//************************************************** EVENT TYPES ****************************** 
+//************************************************** EVENT TYPES ENDPOINTS ****************************** 
 server.get('/api/v1/event_categories', getAllEventCategories);
 server.get('/api/v1/event_categories/:id', getEventCategory);
 server.get('/api/v1/event_categories/:id/items', getAllItemsInEventCategory);
 
-//************************************************** INVENTORY ****************************** 
-// server.get('/api/v1/event_inventory/:event_id', getInventoryForEvent);
+//************************************************** INVENTORY ENDPOINTS ****************************** 
+server.get('/api/v1/event_inventory/:event_id', getInventoryForEvent);
 // server.post('/api/v1/event_inventory/:event_id', addItemToInventory);
 // server.put('/api/v1/event_inventory/:id', updateItemInInventory);
 // server.del('/api/v1/event_inventory/:id', deleteItemFromInventory);
