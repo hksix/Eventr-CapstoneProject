@@ -43,15 +43,13 @@ function getAllEventsByHost(request, response, next) {
 }
 
 
-
+//server.get('/api/v1/events/guest/:id', getAllEventsByGuest); 
 function getAllEventsByGuest(request, response, next) {
-   console.log(request.params.id)
     models.Users.find({
         where: {
             'id': request.params.id
         }
     }).then(function(user) {
-        console.log(user)
         var options = {}
         user.getEvents(options).then(results => {
             response.send(results);
@@ -220,7 +218,6 @@ function addUser(request,response,next){
         response.send(422,error_messages);
         return;
     }
-
     models.Users.create({
         fName: request.params.fName,
         lName: request.params.lName,
@@ -309,23 +306,44 @@ function getAllGuestsByEvent(request,response,next) {
     });
 }
 
+
+function isGuestInvited(eventid, userid){
+    return models.Guests.count({
+        where: {
+            eventid: eventid,
+            userid: userid
+        }
+    }).then(count => {
+        if (count != 0) {
+            return false;
+        }
+        return true;
+    })
+}
+
 //server.post('/api/v1/guests/:eventid/:guestid', addGuest);
 function addGuest(request,response,next){
-    models.Guests.create({
-        eventid: request.params.eventid,
-        userid: request.params.guestid,
-    }).then(function(guest) {
-        console.log(guest)
-        var data = {
-            message: "New guest successfully added to event",
-            data: guest
-        };
-        response.send(data);
-        next();
-    }).catch(function (err) {
-        console.log(err)
-    });
+    var isInvited = isGuestInvited(request.params.eventid, request.params.guestid)
+    .then(isInvited => {
+        if (isInvited === false){
+            response.send('This person is already invited')
+        } else {
+        models.Guests.create({
+            eventid: request.params.eventid,
+            userid: request.params.guestid,
+        }).then(function(guest) {
+            var data = {
+                message: "New guest successfully added to event",
+                data: guest
+            };
+            response.send(data);
+            next();
+        }).catch(function (err) {
+            console.log(err)
+        });
+    }})
 }
+
 
 //server.del('/api/v1/guests/eventid/:eventid/:guestid', deleteGuest);
 function deleteGuest(request,response,next) {
