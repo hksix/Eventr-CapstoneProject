@@ -84,10 +84,6 @@ function verifyRequiredParamsForEvent(request){
 }
 
 function addEvent(request,response,next){
-    if (!verifyRequiredParamsForEvent(request)){
-        response.send(422,error_messages);
-        return;
-    }
     models.Events.create({
         host_id: request.params['host_id'],
         name: request.params['name'],
@@ -372,7 +368,27 @@ function deleteGuest(request,response,next) {
 
 //************************************************** INVENTORY ****************************** 
 
-
+//server.post('/api/v1/event_inventory/:eventid', addItemToInventory);
+function addItemToInventory(request,response,next){
+    models.EventInventory.create({
+        eventid: request.params.eventid,
+        defaultitmeid: request.params.defaultitemid,
+        itemname: request.params.itemname,
+        quantity: request.params.quantity,
+        categoryid: request.params.categoryid,
+        ownderid: request.params.ownderid,
+        description: request.params.description,
+    }).then(function(item) {
+        var data = {
+            message: "New item added successfully",
+            data: item
+        };
+        response.send(data);
+        next();
+    }).catch(function (err) {
+        console.log(err)
+    });
+}
 
 
 var server = restify.createServer();
@@ -412,7 +428,7 @@ server.del('/api/v1/guests/eventid/:eventid/:guestid', deleteGuest);
 
 //************************************************** INVENTORY ****************************** 
 // server.get('/api/v1/event_inventory/:event_id', getInventoryForEvent);
-// server.post('/api/v1/event_inventory/:event_id', addItemToInventory);
+server.post('/api/v1/event_inventory/:eventid', addItemToInventory);
 // server.put('/api/v1/event_inventory/:id', updateItemInInventory);
 // server.del('/api/v1/event_inventory/:id', deleteItemFromInventory);
 
