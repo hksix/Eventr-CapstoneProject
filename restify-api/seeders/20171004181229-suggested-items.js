@@ -128,6 +128,11 @@ module.exports = {
       category_id: 1
     },
     {
+      id: 130,
+      item_name: 'Fruit',
+      category_id: 1
+    },
+    {
       id: 303,
       item_name: 'Streamers',
       category_id: 3,
