@@ -13,43 +13,67 @@ export class Calendar extends Component {
             events: [
               {
                 "title": "Demo Day",
-                "allDay": false,
-                "start": new Date(2017, 9, 17),//JS dates are indexed from 0-11, 9 == october
-                "end": new Date(2017, 9, 17)
+                "start": new Date(2017, 9, 17),
+                "end": new Date(2017, 9, 17),
+                "desc": "We Graduate Today!",
+                "cat": "Graduation",
+                "color": "red"
               },
               {
                 "title": "Hamza Job Day",
-                "allDay": false,
-                "start": new Date(2017, 9, 3),//JS dates are indexed from 0-11, 9 == october
-                "end": new Date(2017, 9, 3)
+                "start": new Date(2017, 9, 3),
+                "end": new Date(2017, 9, 3),
+                "desc": "Hamza got a job!",
+                "cat": "Other",
+                "color": "Green"
               },
               {
                 "title": "Friday the 13th",
-                "allDay": true,
-                "start": new Date(2017, 9, 13),//JS dates are indexed from 0-11, 9 == october
-                "end": new Date(2017, 9, 13)
+                "start": new Date(2017, 9, 13),
+                "end": new Date(2017, 9, 13),
+                "desc": "Luckiest day of the year",
+                "cat": "Holiday",
+                "color": "purple"
               }
             ]
         };
+        this.handleSelevtEvent = this.handleSelectEvent.bind(this);
         BigCalendar.setLocalizer(BigCalendar.momentLocalizer(moment));
     }
 
-    handleSelectSlot({start, end}) {
-        // console.log("handleSelectSlot: " + start + " - " + end);
+    handleSelectEvent({start, end}) {
         this.state.events.push({start: start, end: end});
         this.setState({});
-
     }
+
+    // onSlotChange(slotInfo) {
+    //   var startDate = moment(slotInfo.start.toLocaleString()).format("YYYY-MM-DDm:ss");
+    //   var endDate = moment(slotInfo.end.toLocaleString()).format("YYYY-MM-DDm:ss");
+    // }
+
+    // eventStyleGetter() {
+    //   var backgroundColor = event.color;
+    //   var styles = {
+    //     height: "55px",
+    //     backgroundColor: backgroundColor,
+    //     opacity: 0.8
+          
+    //   }
+
+    // }
+
+
 
     render() {
       return (
         <div className="event-calendar">
-          <BigCalendar 
-          selectable
-          popup
+          <BigCalendar    
+          popup="True"
+          popupOffset={30}
           culture='en'
           events={this.state.events}
-          onSelectSlot={(slotInfo) => this.handleSelectSlot(slotInfo)}
+          onSelectEvent={(eventInfo) => this.handleSelectEvent(eventInfo)}
+          eventPropGetter={(event) => ({style: {backgroundColor: event.color, height: "55px"}})}
           defaultDate={new Date()}
           views={{month: true}}
           defaultView="month"
