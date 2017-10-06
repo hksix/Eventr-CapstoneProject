@@ -46,7 +46,7 @@ export default class Map extends Component {
           searchBox.addListener('places_changed', function() {
             var places = searchBox.getPlaces();
         
-            if (places.length == 0) {
+            if (places.length === 0) {
               return;
             }
             // Clear out the old markers.

@@ -28,6 +28,16 @@ import { SelectFriends} from './setevent/SelectFriends.js'
 
 // taking the guess work out of your event
 
+import Confetti from 'react-dom-confetti';
+
+const config = {
+  angle: 90,
+  spread: 120,
+  startVelocity: 40,
+  elementCount: 60,
+  decay: 0.95
+};
+
 const styles = {
   headline: {
     fontSize: 24,
@@ -89,19 +99,10 @@ class SubmitButton extends Component {
           onClick={this.handleClose}>
         </FlatButton>,
       ];
-      const Snack=[
-        <Snackbar
-        open={this.state.open}
-        message="Event added to your calendar"
-        autoHideDuration={4000}
-        onRequestClose={this.handleRequestClose}
-      />
-      ]
       
-  
       return (
         <div>
-          <RaisedButton label="Sumbit" onClick={this.handleOpen} />
+          <RaisedButton label="Sumbit" onClick={this.handleOpen}> <Confetti active={this.state.open} config={config}/> </RaisedButton>
           <Dialog
             title="Lets do this"
             actions={actions}
@@ -223,7 +224,7 @@ export class SetEvent extends Component {
                 <p>Type:{this.state.eventType.toString()}</p>
                 <p>Number of people invited: {this.state.eventPeopleCount} {this.state.eventPeopleNames}</p>
                 <p>Number of required items needed</p>
-                <SubmitButton /> 
+                <SubmitButton></SubmitButton> 
             </div>
         </SwipeableViews>
         
