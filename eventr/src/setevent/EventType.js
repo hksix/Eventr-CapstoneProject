@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {Table,TableBody,TableHeader,TableHeaderColumn,TableRow,TableRowColumn,} from 'material-ui/Table';
-
+import axios from 'axios';
 const styles = {
     headline: {
       fontSize: 24,
@@ -23,9 +23,11 @@ export class PartyTypeTable extends Component {
     };
 }
     componentDidMount(){
-      fetch('/get_tables_data/event_categories/category_id')
-        .then(res=> res.json())
-        .then(types => this.setState({types}));
+      // fetch('/get_tables_data/event_categories/category_id')
+      axios.get('http://localhost:8080/api/v1/event_categories/1')
+        // .then(res=> res.json())
+        // .then(types => this.setState({types}));
+        .then((res) => console.log(res))
     }
 
     isSelected = (name) => {

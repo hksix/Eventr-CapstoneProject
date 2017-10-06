@@ -156,10 +156,10 @@ function deleteEvent(request,response,next){
 function getAllUsers(request,response,next){
     models.Users.findAll({})
     .then(function(Users) {
-        var data = {
-            data: Users
-        };
-        response.send(data);
+        // var data = {
+        //     data: Users
+        // };
+        response.send(Users);
         next();
     }).catch(function (err) {
         console.log(err)
@@ -172,11 +172,11 @@ function getUser(request, response, next) {
             'id': request.params.id
         }
     }).then(function(user) {
-        var data = {
-            error: `no user by id ${request.params.id}`,
-            data: user
-        };  
-        response.send(data);
+        // var data = {
+            // error: `no user by id ${request.params.id}`,
+            // data: user
+        // };  
+        response.send(user);
         next();
     }).catch(function (err) {
         console.log(err)
@@ -481,9 +481,9 @@ server.get('/api/v1/event_categories/:id/items', getAllItemsInEventCategory);
 
 //************************************************** INVENTORY ENDPOINTS ****************************** 
 server.get('/api/v1/event_inventory/:event_id', getInventoryForEvent);
-server.post('/api/v1/event_inventory/:event_id', addItemToInventory);
-server.put('/api/v1/event_inventory/:id', updateItemInInventory);
-server.del('/api/v1/event_inventory/:id', deleteItemFromInventory);
+// server.post('/api/v1/event_inventory/:event_id', addItemToInventory);
+// server.put('/api/v1/event_inventory/:id', updateItemInInventory);
+// server.del('/api/v1/event_inventory/:id', deleteItemFromInventory);
 
 
 

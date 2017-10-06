@@ -5,7 +5,7 @@ import ReactDOM from 'react-dom';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import MyAwesomeReactComponent from './MyAwesomeReactComponent';
 import ItemRegistry from './itemRegistry';
-
+import axios from 'axios';
 
 
 import { MenuHeader } from './Menubar.js'
@@ -16,29 +16,34 @@ class App extends Component {
   componentDidMount(){
 
     // fetch('/users')
-    fetch('/get_tables_data/users/user_id')
-      .then(res=> res.json())
-      .then(users => this.setState({users}));
+    // fetch('/get_tables_data/users/user_id')
+    axios.get('http://localhost:8080/api/v1/users')
+      // .then(res=> res.json())
+      // .then(users => this.setState({users}));
+      .then((res) => {
+        console.log(res);
+        this.setState({users:res.data})
+      })
   }
 
   render() {
     return (
       <div className="App">
         <MenuHeader />
-        {/* <h1>Users Table example info</h1>
+        <h1>Users Table example info</h1>
         {this.state.users.map(user =>
           <div key={user.user_id}>
               <ul>
                 <li>{user.fname} {user.lname}</li>
-                <li>Picture {user.picture}</li>
+                {/* <li>Picture {user.picture}</li> */}
                 <li>Email: {user.email}</li>
-                <li>Join-date: {user.join_date}</li>
-                <li>Telephone: {user.phone}</li>
+                {/* <li>Join-date: {user.join_date}</li> */}
+                {/* <li>Telephone: {user.phone}</li> */}
                 <li>Location: {user.location}</li>
-                <li>User Name: {user.user_name}</li>
+                {/* <li>User Name: {user.user_name}</li> */}
                </ul>
             </div>
-        )} */}
+        )}
         <div>
         </div>
       </div>
