@@ -8,6 +8,7 @@ module.exports = (sequelize, DataTypes) => {
     date: DataTypes.DATE,
     time: DataTypes.TIME,
     location: DataTypes.TEXT,
+    //event category id from Event Categories ex: taco night is 0
     category_id: DataTypes.INTEGER,
     createdAt: {
       type: DataTypes.DATE(3),
