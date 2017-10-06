@@ -3,31 +3,31 @@
 module.exports = {
   up: (queryInterface, Sequelize) => {
     return queryInterface.bulkInsert('ItemCategories', [{
-      // id: 1,
+      id: 1,
       name: 'Food'
     },
     {
-      // id: 2,
+      id: 2,
       name: 'Beverages'
     },
     {
-      // id: 3,
+      id: 3,
       name: 'Decorations'
     },
     {
-      // id: 4,
+      id: 4,
       name: 'Tableware'
     },
     {
-      // id: 5,
+      id: 5,
       name: 'Misc'
     },
     {
-      // id: 6,
+      id: 6,
       name: 'Equipment'
     },
     {
-      // id: 7,
+      id: 7,
       name: 'Entertainment'
     },
     ])
