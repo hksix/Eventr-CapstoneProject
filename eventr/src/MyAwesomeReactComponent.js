@@ -14,12 +14,11 @@ import { Welcome } from './Welcome.js'
 import { SetEvent } from './SetEvent.js'
 import UserMenu from './sidemenu/UserMenu.js';
 import Footer from './Footer.js';
+import { Calendar } from './Calendar.js'
 
 import './index.css';
 import MapContainer from "./MapContainer.js";
 import { Calendar } from './Calendar.js'
-
-
 
 
 
@@ -38,11 +37,15 @@ export default class MenuOptions extends Component {
 
       render(){
         return (
+          
             <Router>
+              
               <Tabs
                 className="menubar"
                 value={this.state.value}
                 onChange={this.handleChange}>
+                
+                
                 <Tab icon={<FontIcon className="material-icons"><i class="material-icons">format_list_bulleted</i></FontIcon>}/>
                 
                 <Tab label="Tab A" 
@@ -51,7 +54,7 @@ export default class MenuOptions extends Component {
                     value="a"
                     containerElement={<Link to="/home" />}
                 >
-                    {/* <Route exact path="/home" component={Sidebar}/> */}
+                    <Route exact path="/home"/>
                     <div className="main-content-container">
                       <div className="side-content-container">
                         <UserMenu />
@@ -62,9 +65,12 @@ export default class MenuOptions extends Component {
                       <div className="changing-content-container" >
                         <Welcome/>
                       </div>
+                      
                     </div>
                     
                 </Tab>
+                
+                
 
                 {/* renders events page */}
                 <Tab
@@ -113,11 +119,12 @@ export default class MenuOptions extends Component {
                         <UserMenu />
                       </div>
                       <div >
-                        <MapContainer />
+                        {/* <MapContainer /> */}
                       </div>
                     </div>
                 </Tab>
               </Tabs>
+              
             </Router>
           );
         }
@@ -132,8 +139,10 @@ export default class MenuOptions extends Component {
 export const MyAwesomeReactComponent = () => (
 
     <div>
+      
       <MenuOptions />
       <Footer />
+      
     </div>
 
 );

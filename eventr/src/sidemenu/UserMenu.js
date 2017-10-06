@@ -7,6 +7,10 @@ import MiniEvents from './MiniEvents.js';
 
 export default class UserMenu extends Component {
 
+  
+                      
+                        
+                      
 
   render(){
     return(
@@ -15,6 +19,7 @@ export default class UserMenu extends Component {
         <Alerts />
         <MiniEvents />
       </div>
+      
     )
   }
 }

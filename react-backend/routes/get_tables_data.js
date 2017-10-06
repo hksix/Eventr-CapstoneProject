@@ -8,6 +8,7 @@ router.get('/:table/:order', function(req, res, next) {
     `)
       .then((results)=>{
         res.json(results)
+        console.log(results)
 
       });
 });
