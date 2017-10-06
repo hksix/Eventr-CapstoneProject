@@ -93,6 +93,11 @@ module.exports = {
       category_id: 1
     },
     {
+      id: 135,
+      item_name: 'Ground Beef',
+      category_id: 1
+    },
+    {
       id: 119,
       item_name: 'Other Meat Option',
       category_id: 1
@@ -125,6 +130,11 @@ module.exports = {
     {
       id: 127,
       item_name: 'Salad Dressing',
+      category_id: 1
+    },
+    {
+      id: 133,
+      item_name: 'Veggies',
       category_id: 1
     },
     {
