@@ -452,42 +452,42 @@ var server = restify.createServer();
 server.use(restify.plugins.bodyParser());
 server.use(restify.plugins.queryParser());
 server.use(restifyValidator);
-
+var extension = `/api/v1/${process.env.API_KEY}`;
 //************************************************** EVENTS ENDPOINTS ****************************** 
-server.get('/api/v1/events', getAllEvents); //http://localhost:8080/api/events
-server.get('/api/v1/events/host/:id', getAllEventsByHost); //http://localhost:8080/api/events/hostid/1
-server.get('/api/v1/events/guest/:id', getAllEventsByGuest); 
-server.post('/api/v1/events', addEvent); 
-server.put('/api/v1/events/:id', updateEvent);
-server.del('/api/events/:id', deleteEvent);
+server.get(`${extension}/events`, getAllEvents); 
+server.get(`${extension}/events/host/:id`, getAllEventsByHost); 
+server.get(`${extension}/events/guest/:id`, getAllEventsByGuest); 
+server.post(`${extension}/events`, addEvent); 
+server.put(`${extension}/events/:id`, updateEvent);
+server.del(`${extension}/events/:id`, deleteEvent);
 
 
 //************************************************** USERS ENDPOINTS ****************************** 
-server.get('/api/v1/users', getAllUsers);
-server.get('/api/v1/users/:id', getUser);
-server.post('/api/v1/users', addUser);
-server.put('/api/v1/users/:id', updateUser);
-server.del('/api/v1/users/:id', deleteUser);
+server.get(`${extension}/users`, getAllUsers);
+server.get(`${extension}/users/:id`, getUser);
+server.post(`${extension}/users`, addUser);
+server.put(`${extension}/users/:id`, updateUser);
+server.del(`${extension}/users/:id`, deleteUser);
 
 //************************************************** GUESTS ENDPOINTS****************************** 
-server.get('/api/v1/guests/event/:eventid', getAllGuestsByEvent);
-server.post('/api/v1/guests/:eventid/:guestid', addGuest);
-server.del('/api/v1/guests/eventid/:eventid/:guestid', deleteGuest);
+server.get(`${extension}/guests/event/:eventid`, getAllGuestsByEvent);
+server.post(`${extension}/guests/:eventid/:guestid`, addGuest);
+server.del(`${extension}/guests/eventid/:eventid/:guestid`, deleteGuest);
 
 //************************************************** EVENT TYPES ENDPOINTS ****************************** 
-server.get('/api/v1/event_categories', getAllEventCategories);
-server.get('/api/v1/event_categories/:id', getEventCategory);
-server.get('/api/v1/event_categories/:id/items', getAllItemsInEventCategory);
+server.get(`${extension}/event_categories`, getAllEventCategories);
+server.get(`${extension}/event_categories/:id`, getEventCategory);
+server.get(`${extension}/event_categories/:id/items`, getAllItemsInEventCategory);
 
 //************************************************** INVENTORY ENDPOINTS ****************************** 
-server.get('/api/v1/event_inventory/:event_id', getInventoryForEvent);
+server.get(`${extension}/event_inventory/:event_id`, getInventoryForEvent);
 // server.post('/api/v1/event_inventory/:event_id', addItemToInventory);
 // server.put('/api/v1/event_inventory/:id', updateItemInInventory);
 // server.del('/api/v1/event_inventory/:id', deleteItemFromInventory);
 
 
 
-
+// module.exports = server;
 server.listen(8080, function() {
     console.log('%s listening at %s', server.name, server.url);
   });

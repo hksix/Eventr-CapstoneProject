@@ -6,9 +6,8 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import MyAwesomeReactComponent from './MyAwesomeReactComponent';
 import ItemRegistry from './itemRegistry';
 import axios from 'axios';
-
-
 import { MenuHeader } from './Menubar.js'
+export const ROOT_URL = `http://localhost:8080/api/v1/${process.env.API_KEY}`;
 
 class App extends Component {
   state = {users:[]}
@@ -17,7 +16,7 @@ class App extends Component {
 
     // fetch('/users')
     // fetch('/get_tables_data/users/user_id')
-    axios.get('http://localhost:8080/api/v1/users')
+    axios.get(`${ROOT_URL}/users`)
       // .then(res=> res.json())
       // .then(users => this.setState({users}));
       .then((res) => {
