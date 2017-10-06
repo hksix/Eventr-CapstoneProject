@@ -4,12 +4,12 @@ module.exports = {
   up: (queryInterface, Sequelize) => {
     return queryInterface.bulkInsert('ItemsForEventCategories', [{
       //food
-        //cups
+      //cups
       events_category_id: 1,
       item_id: 1
     },
     {
-        //plates
+      //plates
       events_category_id: 1,
       item_id: 2
     },
