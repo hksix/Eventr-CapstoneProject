@@ -4,7 +4,7 @@ module.exports = {
   up: (queryInterface, Sequelize) => {
     return queryInterface.bulkInsert('Events', [{
       id: 1,
-      host_id: 135,
+      host_id: 3,
       name: 'Birthday Party',
       description: 'Come celebrate Stephanie\'s birthday!',
       date: '2017-10-25',
@@ -13,7 +13,7 @@ module.exports = {
     },
     {
       id: 2,
-      host_id: 135,
+      host_id: 3,
       name: 'Family Celebration',
       description: 'Come celebrate Grandma\'s 90th birthday!',
       date: '2017-11-20',
@@ -22,7 +22,7 @@ module.exports = {
     },
     {
       id: 3,
-      host_id: 135,
+      host_id: 4,
       name: 'Dance Party',
       description: 'Let\'s dance!',
       date: '2017-12-05',
@@ -31,7 +31,7 @@ module.exports = {
     },
     {
       id: 4,
-      host_id: 135,
+      host_id: 2,
       name: 'Beach Weekend',
       description: 'Renting a beachoutse for the weekend and excited to see everyone',
       date: '2018-01-25',
@@ -40,7 +40,7 @@ module.exports = {
     },
     {
       id: 5,
-      host_id: 135,
+      host_id: 1,
       name: 'Family Reunion',
       description: 'Celebrating our family',
       date: '2017-10-25',
