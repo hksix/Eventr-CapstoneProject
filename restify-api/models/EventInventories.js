@@ -1,6 +1,6 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
-  var EventInventory = sequelize.define('EventInventories', {
+  var EventInventories = sequelize.define('EventInventories', {
     // itemid: DataTypes.INTEGER,
     eventid: DataTypes.INTEGER,
     defaultitemid: DataTypes.INTEGER,
@@ -18,6 +18,6 @@ module.exports = (sequelize, DataTypes) => {
       defaultValue: sequelize.literal('CURRENT_TIMESTAMP(3)'),
     },
   }); 
-  return EventInventory;
+  return EventInventories;
 };
 
