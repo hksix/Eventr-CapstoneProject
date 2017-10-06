@@ -1,7 +1,7 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
   var SuggestedItems = sequelize.define('SuggestedItems', {
-    //
+    //id for each item that we assign
     item_id: DataTypes.INTEGER,
     // Item name we name in table
     item_name: DataTypes.STRING,

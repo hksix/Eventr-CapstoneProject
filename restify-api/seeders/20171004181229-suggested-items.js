@@ -118,6 +118,16 @@ module.exports = {
       category_id: 1
     },
     {
+      id: 125,
+      item_name: 'Salad',
+      category_id: 1
+    },
+    {
+      id: 127,
+      item_name: 'Salad Dressing',
+      category_id: 1
+    },
+    {
       id: 303,
       item_name: 'Streamers',
       category_id: 3,
@@ -150,6 +160,11 @@ module.exports = {
     {
       id: 308,
       item_name: 'Lights',
+      category_id: 3,
+    },
+    {
+      id: 307,
+      item_name: 'Party Hats',
       category_id: 3,
     },
     {
