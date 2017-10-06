@@ -40,8 +40,8 @@ function getAllEventsByHost(request, response, next) {
     });
 }
 
-
 //server.get('/api/v1/events/guest/:id', getAllEventsByGuest); 
+
 function getAllEventsByGuest(request, response, next) {
     models.Users.find({
         where: {
@@ -404,6 +404,7 @@ function getAllItemsInEventCategory(request,response,next) {
 
 //************************************************** INVENTORY ****************************** 
 
+
 //server.post('/api/v1/event_inventory/:eventid', addItemToInventory);
 function addItemToInventory(request,response,next){
     models.EventInventory.create({
@@ -425,6 +426,7 @@ function addItemToInventory(request,response,next){
         console.log(err)
     });
 }
+
 // server.get('/api/v1/event_inventory/:event_id', getInventoryForEvent);
 function getInventoryForEvent(request,response,next) {
     models.EventInventory.findAll({
@@ -441,8 +443,6 @@ function getInventoryForEvent(request,response,next) {
         next();
     });
 }
-
-
 
 
 //************************************************** SERVER ****************************** 

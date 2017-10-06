@@ -54,7 +54,7 @@
       autoLogAppEvents : true,
       xfbml            : false,
       version          : 'v2.10',
-      status           : true
+      // status           : true
     });
   
     // Now that we've initialized the JavaScript SDK, we call 
@@ -71,6 +71,16 @@
   
     FB.getLoginStatus(function(response) {
       statusChangeCallback(response);
+      if (response.status === 'connected') {
+        console.log("FB.getLoginStatus logged in")
+        var uid = response.authResponse.userID;
+        var accessToken = response.authResponse.accessToken;
+      } else if ( response.status === 'not_authorized'){
+        console.log("FB.getLoginStatus not authorized")
+      } else {
+        console.log("FB.getLoginStatus not logged in")
+      }
+      
     });
   
     };

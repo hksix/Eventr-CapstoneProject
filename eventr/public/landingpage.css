@@ -12,6 +12,23 @@ main {
 .landing-header-container {
   max-height: 500px;
 }
+.navigation {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.login a {
+  text-decoration: none;
+  font-style: none;
+  color: white;
+  margin-right: 30px;
+  font-size: 20px;
+}
+.login a:hover {
+  cursor: pointer;
+  color: #007884;
+  transition: all .75s;
+}
 
 .video-container {
   position: relative;
