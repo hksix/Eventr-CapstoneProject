@@ -7,7 +7,8 @@ import MyAwesomeReactComponent from './MyAwesomeReactComponent';
 import ItemRegistry from './itemRegistry';
 import axios from 'axios';
 import { MenuHeader } from './Menubar.js'
-export const ROOT_URL = `http://localhost:8080/api/v1/${process.env.API_KEY}`;
+import apikey from './apikeys.js';
+export const ROOT_URL = `http://localhost:8080/api/v1/${apikey}`;
 
 class App extends Component {
   state = {users:[]}
