@@ -24,7 +24,7 @@ module.exports = {
       id: 3,
       host_id: 4,
       name: 'Dance Party',
-      description: 'Let\'s dance!',
+      description: 'Bachelorette Party',
       date: '2017-12-05',
       location: '444 Belle Isle Cir NE Atlanta GA 30329',
       category_id: 3,
@@ -33,7 +33,7 @@ module.exports = {
       id: 4,
       host_id: 2,
       name: 'Beach Weekend',
-      description: 'Renting a beachoutse for the weekend and excited to see everyone',
+      description: 'Renting a beachouse for the weekend and excited to see everyone',
       date: '2018-01-25',
       location: '404 East Bay St Savannah GA 31401',
       category_id: 1,
@@ -44,7 +44,7 @@ module.exports = {
       name: 'Family Reunion',
       description: 'Celebrating our family',
       date: '2017-10-25',
-      location: '1212 Belle Isle Cir NE Atlanta GA 30329',
+      location: '1212 Peachtree Cir NE Atlanta GA 30329',
       category_id: 4,
     }
     ])
