@@ -40,6 +40,8 @@ function getAllEventsByHost(request, response, next) {
     });
 }
 
+//server.get('/api/v1/events/guest/:id', getAllEventsByGuest); 
+
 function getAllEventsByGuest(request, response, next) {
     models.Users.find({
         where: {
@@ -477,14 +479,11 @@ server.get('/api/v1/event_categories', getAllEventCategories);
 server.get('/api/v1/event_categories/:id', getEventCategory);
 server.get('/api/v1/event_categories/:id/items', getAllItemsInEventCategory);
 
-//************************************************** INVENTORY ****************************** 
-// server.get('/api/v1/event_inventory/:event_id', getInventoryForEvent);
-server.post('/api/v1/event_inventory/:eventid', addItemToInventory);
 //************************************************** INVENTORY ENDPOINTS ****************************** 
 server.get('/api/v1/event_inventory/:event_id', getInventoryForEvent);
-// server.post('/api/v1/event_inventory/:event_id', addItemToInventory);
-// server.put('/api/v1/event_inventory/:id', updateItemInInventory);
-// server.del('/api/v1/event_inventory/:id', deleteItemFromInventory);
+server.post('/api/v1/event_inventory/:event_id', addItemToInventory);
+server.put('/api/v1/event_inventory/:id', updateItemInInventory);
+server.del('/api/v1/event_inventory/:id', deleteItemFromInventory);
 
 
 
