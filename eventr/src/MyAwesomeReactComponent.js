@@ -14,12 +14,8 @@ import { Welcome } from './Welcome.js'
 import { SetEvent } from './SetEvent.js'
 import UserMenu from './sidemenu/UserMenu.js';
 import Footer from './Footer.js';
-
 import './index.css';
 import MapContainer from "./MapContainer.js";
-
-
-
 
 export default class MenuOptions extends Component {
       constructor(props) {
