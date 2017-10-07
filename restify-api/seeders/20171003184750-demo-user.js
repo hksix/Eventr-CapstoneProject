@@ -38,6 +38,34 @@ module.exports = {
         phone: '4045056789',
         location: 'Atlanta'
       },
+      {
+        id: 5,
+        fName: 'Sarah',
+        lName: 'Abbey',
+        profPic: 'sa.jpg',
+        email: 'sarah@37.com',
+        phone: '4045554433',
+        location: 'Atlanta'
+      },
+      {
+        id: 6,
+        fName: 'Bob',
+        lName: 'Ross',
+        profPic: 'Bob.jpg',
+        email: 'bob@ross.com',
+        phone: '4043332266',
+        location: 'Atlanta'
+      },
+      {
+        id: 7,
+        fName: 'Bobby',
+        lName: 'Bob',
+        profPic: 'bobby.jpg',
+        email: 'bobby@bob.com',
+        phone: '4043332266',
+        location: 'Atlanta'
+      },
+
     ], {});
   },
 
