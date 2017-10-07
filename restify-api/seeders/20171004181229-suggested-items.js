@@ -2,7 +2,8 @@
 
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    return queryInterface.bulkInsert('SuggestedItems', [{
+    return queryInterface.bulkInsert('SuggestedItems', [
+    {
       id: 100,
       item_name: 'Cake',
       category_id: 1
@@ -168,6 +169,11 @@ module.exports = {
       category_id: 3,
     },
     {
+      id: 3071,
+      item_name: 'Party Hats',
+      category_id: 3,
+    },
+    {
       id: 308,
       item_name: 'Pinata',
       category_id: 3,
@@ -175,11 +181,6 @@ module.exports = {
     {
       id: 350,
       item_name: 'Lights',
-      category_id: 3,
-    },
-    {
-      id: 307,
-      item_name: 'Party Hats',
       category_id: 3,
     },
     {
@@ -222,7 +223,6 @@ module.exports = {
       item_name: 'Clown',
       category_id: 7,
     }
-
     ])
   },
 
