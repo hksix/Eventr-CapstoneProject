@@ -23,12 +23,12 @@ module.exports = {
       category_id: 2
     },
     {
-      id: 405,
+      id: 400,
       item_name: 'Juice',
       category_id: 2
     },
     {
-      id: 406,
+      id: 4,
       item_name: 'Beer',
       category_id: 2
     },
@@ -53,7 +53,7 @@ module.exports = {
       category_id: 3,
     },
     {
-      id: 401,
+      id: 4011,
       item_name: 'Plates',
       category_id: 4,
     },
@@ -173,7 +173,7 @@ module.exports = {
       category_id: 3,
     },
     {
-      id: 308,
+      id: 350,
       item_name: 'Lights',
       category_id: 3,
     },
@@ -198,7 +198,7 @@ module.exports = {
       category_id: 6,
     },
     {
-      id: 602,
+      id: 603,
       item_name: 'Bounce House',
       category_id: 6,
     },
