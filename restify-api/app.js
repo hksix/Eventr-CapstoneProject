@@ -10,6 +10,9 @@ var models = require('./models/index');
 var error_messages = null;
 
 
+
+
+
 //************************************************** EVENTS ****************************** 
 function getAllEvents(request, response, next) {
     models.Events.findAll({})

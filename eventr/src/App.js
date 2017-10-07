@@ -5,28 +5,78 @@ import ReactDOM from 'react-dom';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import MyAwesomeReactComponent from './MyAwesomeReactComponent';
 import ItemRegistry from './itemRegistry';
-
-
+// import {withRouter} from './react-router';
 
 import { MenuHeader } from './Menubar.js'
+
+// import Auth from './Auth/Auth.js';
+
+// const auth = new Auth();
+// auth.login();
 
 
 
 class App extends Component {
-  state = {users:[]}
-
-  componentDidMount(){
-
-    // fetch('/users')
-    fetch('/get_tables_data/users/user_id')
-      .then(res=> res.json())
-      .then(users => this.setState({users}));
+  // state = {users:[]}
+  goTo(route) {
+    this.props.history.replace(`/${route}`)
   }
 
+  login() {
+    this.props.auth.login();
+  }
+
+  logout() {
+    this.props.auth.logout();
+  }
+
+  
+
+  // componentDidMount(){
+  //   // fetch('/users')
+  //   fetch('/get_tables_data/users/user_id')
+  //     .then(res=> res.json())
+  //     .then(users => this.setState({users}));
+  // }
+  
   render() {
+    const { isAuthenticated } = this.props.auth;
+    
     return (
       <div className="App">
-        <MenuHeader />
+        
+        {/* <MenuHeader /> */}
+        <header>
+        <button
+              bsStyle="primary"
+              className="btn-margin"
+              onClick={this.goTo.bind(this, 'home')}
+            >
+              Home
+            </button>
+            {
+              !isAuthenticated() && (
+                  <button
+                    bsStyle="primary"
+                    className="btn-margin"
+                    onClick={this.login.bind(this)}
+                  >
+                    Log In
+                  </button>
+                )
+            }
+            {
+              isAuthenticated() && (
+                  <button
+                    bsStyle="primary"
+                    className="btn-margin"
+                    onClick={this.logout.bind(this)}
+                  >
+                    Log Out
+                  </button>
+                )
+            }
+            </header>
         {/* <h1>Users Table example info</h1>
         {this.state.users.map(user =>
           <div key={user.user_id}>
@@ -41,8 +91,8 @@ class App extends Component {
                </ul>
             </div>
         )} */}
-        <div>
-        </div>
+        {/* <div> */}
+        {/* </div> */}
       </div>
     );
   }
