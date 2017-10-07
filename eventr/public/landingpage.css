@@ -12,6 +12,23 @@ main {
 .landing-header-container {
   max-height: 500px;
 }
+.navigation {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.login a {
+  text-decoration: none;
+  font-style: none;
+  color: white;
+  margin-right: 30px;
+  font-size: 20px;
+}
+.login a:hover {
+  cursor: pointer;
+  color: #007884;
+  transition: all .75s;
+}
 
 .video-container {
   position: relative;
@@ -33,8 +50,51 @@ main {
   left: 0px;
   z-index: 10;
   background: #50B9D1;
-  opacity: 0.5;
+  opacity: 0.3;
 }
+
+.main-headline {
+  position: absolute;
+  color: white;
+  font-family: 'Open Sans', sans-serif;
+  width: 1000px;
+  font-size: 1.5em;
+  z-index: 20;
+  margin-left: 12%;
+  margin-top: 15%;
+}
+
+.sub-headline {
+  position: absolute;
+  color: white;
+  font-family: 'Roboto', sans-serif;
+  width: 1000px;
+  font-size: 1.5em;
+  z-index: 20;
+  margin-left: 25%;
+  margin-top: 22%;
+}
+
+#get-started {
+  position: absolute;
+  z-index: 20;
+  height: 55px;
+  width: 150px;
+  margin-left: 45%;
+  margin-top: 30%;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 1.3em;
+  border: none;
+  background-color: white;
+  color: #50B9D1;
+}
+
+#get-started:hover {
+  color: white;
+  background-color: #50B9D1;
+}
+
+
 .hidden {
   display: none;
 }
