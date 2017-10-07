@@ -21,6 +21,18 @@ module.exports = {
     {
       id: 4,
       category_name: 'Reunion'
+    },
+    {
+      id: 5,
+      category_name: 'Christmas Party'
+    },
+    {
+      id: 6,
+      category_name: 'New Years Party'
+    },
+    {
+      id: 7,
+      category_name: 'General Party'
     }
     ])
   },

@@ -1,6 +1,7 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
   var EventCategories = sequelize.define('EventCategories', {
+    // ex: taco night
     category_name: DataTypes.STRING,
     createdAt: {
       type: DataTypes.DATE(3),
