@@ -11,30 +11,25 @@ const styles = {
     },
   };
 
-export class PartyTypeTable extends Component {
+export default class PartyTypeTable extends Component {
     constructor(props){
-        
-        super(props);
-        
-    this.state = {
-      height: '300px',
-      selected: [null],
-      types:[]
-
-    };
-}
-    componentDidMount(){
-      // fetch('/get_tables_data/event_categories/category_id')
-      axios.get(`${ROOT_URL}/event_categories/1`)
-        // .then(res=> res.json())
-        // .then(types => this.setState({types}));
-        .then((res) => console.log(res))
+      super(props);
+      this.state = {
+        height: '300px',
+        selected: [null],
+        types:[]
+      }
     }
-
+    componentDidMount(){
+      axios.get(`${ROOT_URL}/event_categories`)
+        .then((res) => {
+          console.log(res);
+          this.setState({types:res.data})
+        })
+    }
     isSelected = (name) => {
         return name === this.props.type 
     };
-  
     handleRowSelection = (selectedRows) => {
 
         this.setState({
@@ -67,3 +62,5 @@ export class PartyTypeTable extends Component {
       );
     }
   }
+
+  // export default PartyTypeTable;

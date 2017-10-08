@@ -3,7 +3,7 @@ import {Tabs, Tab} from 'material-ui/Tabs';
 import FontIcon from 'material-ui/FontIcon';
 import MapsPersonPin from 'material-ui/svg-icons/maps/person-pin';
 import Paper from 'material-ui/Paper';
-import FetchData from './axios.js';
+// import FetchData from './axios.js';
 import {
     BrowserRouter as Router,
     Route,
@@ -16,6 +16,7 @@ import UserMenu from './sidemenu/UserMenu.js';
 import Footer from './Footer.js';
 import './index.css';
 import MapContainer from "./MapContainer.js";
+import PartyTypeTable from './setevent/EventType.js';
 
 export default class MenuOptions extends Component {
       constructor(props) {
@@ -133,8 +134,9 @@ export const MyAwesomeReactComponent = () => (
     <div>
       
       <MenuOptions />
+      <PartyTypeTable/>
       <Footer />
-      <FetchData />
+
     </div>
 
 );

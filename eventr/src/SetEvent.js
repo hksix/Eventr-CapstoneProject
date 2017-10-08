@@ -16,7 +16,7 @@ import Snackbar from 'material-ui/Snackbar';
 
 import {DateSelector, TimeSelector, LocationSelector} from './setevent/WhenWhere.js'
 import {NameSelector, DescriptionSelector} from './setevent/NameDesc.js'
-import { PartyTypeTable } from './setevent/EventType.js'
+import PartyTypeTable  from './setevent/EventType.js'
 import { SelectFriends} from './setevent/SelectFriends.js'
 // google maps drawer for example
 // request invite

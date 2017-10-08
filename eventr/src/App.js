@@ -12,19 +12,12 @@ import apikey from './apikeys.js';
 export const ROOT_URL = `http://ec2-52-207-242-113.compute-1.amazonaws.com/api/v1/${apikey}`;
 
 
-
 class App extends Component {
   state = {users:[]}
 
   componentDidMount(){
-
-    // fetch('/users')
-    // fetch('/get_tables_data/users/user_id')
     axios.get(`${ROOT_URL}/users`)
-      // .then(res=> res.json())
-      // .then(users => this.setState({users}));
       .then((res) => {
-        console.log(res);
         this.setState({users:res.data})
       })
   }
@@ -47,8 +40,7 @@ class App extends Component {
                </ul>
             </div>
         )}
-        <div>
-        </div>
+       
       </div>
     );
   }
