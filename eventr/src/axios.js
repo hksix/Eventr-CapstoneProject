@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import ReactDOM from 'react-dom';
 import axios from 'axios';
 
 class FetchData extends Component {
@@ -10,21 +9,23 @@ class FetchData extends Component {
         };
     }
     componentDidMount() {
-        axios.get('')
+        axios.get('http://localhost8080/api/v1/events')
         .then(res => {
-            
+           const events = res.data.map(obj => obj.data);
+           this.setState({events}); 
         }
         )
         
     }
     render() {
         return (
-            <div></div>
+            <div>
+                {this.state.events.map(event => 
+                <div key={event.id}>{event}</div>
+                )}
+            </div>
         );
     }
 }
 
-ReactDOM.render(
-    <FetchData/>,
-    document.getElementById('root')
-);
+export default FetchData;
