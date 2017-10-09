@@ -446,6 +446,34 @@ function addItemToInventory(request,response,next){
         }
     })
 }
+
+//server.put('/api/v1/event_inventory/:id', updateItemInInventory);
+function updateItemInInventory(request,response,next) {
+    models.EventInventory.findAll({
+        attributes: ['itemname', 'quantity', 'ownerid', 'description'],
+        where: {
+            id: request.params.id
+        }
+    }).then(function(inventory) {
+        if(inventory){
+            user.updateAttributes({
+                itemname: request.params.itemname,
+                quantity: request.params.quantity,
+                ownerid: request.params.ownerid,
+                description: request.params.description
+            }).then(function(inventory){
+                var data = {
+                    message: "Updated inventory successfully",
+                    data: inventory
+                };
+                response.send(data);
+                next();
+            }).catch(function (err) {
+                console.log(err)
+            });
+        }
+    });
+}
 // server.get('/api/v1/event_inventory/:event_id', getInventoryForEvent);
 function getInventoryForEvent(request,response,next) {
     models.EventInventory.findAll({
