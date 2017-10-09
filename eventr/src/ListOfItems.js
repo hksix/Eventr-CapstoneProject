@@ -43,13 +43,7 @@ class Form extends Component {
 			this.input.placeholder = "Add Items here...";
 		}
 	}
-	componentDidMount(){
-		console.log("ehy")
-		axios.get(`${ROOT_URL}/event_categories/1/items`)
-			.then((res)=>{
-				console.log(res)
-			})
-	}
+	
 	
 	render() {
         const FloatingButtonAdd = () => (
@@ -130,13 +124,19 @@ const List = ({todos, remove}) => {
 
 class ItemList extends Component {
 	constructor(props) {
-        super(props);	
+		super(props);
+		this.state={
+			id: '',
+			value:'',
+		}
+			
         const introData = [
 			{
 				id: -3, 
 				value: "This is where your stuff will go"
 			},
 		];
+		
         
 		const localData = localStorage.todos && JSON.parse(localStorage.todos);
 		this.state = { 
@@ -145,6 +145,18 @@ class ItemList extends Component {
 		// binding methods
 		this.addTodo = this.addTodo.bind(this);
 		this.removeTodo = this.removeTodo.bind(this);
+		
+	}
+	componentWillUpdate(){
+		console.log("ehy")
+		axios.get(`${ROOT_URL}/event_categories/1/items`)
+			.then((res)=>{
+				res.data.map(function(item) {
+					this.setState
+					console.log(item.item_name)
+				})
+				
+			})
 	}
 	// Handler to update localStorage
 	updateLocalStorage() {
