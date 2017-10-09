@@ -403,27 +403,48 @@ function getAllItemsInEventCategory(request,response,next) {
 }
 
 //************************************************** INVENTORY ****************************** 
-
+function isItemAdded(eventid, itemname){
+    return models.EventInventory.count({
+        where: {
+            eventid: eventid,
+            itemname: itemname
+        }
+    }).then(count => {
+        if (count != 0) {
+            console.log("working")
+            return false;
+        }
+        console.log("Nooooo")
+        return true;
+    })
+}
 //server.post('/api/v1/event_inventory/:eventid', addItemToInventory);
 function addItemToInventory(request,response,next){
-    models.EventInventory.create({
-        eventid: request.params.eventid,
-        defaultitmeid: request.params.defaultitemid,
-        itemname: request.params.itemname,
-        quantity: request.params.quantity,
-        categoryid: request.params.categoryid,
-        ownderid: request.params.ownderid,
-        description: request.params.description,
-    }).then(function(item) {
-        var data = {
-            message: "New item added successfully",
-            data: item
-        };
-        response.send(data);
-        next();
-    }).catch(function (err) {
-        console.log(err)
-    });
+    var itemIsAdded = isItemAdded(request.params.eventid, request.params.itemname)
+    .then(isItemAdded => {
+        if(isItemAdded === false){
+            response.send('this item is already added')
+        } else {
+            models.EventInventory.create({
+                eventid: request.params.eventid,
+                defaultitmeid: request.params.defaultitemid,
+                itemname: request.params.itemname,
+                quantity: request.params.quantity,
+                categoryid: request.params.categoryid,
+                ownderid: request.params.ownderid,
+                description: request.params.description,
+            }).then(function(item) {
+                var data = {
+                    message: "New item added successfully",
+                    data: item
+                };
+                response.send(data);
+                next();
+            }).catch(function (err) {
+            console.log(err)
+            });
+        }
+    })
 }
 // server.get('/api/v1/event_inventory/:event_id', getInventoryForEvent);
 function getInventoryForEvent(request,response,next) {
