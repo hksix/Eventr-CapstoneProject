@@ -443,7 +443,25 @@ function getInventoryForEvent(request,response,next) {
 }
 
 
-
+//server.del('/api/v1/event_inventory/:defaultitemid/:itemname', deleteItemFromInventory);
+function deleteItemFromInventory(request,response,next) {
+    models.EventInventory.destroy({
+        where: {
+            eventid: request.params.eventid,
+            defaultitemid: request.params.defaultitemid,
+            itemname: request.params.itemname
+        }
+    }).then(function(item) {
+        var data = {
+            message: `Deleted item from event ${request.params.eventid} successfully`,
+            data: item
+        };
+        response.send(data);
+        next();
+    }).catch(function (err) {
+        console.log(err)
+    });
+}
 
 //************************************************** SERVER ****************************** 
 
@@ -483,7 +501,7 @@ server.get(`${extension}/event_categories/:id/items`, getAllItemsInEventCategory
 server.get(`${extension}/event_inventory/:event_id`, getInventoryForEvent);
 // server.post('/api/v1/event_inventory/:event_id', addItemToInventory);
 // server.put('/api/v1/event_inventory/:id', updateItemInInventory);
-// server.del('/api/v1/event_inventory/:id', deleteItemFromInventory);
+server.del(`${extension}/event_inventory/:id`, deleteItemFromInventory);
 
 
 
