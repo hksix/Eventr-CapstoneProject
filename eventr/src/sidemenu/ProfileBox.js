@@ -5,6 +5,7 @@ import axios from 'axios';
 import { ROOT_URL } from '../App.js';
 import Drawer from 'material-ui/Drawer';
 import AppBar from 'material-ui/AppBar';
+import TextField from 'material-ui/TextField';
 
 const styles = {
       // width:'20%',
@@ -38,14 +39,12 @@ class ProfileBox extends Component {
     })
   }
   save  = () => {
-    var val = this.refs.newText.value;
     var lastName = this.refs.newLastName.value;
     var newLocation = this.refs.newLocation.value;
     var newPhone = this.refs.newPhone.value;
     alert("Your profile has been saved")
     this.setState({
       // ** Update "text" property with new value (this fires render() again)
-      text: val,
       editing: false,
       lName: lastName,
       location: newLocation,
@@ -73,13 +72,13 @@ class ProfileBox extends Component {
       <div>
         <p>Edit your profile, {this.state.fName}.</p>
         <p>Last Name:</p>
-        <textarea ref="newLastName"defaultValue={this.state.lName}></textarea>
+        <textarea ref="newLastName" defaultValue={this.state.lName}></textarea>
         <br />
         <p>Phone Number:</p>
-        <textarea ref="newPhone"defaultValue={this.state.phone}></textarea>
+        <textarea ref="newPhone" defaultValue={this.state.phone}></textarea>
         <br />
         <p>Default Location:</p>
-        <textarea ref="newLocation">{this.state.location}</textarea>
+        <textarea ref="newLocation" defaultValue={this.state.location}></textarea>
         <br />
         <button onClick={this.save}>Save</button>
     </div>
