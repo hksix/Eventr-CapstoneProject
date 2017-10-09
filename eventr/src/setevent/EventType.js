@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {Table,TableBody,TableHeader,TableHeaderColumn,TableRow,TableRowColumn,} from 'material-ui/Table';
 import axios from 'axios';
-import ROOT_URL from '../App.js';
+import { ROOT_URL } from '../App.js';
 const styles = {
     headline: {
       fontSize: 24,
@@ -13,19 +13,20 @@ const styles = {
 
 export default class PartyTypeTable extends Component {
     constructor(props){
-      super(props);
-      this.state = {
-        height: '300px',
-        selected: [null],
-        types:[]
-      }
-    }
+        super(props);
+        
+    this.state = {
+      height: '300px',
+      selected: [null],
+      types:[]
+
+    };
+  }
     componentDidMount(){
       axios.get(`${ROOT_URL}/event_categories`)
-        .then((res) => {
-          console.log('HELLO');
-          this.setState({types:res.data})
-        })
+      .then((res) => {
+        this.setState({types:res.data.data})
+      })
     }
     isSelected = (name) => {
         return name === this.props.type 

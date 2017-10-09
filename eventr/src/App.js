@@ -5,11 +5,8 @@ import ReactDOM from 'react-dom';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import MyAwesomeReactComponent from './MyAwesomeReactComponent';
 import ItemRegistry from './itemRegistry';
-import PartyTypeTable from './setevent/EventType.js';
-// import {withRouter} from './react-router';
 
 import { MenuHeader } from './Menubar.js'
-
 
 import axios from 'axios';
 
@@ -35,13 +32,13 @@ class App extends Component {
   logout() {
     this.props.auth.logout();
   }
-  
+
   componentDidMount(){
     axios.get(`${ROOT_URL}/users`)
-      .then((res) => {
-        this.setState({users:res.data})
-      })
-
+    .then((res) => {
+      // console.log(res);
+      this.setState({users:res.data})
+    })
   }
   
   render() {
@@ -49,12 +46,10 @@ class App extends Component {
     
     return (
       <div className="App">
-
         
-        {/* <MenuHeader /> */}
         <header>
         <button
-              bsStyle="primary"
+              
               className="btn-margin"
               onClick={this.goTo.bind(this, 'home')}
             >
@@ -63,7 +58,7 @@ class App extends Component {
             {
               !isAuthenticated() && (
                   <button
-                    bsStyle="primary"
+                    
                     className="btn-margin"
                     onClick={this.login.bind(this)}
                   >
@@ -74,7 +69,7 @@ class App extends Component {
             {
               isAuthenticated() && (
                   <button
-                    bsStyle="primary"
+                    
                     className="btn-margin"
                     onClick={this.logout.bind(this)}
                   >
@@ -89,6 +84,8 @@ class App extends Component {
        
         <h1>Users Table example info</h1>
 
+        {/* <MenuHeader /> */}
+        {/* <h1>Users Table example info</h1>
         {this.state.users.map(user =>
           <div key={user.user_id}>
               <ul>
@@ -101,12 +98,9 @@ class App extends Component {
                 <li>User Name: {user.user_name}</li>
                </ul>
             </div>
-
-        )}
-        
-       
-      </div>
-    );
+        )} */}
+        </div>
+      );
   }
 }
 

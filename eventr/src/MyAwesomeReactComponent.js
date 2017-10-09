@@ -35,6 +35,7 @@ export default class MenuOptions extends Component {
       };
 
       render(){
+        
         return (
           
             <Router>
@@ -45,7 +46,7 @@ export default class MenuOptions extends Component {
                 onChange={this.handleChange}>
                 
                 
-                <Tab icon={<FontIcon className="material-icons"><i class="material-icons">format_list_bulleted</i></FontIcon>}/>
+                <Tab icon={<FontIcon className="material-icons"><i className="material-icons">format_list_bulleted</i></FontIcon>}/>
                 
                 <Tab label="Tab A" 
                     icon={<FontIcon className="material-icons">home</FontIcon>}
@@ -139,7 +140,7 @@ export const MyAwesomeReactComponent = () => (
       <MenuOptions />
       <PartyTypeTable>HELP</PartyTypeTable>
       <Footer />
-
+      {/* <FetchData /> */}
     </div>
 
 );
