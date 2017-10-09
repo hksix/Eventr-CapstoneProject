@@ -548,8 +548,8 @@ server.get(`${extension}/event_categories/:id/items`, getAllItemsInEventCategory
 
 //************************************************** INVENTORY ENDPOINTS ****************************** 
 server.get(`${extension}/event_inventory/:event_id`, getInventoryForEvent);
-// server.post('/api/v1/event_inventory/:event_id', addItemToInventory);
-// server.put('/api/v1/event_inventory/:id', updateItemInInventory);
+server.post(`${extension}/event_inventory/:event_id`, addItemToInventory);
+server.put(`${extension}/event_inventory/:id`, updateItemInInventory);
 server.del(`${extension}/event_inventory/:id`, deleteItemFromInventory);
 
 
