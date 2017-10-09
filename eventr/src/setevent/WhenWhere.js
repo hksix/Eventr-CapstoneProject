@@ -45,10 +45,10 @@ export class DateSelector extends Component {
 }
 
 export class TimeSelector extends Component {
-    constructor(props) {
-        super(props);
-        // this.state = { value12: null};
-    }
+    // constructor(props) {
+    //     super(props);
+    //     // this.state = { value12: null};
+    // }
 
 
     handleChangeTimePicker12 = (event, date) => {

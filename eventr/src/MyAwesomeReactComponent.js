@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import {Tabs, Tab} from 'material-ui/Tabs';
 import FontIcon from 'material-ui/FontIcon';
 import MapsPersonPin from 'material-ui/svg-icons/maps/person-pin';
-import Paper from 'material-ui/Paper';
+// import Paper from 'material-ui/Paper';
 
 
 
@@ -11,16 +11,16 @@ import {
     BrowserRouter as Router,
     Route,
     Link,
-    withRouter
+    // withRouter
   } from 'react-router-dom';
-  
+
 import { Welcome } from './Welcome.js';
 import { SetEvent } from './SetEvent.js';
 import UserMenu from './sidemenu/UserMenu.js';
 import Footer from './Footer.js';
 import './index.css';
-import MapContainer from "./MapContainer.js";
-import PartyTypeTable from './setevent/EventType.js';
+// import MapContainer from "./MapContainer.js";
+// import PartyTypeTable from './setevent/EventType.js';
 
 // import { Calendar } from './Calendar.js'
 
@@ -64,8 +64,7 @@ export default class MenuOptions extends Component {
                   </div>
                 </Tab>
                 
-                <Tab label="Tab A" 
-                    icon={<FontIcon className="material-icons">home</FontIcon>}
+                <Tab icon={<FontIcon className="material-icons">home</FontIcon>}
                     label="HOME"
                     value="a"
                     containerElement={<Link to="/home" />}

@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
-import FontIcon from 'material-ui/FontIcon';
+// import FontIcon from 'material-ui/FontIcon';
 import {cyan400} from 'material-ui/styles/colors';
-import {Card, CardActions, CardHeader, CardMedia, CardTitle, CardText} from 'material-ui/Card';
+import {Card} from 'material-ui/Card';
 import './App.css';
 import axios from 'axios';
 

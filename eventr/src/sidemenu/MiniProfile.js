@@ -18,6 +18,7 @@ export default class MiniProfile extends Component {
       open: !this.state.open
     });
   };
+  
   render(){
 
     return(
@@ -45,7 +46,6 @@ export default class MiniProfile extends Component {
               <AppBar title="Edit Profile" />
               <ProfileBox/>
             </Drawer>
-          <FlatButton label="Action2" />
         </CardActions>
       </Card>
     )
