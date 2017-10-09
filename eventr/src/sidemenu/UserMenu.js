@@ -7,11 +7,6 @@ import MiniEvents from './MiniEvents.js';
 
 export default class UserMenu extends Component {
 
-  
-                      
-                        
-                      
-
   render(){
     return(
       <div>
