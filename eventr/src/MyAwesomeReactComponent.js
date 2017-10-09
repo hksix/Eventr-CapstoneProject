@@ -3,15 +3,19 @@ import {Tabs, Tab} from 'material-ui/Tabs';
 import FontIcon from 'material-ui/FontIcon';
 import MapsPersonPin from 'material-ui/svg-icons/maps/person-pin';
 import Paper from 'material-ui/Paper';
+
+
+
 // import FetchData from './axios.js';
 import {
     BrowserRouter as Router,
     Route,
     Link,
     withRouter
-  } from 'react-router-dom'
-import { Welcome } from './Welcome.js'
-import { SetEvent } from './SetEvent.js'
+  } from 'react-router-dom';
+import { Welcome } from './Welcome.js';
+import { SetEvent } from './SetEvent.js';
+// import ProfileBox from './ProfileBox.js';
 import UserMenu from './sidemenu/UserMenu.js';
 import Footer from './Footer.js';
 import './index.css';
@@ -25,7 +29,7 @@ export default class MenuOptions extends Component {
       constructor(props) {
         super(props);
         this.state = {
-          value: 'a',
+          value: 'a'
         };
       }
       handleChange = (value) => {
@@ -33,6 +37,7 @@ export default class MenuOptions extends Component {
           value: value,
         });
       };
+
 
       render(){
         
@@ -46,7 +51,18 @@ export default class MenuOptions extends Component {
                 onChange={this.handleChange}>
                 
                 
-                <Tab icon={<FontIcon className="material-icons"><i className="material-icons">format_list_bulleted</i></FontIcon>}/>
+                <Tab icon={<FontIcon className="material-icons"><i className="material-icons">format_list_bulleted</i></FontIcon>}
+                  value="0"
+                >
+                  <div className="main-content-container">
+                    <div className="side-content-container">
+                      <UserMenu />
+                    </div>
+                    <div className="changing-content-container" >
+
+                    </div>
+                  </div>
+                </Tab>
                 
                 <Tab label="Tab A" 
                     icon={<FontIcon className="material-icons">home</FontIcon>}
@@ -99,9 +115,7 @@ export default class MenuOptions extends Component {
                       <div className="side-content-container">
                         <UserMenu />
                       </div>
-                      <div className="changing-content-container" >
-                        
-                      </div>
+                      
                     </div>
                 </Tab>
 
@@ -126,12 +140,6 @@ export default class MenuOptions extends Component {
           );
         }
       }
-
-      // const event = () => (
-      //   <div>
-      //     <h2>Event page</h2>
-      //   </div>
-      // )
 
 export const MyAwesomeReactComponent = () => (
 

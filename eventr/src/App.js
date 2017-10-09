@@ -78,7 +78,7 @@ class App extends Component {
                 )
             }
             </header>
-        {/* <MenuHeader /> */}
+        <MenuHeader />
 
 
         
