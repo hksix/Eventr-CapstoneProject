@@ -4,6 +4,9 @@ import FloatingActionButton from 'material-ui/FloatingActionButton';
 import ContentAdd from 'material-ui/svg-icons/content/add';
 import ContentRemove from 'material-ui/svg-icons/content/clear';
 
+import axios from 'axios';
+import { ROOT_URL } from './App.js';
+
 // Component Structure
 // --------------------
 // Container
@@ -39,6 +42,13 @@ class Form extends Component {
 			
 			this.input.placeholder = "Add Items here...";
 		}
+	}
+	componentDidMount(){
+		console.log("ehy")
+		axios.get(`${ROOT_URL}/event_categories/1/items`)
+			.then((res)=>{
+				console.log(res)
+			})
 	}
 	
 	render() {
@@ -102,7 +112,7 @@ const List = ({todos, remove}) => {
 	if(todos.length > 0) {
 		allTodos = todos.map(todo => {
 			// passing todo and remove method reference
-			return (<Todo todo={todo} remove={remove} />);
+			return (<Todo todo={todo} remove={remove} key={todo.id} />);
 			//return (<p>{todo.value}</p>);
 		});
 	} else {

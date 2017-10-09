@@ -5,6 +5,8 @@ import Home from './Home/Home';
 import Callback from './Callback/Callback';
 import Auth from './Auth/Auth';
 import history from './history';
+import { MenuHeader } from './Menubar.js'
+
 
 const auth = new Auth();
 
@@ -19,7 +21,7 @@ export const makeMainRoutes = () => {
       <Router history={history} component={App}>
         <div>
           <Route path="/" render={(props) => <App auth={auth} {...props} />} />
-          <Route path="/home" render={(props) => <Home auth={auth} {...props} />} />
+          <Route path="/home" render={(props) => <Home auth={auth} {...props} />}   />
           <Route path="/callback" render={(props) => {
             handleAuthentication(props);
             return <Callback {...props} /> 

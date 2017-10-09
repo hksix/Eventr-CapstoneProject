@@ -10,15 +10,21 @@ class Home extends Component {
     const { isAuthenticated } = this.props.auth;
     return (
         <div>
-        <MenuHeader />
+        
       <div className="container">
         {
           isAuthenticated() && (
+            <div>
+              
               <h4>
                 You are logged in!
               </h4>
-            )
-        }
+              <MenuHeader />
+              </div>
+          )
+         
+        }<MenuHeader />
+        
         {
           !isAuthenticated() && (
               <h4>
