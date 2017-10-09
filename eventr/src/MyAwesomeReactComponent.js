@@ -138,7 +138,7 @@ export const MyAwesomeReactComponent = () => (
     <div>
       
       <MenuOptions />
-      <PartyTypeTable/>
+      {/* <PartyTypeTable/> */}
       <Footer />
       {/* <FetchData /> */}
     </div>
