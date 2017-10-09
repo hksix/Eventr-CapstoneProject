@@ -48,8 +48,8 @@ class App extends Component {
       <div className="App">
         
         <header>
+
         <button
-              
               className="btn-margin"
               onClick={this.goTo.bind(this, 'home')}
             >
@@ -78,7 +78,8 @@ class App extends Component {
                 )
             }
             </header>
-        
+        <MenuHeader />
+
 
         
         {/* <h1>Users Table example info</h1> */}
@@ -95,9 +96,9 @@ class App extends Component {
                 <li>User Name: {user.user_name}</li>
                </ul>
             </div>
-        )} */}
-        </div>
-      );
+        )}  */}
+      </div>
+    );
   }
 }
 
