@@ -5,7 +5,8 @@ const sequelize = new Sequelize( dotenv.DB_NAME , dotenv.DB_USERNAME, dotenv.DB_
     operatorAliases: false,
     host: dotenv.DB_HOST,
     dialect: 'postgres',
-    port: dotenv.DB_PORT
+    port: dotenv.DB_PORT,
+    logging: false
   });
 
   sequelize
