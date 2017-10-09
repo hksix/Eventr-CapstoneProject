@@ -57,7 +57,7 @@ class App extends Component {
         
         {/* <MenuHeader /> */}
         <header>
-        <button
+          <button
               bsStyle="primary"
               className="btn-margin"
               onClick={this.goTo.bind(this, 'home')}
@@ -87,10 +87,9 @@ class App extends Component {
                 )
             }
             </header>
-        <h1>Users Table example info</h1>
 
         <MenuHeader />
-        <h1>Users Table example info</h1>
+        {/* <h1>Users Table example info</h1>
 
         {this.state.users.map(user =>
           <div key={user.user_id}>
@@ -105,12 +104,7 @@ class App extends Component {
                </ul>
             </div>
 
-        )} */}
-        <div>
-        </div>
-
-        )}
-       
+        )}  */}
       </div>
     );
   }

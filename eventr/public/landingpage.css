@@ -1,10 +1,28 @@
 body {
   margin: 0;
+  font: 300 20px/30px "Open Sans",open-sans,sans-serif;
+  color:#7e8890;
+  line-height: 1.9em;
+}
+h1 {
+  font: 300 50px/65px "Open Sans",open-sans,sans-serif;
+  color:white;
+}
+h2 {
+  font: 300 35px/52px "Open Sans",open-sans,sans-serif;
+  color: #333c4e;
+}
+h3 {
+  font: 300 30px/47px "Open Sans",open-sans,sans-serif;
+  color: white;
 }
 nav {
   height: 80px;
   background-color: #50B9D1;
   border-bottom: 1px solid #007884;
+}
+.top-logo img {
+  height: 50px;
 }
 main {
   margin-bottom: 150px;
@@ -31,18 +49,17 @@ main {
 }
 
 .video-container {
-  position: relative;
   width: 100%;
-  height: 100%;
+  max-height: 800px;
   background-attachment: scroll;
   overflow: hidden;
+  margin-bottom: 100px;
 }
 .fillWidth {
   width: 100%;
-  position: relative;
   z-index: 1;
 }
-.filter {
+/* .filter {
   height: 100%;
   width: 100%;
   position: absolute;
@@ -51,7 +68,7 @@ main {
   z-index: 10;
   background: #50B9D1;
   opacity: 0.3;
-}
+} */
 
 .main-headline {
   position: absolute;
@@ -61,7 +78,8 @@ main {
   font-size: 1.5em;
   z-index: 20;
   margin-left: 12%;
-  margin-top: 15%;
+  margin-top: 10;
+  line-height: 2em;
 }
 
 .sub-headline {
@@ -80,13 +98,15 @@ main {
   z-index: 20;
   height: 55px;
   width: 150px;
+  border-radius: 10px;
   margin-left: 45%;
   margin-top: 30%;
   font-family: 'Open Sans', sans-serif;
-  font-size: 1.3em;
+  font-size: 1em;
   border: none;
   background-color: white;
   color: #50B9D1;
+  transition: all .5s;
 }
 
 #get-started:hover {
@@ -113,14 +133,17 @@ main {
   align-items: center;
 }
 
-.description-container,
+.description-container {
+  width: 95%;
+}
 .image-container {
-  width: 90%;
+  width: 100%;
+  
 }
 
 .image-container img {
   width: 100%;
-  box-shadow: -10px 10px 15px #00b4ce;
+  box-shadow: 2px 2px 5px lightgrey;
 }
 
 .description-container {
@@ -140,6 +163,7 @@ main {
 }
 .landing-footer-info {
   max-width: 400px;
+  color: white;
 }
 
 
@@ -164,7 +188,7 @@ main {
   }
   .image-container img {
     width: 100%;
-    box-shadow: -10px 10px 15px 00b4ce;
+    box-shadow: 4px 4px 6px lightgray;
   }
   .landing-description {
     width: 70%;
@@ -175,8 +199,11 @@ main {
   }
 }
 
-@media screen and (min-width: 10240px){
+@media screen and (min-width: 1024px){
   .landing-description {
     width: 60%;
+  }
+  .landing-main-container {
+    padding-top: 150px;
   }
 }
