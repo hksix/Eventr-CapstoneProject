@@ -11,7 +11,7 @@ const styles = {
     },
   };
 
-export class PartyTypeTable extends Component {
+export default class PartyTypeTable extends Component {
     constructor(props){
         super(props);
         
@@ -28,11 +28,9 @@ export class PartyTypeTable extends Component {
         this.setState({types:res.data.data})
       })
     }
-
     isSelected = (name) => {
         return name === this.props.type 
     };
-  
     handleRowSelection = (selectedRows) => {
 
         this.setState({
@@ -65,3 +63,5 @@ export class PartyTypeTable extends Component {
       );
     }
   }
+
+  // export default PartyTypeTable;

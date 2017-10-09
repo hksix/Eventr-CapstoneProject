@@ -23,6 +23,7 @@ class App extends Component {
     this.props.history.replace(`/${route}`)
   }
 
+
   login() {
     this.props.auth.login();
   }
@@ -77,7 +78,10 @@ class App extends Component {
                 )
             }
             </header>
-       
+        <h1>Users Table example info</h1>
+
+        <MenuHeader />
+        <h1>Users Table example info</h1>
 
         {/* <MenuHeader /> */}
         {/* <h1>Users Table example info</h1>
@@ -85,11 +89,11 @@ class App extends Component {
           <div key={user.user_id}>
               <ul>
                 <li>{user.fname} {user.lname}</li>
-                <li>Picture {user.picture}</li> 
+                <li>Picture {user.picture}</li>
                 <li>Email: {user.email}</li>
-                <li>Join-date: {user.join_date}</li> 
-                <li>Telephone: {user.phone}</li> 
-                <li>Location: {user.location}</li> 
+                <li>Join-date: {user.join_date}</li>
+                <li>Telephone: {user.phone}</li>
+                <li>Location: {user.location}</li>
                 <li>User Name: {user.user_name}</li>
                </ul>
             </div>
