@@ -46,11 +46,11 @@ export default class PartyTypeTable extends Component {
             }
         }
 
-    render() {       
+    render() { 
+      console.log(this.state.types)      
       return (
         <div>
           <h2 style={styles.headline} style={{textAlign: 'center'}}>Select type of event</h2>  
-          {this.state.types} 
             <Table onRowSelection={this.handleRowSelection} height={this.state.height}> 
             <TableBody>
             {this.state.types.map(type=>

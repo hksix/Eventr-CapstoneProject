@@ -151,7 +151,6 @@ export class SetEvent extends Component {
     return (
       
       <Card>
-      <PartyTypeTable/>
         <Tabs
           onChange={this.handleChange}
           value={this.state.slideIndex}

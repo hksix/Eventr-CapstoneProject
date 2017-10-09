@@ -152,7 +152,7 @@ class ItemList extends Component {
 		axios.get(`${ROOT_URL}/event_categories/1/items`)
 			.then((res)=>{
 				res.data.map(function(item) {
-					this.setState
+					// this.setState
 					console.log(item.item_name)
 				})
 				
