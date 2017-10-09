@@ -19,7 +19,6 @@ class Callback extends Component {
 
     return (
       <div style={style}>
-          <h1>HEY!</h1>
         <img src={loading} alt="loading"/>
       </div>
     );

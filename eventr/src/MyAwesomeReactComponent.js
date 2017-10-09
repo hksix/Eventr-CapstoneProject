@@ -137,7 +137,7 @@ export const MyAwesomeReactComponent = () => (
     <div>
       
       <MenuOptions />
-      <PartyTypeTable/>
+      <PartyTypeTable>HELP</PartyTypeTable>
       <Footer />
 
     </div>

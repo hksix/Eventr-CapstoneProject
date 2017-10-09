@@ -391,7 +391,7 @@ function getEventCategory(request,response,next) {
 function getAllItemsInEventCategory(request,response,next) {
     models.EventCategories.find({
         where: {
-            'id': request.params.id
+            id: request.params.id
         }
     }).then(function(user) {
         var options = {}

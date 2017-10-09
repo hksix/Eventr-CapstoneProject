@@ -5,15 +5,11 @@ import ReactDOM from 'react-dom';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import MyAwesomeReactComponent from './MyAwesomeReactComponent';
 import ItemRegistry from './itemRegistry';
-
+import PartyTypeTable from './setevent/EventType.js';
 // import {withRouter} from './react-router';
 
 import { MenuHeader } from './Menubar.js'
 
-// import Auth from './Auth/Auth.js';
-
-// const auth = new Auth();
-// auth.login();
 
 import axios from 'axios';
 
@@ -25,7 +21,7 @@ export const ROOT_URL = `http://ec2-52-207-242-113.compute-1.amazonaws.com/api/v
 
 
 class App extends Component {
-  // state = {users:[]}
+  state = {users:[]}
   goTo(route) {
     this.props.history.replace(`/${route}`)
   }
@@ -89,7 +85,8 @@ class App extends Component {
             </header>
         <h1>Users Table example info</h1>
 
-        <MenuHeader />
+        {/* <MenuHeader /> */}
+       
         <h1>Users Table example info</h1>
 
         {this.state.users.map(user =>
@@ -105,11 +102,8 @@ class App extends Component {
                </ul>
             </div>
 
-        )} */}
-        <div>
-        </div>
-
         )}
+        
        
       </div>
     );

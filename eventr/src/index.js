@@ -8,6 +8,7 @@ import { makeMainRoutes } from './routes';
 const routes = makeMainRoutes();
 
 ReactDOM.render(
+  // <App/>,
     routes,
     document.getElementById('root')
   );
