@@ -37,9 +37,9 @@ export class NameSelector extends Component{
     }
 }
 export class DescriptionSelector extends Component{
-    constructor(props){
-        super(props);
-    }
+    // constructor(props){
+    //     super(props);
+    // }
 
     _handleDiscName = (event, disc)=>{
         this.props.changeHandler(disc);

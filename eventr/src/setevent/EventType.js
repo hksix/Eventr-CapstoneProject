@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Table,TableBody,TableHeader,TableHeaderColumn,TableRow,TableRowColumn,} from 'material-ui/Table';
+import {Table,TableBody,TableRow,TableRowColumn,} from 'material-ui/Table';
 import axios from 'axios';
 import { ROOT_URL } from '../App.js';
 const styles = {
@@ -8,6 +8,7 @@ const styles = {
       paddingTop: 16,
       marginBottom: 12,
       fontWeight: 400,
+      textAlign: 'center',
     },
   };
 
@@ -40,7 +41,7 @@ export default class PartyTypeTable extends Component {
     };
     handleTypeSelector = ()=>{
         var selectionNum = this.state.selected
-            var selectedType = []
+            // var selectedType = []
             if(this.state.types[selectionNum] !== undefined ){
                 this.props.changeHandler(this.state.types[selectionNum].category_name)
             }
@@ -50,7 +51,7 @@ export default class PartyTypeTable extends Component {
       console.log(this.state.types)      
       return (
         <div>
-          <h2 style={styles.headline} style={{textAlign: 'center'}}>Select type of event</h2>  
+          <h2 style={styles.headline}>Select type of event</h2>  
             <Table onRowSelection={this.handleRowSelection} height={this.state.height}> 
             <TableBody>
             {this.state.types.map(type=>

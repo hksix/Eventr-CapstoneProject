@@ -3,7 +3,7 @@ import React, {Component} from 'react';
 import {cyan400} from 'material-ui/styles/colors';
 import {Card} from 'material-ui/Card';
 import './App.css';
-import axios from 'axios';
+// import axios from 'axios';
 
 import { Calendar } from './Calendar.js'
 
