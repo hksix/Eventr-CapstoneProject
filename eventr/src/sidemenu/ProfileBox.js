@@ -4,6 +4,39 @@ import FlatButton from 'material-ui/FlatButton';
 import axios from 'axios';
 import { ROOT_URL } from '../App.js';
 
+
+
+//server.get(`${extension}/users/:id`, getUser);
+// data
+// :
+// createdAt
+// :
+// null
+// email
+// :
+// "hamza@haseeb.com"
+// fName
+// :
+// "Hamaz"
+// id
+// :
+// 1
+// lName
+// :
+// "Haseeb"
+// location
+// :
+// "Atlanta"
+// phone
+// :
+// "4045056789"
+// profPic
+// :
+// "hh.jpg"
+// updatedAt
+// :
+// null
+
 const styles = {
       // width:'20%',
       // marginLeft:'10%',
@@ -11,31 +44,55 @@ const styles = {
 
 
 class ProfileBox extends Component {
-  
-  state = {users:[]}
-
-  componentDidMount(){
-    axios.get(`${ROOT_URL}/event_categories`)
-    .then((res) => {
-      this.setState({types:res.data.data})
-    })
+  constructor(props) {
+		super(props);
+		this.state = {
+      fName: '',
+      lName: '',
+      email: '',
+      location: '',
+      phone: '',
+      profPic: '',
+      createdAt: ''
+    }
   }
+
+  componentDidMount = () => {
+    axios.get(`${ROOT_URL}/users/3`).then((res) => {
+        this.setState({
+          fName: res.data.fName,
+          lName: res.data.lName,
+          email: res.data.email,
+          location: res.data.location,
+          phone: res.data.phone,
+          profPic: res.data.profPic,
+          createdAt: res.data.createdAt
+        })
+      })
+    }
+  
 
   render(){
     return(
-      <Card style={styles}>
-      <CardHeader
-        title="URL Avatar"
-        subtitle="Subtitle"
-        avatar="images/twogirlsatpicnic.jpg"
-      />
-      <CardTitle title="Profile" subtitle="Card subtitle" />
-  
-      <CardActions>
-        <FlatButton label="Action1" />
-        <FlatButton label="Action2" />
-      </CardActions>
-    </Card>
+      <Card>
+        <Card style={styles}>
+          <CardHeader
+            title="Profile Picture"
+            subtitle="Subtitle"
+            avatar={this.state.profPic}
+          />
+        </Card>
+        <Card>
+          <CardTitle title={this.state.fName} subtitle={this.state.lName} />
+          
+          <CardActions>
+            <FlatButton label={this.state.loginstatus} />
+
+            <FlatButton label="Edit"/>
+          </CardActions>
+        </Card>
+      </Card>
+
     )
   }
 }

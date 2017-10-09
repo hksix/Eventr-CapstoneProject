@@ -7,7 +7,6 @@ import AppBar from 'material-ui/AppBar';
 import ProfileBox from './ProfileBox.js';
 
 
-
 export default class MiniProfile extends Component {
   constructor(props) {
     super(props);
@@ -18,7 +17,7 @@ export default class MiniProfile extends Component {
       open: !this.state.open
     });
   };
-  
+
   render(){
 
     return(

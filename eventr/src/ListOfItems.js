@@ -58,24 +58,23 @@ class Form extends Component {
 			// with underlying dom element as its
             // argument to get its reference
             // id="blank" is there to comunicate with the TextField box. This is needed but its a hidden element cause I suck at coding
-            <div>
-                <TextField
-                    hintText="Type in items needed..."
-                    value={this.state.value}
-                    onChange={this.handleChange}
-                />
-                <FloatingButtonAdd  />
-                <br />
-			    <div id="blank" style={{display:'none' }}>
-			    	<input 
-			    		ref={node => {
-			    			this.input = node;
-			    		}}
-			    		value={this.state.value}
-			    		onChange={this.handleChange}/>
-                </div>
-                
-            </div>
+			<div>
+				<TextField
+					hintText="Type in items needed..."
+					value={this.state.value}
+					onChange={this.handleChange}
+				/>
+				<FloatingButtonAdd  />
+				<br />
+				<div id="blank" style={{display:'none' }}>
+					<input 
+						ref={node => {
+							this.input = node;
+						}}
+					value={this.state.value}
+					onChange={this.handleChange}/>
+				</div>
+			</div>
 		);
 	}
 }
@@ -84,19 +83,18 @@ const Todo = ({todo, remove}) => {
     const FloatingButtonRemove = () => (
         <div>
             <FloatingActionButton mini={true} secondary={true}>
-                <ContentRemove onClick={()=> {
-				    remove(todo.id)
-				    }} 
-                />
+              <ContentRemove onClick={()=> {
+				    		remove(todo.id)}} 
+              />
             </FloatingActionButton>
         </div>
     );
 	// single todo 
 	return (
-		<p>
+		<div>
 			{todo.value}
-            <FloatingButtonRemove/>            
-		</p>
+      <FloatingButtonRemove/>
+		</div>
 	);
 };
 
@@ -115,7 +113,7 @@ const List = ({todos, remove}) => {
 	
 	return (
 		<div>
-			<p> Items: </p>
+			<span> Items: </span>
 			{allTodos}
 		</div>
 	);
@@ -153,9 +151,8 @@ class ItemList extends Component {
 			.then((res)=>{
 				res.data.map(function(item) {
 					// this.setState
-					console.log(item.item_name)
+					// console.log(item.item_name)
 				})
-				
 			})
 	}
 	// Handler to update localStorage

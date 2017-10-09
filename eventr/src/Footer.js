@@ -16,7 +16,7 @@ export default class Footer extends Component {
     return(
       <div style={footer} className="footer-container">
         <div>
-          <h3>&copy; 2017 Eventr</h3>
+          <h4>&copy; 2017 Eventr</h4>
         </div>
       </div>
     )
