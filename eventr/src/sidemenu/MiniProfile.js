@@ -42,7 +42,7 @@ export default class MiniProfile extends Component {
         <CardActions>
           <FlatButton label="Edit Profile" onClick={this.handleToggle} />
             <Drawer width={300} openSecondary={true} open={this.state.open} >
-              <AppBar title="Edit Profile" />
+              <AppBar onClick={this.handleToggle} title="Edit Profile" />
               <ProfileBox/>
             </Drawer>
         </CardActions>

@@ -3,39 +3,8 @@ import {Card, CardActions, CardHeader, CardTitle} from 'material-ui/Card';
 import FlatButton from 'material-ui/FlatButton';
 import axios from 'axios';
 import { ROOT_URL } from '../App.js';
-
-
-
-//server.get(`${extension}/users/:id`, getUser);
-// data
-// :
-// createdAt
-// :
-// null
-// email
-// :
-// "hamza@haseeb.com"
-// fName
-// :
-// "Hamaz"
-// id
-// :
-// 1
-// lName
-// :
-// "Haseeb"
-// location
-// :
-// "Atlanta"
-// phone
-// :
-// "4045056789"
-// profPic
-// :
-// "hh.jpg"
-// updatedAt
-// :
-// null
+import Drawer from 'material-ui/Drawer';
+import AppBar from 'material-ui/AppBar';
 
 const styles = {
       // width:'20%',
@@ -56,7 +25,74 @@ class ProfileBox extends Component {
       createdAt: ''
     }
   }
+  getInitialState = () => {
+    return {
+      editing: false,
+      // ** Initialize "text" property with empty string here
 
+    }
+  }
+  edit = () => {
+    this.setState({
+      editing: true
+    })
+  }
+  save  = () => {
+    var val = this.refs.newText.value;
+    var lastName = this.refs.newLastName.value;
+    var newLocation = this.refs.newLocation.value;
+    var newPhone = this.refs.newPhone.value;
+    alert("Your profile has been saved")
+    this.setState({
+      // ** Update "text" property with new value (this fires render() again)
+      text: val,
+      editing: false,
+      lName: lastName,
+      location: newLocation,
+      phone: newPhone,
+    })
+  }
+  renderNormal = () => {
+    // ** Render "state.text" inside your <p> whether its empty or not...
+    return (
+      <Card>
+        <CardHeader
+          title="Profile Picture"
+          subtitle="Subtitle"
+          avatar={this.state.profPic}
+        />
+        <p>Welcome {this.state.fName} {this.state.lName}!</p>
+        <p>Phone: {this.state.phone}</p>
+        <p>Default location: {this.state.location}</p>
+        <button onClick={this.edit}>Edit</button>
+      </Card>
+    )
+  }
+  renderForm = () => {
+    return (
+      <div>
+        <p>Edit your profile, {this.state.fName}.</p>
+        <p>Last Name:</p>
+        <textarea ref="newLastName"defaultValue={this.state.lName}></textarea>
+        <br />
+        <p>Phone Number:</p>
+        <textarea ref="newPhone"defaultValue={this.state.phone}></textarea>
+        <br />
+        <p>Default Location:</p>
+        <textarea ref="newLocation">{this.state.location}</textarea>
+        <br />
+        <button onClick={this.save}>Save</button>
+    </div>
+    )
+  }
+  render = () => {
+    if (this.state.editing) {
+      return this.renderForm()
+    } else {
+      return this.renderNormal()
+    }
+  }
+  
   componentDidMount = () => {
     axios.get(`${ROOT_URL}/users/3`).then((res) => {
         this.setState({
@@ -72,29 +108,32 @@ class ProfileBox extends Component {
     }
   
 
-  render(){
-    return(
-      <Card>
-        <Card style={styles}>
-          <CardHeader
-            title="Profile Picture"
-            subtitle="Subtitle"
-            avatar={this.state.profPic}
-          />
-        </Card>
-        <Card>
-          <CardTitle title={this.state.fName} subtitle={this.state.lName} />
+  // render(){
+    
+  //   return(
+  //     <Card>
+  //       <Card style={styles}>
+  //         <CardHeader
+  //           title="Profile Picture"
+  //           subtitle="Subtitle"
+  //           avatar={this.state.profPic}
+  //         />
+  //       </Card>
+  //       <Card>
+  //         <CardTitle title={this.state.fName} subtitle={this.state.lName} />
           
-          <CardActions>
-            <FlatButton label={this.state.loginstatus} />
+  //         <CardActions>
+  //           <FlatButton label={this.state.loginstatus} />
 
-            <FlatButton label="Edit"/>
-          </CardActions>
-        </Card>
-      </Card>
+  //           <FlatButton label="Edit"/>
+  //           <FlatButton label="Edit Profile" onClick={this.handleToggle} />
 
-    )
-  }
+  //         </CardActions>
+  //       </Card>
+  //     </Card>
+
+  //   )
+  //}
 }
 
 export default ProfileBox;
