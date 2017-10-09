@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import {Card, CardActions, CardHeader, CardMedia, CardTitle, CardText} from 'material-ui/Card';
 import FlatButton from 'material-ui/FlatButton';
 import axios from 'axios';
-import { ROOT_URL } from './App.js';
+import { ROOT_URL } from '../App.js';
 
 const styles = {
       // width:'20%',
@@ -21,7 +21,7 @@ class ProfileBox extends Component {
     })
   }
 
-  reder(){
+  render(){
     return(
       <Card style={styles}>
       <CardHeader
