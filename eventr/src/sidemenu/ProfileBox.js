@@ -69,7 +69,7 @@ class ProfileBox extends Component {
   }
   renderForm = () => {
     return (
-      <div>
+      <Card>
         <p>Edit your profile, {this.state.fName}.</p>
         <p>Last Name:</p>
         <textarea ref="newLastName" defaultValue={this.state.lName}></textarea>
@@ -81,7 +81,7 @@ class ProfileBox extends Component {
         <textarea ref="newLocation" defaultValue={this.state.location}></textarea>
         <br />
         <button onClick={this.save}>Save</button>
-    </div>
+    </Card>
     )
   }
   render = () => {
