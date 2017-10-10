@@ -1,17 +1,14 @@
 import React, {Component} from 'react';
 import {Card, CardActions, CardHeader, CardTitle} from 'material-ui/Card';
-import FlatButton from 'material-ui/FlatButton';
-import axios from 'axios';
-import { ROOT_URL } from '../App.js';
-import Drawer from 'material-ui/Drawer';
-import AppBar from 'material-ui/AppBar';
+// import FlatButton from 'material-ui/FlatButton';
+// import axios from 'axios';
+// import { ROOT_URL } from '../App.js';
+// import Drawer from 'material-ui/Drawer';
+// import AppBar from 'material-ui/AppBar';
 import TextField from 'material-ui/TextField';
 
-const styles = {
-      // width:'20%',
-      // marginLeft:'10%',
-}
-const style={
+
+const style = {
   cardStyle: {
     width: '95%', 
     marginLeft: 'auto', 
@@ -22,87 +19,75 @@ const style={
   }
 }
 
+
 class ProfileBox extends Component {
   constructor(props) {
-		super(props);
-		this.state = {
-      fName: '',
-      lName: '',
-      email: '',
-      location: '',
-      phone: '',
-      profPic: '',
-      createdAt: ''
-    }
-  }
-  
-  componentDidMount = () => {
-    axios.get(`${ROOT_URL}/users/3`).then((res) => {
-      this.setState({
-        fName: res.data.fName,
-        lName: res.data.lName,
-        email: res.data.email,
-        location: res.data.location,
-        phone: res.data.phone,
-        profPic: res.data.profPic,
-        createdAt: res.data.createdAt
-      })
-    })
-  }
-
-  getInitialState = () => {
-    return {
+    super(props);
+    this.state = {
       editing: false,
-      // ** Initialize "text" property with empty string here
-
+      autoHideDuration: 4000,
+      message: 'Profile updates saved',
+      open: false,
     }
   }
-  
+
+  // handles snackbar
+  handleTouchTap = () => {
+    this.setState({
+      open: true,
+    });
+  };
+
+  // ability to edit profile
   edit = () => {
     this.setState({
       editing: true
     })
   }
-  save  = () => {
-    var lastName = this.refs.newLastName.value;
-    var newLocation = this.refs.newLocation.value;
-    var newPhone = this.refs.newPhone.value;
-    alert("Your profile has been saved")
-    this.setState({
-      // ** Update "text" property with new value (this fires render() again)
-      editing: false,
-      lName: lastName,
-      location: newLocation,
-      phone: newPhone,
-    })
-  }
+  // save  = () => {
+  //   var lastName = this.refs.newLastName.value;
+  //   var newLocation = this.refs.newLocation.value;
+  //   var newPhone = this.refs.newPhone.value;
+  //   alert("Your profile has been saved")
+  //   this.setState({
+  //     // ** Update "text" property with new value (this fires render() again)
+  //     editing: false,
+  //     lName: lastName,
+  //     location: newLocation,
+  //     phone: newPhone,
+  //   })
+  // }
+
+  // this is how side profile looks without editing
   renderNormal = () => {
-    // ** Render "state.text" inside your <p> whether its empty or not...
     return (
       <Card style={style.cardStyle}>
         <CardHeader
           title="Profile Picture"
           subtitle="Subtitle"
-          avatar={this.state.profPic}
+          avatar={this.props.profPic}
         />
-        <h3 style={style.text}>Welcome {this.state.fName} {this.state.lName}!</h3>
-        <h3 style={style.text}>Phone: {this.state.phone}</h3>
-        <h3 style={style.text}>Default location: {this.state.location}</h3>
+        <h3 style={style.text}>Welcome {this.props.fName} {this.props.lName}!</h3>
+        <h3 style={style.text}>Phone: {this.props.phone}</h3>
+        <h3 style={style.text}>Default location: {this.props.location}</h3>
+        <br />
         <button onClick={this.edit}>Edit</button>
       </Card>
     )
   }
+
+  // editable profile page
   renderForm = () => {
     return (
       <Card style={style.cardStyle}>
-        <h3 style={style.text}>Edit your profile, {this.state.fName}.</h3>
-
+        <h3 style={style.text}>Edit your profile</h3>
+        
         <TextField 
           style={style.text} 
           ref="newLastName" 
           floatingLabelText="Last Name" 
           floatingLabelFixed={true} 
-          hintText={this.state.lName}
+          hintText={this.props.lName}
           onChange={this._handleLastNameChange}>
         </TextField>
 
@@ -111,9 +96,9 @@ class ProfileBox extends Component {
           ref="newPhone" 
           floatingLabelText="Phone Number" 
           floatingLabelFixed={true} 
-          hintText={this.state.phone}
+          hintText={this.props.phone}
           type='text'
-          value={this.state.value} 
+          value={this.props.value} 
           onChange={this._handlePhoneChange}>
         </TextField>
 
@@ -122,13 +107,13 @@ class ProfileBox extends Component {
           ref="newLocation" 
           floatingLabelText="New Default Location" 
           floatingLabelFixed={true} 
-          hintText={this.state.location}
+          hintText={this.props.location}
           type='text'
-          value={this.state.value}
+          value={this.props.value}
           onChange={this._handleLocationChange}
           >
         </TextField>
-
+        <br />
         <button onClick={this.save}>Save</button>
     </Card>
     )
@@ -142,25 +127,17 @@ class ProfileBox extends Component {
   }
 
   _handleLastNameChange=(e)=> {
-    console.log("Name Change" + e.target.value)
-    this.setState({
-      lName: e.target.value
-    })
-    console.log(this.lName)
+    this.props.onNameChange(e.target.value)
   }
   _handlePhoneChange=(e)=> {
-    console.log("Phone" + e.target.value)
-    this.setState({
-      phone: e.target.value
-    })
+    this.props.onPhoneChange(e.target.value)
   }
   _handleLocationChange=(e)=> {
-    console.log("Location" + e.target.value)
-    this.setState({
-      location: e.target.value
-    })
+    this.props.onLocationChange(e.target.value)
   }
-  
+}
+
+export default ProfileBox;
   
 
   
@@ -191,6 +168,3 @@ class ProfileBox extends Component {
 
   //   )
   //}
-}
-
-export default ProfileBox;
