@@ -11,7 +11,16 @@ const styles = {
       // width:'20%',
       // marginLeft:'10%',
 }
-
+const style={
+  cardStyle: {
+    width: '95%', 
+    marginLeft: 'auto', 
+    marginRight:'auto',
+  },
+  text: {
+    marginLeft: '5px',
+  }
+}
 
 class ProfileBox extends Component {
   constructor(props) {
@@ -26,6 +35,21 @@ class ProfileBox extends Component {
       createdAt: ''
     }
   }
+  
+  componentDidMount = () => {
+    axios.get(`${ROOT_URL}/users/3`).then((res) => {
+      this.setState({
+        fName: res.data.fName,
+        lName: res.data.lName,
+        email: res.data.email,
+        location: res.data.location,
+        phone: res.data.phone,
+        profPic: res.data.profPic,
+        createdAt: res.data.createdAt
+      })
+    })
+  }
+
   getInitialState = () => {
     return {
       editing: false,
@@ -33,6 +57,7 @@ class ProfileBox extends Component {
 
     }
   }
+  
   edit = () => {
     this.setState({
       editing: true
@@ -54,32 +79,56 @@ class ProfileBox extends Component {
   renderNormal = () => {
     // ** Render "state.text" inside your <p> whether its empty or not...
     return (
-      <Card>
+      <Card style={style.cardStyle}>
         <CardHeader
           title="Profile Picture"
           subtitle="Subtitle"
           avatar={this.state.profPic}
         />
-        <p>Welcome {this.state.fName} {this.state.lName}!</p>
-        <p>Phone: {this.state.phone}</p>
-        <p>Default location: {this.state.location}</p>
+        <h3 style={style.text}>Welcome {this.state.fName} {this.state.lName}!</h3>
+        <h3 style={style.text}>Phone: {this.state.phone}</h3>
+        <h3 style={style.text}>Default location: {this.state.location}</h3>
         <button onClick={this.edit}>Edit</button>
       </Card>
     )
   }
   renderForm = () => {
     return (
-      <Card>
-        <p>Edit your profile, {this.state.fName}.</p>
-        <p>Last Name:</p>
-        <textarea ref="newLastName" defaultValue={this.state.lName}></textarea>
-        <br />
-        <p>Phone Number:</p>
-        <textarea ref="newPhone" defaultValue={this.state.phone}></textarea>
-        <br />
-        <p>Default Location:</p>
-        <textarea ref="newLocation" defaultValue={this.state.location}></textarea>
-        <br />
+      <Card style={style.cardStyle}>
+        <h3 style={style.text}>Edit your profile, {this.state.fName}.</h3>
+
+        <TextField 
+          style={style.text} 
+          ref="newLastName" 
+          floatingLabelText="Last Name" 
+          floatingLabelFixed={true} 
+          hintText={this.state.lName}
+          onChange={this._handleLastNameChange}>
+        </TextField>
+
+        <TextField 
+          style={style.text} 
+          ref="newPhone" 
+          floatingLabelText="Phone Number" 
+          floatingLabelFixed={true} 
+          hintText={this.state.phone}
+          type='text'
+          value={this.state.value} 
+          onChange={this._handlePhoneChange}>
+        </TextField>
+
+        <TextField 
+          style={style.text} 
+          ref="newLocation" 
+          floatingLabelText="New Default Location" 
+          floatingLabelFixed={true} 
+          hintText={this.state.location}
+          type='text'
+          value={this.state.value}
+          onChange={this._handleLocationChange}
+          >
+        </TextField>
+
         <button onClick={this.save}>Save</button>
     </Card>
     )
@@ -91,20 +140,29 @@ class ProfileBox extends Component {
       return this.renderNormal()
     }
   }
+
+  _handleLastNameChange=(e)=> {
+    console.log("Name Change" + e.target.value)
+    this.setState({
+      lName: e.target.value
+    })
+    console.log(this.lName)
+  }
+  _handlePhoneChange=(e)=> {
+    console.log("Phone" + e.target.value)
+    this.setState({
+      phone: e.target.value
+    })
+  }
+  _handleLocationChange=(e)=> {
+    console.log("Location" + e.target.value)
+    this.setState({
+      location: e.target.value
+    })
+  }
   
-  componentDidMount = () => {
-    axios.get(`${ROOT_URL}/users/3`).then((res) => {
-        this.setState({
-          fName: res.data.fName,
-          lName: res.data.lName,
-          email: res.data.email,
-          location: res.data.location,
-          phone: res.data.phone,
-          profPic: res.data.profPic,
-          createdAt: res.data.createdAt
-        })
-      })
-    }
+  
+
   
 
   // render(){

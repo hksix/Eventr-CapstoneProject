@@ -206,7 +206,8 @@ export class SetEvent extends Component {
 
             <div style={styles.slide}>
                 <h2 style={styles.headline} >Invite your peeps</h2> 
-                <SelectFriends invited={this.state.eventPeopleCount} names={this.state.eventPeopleNames}
+                <SelectFriends invited={this.state.eventPeopleCount} 
+                names={this.state.eventPeopleNames}
                 changeHandler={this._handleInviteChange}/>
                 
             </div>
