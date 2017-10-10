@@ -1,10 +1,25 @@
-import React, {Component} from 'react';
-import {Card, CardActions, CardHeader, CardMedia, CardTitle, CardText} from 'material-ui/Card';
+import React, { Component } from 'react';
+import {Card, CardActions, CardHeader, CardTitle, CardText} from 'material-ui/Card';
 import FlatButton from 'material-ui/FlatButton';
+import Drawer from 'material-ui/Drawer';
+import AppBar from 'material-ui/AppBar';
+
+import ProfileBox from './ProfileBox.js';
+
 
 export default class MiniProfile extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {open: false};
+  }
+  handleToggle = () => {
+    this.setState({
+      open: !this.state.open
+    });
+  };
 
   render(){
+
     return(
       <Card>
         <CardHeader
@@ -25,8 +40,11 @@ export default class MiniProfile extends Component {
           Aliquam dui mauris, mattis quis lacus id, pellentesque lobortis odio.
         </CardText>
         <CardActions>
-          <FlatButton label="Action1" />
-          <FlatButton label="Action2" />
+          <FlatButton label="Edit Profile" onClick={this.handleToggle} />
+            <Drawer width={300} openSecondary={true} open={this.state.open} >
+              <AppBar onClick={this.handleToggle} title="Edit Profile" />
+              <ProfileBox/>
+            </Drawer>
         </CardActions>
       </Card>
     )

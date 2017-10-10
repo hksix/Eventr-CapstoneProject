@@ -403,26 +403,75 @@ function getAllItemsInEventCategory(request,response,next) {
 }
 
 //************************************************** INVENTORY ****************************** 
-
+function isItemAdded(eventid, itemname){
+    return models.EventInventory.count({
+        where: {
+            eventid: eventid,
+            itemname: itemname
+        }
+    }).then(count => {
+        if (count != 0) {
+            console.log("working")
+            return false;
+        }
+        console.log("Nooooo")
+        return true;
+    })
+}
 //server.post('/api/v1/event_inventory/:eventid', addItemToInventory);
 function addItemToInventory(request,response,next){
-    models.EventInventory.create({
-        eventid: request.params.eventid,
-        defaultitmeid: request.params.defaultitemid,
-        itemname: request.params.itemname,
-        quantity: request.params.quantity,
-        categoryid: request.params.categoryid,
-        ownderid: request.params.ownderid,
-        description: request.params.description,
-    }).then(function(item) {
-        var data = {
-            message: "New item added successfully",
-            data: item
-        };
-        response.send(data);
-        next();
-    }).catch(function (err) {
-        console.log(err)
+    var itemIsAdded = isItemAdded(request.params.eventid, request.params.itemname)
+    .then(isItemAdded => {
+        if(isItemAdded === false){
+            response.send('this item is already added')
+        } else {
+            models.EventInventory.create({
+                eventid: request.params.eventid,
+                defaultitmeid: request.params.defaultitemid,
+                itemname: request.params.itemname,
+                quantity: request.params.quantity,
+                categoryid: request.params.categoryid,
+                ownderid: request.params.ownderid,
+                description: request.params.description,
+            }).then(function(item) {
+                var data = {
+                    message: "New item added successfully",
+                    data: item
+                };
+                response.send(data);
+                next();
+            }).catch(function (err) {
+            console.log(err)
+            });
+        }
+    })
+}
+
+//server.put('/api/v1/event_inventory/:id', updateItemInInventory);
+function updateItemInInventory(request,response,next) {
+    models.EventInventory.findAll({
+        attributes: ['itemname', 'quantity', 'ownerid', 'description'],
+        where: {
+            id: request.params.id
+        }
+    }).then(function(inventory) {
+        if(inventory){
+            user.updateAttributes({
+                itemname: request.params.itemname,
+                quantity: request.params.quantity,
+                ownerid: request.params.ownerid,
+                description: request.params.description
+            }).then(function(inventory){
+                var data = {
+                    message: "Updated inventory successfully",
+                    data: inventory
+                };
+                response.send(data);
+                next();
+            }).catch(function (err) {
+                console.log(err)
+            });
+        }
     });
 }
 // server.get('/api/v1/event_inventory/:event_id', getInventoryForEvent);
@@ -443,7 +492,25 @@ function getInventoryForEvent(request,response,next) {
 }
 
 
-
+//server.del('/api/v1/event_inventory/:defaultitemid/:itemname', deleteItemFromInventory);
+function deleteItemFromInventory(request,response,next) {
+    models.EventInventory.destroy({
+        where: {
+            eventid: request.params.eventid,
+            defaultitemid: request.params.defaultitemid,
+            itemname: request.params.itemname
+        }
+    }).then(function(item) {
+        var data = {
+            message: `Deleted item from event ${request.params.eventid} successfully`,
+            data: item
+        };
+        response.send(data);
+        next();
+    }).catch(function (err) {
+        console.log(err)
+    });
+}
 
 //************************************************** SERVER ****************************** 
 
@@ -481,9 +548,9 @@ server.get(`${extension}/event_categories/:id/items`, getAllItemsInEventCategory
 
 //************************************************** INVENTORY ENDPOINTS ****************************** 
 server.get(`${extension}/event_inventory/:event_id`, getInventoryForEvent);
-// server.post('/api/v1/event_inventory/:event_id', addItemToInventory);
-// server.put('/api/v1/event_inventory/:id', updateItemInInventory);
-// server.del('/api/v1/event_inventory/:id', deleteItemFromInventory);
+server.post(`${extension}/event_inventory/:event_id`, addItemToInventory);
+server.put(`${extension}/event_inventory/:id`, updateItemInInventory);
+server.del(`${extension}/event_inventory/:id`, deleteItemFromInventory);
 
 
 
