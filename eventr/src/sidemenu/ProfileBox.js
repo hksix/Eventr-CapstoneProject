@@ -109,7 +109,8 @@ class ProfileBox extends Component {
         <FlatButton 
           label="Save" 
           onClick={(e) => this._handleClick(e)}
-          style={{marginLeft:10, marginTop:10, marginBottom:10}}/>
+          style={{marginLeft:10, marginTop:10, marginBottom:10}}
+          />
         <Snackbar
           open={this.state.open}
           message={this.state.message}
@@ -151,6 +152,9 @@ class ProfileBox extends Component {
     console.log("working")
     this._handleTouchTap()
     this.props.onSave()
+    this.setState({
+      editing: false,
+    })
   };
 
 
