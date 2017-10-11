@@ -19,7 +19,8 @@ export default class PartyTypeTable extends Component {
     this.state = {
       height: '300px',
       selected: [null],
-      types:[]
+      types:[],
+      defaultItems:'',
 
     };
   }
@@ -43,12 +44,24 @@ export default class PartyTypeTable extends Component {
         var selectionNum = this.state.selected
             // var selectedType = []
             if(this.state.types[selectionNum] !== undefined ){
-                this.props.changeHandler(this.state.types[selectionNum].category_name)
+              axios.get(`${ROOT_URL}/event_categories/${selectionNum}/items`)
+              	.then((res)=>{
+                  console.log(res.data)
+                  this.setState({
+                    defaultItems:res.data.map((item)=>{
+                     return item.item_name
+                    })
+                  },()=>{
+                    // console.log(this.state.defaultItems)
+                    this.props.changeHandler(this.state.types[selectionNum].category_name, this.state.selected, this.state.defaultItems)
+                  })
+                })
+                // this.props.changeHandler(this.state.types[selectionNum].category_name, this.state.selected)
             }
         }
 
     render() { 
-      console.log(this.state.types)      
+      
       return (
         <div>
           <h2 style={styles.headline}>Select type of event</h2>  

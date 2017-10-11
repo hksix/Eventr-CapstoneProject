@@ -135,6 +135,7 @@ export class SetEvent extends Component {
       eventTime: '',
       eventDate: '',
       eventType: "",
+      eventID:'',
       eventPeopleCount:'',
       eventPeopleNames:'',
       eventItems:'',
@@ -148,7 +149,7 @@ export class SetEvent extends Component {
   };
 
   render() {
-    // console.log(<EventSummary date={this.props.EventDate}/>)
+    console.log(this.state.eventItems)
     
     return (
       
@@ -213,9 +214,10 @@ export class SetEvent extends Component {
             </div>
 
             <div style={styles.slide}>
-                <h2 style={styles.headline} >Items page</h2>
-                {/* <PartyTypeTable/> */}
-                <ItemList/> 
+                <h2 style={styles.headline} style={{textAlign: 'center'}}>Items page</h2>
+                <ItemList defaultItems={this.state.eventItems}/> 
+
+
             </div>
             <div style={styles.slide}>
                 <h2 style={styles.headline} >Summary page</h2>
@@ -225,12 +227,12 @@ export class SetEvent extends Component {
                 <p>Time: {this.state.eventTime.toString()}</p>
                 <p>Date: {this.state.eventDate.toString()}</p>
                 <p>Type:{this.state.eventType.toString()}</p>
+                <p>{this.state.eventItems.toString()}</p>
                 <p>Number of people invited: {this.state.eventPeopleCount} {this.state.eventPeopleNames}</p>
                 <p>Number of required items needed</p>
                 <SubmitButton></SubmitButton> 
             </div>
         </SwipeableViews>
-        
       </Card>
     );
   }
@@ -259,9 +261,11 @@ export class SetEvent extends Component {
       eventTime: newTime
     })
   }
-  _handleTypeChange=(newType)=>{
+  _handleTypeChange=(newType,newID, newDefaultItems)=>{
     this.setState({
-      eventType: newType
+      eventType: newType,
+      eventID: newID,
+      eventItems: newDefaultItems,
     })
   }
   _handleInviteChange=(newInvites, names)=>{
