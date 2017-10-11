@@ -2,9 +2,9 @@ import React, {Component} from 'react';
 import SelectField from 'material-ui/SelectField';
 import MenuItem from 'material-ui/MenuItem';
 
-import Drawer from 'material-ui/Drawer';
-import AppBar from 'material-ui/AppBar';
-import RaisedButton from 'material-ui/RaisedButton';
+// import Drawer from 'material-ui/Drawer';
+// import AppBar from 'material-ui/AppBar';
+// import RaisedButton from 'material-ui/RaisedButton';
 
 const persons = [
     {value: 0, name: 'Oliver Hansen'},
@@ -21,9 +21,9 @@ const persons = [
     
 
 export class SelectFriends extends Component {
-    constructor(props){
-        super(props);
-    }
+    // constructor(props){
+    //     super(props);
+    // }
     state = {
       values: [],
     };

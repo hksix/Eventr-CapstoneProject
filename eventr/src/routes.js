@@ -5,7 +5,7 @@ import Home from './Home/Home';
 import Callback from './Callback/Callback';
 import Auth from './Auth/Auth';
 import history from './history';
-import { MenuHeader } from './Menubar.js'
+
 
 
 const auth = new Auth();

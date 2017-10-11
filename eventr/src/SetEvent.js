@@ -7,10 +7,10 @@ import FlatButton from 'material-ui/FlatButton';
 import RaisedButton from 'material-ui/RaisedButton';
 
 import ItemList from './ListOfItems.js'
-import SubmitSnackBar from './Submit.js'
+// import SubmitSnackBar from './Submit.js'
 import Card from 'material-ui/Card';
 
-import Snackbar from 'material-ui/Snackbar';
+
 // import RaisedButton from 'material-ui/RaisedButton';
 
 
@@ -44,9 +44,11 @@ const styles = {
     paddingTop: 16,
     marginBottom: 12,
     fontWeight: 400,
+    textAlign: 'center'
   },
   slide: {
     padding: 10,
+    textAlign: 'center'
   },
 };
 
@@ -183,7 +185,7 @@ export class SetEvent extends Component {
 
             <div id="When&where" style={{textAlign: 'center'}}>
                 <div>
-                    <h2 style={styles.headline} style={{textAlign: 'center'}}>When and where?</h2> 
+                    <h2 style={styles.headline} >When and where?</h2> 
                         Type in the details below.<br />
                     <LocationSelector location={this.state.eventLocation}
                       changeHandler={this._handleLocationChange}/>    
@@ -204,8 +206,9 @@ export class SetEvent extends Component {
             </div>
 
             <div style={styles.slide}>
-                <h2 style={styles.headline} style={{textAlign: 'center'}}>Invite your peeps</h2> 
-                <SelectFriends invited={this.state.eventPeopleCount} names={this.state.eventPeopleNames}
+                <h2 style={styles.headline} >Invite your peeps</h2> 
+                <SelectFriends invited={this.state.eventPeopleCount} 
+                names={this.state.eventPeopleNames}
                 changeHandler={this._handleInviteChange}/>
                 
             </div>
@@ -213,9 +216,11 @@ export class SetEvent extends Component {
             <div style={styles.slide}>
                 <h2 style={styles.headline} style={{textAlign: 'center'}}>Items page</h2>
                 <ItemList defaultItems={this.state.eventItems}/> 
+
+
             </div>
-            <div style={styles.slide} style={{textAlign: 'center'}}>
-                <h2 style={styles.headline} style={{textAlign: 'center'}}>Summary page</h2>
+            <div style={styles.slide}>
+                <h2 style={styles.headline} >Summary page</h2>
                 <p>Name: {this.state.eventName}</p>
                 <p>Description: {this.state.eventDiscription}</p>
                 <p>Location: {this.state.eventLocation}</p>
