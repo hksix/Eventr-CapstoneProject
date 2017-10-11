@@ -50,7 +50,7 @@ export default class MenuOptions extends Component {
                 value={this.state.value}
                 onChange={this.handleChange}>
                 
-                
+{/*                 
                 <Tab icon={<FontIcon className="material-icons"><i className="material-icons">format_list_bulleted</i></FontIcon>}
                   value="0"
                 >
@@ -62,7 +62,7 @@ export default class MenuOptions extends Component {
 
                     </div>
                   </div>
-                </Tab>
+                </Tab> */}
                 
                 <Tab icon={<FontIcon className="material-icons">home</FontIcon>}
                     label="HOME"
@@ -86,7 +86,7 @@ export default class MenuOptions extends Component {
                 {/* renders events page */}
                 <Tab
                     icon={<FontIcon className="material-icons">event</FontIcon>}
-                    label="Events"
+                    label="Create Event"
                     value="b"
                     containerElement={<Link to="/events" />}
                     >
@@ -103,19 +103,7 @@ export default class MenuOptions extends Component {
 
                 </Tab>
 
-                {/* renders user's profile */}
-                <Tab
-                    icon={<FontIcon className="material-icons">face</FontIcon>}
-                    label="PROFILE"
-                    value="c"
-                    containerElement={<Link to="/profile" />}>
-                    <div className="main-content-container">
-                      <div className="side-content-container">
-                        <UserMenu />
-                      </div>
-                      
-                    </div>
-                </Tab>
+
 
                 {/* renders map */}
                 <Tab
@@ -130,6 +118,19 @@ export default class MenuOptions extends Component {
                       <div >
                         <MapContainer />
                       </div>
+                    </div>
+                </Tab>
+                {/* renders user's profile */}
+                <Tab
+                    icon={<FontIcon className="material-icons">settings</FontIcon>}
+                    label="Settings"
+                    value="c"
+                    containerElement={<Link to="/profile" />}>
+                    <div className="main-content-container">
+                      <div className="side-content-container">
+                        <UserMenu />
+                      </div>
+                      
                     </div>
                 </Tab>
               </Tabs>
