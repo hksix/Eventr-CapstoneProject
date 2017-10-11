@@ -34,8 +34,8 @@ export default class MiniEvents extends Component {
     return(
       <Card >
         <CardTitle title="Events" subtitle="These are your upcomming events" />
-        <CardText>{events}</CardText>
-        <CardActions>
+        <CardText style={{height: '200px', overflow: 'scroll'}}>{events}</CardText>
+        <CardActions >
           <FlatButton label="Action1" />
           <FlatButton label="Action2" />
         </CardActions>
