@@ -147,7 +147,7 @@ export class SetEvent extends Component {
   };
 
   render() {
-    // console.log(this.state.eventItems)
+    console.log(this.state.eventItems)
     
     return (
       
@@ -228,7 +228,6 @@ export class SetEvent extends Component {
                 <SubmitButton></SubmitButton> 
             </div>
         </SwipeableViews>
-        
       </Card>
     );
   }
@@ -257,10 +256,11 @@ export class SetEvent extends Component {
       eventTime: newTime
     })
   }
-  _handleTypeChange=(newType,newDefaultItems)=>{
+  _handleTypeChange=(newType,newID, newDefaultItems)=>{
     this.setState({
       eventType: newType,
-      eventItems: newDefaultItems
+      eventID: newID,
+      eventItems: newDefaultItems,
     })
   }
   _handleInviteChange=(newInvites, names)=>{

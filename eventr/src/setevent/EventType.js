@@ -45,7 +45,7 @@ export default class PartyTypeTable extends Component {
             if(this.state.types[selectionNum] !== undefined ){
               axios.get(`${ROOT_URL}/event_categories/${selectionNum}/items`)
               	.then((res)=>{
-                  // console.log(res.data)
+                  console.log(res.data)
                   this.setState({
                     defaultItems:res.data.map((item)=>{
                      return item.item_name
