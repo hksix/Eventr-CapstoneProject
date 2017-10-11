@@ -149,10 +149,6 @@ export class SetEvent extends Component {
   };
 
   render() {
-<<<<<<< HEAD
-    // console.log(<EventSummary date={this.props.EventDate}/>)
-=======
->>>>>>> 2a395e11ec4e672a772246d9435b5323c16d8f39
     console.log(this.state.eventItems)
     
     return (
