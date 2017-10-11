@@ -22,6 +22,7 @@ body {
 .footer-container {
   /* position: relative; */
   height: 150px;
+  font: 300 18px/20px "Open Sans",open-sans,sans-serif;
 }
 
 @media screen and (min-width: 764px){
@@ -31,9 +32,9 @@ body {
     min-height: 1300px;
     display: flex;
     margin: 0 auto;
+    padding-top: 100px;
     justify-content: space-around;
     /* align-items: center; */
-    margin: 0 auto;
   }
   .changing-content-container {
     /* border: 1px solid aqua; */

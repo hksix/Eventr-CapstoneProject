@@ -34,22 +34,23 @@ export default class MiniProfile extends Component {
       })
     })
   }
+  
   save = () => {
     console.log(this.state.lName)
-    axios.put(`${ROOT_URL}/users/3`).then((res) => {
-      console.log("saved data")
-      this.setState({
-        fName: this.state.fName,
-        lName: this.state.lName,
-        profPic: this.state.profPic,
-        email: this.state.email,
-        phone: this.state.phone,
-        location: this.state.location,
-      })
-      
-      console.log(this.state.lName)
+    axios.put(`${ROOT_URL}/users/3`, {
+      fName: this.state.fName,
+      lName: this.state.lName,
+      profPic: this.state.profPic,
+      email: this.state.email,
+      phone: this.state.phone,
+      location: this.state.location,
+    }).then((res) => {
+      console.log(res)
+    }).catch((err) => {
+      console.log(err)
     })
   }
+
   render(){
 
     return(
