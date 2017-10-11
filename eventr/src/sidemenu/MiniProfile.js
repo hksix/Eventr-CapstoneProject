@@ -5,7 +5,8 @@ import Drawer from 'material-ui/Drawer';
 import AppBar from 'material-ui/AppBar';
 
 import ProfileBox from './ProfileBox.js';
-
+import axios from 'axios';
+import { ROOT_URL } from '../App.js';
 
 export default class MiniProfile extends Component {
   constructor(props) {
@@ -18,35 +19,95 @@ export default class MiniProfile extends Component {
     });
   };
 
+  componentDidMount = () => {
+    axios.get(`${ROOT_URL}/users/3`).then((res) => {
+      this.setState({
+        fName: res.data.fName,
+        lName: res.data.lName,
+        email: res.data.email,
+        location: res.data.location,
+        phone: res.data.phone,
+        profPic: res.data.profPic,
+        createdAt: res.data.createdAt
+      })
+    })
+  }
+  save = () => {
+    console.log(this.state.lName)
+    axios.put(`${ROOT_URL}/users/3`).then((res) => {
+      console.log("saved data")
+      this.setState({
+        fName: this.state.fName,
+        lName: this.state.lName,
+        profPic: this.state.profPic,
+        email: this.state.email,
+        phone: this.state.phone,
+        location: this.state.location,
+      })
+      
+      console.log(this.state.lName)
+    })
+  }
   render(){
 
     return(
-      <Card>
+      <Card >
         <CardHeader
-          title="URL Avatar"
-          subtitle="Subtitle"
-          avatar="images/twogirlsatpicnic.jpg"
+          title={this.state.fName}
+          subtitle={this.state.lName}
+          avatar={this.state.profPic}
         />
-        {/* <CardMedia
-          overlay={<CardTitle title="Overlay title" subtitle="Overlay subtitle" />}
-        >
-          <img src="images/twogirlsatpicnic.jpg" alt="" />
-        </CardMedia> */}
-        <CardTitle title="Profile" subtitle="Card subtitle" />
-        <CardText>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-          Donec mattis pretium massa. Aliquam erat volutpat. Nulla facilisi.
-          Donec vulputate interdum sollicitudin. Nunc lacinia auctor quam sed pellentesque.
-          Aliquam dui mauris, mattis quis lacus id, pellentesque lobortis odio.
-        </CardText>
+
+        <CardTitle title="Welcome" subtitle={this.state.fName} />
+       
         <CardActions>
           <FlatButton label="Edit Profile" onClick={this.handleToggle} />
             <Drawer width={300} openSecondary={true} open={this.state.open} >
               <AppBar onClick={this.handleToggle} title="Edit Profile" />
-              <ProfileBox/>
+              <ProfileBox 
+                onNameChange={this.handleLastNameChange}
+                onLocationChange={this.handleLocationChange}
+                onPhoneChange={this.handlePhoneChange}
+                onEmailChange={this.handleEmailChange}
+                fName={this.state.fName}
+                lName={this.state.lName}
+                location={this.state.location}
+                phone={this.state.phone}
+                email={this.state.email}
+                profPic={this.state.profPic}
+                createdAt={this.state.createdAt}
+                onSave={this.save}
+              />
             </Drawer>
         </CardActions>
       </Card>
     )
   }
+
+  handleLastNameChange=(name)=> {
+    this.setState({
+      lName: name
+    })
+  }
+  handlePhoneChange=(newPhone)=> {
+    this.setState({
+      phone: newPhone
+    })
+  }
+  handleLocationChange=(newLocation)=> {
+    this.setState({
+      location: newLocation
+    })
+  }
+  handleEmailChange=(newEmail)=> {
+    this.setState({
+      email: newEmail
+    })
+  }
+  handleEmailChange=(newProfPic)=> {
+    this.setState({
+      profPic: newProfPic
+    })
+  }
 }
+
