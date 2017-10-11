@@ -75,7 +75,7 @@ export default class MenuOptions extends Component {
                         <UserMenu />
                       </div>
                       <div className="changing-content-container" >
-                        <Welcome/>
+                        <Welcome />
                       </div>
                     </div>
                     

@@ -81,14 +81,13 @@ export class Welcome extends Component {
     render(){
         return(
             <div className="profilepg">
-                <div style={{border:"1px solid black"}}>
+                <Card>
                     <AppBarExampleIcon/>
-                    <div>events</div>
-                </div>
-            <Calendar/>
-            <Card className='welcomeBox'>
-                <Welcome2 />
-            </Card>
+                </Card>
+                <Calendar/>
+                <Card className='welcomeBox'>
+                    <Welcome2 />
+                 </Card>
             </div>
         )
     }
