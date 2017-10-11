@@ -26,54 +26,23 @@ export class Calendar extends Component {
 
       Promise.all([hostingEvents, attendingEvents])
         .then((res) => {
-          // console.log(res);
           this.setState({events: res}, () => {
-          //   console.log('one ');
-          //   console.log(res)
             this.state.events.map(index => {
               index.data.map(val => {
                 console.log(val);
-              })
-              // console.log('two');
-              // console.log(index);
-              // console.log(index.data);
-              // index.map(event => {
-                // console.log('three')
-                // console.log(event);
-              
-                // this.state.calendarData.push( {
-                //   "id": event.id,
-                //   "title": event.name,
-                //   "start": new Date( parseInt(event.date.slice(0,4)), parseInt(event.date.slice(5,7))-1, parseInt(event.date.slice(8,11)) ),
-                //   "end": new Date( parseInt(event.date.slice(0,4)), parseInt(event.date.slice(5,7))-1, parseInt(event.date.slice(8,11)) ),
-                //   "desc": event.description,
-                //   "cat": event.category_id,
-                // }); 
-              // });  
+                this.state.calendarData.push( {
+                  "id": val.id,
+                  "title": val.name,
+                  "start": new Date( parseInt(val.date.slice(0,4)), parseInt(val.date.slice(5,7))-1, parseInt(val.date.slice(8,11)) ),
+                  "end": new Date( parseInt(val.date.slice(0,4)), parseInt(val.date.slice(5,7))-1, parseInt(val.date.slice(8,11)) ),
+                  "desc": val.description,
+                  "cat": val.category_id,
+                });   
+              });  
             });
           });
         });
     }
-
-
-
-
-
-    //     .then(res => {
-    //       this.setState({events: res.data.data}, () => {
-    //         this.state.events.map(event => {
-    //           this.state.calendarData.push( {
-    //             "id": event.id,
-    //             "title": event.name,
-    //             "start": new Date( parseInt(event.date.slice(0,4)), parseInt(event.date.slice(5,7))-1, parseInt(event.date.slice(8,11)) ),
-    //             "end": new Date( parseInt(event.date.slice(0,4)), parseInt(event.date.slice(5,7))-1, parseInt(event.date.slice(8,11)) ),
-    //             "desc": event.description,
-    //             "cat": event.category_id,
-    //           });
-    //         });
-    //       });
-    //     })
-    // }
     
 
 
