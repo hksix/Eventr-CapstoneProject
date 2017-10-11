@@ -27,9 +27,14 @@ export class Calendar extends Component {
       Promise.all([hostingEvents, attendingEvents])
         .then((res) => {
           this.setState({events: res}, () => {
+            var idExists = {};
             this.state.events.map(index => {
+              
+              
               index.data.map(val => {
-                console.log(val);
+                if (!idExists.hasOwnProperty(val.id)) {
+
+                  idExists[val.id] = true;
                 this.state.calendarData.push( {
                   "id": val.id,
                   "title": val.name,
@@ -37,7 +42,8 @@ export class Calendar extends Component {
                   "end": new Date( parseInt(val.date.slice(0,4)), parseInt(val.date.slice(5,7))-1, parseInt(val.date.slice(8,11)) ),
                   "desc": val.description,
                   "cat": val.category_id,
-                });   
+                }); 
+              } 
               });  
             });
           });
@@ -69,6 +75,8 @@ export class Calendar extends Component {
       return (
         <div className="event-calendar">
           <BigCalendar 
+          popup='True'
+          popupOffset={30}
           key={this.state.calendarData.id}   
           culture='en'
           events={this.state.calendarData}
