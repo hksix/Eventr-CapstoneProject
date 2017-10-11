@@ -119,13 +119,13 @@ function updateEvent(request,response,next){
     }).then(function(event) {
         if(event){
             event.updateAttributes({
-                host_id: request.params['host_id'],
-                name: request.params['name'],
-                description: request.params['description'],
-                date: request.params['date'],
-                time: request.params['time'],
-                location: request.params['location'],
-                category_id: request.params['category_id'],
+                host_id: request.body['host_id'],
+                name: request.body['name'],
+                description: request.body['description'],
+                date: request.body['date'],
+                time: request.body['time'],
+                location: request.body['location'],
+                category_id: request.body['category_id'],
             }).then(function(event) {
                 var data = {
                     data: event
