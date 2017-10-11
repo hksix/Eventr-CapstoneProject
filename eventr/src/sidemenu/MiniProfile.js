@@ -32,21 +32,34 @@ export default class MiniProfile extends Component {
       })
     })
   }
-
+  save = () => {
+    console.log(this.state.lName)
+    axios.put(`${ROOT_URL}/users/3`).then((res) => {
+      console.log("saved data")
+      this.setState({
+        fName: this.state.fName,
+        lName: this.state.lName,
+        profPic: this.state.profPic,
+        email: this.state.email,
+        phone: this.state.phone,
+        location: this.state.location,
+      })
+      
+      console.log(this.state.lName)
+    })
+  }
   render(){
 
     return(
-      <Card>
+      <Card >
         <CardHeader
           title={this.state.fName}
-          subtitle= {this.state.lName}
+          subtitle={this.state.lName}
           avatar={this.state.profPic}
         />
 
-        <CardTitle title="Welcome" subtitle="Card subtitle" />
-        <CardText>
-          
-        </CardText>
+        <CardTitle title="Welcome" subtitle={this.state.fName} />
+       
         <CardActions>
           <FlatButton label="Edit Profile" onClick={this.handleToggle} />
             <Drawer width={300} openSecondary={true} open={this.state.open} >
@@ -55,10 +68,15 @@ export default class MiniProfile extends Component {
                 onNameChange={this.handleLastNameChange}
                 onLocationChange={this.handleLocationChange}
                 onPhoneChange={this.handlePhoneChange}
+                onEmailChange={this.handleEmailChange}
                 fName={this.state.fName}
                 lName={this.state.lName}
                 location={this.state.location}
                 phone={this.state.phone}
+                email={this.state.email}
+                profPic={this.state.profPic}
+                createdAt={this.state.createdAt}
+                onSave={this.save}
               />
             </Drawer>
         </CardActions>
@@ -79,6 +97,16 @@ export default class MiniProfile extends Component {
   handleLocationChange=(newLocation)=> {
     this.setState({
       location: newLocation
+    })
+  }
+  handleEmailChange=(newEmail)=> {
+    this.setState({
+      email: newEmail
+    })
+  }
+  handleEmailChange=(newProfPic)=> {
+    this.setState({
+      profPic: newProfPic
     })
   }
 }

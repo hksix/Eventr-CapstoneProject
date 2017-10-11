@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {Card, CardActions, CardHeader, CardTitle} from 'material-ui/Card';
-// import FlatButton from 'material-ui/FlatButton';
+import FlatButton from 'material-ui/FlatButton';
 // import axios from 'axios';
 // import { ROOT_URL } from '../App.js';
 // import Drawer from 'material-ui/Drawer';
@@ -16,6 +16,7 @@ const style = {
   },
   text: {
     marginLeft: '5px',
+    font: '300 20px/30px "Open Sans",open-sans,sans-serif',
   }
 }
 
@@ -57,21 +58,23 @@ class ProfileBox extends Component {
   //     phone: newPhone,
   //   })
   // }
-
+  
+  
   // this is how side profile looks without editing
   renderNormal = () => {
     return (
       <Card style={style.cardStyle}>
         <CardHeader
           title="Profile Picture"
-          subtitle="Subtitle"
           avatar={this.props.profPic}
         />
         <h3 style={style.text}>Welcome {this.props.fName} {this.props.lName}!</h3>
         <h3 style={style.text}>Phone: {this.props.phone}</h3>
-        <h3 style={style.text}>Default location: {this.props.location}</h3>
+        <h3 style={style.text}>Location: {this.props.location}</h3>
+        <h3 style={style.text}>Email: {this.props.email}</h3>
+        <h3 style={style.text}>Member Since {this.props.createdAt}</h3>
         <br />
-        <button onClick={this.edit}>Edit</button>
+        <FlatButton label="Edit" onClick={this.edit} />
       </Card>
     )
   }
@@ -97,8 +100,7 @@ class ProfileBox extends Component {
           floatingLabelText="Phone Number" 
           floatingLabelFixed={true} 
           hintText={this.props.phone}
-          type='text'
-          value={this.props.value} 
+          type='text' 
           onChange={this._handlePhoneChange}>
         </TextField>
 
@@ -109,12 +111,22 @@ class ProfileBox extends Component {
           floatingLabelFixed={true} 
           hintText={this.props.location}
           type='text'
-          value={this.props.value}
           onChange={this._handleLocationChange}
           >
         </TextField>
+        <TextField 
+          style={style.text} 
+          ref="newEmail" 
+          floatingLabelText="New Email" 
+          floatingLabelFixed={true} 
+          hintText={this.props.email}
+          type='text'
+          onChange={this._handleEmailChange}
+          >
+        </TextField>
         <br />
-        <button onClick={this.save}>Save</button>
+        <FlatButton label="Save" onClick={this.props.onSave} />
+
     </Card>
     )
   }
