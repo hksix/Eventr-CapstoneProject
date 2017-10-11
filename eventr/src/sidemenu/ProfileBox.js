@@ -6,6 +6,7 @@ import FlatButton from 'material-ui/FlatButton';
 // import Drawer from 'material-ui/Drawer';
 // import AppBar from 'material-ui/AppBar';
 import TextField from 'material-ui/TextField';
+import Snackbar from 'material-ui/Snackbar';
 
 
 const style = {
@@ -31,7 +32,6 @@ class ProfileBox extends Component {
     super(props);
     this.state = {
       editing: false,
-      autoHideDuration: 4000,
       message: 'Profile updates saved',
       open: false,
     }
@@ -45,6 +45,7 @@ class ProfileBox extends Component {
   };
 
   // ability to edit profile
+  // when editing is true, the editable content is shown
   edit = () => {
     this.setState({
       editing: true
@@ -79,7 +80,7 @@ class ProfileBox extends Component {
         <h3 style={style.text}>Email: {this.props.email}</h3>
         <h3 style={style.text}>Member Since {this.props.createdAt}</h3>
         <br />
-        <FlatButton label="Edit" onClick={this.edit} style={{marginLeft:10, marginTop:10, marginBottom:10}}/>
+        <FlatButton label="Edit" open={this.state.open} onClick={this.edit} style={{marginLeft:10, marginTop:10, marginBottom:10}}/>
       </Card>
     )
   }
@@ -130,18 +131,56 @@ class ProfileBox extends Component {
           >
         </TextField>
         <br />
-        <FlatButton label="Save" onClick={this.props.onSave} style={{marginLeft:10, marginTop:10, marginBottom:10}}/>
-
+        <FlatButton label="Save" 
+          onClick={(e) => this._handleClick(e)}
+          style={{marginLeft:10, marginTop:10, marginBottom:10}}/>
+        <Snackbar
+          open={this.state.open}
+          message={this.state.message}
+          action="undo"
+          autoHideDuration={4000}
+          onActionTouchTap={this._handleActionTouchTap}
+          onRequestClose={this._handleRequestClose}
+        />
     </Card>
     )
   }
+  // default state is false, therefore renderNormal will render. 
+  // if edit is clicked, editing state is change to true and renderForm will render
   render = () => {
     if (this.state.editing) {
       return this.renderForm()
     } else {
       return this.renderNormal()
     }
+  };
+
+  // these handle the notification at the bottom stating changes have been made
+  _handleTouchTap = () => {
+    this.setState({
+      open: true,
+    });
+  };
+  _handleActionTouchTap = () => {
+    this.setState({
+      open: false,
+    });
+    alert('Edits removed from your profile.');
+  };
+  _handleRequestClose = () => {
+    this.setState({
+      open: false,
+    });
+  };
+  _handleClick = (e) => {
+    console.log("working")
+    this._handleTouchTap()
+    this.props.onSave()
   }
+
+
+
+  // handle all edits of users profile and passes value back to MiniProfile to change state and save to database
 
   _handleLastNameChange=(e)=> {
     this.props.onNameChange(e.target.value)
