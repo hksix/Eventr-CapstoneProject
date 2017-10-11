@@ -63,6 +63,9 @@ const styles = {
  * You can also close this dialog by clicking outside the dialog, or with the 'Esc' key.
  */
 class SubmitButton extends Component {
+  constructor(props){
+    super(props);
+  }
     state = {
       open: false,
     };
@@ -88,6 +91,10 @@ class SubmitButton extends Component {
         open: false,
       });
     };
+    handleSubmitAndClose = ()=>{
+      this.handleRequestClose();
+      this.props.changeHandler();
+    }
   
     render() {
       const actions = [
@@ -100,7 +107,7 @@ class SubmitButton extends Component {
           label="Submit"
           primary={true}
           keyboardFocused={true}
-          onClick={this.handleClose}>
+          onClick={this.handleSubmitAndClose}>
         </FlatButton>,
       ];
       
@@ -229,13 +236,10 @@ export class SetEvent extends Component {
                 <p>Time: {this.state.eventTime.toString()}</p>
                 <p>Date: {this.state.eventDate.toString()}</p>
                 <p>Type:{this.state.eventType.toString()}</p>
-                <p>{this.state.eventItems.toString()}</p>
                 <p>Number of people invited: {this.state.eventPeopleCount} {this.state.eventPeopleNames}</p>
                 <p>Number of required items needed:{this.state.eventItems}</p>
-                <SubmitButton></SubmitButton> 
-                <form onSubmit={this._handleSubmit}>
-                <button type='submit'>Submit</button>
-                </form>
+                <SubmitButton
+                changeHandler={this._handleSubmit}></SubmitButton> 
             </div>
         </SwipeableViews>
       </Card>
@@ -280,15 +284,15 @@ export class SetEvent extends Component {
     })
   }
   _handleSubmit=(e)=>{
-    e.preventDefault();
+    // e.preventDefault();
     axios.post(`${ROOT_URL}/events`,{
       host_id: 333,
-      'name': "test Celebration",
-      'description': "Come celebrate Grandma's 90th birthday!",
-      'date': "2017-11-20T00:00:00.000Z",
-      'time': null,
-      'location': "2222 Belle Isle Cir NE Atlanta GA 30329",
-      'category_id': 4,
+      'name': `${this.state.eventName}`,
+      'description': `${this.state.eventDiscription}`,
+      'date': `${this.state.eventDate.toString()}`,
+      'time': `${this.state.eventTime.toString()}`,
+      'location': `${this.state.eventLocation}`,
+      'category_id': `${this.state.eventID}`,
     }).then(function(response){
       console.log(response)
     })
