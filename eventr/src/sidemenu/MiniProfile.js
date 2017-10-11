@@ -1,10 +1,16 @@
 import React, { Component } from 'react';
+//Material UI
 import {Card, CardActions, CardHeader, CardTitle, CardText} from 'material-ui/Card';
 import FlatButton from 'material-ui/FlatButton';
 import Drawer from 'material-ui/Drawer';
 import AppBar from 'material-ui/AppBar';
+import IconButton from 'material-ui/IconButton';
+import NavigationClose from 'material-ui/svg-icons/navigation/close';
 
+//imported components
 import ProfileBox from './ProfileBox.js';
+
+//database axios calls
 import axios from 'axios';
 import { ROOT_URL } from '../App.js';
 
@@ -34,7 +40,7 @@ export default class MiniProfile extends Component {
       })
     })
   }
-  
+
   save = () => {
     console.log(this.state.lName)
     axios.put(`${ROOT_URL}/users/3`, {
@@ -50,9 +56,14 @@ export default class MiniProfile extends Component {
       console.log(err)
     })
   }
-
+  
   render(){
-
+    const styles = {
+      title: {
+        cursor: 'pointer',
+      },
+    };
+    
     return(
       <Card >
         <CardHeader
@@ -64,9 +75,13 @@ export default class MiniProfile extends Component {
         <CardTitle title="Welcome" subtitle={this.state.fName} />
        
         <CardActions>
-          <FlatButton label="Edit Profile" onClick={this.handleToggle} />
+          <FlatButton label="View Profile" onClick={this.handleToggle} />
             <Drawer width={300} openSecondary={true} open={this.state.open} >
-              <AppBar onClick={this.handleToggle} title="Edit Profile" />
+              <AppBar 
+                style={styles} 
+                onClick={this.handleToggle} 
+                title="Profile" 
+                iconElementLeft={<IconButton><NavigationClose /></IconButton>}/>
               <ProfileBox 
                 onNameChange={this.handleLastNameChange}
                 onLocationChange={this.handleLocationChange}
