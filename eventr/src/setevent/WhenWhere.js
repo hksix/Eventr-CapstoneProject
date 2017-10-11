@@ -16,13 +16,13 @@ const styles = {
   };
 
 export class DateSelector extends Component {
-    constructor(props) {
-        super(props);
+    // constructor(props) {
+    //     super(props);
     
       //   this.state = {
       //     controlledDate: null,
       //   };
-        }
+    //}
     render() {
         return (
             <DatePicker
@@ -45,10 +45,10 @@ export class DateSelector extends Component {
 }
 
 export class TimeSelector extends Component {
-    constructor(props) {
-        super(props);
-        // this.state = { value12: null};
-    }
+    // constructor(props) {
+    //     super(props);
+    //     // this.state = { value12: null};
+    // }
 
 
     handleChangeTimePicker12 = (event, date) => {
@@ -82,9 +82,9 @@ export class TimeSelector extends Component {
 }
 
 export class LocationSelector extends Component{
-    constructor(props){
-        super(props);
-    }
+    // constructor(props){
+    //     super(props);
+    // }
 
     _handleChangeLocation = (event, address)=>{
         this.props.changeHandler(address);

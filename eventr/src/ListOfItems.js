@@ -43,13 +43,7 @@ class Form extends Component {
 			this.input.placeholder = "Add Items here...";
 		}
 	}
-	componentDidMount(){
-		console.log("ehy")
-		axios.get(`${ROOT_URL}/event_categories/1/items`)
-			.then((res)=>{
-				console.log(res)
-			})
-	}
+	
 	
 	render() {
         const FloatingButtonAdd = () => (
@@ -64,24 +58,23 @@ class Form extends Component {
 			// with underlying dom element as its
             // argument to get its reference
             // id="blank" is there to comunicate with the TextField box. This is needed but its a hidden element cause I suck at coding
-            <div>
-                <TextField
-                    hintText="Type in items needed..."
-                    value={this.state.value}
-                    onChange={this.handleChange}
-                />
-                <FloatingButtonAdd  />
-                <br />
-			    <div id="blank" style={{display:'none' }}>
-			    	<input 
-			    		ref={node => {
-			    			this.input = node;
-			    		}}
-			    		value={this.state.value}
-			    		onChange={this.handleChange}/>
-                </div>
-                
-            </div>
+			<div>
+				<TextField
+					hintText="Type in items needed..."
+					value={this.state.value}
+					onChange={this.handleChange}
+				/>
+				<FloatingButtonAdd  />
+				<br />
+				<div id="blank" style={{display:'none' }}>
+					<input 
+						ref={node => {
+							this.input = node;
+						}}
+					value={this.state.value}
+					onChange={this.handleChange}/>
+				</div>
+			</div>
 		);
 	}
 }
@@ -90,19 +83,18 @@ const Todo = ({todo, remove}) => {
     const FloatingButtonRemove = () => (
         <div>
             <FloatingActionButton mini={true} secondary={true}>
-                <ContentRemove onClick={()=> {
-				    remove(todo.id)
-				    }} 
-                />
+              <ContentRemove onClick={()=> {
+				    		remove(todo.id)}} 
+              />
             </FloatingActionButton>
         </div>
     );
 	// single todo 
 	return (
-		<p>
+		<div>
 			{todo.value}
-            <FloatingButtonRemove/>            
-		</p>
+      <FloatingButtonRemove/>
+		</div>
 	);
 };
 
@@ -121,7 +113,7 @@ const List = ({todos, remove}) => {
 	
 	return (
 		<div>
-			<p> Items: </p>
+			<span> Items: </span>
 			{allTodos}
 		</div>
 	);
@@ -130,13 +122,19 @@ const List = ({todos, remove}) => {
 
 class ItemList extends Component {
 	constructor(props) {
-        super(props);	
+		super(props);
+		this.state={
+			id: '',
+			value:'',
+		}
+			
         const introData = [
 			{
 				id: -3, 
 				value: "This is where your stuff will go"
 			},
 		];
+		
         
 		const localData = localStorage.todos && JSON.parse(localStorage.todos);
 		this.state = { 
@@ -145,7 +143,9 @@ class ItemList extends Component {
 		// binding methods
 		this.addTodo = this.addTodo.bind(this);
 		this.removeTodo = this.removeTodo.bind(this);
+		
 	}
+
 	// Handler to update localStorage
 	updateLocalStorage() {
 		if (typeof(Storage) !== "undefined")

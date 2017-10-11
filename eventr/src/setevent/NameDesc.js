@@ -13,9 +13,9 @@ const styles = {
   };
 
 export class NameSelector extends Component{
-    constructor(props){
-        super(props);
-    }
+    // constructor(props){
+    //     super(props);
+    // }
 
     _handleChangeName = (event, name)=>{
         this.props.changeHandler(name);
@@ -23,7 +23,7 @@ export class NameSelector extends Component{
     render(){
         return(
             <div style={{textAlign: 'center'}}>
-            <h2 style={styles.headline} style={{textAlign: 'center'}}>Name and Description of your event.</h2> 
+            <h2 style={{textAlign: 'center'}}>Name and Description of your event.</h2> 
                 <TextField
                   
                   floatingLabelText="Name"
@@ -37,9 +37,9 @@ export class NameSelector extends Component{
     }
 }
 export class DescriptionSelector extends Component{
-    constructor(props){
-        super(props);
-    }
+    // constructor(props){
+    //     super(props);
+    // }
 
     _handleDiscName = (event, disc)=>{
         this.props.changeHandler(disc);

@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Table,TableBody,TableHeader,TableHeaderColumn,TableRow,TableRowColumn,} from 'material-ui/Table';
+import {Table,TableBody,TableRow,TableRowColumn,} from 'material-ui/Table';
 import axios from 'axios';
 import { ROOT_URL } from '../App.js';
 const styles = {
@@ -8,6 +8,7 @@ const styles = {
       paddingTop: 16,
       marginBottom: 12,
       fontWeight: 400,
+      textAlign: 'center',
     },
   };
 
@@ -18,7 +19,8 @@ export default class PartyTypeTable extends Component {
     this.state = {
       height: '300px',
       selected: [null],
-      types:[]
+      types:[],
+      defaultItems:'',
 
     };
   }
@@ -40,17 +42,29 @@ export default class PartyTypeTable extends Component {
     };
     handleTypeSelector = ()=>{
         var selectionNum = this.state.selected
-            var selectedType = []
+            // var selectedType = []
             if(this.state.types[selectionNum] !== undefined ){
-                this.props.changeHandler(this.state.types[selectionNum].category_name)
+              axios.get(`${ROOT_URL}/event_categories/${selectionNum}/items`)
+              	.then((res)=>{
+                  console.log(res.data)
+                  this.setState({
+                    defaultItems:res.data.map((item)=>{
+                     return item.item_name
+                    })
+                  },()=>{
+                    // console.log(this.state.defaultItems)
+                    this.props.changeHandler(this.state.types[selectionNum].category_name, this.state.selected, this.state.defaultItems)
+                  })
+                })
+                // this.props.changeHandler(this.state.types[selectionNum].category_name, this.state.selected)
             }
         }
 
-    render() {       
+    render() { 
+      
       return (
         <div>
-          <h2 style={styles.headline} style={{textAlign: 'center'}}>Select type of event</h2>  
-          {this.state.types} 
+          <h2 style={styles.headline}>Select type of event</h2>  
             <Table onRowSelection={this.handleRowSelection} height={this.state.height}> 
             <TableBody>
             {this.state.types.map(type=>

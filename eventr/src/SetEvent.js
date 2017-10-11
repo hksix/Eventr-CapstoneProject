@@ -7,10 +7,10 @@ import FlatButton from 'material-ui/FlatButton';
 import RaisedButton from 'material-ui/RaisedButton';
 
 import ItemList from './ListOfItems.js'
-import SubmitSnackBar from './Submit.js'
+// import SubmitSnackBar from './Submit.js'
 import Card from 'material-ui/Card';
 
-import Snackbar from 'material-ui/Snackbar';
+
 // import RaisedButton from 'material-ui/RaisedButton';
 
 
@@ -44,9 +44,11 @@ const styles = {
     paddingTop: 16,
     marginBottom: 12,
     fontWeight: 400,
+    textAlign: 'center'
   },
   slide: {
     padding: 10,
+    textAlign: 'center'
   },
 };
 
@@ -133,6 +135,7 @@ export class SetEvent extends Component {
       eventTime: '',
       eventDate: '',
       eventType: "",
+      eventID:'',
       eventPeopleCount:'',
       eventPeopleNames:'',
       eventItems:'',
@@ -146,12 +149,11 @@ export class SetEvent extends Component {
   };
 
   render() {
-    // console.log(<EventSummary date={this.props.EventDate}/>)
+    console.log(this.state.eventItems)
     
     return (
       
       <Card>
-      <PartyTypeTable/>
         <Tabs
           onChange={this.handleChange}
           value={this.state.slideIndex}
@@ -183,7 +185,7 @@ export class SetEvent extends Component {
 
             <div id="When&where" style={{textAlign: 'center'}}>
                 <div>
-                    <h2 style={styles.headline} style={{textAlign: 'center'}}>When and where?</h2> 
+                    <h2 style={styles.headline} >When and where?</h2> 
                         Type in the details below.<br />
                     <LocationSelector location={this.state.eventLocation}
                       changeHandler={this._handleLocationChange}/>    
@@ -204,31 +206,33 @@ export class SetEvent extends Component {
             </div>
 
             <div style={styles.slide}>
-                <h2 style={styles.headline} style={{textAlign: 'center'}}>Invite your peeps</h2> 
-                <SelectFriends invited={this.state.eventPeopleCount} names={this.state.eventPeopleNames}
+                <h2 style={styles.headline} >Invite your peeps</h2> 
+                <SelectFriends invited={this.state.eventPeopleCount} 
+                names={this.state.eventPeopleNames}
                 changeHandler={this._handleInviteChange}/>
                 
             </div>
 
             <div style={styles.slide}>
                 <h2 style={styles.headline} style={{textAlign: 'center'}}>Items page</h2>
-                {/* <PartyTypeTable/> */}
-                <ItemList/> 
+                <ItemList defaultItems={this.state.eventItems}/> 
+
+
             </div>
-            <div style={styles.slide} style={{textAlign: 'center'}}>
-                <h2 style={styles.headline} style={{textAlign: 'center'}}>Summary page</h2>
+            <div style={styles.slide}>
+                <h2 style={styles.headline} >Summary page</h2>
                 <p>Name: {this.state.eventName}</p>
                 <p>Description: {this.state.eventDiscription}</p>
                 <p>Location: {this.state.eventLocation}</p>
                 <p>Time: {this.state.eventTime.toString()}</p>
                 <p>Date: {this.state.eventDate.toString()}</p>
                 <p>Type:{this.state.eventType.toString()}</p>
+                <p>{this.state.eventItems.toString()}</p>
                 <p>Number of people invited: {this.state.eventPeopleCount} {this.state.eventPeopleNames}</p>
                 <p>Number of required items needed</p>
                 <SubmitButton></SubmitButton> 
             </div>
         </SwipeableViews>
-        
       </Card>
     );
   }
@@ -257,9 +261,11 @@ export class SetEvent extends Component {
       eventTime: newTime
     })
   }
-  _handleTypeChange=(newType)=>{
+  _handleTypeChange=(newType,newID, newDefaultItems)=>{
     this.setState({
-      eventType: newType
+      eventType: newType,
+      eventID: newID,
+      eventItems: newDefaultItems,
     })
   }
   _handleInviteChange=(newInvites, names)=>{

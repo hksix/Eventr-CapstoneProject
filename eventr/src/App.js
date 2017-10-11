@@ -1,15 +1,14 @@
 import React, { Component } from 'react';
-import {BrowserRouter, Route, Switch, Link} from 'react-router-dom';
-import ReactDOM from 'react-dom';
+// import {BrowserRouter, Route, Switch, Link} from 'react-router-dom';
+
 // import './App.css';
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-import MyAwesomeReactComponent from './MyAwesomeReactComponent';
-import ItemRegistry from './itemRegistry';
+// import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+// import MyAwesomeReactComponent from './MyAwesomeReactComponent';
+// import ItemRegistry from './itemRegistry';
 
 import { MenuHeader } from './Menubar.js'
 
 import axios from 'axios';
-
 import apikey from './apikeys.js';
 // export const ROOT_URL = `http://localhost:8080/api/v1/${apikey}`;
 export const ROOT_URL = `http://ec2-52-207-242-113.compute-1.amazonaws.com/api/v1/${apikey}`;
@@ -48,8 +47,8 @@ class App extends Component {
       <div className="App">
         
         <header>
-        <button
-              
+
+          <button
               className="btn-margin"
               onClick={this.goTo.bind(this, 'home')}
             >
@@ -78,7 +77,8 @@ class App extends Component {
                 )
             }
             </header>
-        
+        <MenuHeader />
+
 
         
         {/* <h1>Users Table example info</h1> */}
@@ -95,9 +95,9 @@ class App extends Component {
                 <li>User Name: {user.user_name}</li>
                </ul>
             </div>
-        )} */}
-        </div>
-      );
+        )}  */}
+      </div>
+    );
   }
 }
 
