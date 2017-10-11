@@ -152,6 +152,12 @@ class ProfileBox extends Component {
   _handleLocationChange=(e)=> {
     this.props.onLocationChange(e.target.value)
   }
+  _handleEmailChange=(e)=> {
+    this.props.onEmailChange(e.target.value)
+  }
+  _handleProfPicChange=(e)=> {
+    this.props.onProfPicChange(e.target.value)
+  }
 }
 
 export default ProfileBox;

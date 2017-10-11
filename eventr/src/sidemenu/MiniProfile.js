@@ -69,6 +69,7 @@ export default class MiniProfile extends Component {
                 onLocationChange={this.handleLocationChange}
                 onPhoneChange={this.handlePhoneChange}
                 onEmailChange={this.handleEmailChange}
+                onProfPicChange={this.handleProfPicChange}
                 fName={this.state.fName}
                 lName={this.state.lName}
                 location={this.state.location}
@@ -104,7 +105,7 @@ export default class MiniProfile extends Component {
       email: newEmail
     })
   }
-  handleEmailChange=(newProfPic)=> {
+  handleProfPicChange=(newProfPic)=> {
     this.setState({
       profPic: newProfPic
     })
