@@ -37,13 +37,6 @@ class ProfileBox extends Component {
     }
   }
 
-  // handles snackbar
-  handleTouchTap = () => {
-    this.setState({
-      open: true,
-    });
-  };
-
   // ability to edit profile
   // when editing is true, the editable content is shown
   edit = () => {
@@ -51,21 +44,7 @@ class ProfileBox extends Component {
       editing: true
     })
   }
-  // save  = () => {
-  //   var lastName = this.refs.newLastName.value;
-  //   var newLocation = this.refs.newLocation.value;
-  //   var newPhone = this.refs.newPhone.value;
-  //   alert("Your profile has been saved")
-  //   this.setState({
-  //     // ** Update "text" property with new value (this fires render() again)
-  //     editing: false,
-  //     lName: lastName,
-  //     location: newLocation,
-  //     phone: newPhone,
-  //   })
-  // }
-  
-  
+
   // this is how side profile looks without editing
   renderNormal = () => {
     return (
@@ -93,7 +72,6 @@ class ProfileBox extends Component {
         
         <TextField 
           style={style.text} 
-          ref="newLastName" 
           floatingLabelText="Last Name" 
           floatingLabelFixed={true} 
           hintText={this.props.lName}
@@ -102,7 +80,6 @@ class ProfileBox extends Component {
 
         <TextField 
           style={style.text} 
-          ref="newPhone" 
           floatingLabelText="Phone Number" 
           floatingLabelFixed={true} 
           hintText={this.props.phone}
@@ -112,26 +89,25 @@ class ProfileBox extends Component {
 
         <TextField 
           style={style.text} 
-          ref="newLocation" 
           floatingLabelText="New Default Location" 
           floatingLabelFixed={true} 
           hintText={this.props.location}
           type='text'
-          onChange={this._handleLocationChange}
-          >
+          onChange={this._handleLocationChange}>
         </TextField>
+
         <TextField 
           style={style.text} 
-          ref="newEmail" 
           floatingLabelText="New Email" 
           floatingLabelFixed={true} 
           hintText={this.props.email}
           type='text'
-          onChange={this._handleEmailChange}
-          >
+          onChange={this._handleEmailChange}>
         </TextField>
+
         <br />
-        <FlatButton label="Save" 
+        <FlatButton 
+          label="Save" 
           onClick={(e) => this._handleClick(e)}
           style={{marginLeft:10, marginTop:10, marginBottom:10}}/>
         <Snackbar
@@ -140,8 +116,7 @@ class ProfileBox extends Component {
           action="undo"
           autoHideDuration={4000}
           onActionTouchTap={this._handleActionTouchTap}
-          onRequestClose={this._handleRequestClose}
-        />
+          onRequestClose={this._handleRequestClose}/>
     </Card>
     )
   }
@@ -176,7 +151,7 @@ class ProfileBox extends Component {
     console.log("working")
     this._handleTouchTap()
     this.props.onSave()
-  }
+  };
 
 
 
@@ -184,49 +159,35 @@ class ProfileBox extends Component {
 
   _handleLastNameChange=(e)=> {
     this.props.onNameChange(e.target.value)
-  }
+  };
   _handlePhoneChange=(e)=> {
     this.props.onPhoneChange(e.target.value)
-  }
+  };
   _handleLocationChange=(e)=> {
     this.props.onLocationChange(e.target.value)
-  }
+  };
   _handleEmailChange=(e)=> {
     this.props.onEmailChange(e.target.value)
-  }
+  };
   _handleProfPicChange=(e)=> {
     this.props.onProfPicChange(e.target.value)
-  }
+  };
 }
 
 export default ProfileBox;
   
 
+  // save  = () => {
+  //   var lastName = this.refs.newLastName.value;
+  //   var newLocation = this.refs.newLocation.value;
+  //   var newPhone = this.refs.newPhone.value;
+  //   alert("Your profile has been saved")
+  //   this.setState({
+  //     // ** Update "text" property with new value (this fires render() again)
+  //     editing: false,
+  //     lName: lastName,
+  //     location: newLocation,
+  //     phone: newPhone,
+  //   })
+  // }
   
-
-  // render(){
-    
-  //   return(
-  //     <Card>
-  //       <Card style={styles}>
-  //         <CardHeader
-  //           title="Profile Picture"
-  //           subtitle="Subtitle"
-  //           avatar={this.state.profPic}
-  //         />
-  //       </Card>
-  //       <Card>
-  //         <CardTitle title={this.state.fName} subtitle={this.state.lName} />
-          
-  //         <CardActions>
-  //           <FlatButton label={this.state.loginstatus} />
-
-  //           <FlatButton label="Edit"/>
-  //           <FlatButton label="Edit Profile" onClick={this.handleToggle} />
-
-  //         </CardActions>
-  //       </Card>
-  //     </Card>
-
-  //   )
-  //}

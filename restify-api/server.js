@@ -46,7 +46,10 @@ function getAllEventsByGuest(request, response, next) {
     models.Users.find({
         where: {
             'id': request.params.id
-        }
+        },
+        attributes:[ 
+            sequelize.fn('date_format', sequelize.col('date_col'), '%Y-%m-%d'), 'date_col_formed'
+        ]
     }).then(function(user) {
         var options = {}
         user.getEvents(options).then(results => {
