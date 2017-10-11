@@ -229,7 +229,7 @@ export class SetEvent extends Component {
                 <p>Type:{this.state.eventType.toString()}</p>
                 <p>{this.state.eventItems.toString()}</p>
                 <p>Number of people invited: {this.state.eventPeopleCount} {this.state.eventPeopleNames}</p>
-                <p>Number of required items needed</p>
+                <p>Number of required items needed:{this.state.eventItems}</p>
                 <SubmitButton></SubmitButton> 
             </div>
         </SwipeableViews>

@@ -78,5 +78,3 @@ export default class PartyTypeTable extends Component {
       );
     }
   }
-
-  // export default PartyTypeTable;

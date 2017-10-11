@@ -14,16 +14,15 @@ class Home extends Component {
       <div className="container">
         {
           isAuthenticated() && (
-            <div>
-              
+            <div>              
               <h4>
                 You are logged in!
               </h4>
-              <MenuHeader />
-              </div>
+            </div> 
           )
+          
          
-        }<MenuHeader />
+        }
         
         {
           !isAuthenticated() && (

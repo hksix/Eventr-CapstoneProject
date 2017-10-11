@@ -50,7 +50,7 @@ class App extends Component {
 
           <button
               className="btn-margin"
-              onClick={this.goTo.bind(this, 'home')}
+              onClick={this.goTo.bind(this, 'main')}
             >
               Home
             </button>
@@ -77,7 +77,7 @@ class App extends Component {
                 )
             }
             </header>
-        <MenuHeader />
+        
 
 
         

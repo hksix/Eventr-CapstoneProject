@@ -9,6 +9,11 @@ import { Calendar } from './Calendar.js'
 
 import AppBar from 'material-ui/AppBar';
 
+import EditDropdown from './updateEventComponents/EditDropdown.js'
+import ItemsCheckList from './updateEventComponents/ItemsCheckList.js'
+
+import MapsPlace from 'material-ui/svg-icons/maps/place';
+
 const header = {
     textAlign: 'center',
     backgroundColor: cyan400,
@@ -21,13 +26,16 @@ const header = {
 
 const SubHeader = {
     // height: '400px',
+    
     position:'relative',
     display:'flex',
     
 };
 const cardbox={
+    paddingTop: '15px',
+    paddingBottom: '15px',
     textAlign: 'center',
-    height:'100px',
+    height:'auto',
     width: '100%',
     margin: '10px'
 }
@@ -38,23 +46,44 @@ const Welcome2 = (props) =>(
         <h3 style={header} className="welcome">Bob's party</h3>
         <div style={SubHeader}>
             <Card style={cardbox}>
-                <div> big box </div>
+                <div> 
+                    <p><u>Event Name</u></p>
+                    <p><u>Event Time</u></p>
+                    <p><u>Event Description</u></p>
+                </div>
+                <div style={{position:'relative', float:'right'}}>
+                <EditDropdown />
+                </div>
             </Card>
         </div>
         <div style={SubHeader}>
             <Card style={cardbox}>
-                <div>box1</div>
+                <div><u>Location</u></div>
+                <MapsPlace/>
+                <div style={{position:'relative', float:'right'}}>
+                <EditDropdown />
+                </div>
             </Card>
             <Card style={cardbox}>
-                <div>box2</div>
+                <div><u>Friends invited</u></div>
+                <div style={{position:'relative', float:'right'}}>
+                <EditDropdown />
+                </div>
             </Card>
             <Card style={cardbox}>
-                <div>box3</div>
+                <div><u>Upcoming Dates</u></div>
+                <div style={{position:'relative', float:'right'}}>
+                <EditDropdown />
+                </div>
             </Card>
         </div>
         <div style={SubHeader}>
             <Card style={cardbox}>
-                <div> Items box </div>
+                <div> <u>List of Items box</u> </div>
+                <ItemsCheckList/>
+                <div style={{position:'relative', float:'right'}}>
+                <EditDropdown />
+                </div>
             </Card>
         </div>
         
