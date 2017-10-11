@@ -8,7 +8,7 @@ var restifyValidator = require('restify-validator');
 var util = require('util');
 var models = require('./models/index');
 var error_messages = null;
-
+const corsMiddleware = require('restify-cors-middleware')
 
 //************************************************** EVENTS ****************************** 
 function getAllEvents(request, response, next) {
@@ -546,6 +546,16 @@ var server = restify.createServer();
 // });
 
 
+
+const cors = corsMiddleware({
+  preflightMaxAge: 5, //Optional
+  origins: ['*','https://event-r.com'],
+//   allowHeaders: ['API-Token'],
+//   exposeHeaders: ['API-Token-Expiry']
+})
+
+server.pre(cors.preflight)
+server.use(cors.actual)
 //***********
 
 
