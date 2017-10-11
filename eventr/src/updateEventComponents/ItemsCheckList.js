@@ -53,6 +53,7 @@ class Todo extends Component {
             return (
                 <li>
                     <del>{todo.text}</del> <a href="" onClick={this.done.bind(this)}>✓</a>
+                    <small style={{color:'green'}}>Hamza</small>
                 </li>
             );
         } else {

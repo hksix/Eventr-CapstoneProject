@@ -51,29 +51,39 @@ const Welcome2 = (props) =>(
                     <p><u>Event Time</u></p>
                     <p><u>Event Description</u></p>
                 </div>
-                <EditDropdown/>
+                <div style={{position:'relative', float:'right'}}>
+                <EditDropdown />
+                </div>
             </Card>
         </div>
         <div style={SubHeader}>
             <Card style={cardbox}>
                 <div><u>Location</u></div>
                 <MapsPlace/>
-                <EditDropdown/>
+                <div style={{position:'relative', float:'right'}}>
+                <EditDropdown />
+                </div>
             </Card>
             <Card style={cardbox}>
                 <div><u>Friends invited</u></div>
-                <EditDropdown/>
+                <div style={{position:'relative', float:'right'}}>
+                <EditDropdown />
+                </div>
             </Card>
             <Card style={cardbox}>
                 <div><u>Upcoming Dates</u></div>
-                <EditDropdown/>
+                <div style={{position:'relative', float:'right'}}>
+                <EditDropdown />
+                </div>
             </Card>
         </div>
         <div style={SubHeader}>
             <Card style={cardbox}>
                 <div> <u>List of Items box</u> </div>
                 <ItemsCheckList/>
-                <EditDropdown/>
+                <div style={{position:'relative', float:'right'}}>
+                <EditDropdown />
+                </div>
             </Card>
         </div>
         
