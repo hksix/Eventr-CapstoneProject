@@ -449,6 +449,40 @@ function getInventoryForEvent(request,response,next) {
 
 var server = restify.createServer();
 
+//Copied from https://stackoverflow.com/questions/34386481/allowing-options-method-with-restify-request-header-field-authorization-is-not
+function corsHandler(req, res, next) {
+    res.setHeader('Access-Control-Allow-Origin', '*');
+    res.setHeader('Access-Control-Allow-Headers', 'Origin, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version, X-Response-Time, X-PINGOTHER, X-CSRF-Token,Authorization');
+    res.setHeader('Access-Control-Allow-Methods', '*');
+    res.setHeader('Access-Control-Expose-Headers', 'X-Api-Version, X-Request-Id, X-Response-Time');
+    res.setHeader('Access-Control-Max-Age', '1000');
+    return next();
+}
+
+function optionsRoute(req, res, next) {
+    res.send(200);
+    return next();
+}
+
+server.use(restify.CORS({
+credentials: true,                 // defaults to false
+methods: ['GET','PUT','DELETE','POST','OPTIONS']
+}));
+
+/*
+routes and authentication handlers 
+*/
+
+server.opts('/\.*/', corsHandler, optionsRoute);
+server.listen(serverPort, function() {
+    var consoleMessage = '\n Test Server';
+});
+
+
+//***********
+
+
+
 server.use(restify.plugins.bodyParser());
 server.use(restify.plugins.queryParser());
 server.use(restifyValidator);
