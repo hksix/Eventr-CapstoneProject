@@ -149,6 +149,7 @@ export class SetEvent extends Component {
 
   render() {
     // console.log(<EventSummary date={this.props.EventDate}/>)
+    console.log(this.state.eventItems)
     
     return (
       
@@ -226,7 +227,7 @@ export class SetEvent extends Component {
                 <p>Date: {this.state.eventDate.toString()}</p>
                 <p>Type:{this.state.eventType.toString()}</p>
                 <p>Number of people invited: {this.state.eventPeopleCount} {this.state.eventPeopleNames}</p>
-                <p>Number of required items needed</p>
+                <p>Number of required items needed:{this.state.eventItems}</p>
                 <SubmitButton></SubmitButton> 
             </div>
         </SwipeableViews>
@@ -259,9 +260,11 @@ export class SetEvent extends Component {
       eventTime: newTime
     })
   }
-  _handleTypeChange=(newType)=>{
+  _handleTypeChange=(newType,newID, newDefaultItems)=>{
     this.setState({
-      eventType: newType
+      eventType: newType,
+      eventID: newID,
+      eventItems: newDefaultItems,
     })
   }
   _handleInviteChange=(newInvites, names)=>{
