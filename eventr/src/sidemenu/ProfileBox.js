@@ -15,8 +15,13 @@ const style = {
     marginRight:'auto',
   },
   text: {
-    marginLeft: '5px',
+    marginLeft: '10px',
+    font: '300 20px/35px "Open Sans",open-sans,sans-serif',
+  },
+  editText: {
+    textAlign: 'center',
     font: '300 20px/30px "Open Sans",open-sans,sans-serif',
+    paddingTop: '20px',
   }
 }
 
@@ -74,7 +79,7 @@ class ProfileBox extends Component {
         <h3 style={style.text}>Email: {this.props.email}</h3>
         <h3 style={style.text}>Member Since {this.props.createdAt}</h3>
         <br />
-        <FlatButton label="Edit" onClick={this.edit} />
+        <FlatButton label="Edit" onClick={this.edit} style={{marginLeft:10, marginTop:10, marginBottom:10}}/>
       </Card>
     )
   }
@@ -83,7 +88,7 @@ class ProfileBox extends Component {
   renderForm = () => {
     return (
       <Card style={style.cardStyle}>
-        <h3 style={style.text}>Edit your profile</h3>
+        <h2 style={style.editText}>Edit your profile</h2>
         
         <TextField 
           style={style.text} 
@@ -125,7 +130,7 @@ class ProfileBox extends Component {
           >
         </TextField>
         <br />
-        <FlatButton label="Save" onClick={this.props.onSave} />
+        <FlatButton label="Save" onClick={this.props.onSave} style={{marginLeft:10, marginTop:10, marginBottom:10}}/>
 
     </Card>
     )
