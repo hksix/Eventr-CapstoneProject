@@ -19,7 +19,7 @@ import { SetEvent } from './SetEvent.js';
 import UserMenu from './sidemenu/UserMenu.js';
 import Footer from './Footer.js';
 import './index.css';
-// import MapContainer from "./MapContainer.js";
+import MapContainer from "./GoogleMap/MapContainer.js";
 // import PartyTypeTable from './setevent/EventType.js';
 
 // import { Calendar } from './Calendar.js'
@@ -75,9 +75,8 @@ export default class MenuOptions extends Component {
                         <UserMenu />
                       </div>
                       <div className="changing-content-container" >
-                        <Welcome/>
+                        <Welcome />
                       </div>
-                      
                     </div>
                     
                 </Tab>
@@ -129,7 +128,7 @@ export default class MenuOptions extends Component {
                         <UserMenu />
                       </div>
                       <div >
-                        {/* <MapContainer /> */}
+                        <MapContainer />
                       </div>
                     </div>
                 </Tab>

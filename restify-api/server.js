@@ -8,7 +8,9 @@ var restifyValidator = require('restify-validator');
 var util = require('util');
 var models = require('./models/index');
 var error_messages = null;
+
 const corsMiddleware = require('restify-cors-middleware');
+
 
 //************************************************** EVENTS ****************************** 
 function getAllEvents(request, response, next) {
@@ -46,7 +48,10 @@ function getAllEventsByGuest(request, response, next) {
     models.Users.find({
         where: {
             'id': request.params.id
-        }
+        },
+        // attributes:[ 
+        //     sequelize.fn('date_format', sequelize.col('date_col'), '%Y-%m-%d'), 'date_col_formed'
+        // ]
     }).then(function(user) {
         var options = {}
         user.getEvents(options).then(results => {
@@ -115,13 +120,13 @@ function updateEvent(request,response,next){
     }).then(function(event) {
         if(event){
             event.updateAttributes({
-                host_id: request.params['host_id'],
-                name: request.params['name'],
-                description: request.params['description'],
-                date: request.params['date'],
-                time: request.params['time'],
-                location: request.params['location'],
-                category_id: request.params['category_id'],
+                host_id: request.body['host_id'],
+                name: request.body['name'],
+                description: request.body['description'],
+                date: request.body['date'],
+                time: request.body['time'],
+                location: request.body['location'],
+                category_id: request.body['category_id'],
             }).then(function(event) {
                 var data = {
                     data: event
@@ -242,16 +247,16 @@ function updateUser(request,response,next){
         }
     }).then(function(user) {
         if(user){
+            console.log(request.body)
             user.updateAttributes({
-                fName: request.params['fName'],
-                lName: request.params['lName'],
-                profPic: request.params['profPic'],
-                email: request.params['email'],
-                phone: request.params['phone'],
-                location: request.params['location']
+                fName: request.body['fName'],
+                lName: request.body['lName'],
+                profPic: request.body['profPic'],
+                email: request.body['email'],
+                phone: request.body['phone'],
+                location: request.body['location']
             }).then(function(user) {
                 var data = {
-    
                     message: "Updated user successfully",
                     data: user
                 };
@@ -323,8 +328,8 @@ function addGuest(request,response,next){
             response.send('This person is already invited')
         } else {
         models.Guests.create({
-            eventid: request.params.eventid,
-            userid: request.params.guestid,
+            eventid: request.body.eventid,
+            userid: request.body.guestid,
         }).then(function(guest) {
             var data = {
                 message: "New guest successfully added to event",
@@ -343,8 +348,8 @@ function addGuest(request,response,next){
 function deleteGuest(request,response,next) {
     models.Guests.destroy({
         where: {
-            eventid: request.params.eventid,
-            userid: request.params.guestid,
+            eventid: request.body.eventid,
+            userid: request.body.guestid,
         }
     }).then(function(guest) {
         var data = {
@@ -457,10 +462,10 @@ function updateItemInInventory(request,response,next) {
     }).then(function(inventory) {
         if(inventory){
             user.updateAttributes({
-                itemname: request.params.itemname,
-                quantity: request.params.quantity,
-                ownerid: request.params.ownerid,
-                description: request.params.description
+                itemname: request.body.itemname,
+                quantity: request.body.quantity,
+                ownerid: request.body.ownerid,
+                description: request.body.description
             }).then(function(inventory){
                 var data = {
                     message: "Updated inventory successfully",
@@ -515,6 +520,7 @@ function deleteItemFromInventory(request,response,next) {
 //************************************************** SERVER ****************************** 
 
 var server = restify.createServer();
+
 server.use(restify.plugins.bodyParser());
 server.use(restify.plugins.queryParser());
 server.use(restifyValidator);
@@ -567,7 +573,6 @@ server.get(`${extension}/event_inventory/:event_id`, getInventoryForEvent);
 server.post(`${extension}/event_inventory/:event_id`, addItemToInventory);
 server.put(`${extension}/event_inventory/:id`, updateItemInInventory);
 server.del(`${extension}/event_inventory/:id`, deleteItemFromInventory);
-
 
 
 // module.exports = server;

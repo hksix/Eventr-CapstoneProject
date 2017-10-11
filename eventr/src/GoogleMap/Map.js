@@ -13,7 +13,8 @@ function loadJS(src) {
 export default class Map extends Component {
   constructor(props) {
     super(props);
-
+    this.lat = ''
+    this.lng = ''
     this.initMap = this.initMap.bind(this);
   } 
 
@@ -25,7 +26,6 @@ export default class Map extends Component {
 
   initMap() {
     const googleInterval = setInterval(function(){
-      console.log(window.google);
       
       if (window.google && window.google.maps){
         const GMap = window.google.maps.Map;
@@ -33,12 +33,12 @@ export default class Map extends Component {
         try {
           // had to use document.getElementById because the asynconous of google maps and refs were not allowing the map to render to the page 
           var map = new GMap(document.getElementById('map'), {
-            center: {lat: -33.8688, lng: 151.2195},
+            center: {lat: 33.753746, lng: -84.386330},
             zoom: 13,
           });
           var input = document.getElementById('input')
           var searchBox = new window.google.maps.places.SearchBox(input);
-          map.controls[window.google.maps.ControlPosition.TOP_LEFT].push(input);
+          // map.controls[window.google.maps.ControlPosition.TOP_LEFT].push(input);
           map.addListener('bounds_changed', function() {
             searchBox.setBounds(map.getBounds());
           });
@@ -53,10 +53,9 @@ export default class Map extends Component {
             markers.forEach(function(marker) {
               marker.setMap(null);
             });
-            
+            // sets markers to empty array after each search
             markers = [];
-        
-            
+
             // For each place, get the icon, name and location.
             var bounds = new window.google.maps.LatLngBounds();
             var infos = [];
@@ -82,7 +81,11 @@ export default class Map extends Component {
               });
               console.log(place)
 
-              var infowindow = new window.google.maps.InfoWindow();
+              var infowindow = new window.google.maps.InfoWindow({
+                maxWidth: 200,
+                overflow: 'wrap'
+              });
+              
 
               window.google.maps.event.addListener(marker, 'click', (function(marker, infowindow) {
                 return function() {
@@ -125,18 +128,18 @@ export default class Map extends Component {
 
   render() {
     return (
-      <div>
-        <h1>Map</h1>
+      <div style={{width: '100%'}}>
         <div 
          ref={ el => this.map = el }
          id="map"
          style={{
            height: 500,
-           width: 500,
+           width: '100%',
          }}
          >Map should be here
         </div>
-        <input id="input"></input>
+        <input id="input" style={{height: 30, width: 400, marginTop: 40}}></input>
+        <input id="zipcode" style={{height: 30, width: 100, marginTop: 40}}></input>
       </div>
     )
   }
