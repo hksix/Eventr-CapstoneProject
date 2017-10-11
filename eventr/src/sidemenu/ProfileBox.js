@@ -102,7 +102,7 @@ class ProfileBox extends Component {
           floatingLabelFixed={true} 
           hintText={this.props.email}
           type='text'
-          onChange={this._handleEmailChange}>
+          onChange={this._handleEcmailChange}>
         </TextField>
 
         <br />

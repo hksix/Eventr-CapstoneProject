@@ -8,6 +8,7 @@ var restifyValidator = require('restify-validator');
 var util = require('util');
 var models = require('./models/index');
 var error_messages = null;
+const corsMiddleware = require('restify-cors-middleware')
 
 
 //************************************************** EVENTS ****************************** 
@@ -519,6 +520,23 @@ function deleteItemFromInventory(request,response,next) {
 
 var server = restify.createServer();
 
+
+
+
+const cors = corsMiddleware({
+  preflightMaxAge: 5, //Optional
+  // take out * when deploy
+  origins: ['*'],
+  
+//   origins: ['*', 'http://localhost:3000', 'https://event-r.com'],
+//   allowHeaders: ['API-Token'],
+//   exposeHeaders: ['API-Token-Expiry']
+})
+
+server.pre(cors.preflight)
+server.use(cors.actual)
+
+
 server.use(restify.plugins.bodyParser());
 server.use(restify.plugins.queryParser());
 server.use(restifyValidator);
@@ -554,7 +572,6 @@ server.get(`${extension}/event_inventory/:event_id`, getInventoryForEvent);
 server.post(`${extension}/event_inventory/:event_id`, addItemToInventory);
 server.put(`${extension}/event_inventory/:id`, updateItemInInventory);
 server.del(`${extension}/event_inventory/:id`, deleteItemFromInventory);
-
 
 
 // module.exports = server;
