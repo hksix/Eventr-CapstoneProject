@@ -1,14 +1,20 @@
-import React from 'react';
+import React, {Component} from 'react';
 import {Card, CardActions, CardHeader, CardMedia, CardTitle, CardText} from 'material-ui/Card';
 import FlatButton from 'material-ui/FlatButton';
+import axios from 'axios';
 
-const styles = {
-      // width:'20%',
-      // marginLeft:'10%',
-}
-
-
-const ProfileBox = () => (
+class ProfileBox extends Component {
+  state = {users:[]}
+  
+  componentDidMount(){
+    axios.get(`${ROOT_URL}/users`)
+    .then((res) => {
+      // console.log(res);
+      this.setState({users:res.data})
+    })
+  }
+  
+  render() {
   <Card style={styles}>
     <CardHeader
       title="URL Avatar"
@@ -32,6 +38,6 @@ const ProfileBox = () => (
       <FlatButton label="Action2" />
     </CardActions>
   </Card>
-);
-
+  }
+}
 export default ProfileBox;
