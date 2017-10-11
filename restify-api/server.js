@@ -48,9 +48,9 @@ function getAllEventsByGuest(request, response, next) {
         where: {
             'id': request.params.id
         },
-        attributes:[ 
-            sequelize.fn('date_format', sequelize.col('date_col'), '%Y-%m-%d'), 'date_col_formed'
-        ]
+        // attributes:[ 
+        //     sequelize.fn('date_format', sequelize.col('date_col'), '%Y-%m-%d'), 'date_col_formed'
+        // ]
     }).then(function(user) {
         var options = {}
         user.getEvents(options).then(results => {
@@ -246,16 +246,16 @@ function updateUser(request,response,next){
         }
     }).then(function(user) {
         if(user){
+            console.log(request.body)
             user.updateAttributes({
-                fName: request.params['fName'],
-                lName: request.params['lName'],
-                profPic: request.params['profPic'],
-                email: request.params['email'],
-                phone: request.params['phone'],
-                location: request.params['location']
+                fName: request.body['fName'],
+                lName: request.body['lName'],
+                profPic: request.body['profPic'],
+                email: request.body['email'],
+                phone: request.body['phone'],
+                location: request.body['location']
             }).then(function(user) {
                 var data = {
-    
                     message: "Updated user successfully",
                     data: user
                 };
@@ -461,10 +461,10 @@ function updateItemInInventory(request,response,next) {
     }).then(function(inventory) {
         if(inventory){
             user.updateAttributes({
-                itemname: request.params.itemname,
-                quantity: request.params.quantity,
-                ownerid: request.params.ownerid,
-                description: request.params.description
+                itemname: request.body.itemname,
+                quantity: request.body.quantity,
+                ownerid: request.body.ownerid,
+                description: request.body.description
             }).then(function(inventory){
                 var data = {
                     message: "Updated inventory successfully",
