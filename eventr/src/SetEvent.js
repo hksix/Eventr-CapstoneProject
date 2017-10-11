@@ -9,6 +9,8 @@ import RaisedButton from 'material-ui/RaisedButton';
 import ItemList from './ListOfItems.js'
 // import SubmitSnackBar from './Submit.js'
 import Card from 'material-ui/Card';
+import { ROOT_URL } from './App.js';
+import axios from 'axios';
 
 
 // import RaisedButton from 'material-ui/RaisedButton';
@@ -231,6 +233,9 @@ export class SetEvent extends Component {
                 <p>Number of people invited: {this.state.eventPeopleCount} {this.state.eventPeopleNames}</p>
                 <p>Number of required items needed:{this.state.eventItems}</p>
                 <SubmitButton></SubmitButton> 
+                <form onSubmit={this._handleSubmit}>
+                <button type='submit'>Submit</button>
+                </form>
             </div>
         </SwipeableViews>
       </Card>
@@ -272,6 +277,23 @@ export class SetEvent extends Component {
     this.setState({
       eventPeopleCount: newInvites,
       eventPeopleNames: names
+    })
+  }
+  _handleSubmit=(e)=>{
+    e.preventDefault();
+    axios.post(`${ROOT_URL}/events`,{
+      host_id: 333,
+      'name': "test Celebration",
+      'description': "Come celebrate Grandma's 90th birthday!",
+      'date': "2017-11-20T00:00:00.000Z",
+      'time': null,
+      'location': "2222 Belle Isle Cir NE Atlanta GA 30329",
+      'category_id': 4,
+    }).then(function(response){
+      console.log(response)
+    })
+    .catch(function(error){
+      console.log(error);
     })
   }
 
