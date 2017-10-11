@@ -40,9 +40,24 @@ class ProfileBox extends Component {
   // ability to edit profile
   // when editing is true, the editable content is shown
   edit = () => {
+    if (this.state.editing === false) {
+      this.setState({
+        editing: true
+      })
+    } else {
+      this.setState({
+        editing: false
+      })
+    }
+  }
+
+  handleTouchTap = () => {
+    console.log(this.state.open)
+    console.log("HandleTouchTap")
     this.setState({
-      editing: true
-    })
+      open: true,
+    });
+    console.log(this.state.open)
   }
 
   // this is how side profile looks without editing
@@ -111,13 +126,13 @@ class ProfileBox extends Component {
           onClick={(e) => this._handleClick(e)}
           style={{marginLeft:10, marginTop:10, marginBottom:10}}
           />
-        <Snackbar
-          open={this.state.open}
-          message={this.state.message}
-          action="undo"
-          autoHideDuration={4000}
-          onActionTouchTap={this._handleActionTouchTap}
-          onRequestClose={this._handleRequestClose}/>
+          <Snackbar
+            open={this.state.open}
+            message={this.state.message}
+            action="undo"
+            autoHideDuration={4000}
+            onActionTouchTap={this._handleActionTouchTap}
+            onRequestClose={this._handleRequestClose}/>
     </Card>
     )
   }
@@ -132,30 +147,30 @@ class ProfileBox extends Component {
   };
 
   // these handle the notification at the bottom stating changes have been made
+  // these handle the notification at the bottom stating changes have been made
   _handleTouchTap = () => {
     this.setState({
       open: true,
+      editing: false,
     });
-  };
+  }
   _handleActionTouchTap = () => {
     this.setState({
       open: false,
     });
     alert('Edits removed from your profile.');
-  };
+  }
   _handleRequestClose = () => {
     this.setState({
       open: false,
     });
-  };
+  }
   _handleClick = (e) => {
     console.log("working")
     this._handleTouchTap()
     this.props.onSave()
-    this.setState({
-      editing: false,
-    })
-  };
+  }		    
+
 
 
 
