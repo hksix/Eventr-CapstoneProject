@@ -8,7 +8,7 @@ var restifyValidator = require('restify-validator');
 var util = require('util');
 var models = require('./models/index');
 var error_messages = null;
-const corsMiddleware = require('restify-cors-middleware')
+const corsMiddleware = require('restify-cors-middleware');
 
 //************************************************** EVENTS ****************************** 
 function getAllEvents(request, response, next) {
@@ -30,10 +30,10 @@ function getAllEventsByHost(request, response, next) {
             'host_id': request.params.id
         }
     }).then(function(events) {
-        var data = {
-            data: events
-        };  
-        response.send(data);
+        // var data = {
+        //     data: events
+        // }
+        response.send(events);
         next();
     }).catch(function (err) {
         console.log(err)
@@ -515,35 +515,9 @@ function deleteItemFromInventory(request,response,next) {
 //************************************************** SERVER ****************************** 
 
 var server = restify.createServer();
-
-//Copied from https://stackoverflow.com/questions/34386481/allowing-options-method-with-restify-request-header-field-authorization-is-not
-// function corsHandler(req, res, next) {
-//     res.setHeader('Access-Control-Allow-Origin', '*');
-//     res.setHeader('Access-Control-Allow-Headers', 'Origin, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version, X-Response-Time, X-PINGOTHER, X-CSRF-Token,Authorization');
-//     res.setHeader('Access-Control-Allow-Methods', '*');
-//     res.setHeader('Access-Control-Expose-Headers', 'X-Api-Version, X-Request-Id, X-Response-Time');
-//     res.setHeader('Access-Control-Max-Age', '1000');
-//     return next();
-// }
-
-// function optionsRoute(req, res, next) {
-//     res.send(200);
-//     return next();
-// }
-
-// server.use(restify.CORS({
-// credentials: true,                 // defaults to false
-// methods: ['GET','PUT','DELETE','POST','OPTIONS']
-// }));
-
-// /*
-// routes and authentication handlers 
-// */
-
-// server.opts('/\.*/', corsHandler, optionsRoute);
-// server.listen(serverPort, function() {
-//     var consoleMessage = '\n Test Server';
-// });
+server.use(restify.plugins.bodyParser());
+server.use(restify.plugins.queryParser());
+server.use(restifyValidator);
 
 
 
@@ -556,13 +530,11 @@ const cors = corsMiddleware({
 
 server.pre(cors.preflight)
 server.use(cors.actual)
-//***********
 
 
 
-server.use(restify.plugins.bodyParser());
-server.use(restify.plugins.queryParser());
-server.use(restifyValidator);
+
+
 var extension = `/api/v1/${process.env.API_KEY}`;
 //************************************************** EVENTS ENDPOINTS ****************************** 
 server.get(`${extension}/events`, getAllEvents); 
