@@ -9,6 +9,8 @@ import RaisedButton from 'material-ui/RaisedButton';
 import ItemList from './ListOfItems.js'
 // import SubmitSnackBar from './Submit.js'
 import Card from 'material-ui/Card';
+import { ROOT_URL } from './App.js';
+import axios from 'axios';
 
 
 // import RaisedButton from 'material-ui/RaisedButton';
@@ -135,6 +137,7 @@ export class SetEvent extends Component {
       eventTime: '',
       eventDate: '',
       eventType: "",
+      eventID:'',
       eventPeopleCount:'',
       eventPeopleNames:'',
       eventItems:'',
@@ -148,7 +151,7 @@ export class SetEvent extends Component {
   };
 
   render() {
-    // console.log(<EventSummary date={this.props.EventDate}/>)
+    console.log(this.state.eventItems)
     
     return (
       
@@ -213,9 +216,10 @@ export class SetEvent extends Component {
             </div>
 
             <div style={styles.slide}>
-                <h2 style={styles.headline} >Items page</h2>
-                {/* <PartyTypeTable/> */}
-                <ItemList/> 
+                <h2 style={styles.headline} style={{textAlign: 'center'}}>Items page</h2>
+                <ItemList defaultItems={this.state.eventItems}/> 
+
+
             </div>
             <div style={styles.slide}>
                 <h2 style={styles.headline} >Summary page</h2>
@@ -225,12 +229,15 @@ export class SetEvent extends Component {
                 <p>Time: {this.state.eventTime.toString()}</p>
                 <p>Date: {this.state.eventDate.toString()}</p>
                 <p>Type:{this.state.eventType.toString()}</p>
+                <p>{this.state.eventItems.toString()}</p>
                 <p>Number of people invited: {this.state.eventPeopleCount} {this.state.eventPeopleNames}</p>
-                <p>Number of required items needed</p>
+                <p>Number of required items needed:{this.state.eventItems}</p>
                 <SubmitButton></SubmitButton> 
+                <form onSubmit={this._handleSubmit}>
+                <button type='submit'>Submit</button>
+                </form>
             </div>
         </SwipeableViews>
-        
       </Card>
     );
   }
@@ -259,15 +266,34 @@ export class SetEvent extends Component {
       eventTime: newTime
     })
   }
-  _handleTypeChange=(newType)=>{
+  _handleTypeChange=(newType,newID, newDefaultItems)=>{
     this.setState({
-      eventType: newType
+      eventType: newType,
+      eventID: newID,
+      eventItems: newDefaultItems,
     })
   }
   _handleInviteChange=(newInvites, names)=>{
     this.setState({
       eventPeopleCount: newInvites,
       eventPeopleNames: names
+    })
+  }
+  _handleSubmit=(e)=>{
+    e.preventDefault();
+    axios.post(`${ROOT_URL}/events`,{
+      host_id: 333,
+      'name': "test Celebration",
+      'description': "Come celebrate Grandma's 90th birthday!",
+      'date': "2017-11-20T00:00:00.000Z",
+      'time': null,
+      'location': "2222 Belle Isle Cir NE Atlanta GA 30329",
+      'category_id': 4,
+    }).then(function(response){
+      console.log(response)
+    })
+    .catch(function(error){
+      console.log(error);
     })
   }
 

@@ -8,7 +8,8 @@ var restifyValidator = require('restify-validator');
 var util = require('util');
 var models = require('./models/index');
 var error_messages = null;
-const corsMiddleware = require('restify-cors-middleware')
+
+const corsMiddleware = require('restify-cors-middleware');
 
 
 //************************************************** EVENTS ****************************** 
@@ -31,10 +32,10 @@ function getAllEventsByHost(request, response, next) {
             'host_id': request.params.id
         }
     }).then(function(events) {
-        var data = {
-            data: events
-        };  
-        response.send(data);
+        // var data = {
+        //     data: events
+        // }
+        response.send(events);
         next();
     }).catch(function (err) {
         console.log(err)
@@ -87,13 +88,13 @@ function verifyRequiredParamsForEvent(request){
 
 function addEvent(request,response,next){
     models.Events.create({
-        host_id: request.params['host_id'],
-        name: request.params['name'],
-        description: request.params['description'],
-        date: request.params['date'],
-        time: request.params['time'],
-        location: request.params['location'],
-        category_id: request.params['category_id'],
+        host_id: request.body['host_id'],
+        name: request.body['name'],
+        description: request.body['description'],
+        date: request.body['date'],
+        time: request.body['time'],
+        location: request.body['location'],
+        category_id: request.body['category_id'],
     }).then(function(event) {
         var data = {
             data: event
@@ -327,8 +328,8 @@ function addGuest(request,response,next){
             response.send('This person is already invited')
         } else {
         models.Guests.create({
-            eventid: request.params.eventid,
-            userid: request.params.guestid,
+            eventid: request.body.eventid,
+            userid: request.body.guestid,
         }).then(function(guest) {
             var data = {
                 message: "New guest successfully added to event",
@@ -347,8 +348,8 @@ function addGuest(request,response,next){
 function deleteGuest(request,response,next) {
     models.Guests.destroy({
         where: {
-            eventid: request.params.eventid,
-            userid: request.params.guestid,
+            eventid: request.body.eventid,
+            userid: request.body.guestid,
         }
     }).then(function(guest) {
         var data = {
@@ -520,15 +521,15 @@ function deleteItemFromInventory(request,response,next) {
 
 var server = restify.createServer();
 
+server.use(restify.plugins.bodyParser());
+server.use(restify.plugins.queryParser());
+server.use(restifyValidator);
 
 
 
 const cors = corsMiddleware({
   preflightMaxAge: 5, //Optional
-  // take out * when deploy
-  origins: ['*'],
-  
-//   origins: ['*', 'http://localhost:3000', 'https://event-r.com'],
+  origins: ['*','https://event-r.com'],
 //   allowHeaders: ['API-Token'],
 //   exposeHeaders: ['API-Token-Expiry']
 })
@@ -537,9 +538,9 @@ server.pre(cors.preflight)
 server.use(cors.actual)
 
 
-server.use(restify.plugins.bodyParser());
-server.use(restify.plugins.queryParser());
-server.use(restifyValidator);
+
+
+
 var extension = `/api/v1/${process.env.API_KEY}`;
 //************************************************** EVENTS ENDPOINTS ****************************** 
 server.get(`${extension}/events`, getAllEvents); 

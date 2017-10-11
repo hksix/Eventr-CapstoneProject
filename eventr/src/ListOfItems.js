@@ -145,16 +145,7 @@ class ItemList extends Component {
 		this.removeTodo = this.removeTodo.bind(this);
 		
 	}
-	componentWillUpdate(){
-		console.log("ehy")
-		axios.get(`${ROOT_URL}/event_categories/1/items`)
-			.then((res)=>{
-				res.data.map(function(item) {
-					// this.setState
-					// console.log(item.item_name)
-				})
-			})
-	}
+
 	// Handler to update localStorage
 	updateLocalStorage() {
 		if (typeof(Storage) !== "undefined")
