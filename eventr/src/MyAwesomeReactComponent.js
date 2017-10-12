@@ -4,7 +4,7 @@ import FontIcon from 'material-ui/FontIcon';
 import MapsPersonPin from 'material-ui/svg-icons/maps/person-pin';
 // import Paper from 'material-ui/Paper';
 
-
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
 // import FetchData from './axios.js';
 import {
@@ -25,7 +25,7 @@ import MapContainer from "./GoogleMap/MapContainer.js";
 // import { Calendar } from './Calendar.js'
 
 
-export default class MenuOptions extends Component {
+class MenuOptions extends Component {
       constructor(props) {
         super(props);
         this.state = {
@@ -38,7 +38,6 @@ export default class MenuOptions extends Component {
         });
       };
 
-
       render(){
         
         return (
@@ -49,20 +48,6 @@ export default class MenuOptions extends Component {
                 className="menubar"
                 value={this.state.value}
                 onChange={this.handleChange}>
-                
-{/*                 
-                <Tab icon={<FontIcon className="material-icons"><i className="material-icons">format_list_bulleted</i></FontIcon>}
-                  value="0"
-                >
-                  <div className="main-content-container">
-                    <div className="side-content-container">
-                      <UserMenu />
-                    </div>
-                    <div className="changing-content-container" >
-
-                    </div>
-                  </div>
-                </Tab> */}
                 
                 <Tab icon={<FontIcon className="material-icons">home</FontIcon>}
                     label="HOME"
@@ -134,20 +119,35 @@ export default class MenuOptions extends Component {
                     </div>
                 </Tab>
               </Tabs>
-              
             </Router>
           );
         }
       }
 
-export const MyAwesomeReactComponent = () => (
 
-    <div>
-      
-      <MenuOptions />
-      {/* <PartyTypeTable/> */}
-      <Footer />
-      {/* <FetchData /> */}
-    </div>
 
-);
+      export default class MyAwesomeReactComponent extends Component {
+        componentWillMount() {
+          this.setState({ profile: {} });
+          const { userProfile, getProfile } = this.props.auth;
+          if (!userProfile) {
+            getProfile((err, profile) => {
+              this.setState({ profile });
+            });
+          } else {
+            this.setState({ profile: userProfile });
+          }
+        }
+        render() {
+          const { profile } = this.state;
+          console.log(this.state.profile)
+          return (
+            <MuiThemeProvider>
+              <div>
+                <MenuOptions />
+                <Footer />
+              </div>
+            </MuiThemeProvider>
+          );
+        }
+      }
