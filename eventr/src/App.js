@@ -17,7 +17,7 @@ export const ROOT_URL = `http://ec2-52-207-242-113.compute-1.amazonaws.com/api/v
 
 
 class App extends Component {
-  state = {users:[]}
+  // state = {users:[]}
   goTo(route) {
     this.props.history.replace(`/${route}`)
   }
@@ -32,32 +32,29 @@ class App extends Component {
     this.props.auth.logout();
   }
 
-  componentDidMount(){
-    axios.get(`${ROOT_URL}/users`)
-    .then((res) => {
-      // console.log(res);
-      this.setState({users:res.data})
-    })
-  }
+  // componentDidMount(){
+  //   axios.get(`${ROOT_URL}/users`)
+  //   .then((res) => {
+  //     // console.log(res);
+  //     this.setState({users:res.data})
+  //   })
+  // }
   
   render() {
     const { isAuthenticated } = this.props.auth;
     
     return (
       <div className="App">
-        
         <header>
-
           <button
               className="btn-margin"
-              onClick={this.goTo.bind(this, 'main')}
+              onClick={this.goTo.bind(this, 'home')}
             >
               Home
             </button>
             {
               !isAuthenticated() && (
                   <button
-                    
                     className="btn-margin"
                     onClick={this.login.bind(this)}
                   >
@@ -68,7 +65,26 @@ class App extends Component {
             {
               isAuthenticated() && (
                   <button
-                    
+                    className="btn-margin"
+                    onClick={this.goTo.bind(this,'profile')}
+                  >
+                    Profile
+                  </button>
+                )
+            }
+            {
+              isAuthenticated() && (
+                  <button
+                    className="btn-margin"
+                    onClick={this.goTo.bind(this,'main')}
+                  >
+                    Main Page
+                  </button>
+                )
+            }
+            {
+              isAuthenticated() && (
+                  <button
                     className="btn-margin"
                     onClick={this.logout.bind(this)}
                   >
@@ -77,25 +93,9 @@ class App extends Component {
                 )
             }
             </header>
-        
-
-
-        
-        {/* <h1>Users Table example info</h1> */}
-        {/* <h1>Users Table example info</h1>
-        {this.state.users.map(user =>
-          <div key={user.user_id}>
-              <ul>
-                <li>{user.fname} {user.lname}</li>
-                <li>Picture {user.picture}</li>
-                <li>Email: {user.email}</li>
-                <li>Join-date: {user.join_date}</li>
-                <li>Telephone: {user.phone}</li>
-                <li>Location: {user.location}</li>
-                <li>User Name: {user.user_name}</li>
-               </ul>
-            </div>
-        )}  */}
+          <div className="container">
+            {this.props.children}
+          </div>
       </div>
     );
   }
