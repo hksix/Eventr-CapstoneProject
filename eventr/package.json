@@ -5,6 +5,10 @@
   "dependencies": {
     "auth0-js": "^8.10.1",
     "auth0-lock": "^10.22.0",
+    "connect-static-file": "^1.2.0",
+    "cors": "^2.8.4",
+    "express": "^4.15.3",
+    "npm-run-all": "^4.0.2",
     "axios": "^0.16.2",
     "google-maps-react": "^1.1.0",
     "lodash": "^4.17.4",
@@ -21,10 +25,11 @@
     "react-transition-group": "^1.2.0"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "npm-run-all --parallel server:start client:start",
+    "client:start": "react-scripts start",
+    "server:start": "node server.js",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
-  },
-  "proxy": "http://localhost:3001"
+  }
 }
