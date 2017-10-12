@@ -3,6 +3,8 @@ import history from '../history';
 
 
 export default class Auth {
+  userProfile;
+  tokenRenewalTimeout;
   auth0 = new auth0.WebAuth({
     domain: 'event-r.auth0.com',
     clientID: 'aDIt4xJTONOeTcxNV2EuAmYaM2hG4A1a',
@@ -11,7 +13,7 @@ export default class Auth {
     responseType: 'token id_token',
     scope: 'openid profile'
   });
-  userProfile;
+  // userProfile;
 
   constructor() {
     this.login = this.login.bind(this);
@@ -20,6 +22,7 @@ export default class Auth {
     this.isAuthenticated = this.isAuthenticated.bind(this);
     this.getAccessToken = this.getAccessToken.bind(this);
     this.getProfile = this.getProfile.bind(this);
+    this.scheduleRenewal();
   }
 
   login() {
@@ -38,10 +41,17 @@ export default class Auth {
   }
   setSession(authResult) {
     // Set the time that the access token will expire at
-    let expiresAt = JSON.stringify((authResult.expiresIn * 1000) + new Date().getTime());
+    let expiresAt = JSON.stringify(
+      authResult.expiresIn * 1000 + new Date().getTime()
+    );
+
     localStorage.setItem('access_token', authResult.accessToken);
     localStorage.setItem('id_token', authResult.idToken);
     localStorage.setItem('expires_at', expiresAt);
+
+    // schedule a token renewal
+    this.scheduleRenewal();
+
     // navigate to the home route
     history.replace('/home');
   }
@@ -69,6 +79,9 @@ export default class Auth {
     localStorage.removeItem('access_token');
     localStorage.removeItem('id_token');
     localStorage.removeItem('expires_at');
+    localStorage.removeItem('scopes');
+    this.userProfile = null;
+    clearTimeout(this.tokenRenewalTimeout);
     // navigate to the home route
     history.replace('/home');
   }
@@ -79,4 +92,34 @@ export default class Auth {
     let expiresAt = JSON.parse(localStorage.getItem('expires_at'));
     return new Date().getTime() < expiresAt;
   }
+
+renewToken() {
+  this.auth0.renewAuth(
+    {
+      audience: 'https://event-r.auth0.com/userinfo',
+      redirectUri: 'http://localhost:3001/silent',
+      usePostMessage: true,
+      postMessageDataType: 'auth0:silent-authentication',
+    },
+    (err, result) => {
+      if (err) {
+        alert(
+          `Could not get a new token using silent authentication (${err.error}).`
+        );
+      } else {
+        this.setSession(result);
+        alert(`Successfully renewed auth!`);
+      }
+    }
+  );
+}
+scheduleRenewal() {
+  const expiresAt = JSON.parse(localStorage.getItem('expires_at'));
+  const delay = expiresAt - Date.now();
+  if (delay > 0) {
+    this.tokenRenewalTimeout = setTimeout(() => {
+      this.renewToken();
+    }, delay);
+  }
+}
 }
