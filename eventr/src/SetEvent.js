@@ -218,10 +218,9 @@ export class SetEvent extends Component {
                 </div>
             </div>
 
-            <div id="EventType" style={styles.slide}>
-                <PartyTypeTable type={this.state.eventType}
-                changeHandler={this._handleTypeChange}/>
-            </div>
+            {/* <div id="EventType" style={styles.slide}>
+                
+            </div> */}
 
             <div style={styles.slide}>
                 <h2 style={styles.headline} >Invite your peeps</h2> 
@@ -232,7 +231,9 @@ export class SetEvent extends Component {
             </div>
 
             <div style={styles.slide}>
-                <h2 style={styles.headline} style={{textAlign: 'center'}}>Items page</h2>
+                <PartyTypeTable type={this.state.eventType}
+                changeHandler={this._handleTypeChange}/>
+                <h2 style={styles.headline}>Items page</h2>
                 <ItemList defaultItems={this.state.eventItems}/> 
 
 
