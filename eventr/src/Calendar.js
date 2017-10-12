@@ -30,6 +30,7 @@ export class Calendar extends Component {
           this.setState({events: res}, () => {
             var idExists = {};
             const newCalData = this.state.events.map(index => {
+              console.log(index.data.length)
               return index.data.map(val => {
                 if (!idExists.hasOwnProperty(val.id)) {
                   idExists[val.id] = true;

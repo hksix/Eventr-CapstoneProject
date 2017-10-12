@@ -4,12 +4,15 @@ import {orange500, blue500} from 'material-ui/styles/colors';
 
 
 const styles = {
-    floatingLabelStyle: {
-      color: orange500,
-    },
-    floatingLabelFocusStyle: {
-      color: blue500,
-    },
+    underlineStyle: {
+        borderColor: '#7c5cb7',
+      },
+      floatingLabelStyle: {
+        color: '#7c5cb7',
+      },
+      floatingLabelFocusStyle: {
+        color:'#7c5cb7'
+      },
   };
 
 export class NameSelector extends Component{

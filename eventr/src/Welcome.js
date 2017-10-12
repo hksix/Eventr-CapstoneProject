@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 // import FontIcon from 'material-ui/FontIcon';
-import {cyan400} from 'material-ui/styles/colors';
+// import {cyan400} from 'material-ui/styles/colors';
 import {Card} from 'material-ui/Card';
 import './App.css';
 // import axios from 'axios';
@@ -16,7 +16,7 @@ import MapsPlace from 'material-ui/svg-icons/maps/place';
 
 const header = {
     textAlign: 'center',
-    backgroundColor: cyan400,
+    backgroundColor: '#4c3187',
     color: 'white',
     paddingTop: '15px',
     paddingBottom: '15px',
@@ -29,7 +29,7 @@ const SubHeader = {
     
     position:'relative',
     display:'flex',
-    
+
 };
 const cardbox={
     paddingTop: '15px',
