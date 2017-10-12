@@ -13,12 +13,21 @@ import MapsPlace from 'material-ui/svg-icons/maps/place';
 
 
 const styles = {
-    floatingLabelStyle: {
-      color: orange500,
-    },
-    floatingLabelFocusStyle: {
-      color: blue500,
-    },
+    // floatingLabelStyle: {
+    //   color: orange500,
+    // },
+    // floatingLabelFocusStyle: {
+    //   color: blue500,
+    // },
+    underlineStyle: {
+        borderColor: '#7c5cb7',
+      },
+      floatingLabelStyle: {
+        color: '#7c5cb7',
+      },
+      floatingLabelFocusStyle: {
+        color:'#7c5cb7'
+      },
   };
 
   const IconMenuExampleScrollable = () => (

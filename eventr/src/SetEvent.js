@@ -52,6 +52,15 @@ const styles = {
     padding: 10,
     textAlign: 'center'
   },
+  underlineStyle: {
+    borderColor: '#7c5cb7',
+  },
+  floatingLabelStyle: {
+    color: '#7c5cb7',
+  },
+  floatingLabelFocusStyle: {
+    color:'#7c5cb7'
+  },
 };
 
 
