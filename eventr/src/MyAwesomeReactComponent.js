@@ -37,8 +37,6 @@ class MenuOptions extends Component {
           value: value,
         });
       };
-      
-      
 
       render(){
         
@@ -145,22 +143,11 @@ class MenuOptions extends Component {
           console.log(this.state.profile)
           return (
             <MuiThemeProvider>
-           <div>
-      <MenuOptions />
-      <Footer />
-    </div>
-    </MuiThemeProvider>
+              <div>
+                <MenuOptions />
+                <Footer />
+              </div>
+            </MuiThemeProvider>
           );
         }
       }
-
-//  const MyAwesomeReactComponent = () => (
-//   <MuiThemeProvider>
-//     <div>
-//       <MenuOptions />
-//       <Footer />
-//     </div>
-//   </MuiThemeProvider>
-
-// );
-// export default MyAwesomeReactComponent;
