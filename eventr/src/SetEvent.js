@@ -183,10 +183,9 @@ export class SetEvent extends Component {
 
           <Tab style={{fontSize: '12px', paddingLeft:"5px"}} label="Name & Description" value={0} />
           <Tab style={{fontSize: '12px'}} label="When & Where" value={1} />
-          <Tab style={{fontSize: '12px'}} label="Event Type" value={2} />
-          <Tab style={{fontSize: '12px'}} label="Invite" value={3} />
-          <Tab style={{fontSize: '12px'}} label="Items" value={4} />
-          <Tab style={{fontSize: '12px'}} label="Finish" value={5} />
+          <Tab style={{fontSize: '12px'}} label="Invite" value={2} />
+          <Tab style={{fontSize: '12px'}} label="Items" value={3} />
+          <Tab style={{fontSize: '12px'}} label="Finish" value={4} />
         </Tabs>
 
         <SwipeableViews
@@ -196,61 +195,56 @@ export class SetEvent extends Component {
         <div id="name&Description">
           <NameSelector name={this.state.eventName}
             changeHandler={this._handleNameChange}/>
-            <br/>
-            <DescriptionSelector disc={this.state.eventDiscription}
+          <br/>
+          <DescriptionSelector disc={this.state.eventDiscription}
             changeHandler={this._handleDiscripChange}/>
-              </div>
+        </div>
 
-            <div id="When&where" style={{textAlign: 'center'}}>
-                <div>
-                    <h2 style={styles.headline} >When and where?</h2> 
-                        Type in the details below.<br />
-                    <LocationSelector location={this.state.eventLocation}
-                      changeHandler={this._handleLocationChange}/>    
-                </div>
-                <div>
-                    <DateSelector date={this.state.eventDate}
-                      changeHandler={this._handleDateChange}/>
-                </div>
-                <div>
-                    <TimeSelector time={this.state.eventTime}
-                    changeHandler={this._handleTimeChange}/>
-                </div>
-            </div>
+        <div id="When&where" style={{textAlign: 'center'}}>
+          <div>
+              <h2 style={styles.headline} >When and where?</h2> 
+                  Type in the details below.<br />
+              <LocationSelector location={this.state.eventLocation}
+                changeHandler={this._handleLocationChange}/>    
+          </div>
+          <div>
+              <DateSelector date={this.state.eventDate}
+                changeHandler={this._handleDateChange}/>
+          </div>
+          <div>
+              <TimeSelector time={this.state.eventTime}
+              changeHandler={this._handleTimeChange}/>
+          </div>
+        </div>
 
-            {/* <div id="EventType" style={styles.slide}>
-                
-            </div> */}
+        <div style={styles.slide}>
+            <h2 style={styles.headline} >Invite your peeps</h2> 
+            <SelectFriends invited={this.state.eventPeopleCount} 
+            names={this.state.eventPeopleNames}
+            changeHandler={this._handleInviteChange}/>
+            
+        </div>
 
-            <div style={styles.slide}>
-                <h2 style={styles.headline} >Invite your peeps</h2> 
-                <SelectFriends invited={this.state.eventPeopleCount} 
-                names={this.state.eventPeopleNames}
-                changeHandler={this._handleInviteChange}/>
-                
-            </div>
+        <div style={styles.slide}>
+            <PartyTypeTable type={this.state.eventType}
+            changeHandler={this._handleTypeChange}/>
+            <h2 style={styles.headline}>Items page</h2>
+            <ItemList defaultItems={this.state.eventItems}/> 
+        </div>
 
-            <div style={styles.slide}>
-                <PartyTypeTable type={this.state.eventType}
-                changeHandler={this._handleTypeChange}/>
-                <h2 style={styles.headline}>Items page</h2>
-                <ItemList defaultItems={this.state.eventItems}/> 
-
-
-            </div>
-            <div style={styles.slide}>
-                <h2 style={styles.headline} >Summary page</h2>
-                <p>Name: {this.state.eventName}</p>
-                <p>Description: {this.state.eventDiscription}</p>
-                <p>Location: {this.state.eventLocation}</p>
-                <p>Time: {this.state.eventTime.toString()}</p>
-                <p>Date: {this.state.eventDate.toString()}</p>
-                <p>Type:{this.state.eventType.toString()}</p>
-                <p>Number of people invited: {this.state.eventPeopleCount} {this.state.eventPeopleNames}</p>
-                <p>Number of required items needed:{this.state.eventItems}</p>
-                <SubmitButton
-                changeHandler={this._handleSubmit}></SubmitButton> 
-            </div>
+        <div style={styles.slide}>
+            <h2 style={styles.headline} >Summary page</h2>
+            <p>Name: {this.state.eventName}</p>
+            <p>Description: {this.state.eventDiscription}</p>
+            <p>Location: {this.state.eventLocation}</p>
+            <p>Time: {this.state.eventTime.toString()}</p>
+            <p>Date: {this.state.eventDate.toString()}</p>
+            <p>Type:{this.state.eventType.toString()}</p>
+            <p>Number of people invited: {this.state.eventPeopleCount} {this.state.eventPeopleNames}</p>
+            <p>Number of required items needed:{this.state.eventItems}</p>
+            <SubmitButton
+            changeHandler={this._handleSubmit}></SubmitButton> 
+        </div>
         </SwipeableViews>
       </Card>
     );
