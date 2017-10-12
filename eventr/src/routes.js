@@ -9,6 +9,7 @@ import history from './history';
 import  MenuHeader from './Menubar.js'
 import Profile from './Profile/Profile';
 import MyAwesomeReactComponent from './MyAwesomeReactComponent.js';
+import UserMenu from './sidemenu/UserMenu'
 
 const auth = new Auth();
 
@@ -31,12 +32,19 @@ export const makeMainRoutes = () => {
               ? <Redirect to="/home" />
               : <Profile auth={auth} {...props} />}
         />
+        {/* <Route
+        path="/main"
+        render={props =>
+          !auth.isAuthenticated()
+            ? <Redirect to="/home" />
+            : <MiniProfile auth={auth} {...props} />}
+        /> */}
         <Route
         path="/main"
         render={props =>
           !auth.isAuthenticated()
             ? <Redirect to="/home" />
-            : <MenuHeader auth={auth} {...props} />}
+            : <MyAwesomeReactComponent auth={auth} {...props} />}
         />
           <Route path="/callback" render={(props) => {
             handleAuthentication(props);

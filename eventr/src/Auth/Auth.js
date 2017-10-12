@@ -75,6 +75,7 @@ export default class Auth {
   }
 
   logout() {
+    
     // Clear access token and ID token from local storage
     localStorage.removeItem('access_token');
     localStorage.removeItem('id_token');
@@ -87,6 +88,7 @@ export default class Auth {
   }
 
   isAuthenticated() {
+    // return true;
     // Check whether the current time is past the 
     // access token's expiry time
     let expiresAt = JSON.parse(localStorage.getItem('expires_at'));

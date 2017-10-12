@@ -194,7 +194,8 @@ class ItemList extends Component {
 	}
 	
 	componentDidMount() {
-		localStorage.clear();
+		// localStorage.clear();
+		localStorage.removeItem('count');
 		if (typeof(Storage) !== "undefined") {
 			if(!localStorage.todos) {
 				localStorage.todos = JSON.stringify(this.state.data);

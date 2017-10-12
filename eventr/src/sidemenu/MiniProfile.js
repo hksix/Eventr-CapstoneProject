@@ -40,6 +40,8 @@ export default class MiniProfile extends Component {
       })
     })
   }
+  
+  
 
   save = () => {
     console.log(this.state.lName)
