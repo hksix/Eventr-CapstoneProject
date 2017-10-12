@@ -5,7 +5,7 @@ import MapsPersonPin from 'material-ui/svg-icons/maps/person-pin';
 // import Paper from 'material-ui/Paper';
 
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-
+import getMuiTheme from 'material-ui/styles/getMuiTheme';
 // import FetchData from './axios.js';
 import {
     BrowserRouter as Router,
@@ -23,7 +23,17 @@ import MapContainer from "./GoogleMap/MapContainer.js";
 // import PartyTypeTable from './setevent/EventType.js';
 
 // import { Calendar } from './Calendar.js'
-
+const muiTheme = getMuiTheme({
+  palette: {
+    primary1Color: '#4c3187',
+    primary2Color: '#7c5cb7',
+    primary3Color: '#1b0859',
+    accent1Color: '#B16CFF',
+    accent2Color: '#7c5cb7',
+    canvasColor: 'white',
+    pickerHeaderColor: '#7c5cb7',
+  }
+});
 
 class MenuOptions extends Component {
       constructor(props) {
@@ -95,7 +105,7 @@ class MenuOptions extends Component {
                 <Tab
                     icon={<MapsPersonPin />}
                     label="NEARBY"
-                    value="d"
+                    value="c"
                     containerElement={<Link to="/nearby" />}>
                     <div className="main-content-container">
                       <div className="side-content-container">
@@ -110,7 +120,7 @@ class MenuOptions extends Component {
                 <Tab
                     icon={<FontIcon className="material-icons">settings</FontIcon>}
                     label="Settings"
-                    value="c"
+                    value="d"
                     containerElement={<Link to="/profile" />}>
                     <div className="main-content-container">
                       <div className="side-content-container">
@@ -143,7 +153,7 @@ class MenuOptions extends Component {
           const { profile } = this.state;
           console.log(this.state.profile)
           return (
-            <MuiThemeProvider>
+            <MuiThemeProvider muiTheme={muiTheme}>
               <div>
                 <MenuOptions />
                 <Footer />

@@ -3,10 +3,23 @@ import React, {Component} from 'react';
 // import { CSSTransitionGroup } from 'react-transition-group';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import MyAwesomeReactComponent from './MyAwesomeReactComponent';
+import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import './index.css';
 
+const muiTheme = getMuiTheme({
+  palette: {
+    primary1Color: '#4c3187',
+    primary2Color: '#7c5cb7',
+    primary3Color: '#1b0859',
+    accent1Color: '#B16CFF',
+    accent2Color: '#7c5cb7',
+    canvasColor: 'white',
+    pickerHeaderColor: '#7c5cb7',
+  }
+});
+
 const MenuHeader = () => (
-  <MuiThemeProvider>
+  <MuiThemeProvider muiTheme={muiTheme}>
     <MyAwesomeReactComponent/>
   </MuiThemeProvider>
 );
