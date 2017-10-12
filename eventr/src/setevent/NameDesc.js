@@ -26,7 +26,7 @@ export class NameSelector extends Component{
     render(){
         return(
             <div style={{textAlign: 'center'}}>
-            <h2 style={{textAlign: 'center'}}>Name and Description of your event.</h2> 
+            <h2 style={{textAlign: 'center'}}>Enter your event's name and description:</h2> 
                 <TextField
                   
                   floatingLabelText="Name"

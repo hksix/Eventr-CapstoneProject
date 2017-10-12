@@ -20,8 +20,9 @@ const header = {
     color: 'white',
     paddingTop: '15px',
     paddingBottom: '15px',
-    fontSize: '14px',
-    fontWeight: 500,
+    // fontSize: '14px',
+    fontSize: '1.3em',
+    fontWeight: 400,
 };
 
 const SubHeader = {

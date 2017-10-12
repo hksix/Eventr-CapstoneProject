@@ -49,6 +49,7 @@ export default class MenuOptions extends Component {
                 className="menubar"
                 value={this.state.value}
                 onChange={this.handleChange}>
+                <img src="../logo2.png" style={{height: 70, width: 70,marginLeft: 20}}/>
                 
 {/*                 
                 <Tab icon={<FontIcon className="material-icons"><i className="material-icons">format_list_bulleted</i></FontIcon>}

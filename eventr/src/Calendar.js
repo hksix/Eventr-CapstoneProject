@@ -86,6 +86,7 @@ export class Calendar extends Component {
           views={{month: true}}
           defaultView="month"
           style={{height: "500px"}}
+          eventPropGetter={(val) => ({style: {backgroundColor: "#7c5cb7", height: "25px"}})}
           />
         </div>
       );
