@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-import { MenuHeader } from '../Menubar.js'
-
+import { Link } from 'react-router-dom';
 
 class Home extends Component {
   login() {
@@ -9,36 +8,37 @@ class Home extends Component {
   render() {
     const { isAuthenticated } = this.props.auth;
     return (
-        <div>
-        
       <div className="container">
         {
           isAuthenticated() && (
-            <div>              
+            <div>
               <h4>
-                You are logged in!
+                You are logged in! You can now view your{' '}
+                <Link to="profile">profile area</Link>
+                .
               </h4>
-            </div> 
-          )
-          
-         
+              <h4>
+                Or you can now view the{' '}
+                <Link to="main">Main page</Link>
+                .
+              </h4>
+              </div>
+            )
         }
-        
         {
           !isAuthenticated() && (
               <h4>
                 You are not logged in! Please{' '}
                 <a
-                  style={{ cursor: 'pointer' }}
+                  style={{ cursor: 'pointer', color: 'blue' }}
                   onClick={this.login.bind(this)}
                 >
-                  Log In
+                  <u>Log In</u>
                 </a>
                 {' '}to continue.
               </h4>
             )
         }
-        </div>
       </div>
     );
   }
