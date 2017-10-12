@@ -21,8 +21,9 @@ export class Calendar extends Component {
     }
 
     componentDidMount() {
-      const hostingEvents = axios.get(`${ROOT_URL}/events/host/1`);
-      const attendingEvents = axios.get(`${ROOT_URL}/events/guest/1`);
+      const current_user = 1;
+      const hostingEvents = axios.get(`${ROOT_URL}/events/host/${current_user}`);
+      const attendingEvents = axios.get(`${ROOT_URL}/events/guest/${current_user}`);
 
       Promise.all([hostingEvents, attendingEvents])
         .then((res) => {
@@ -53,9 +54,10 @@ export class Calendar extends Component {
 
 
 
-    handleSelectEvent({start, end}) {
-        this.state.events.push({start: start, end: end});
-        this.setState({});
+    handleSelectEvent(selectedEvent) {
+        // this.state.events.push({start: start, end: end});
+        // this.setState({});
+        console.log(selectedEvent)
     }
 
     // eventStyleGetter() {
@@ -80,7 +82,7 @@ export class Calendar extends Component {
           key={this.state.calendarData.id}   
           culture='en'
           events={this.state.calendarData}
-          onSelectEvent={(eventInfo) => this.handleSelectEvent(eventInfo)}
+          onSelectEvent={(selectedEvent) => this.handleSelectEvent(selectedEvent)}
           defaultDate={new Date()}
           views={{month: true}}
           defaultView="month"
