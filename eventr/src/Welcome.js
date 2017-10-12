@@ -4,7 +4,7 @@ import {cyan400} from 'material-ui/styles/colors';
 import {Card} from 'material-ui/Card';
 import './App.css';
 // import axios from 'axios';
-
+import Paper from 'material-ui/Paper';
 import { Calendar } from './Calendar.js'
 
 import AppBar from 'material-ui/AppBar';
@@ -92,9 +92,10 @@ const Welcome2 = (props) =>(
 
 const AppBarExampleIcon = () => (
     <AppBar
-      title="events"
+    className="upcoming-events-header"
+      title="Upcoming Events"
+      showMenuIconButton={false}
     />
-    
 );
 
 
@@ -113,7 +114,9 @@ export class Welcome extends Component {
                 <Card>
                     <AppBarExampleIcon/>
                 </Card>
+                <Paper>
                 <Calendar/>
+                </Paper>
                 <Card className='welcomeBox'>
                     <Welcome2 />
                  </Card>

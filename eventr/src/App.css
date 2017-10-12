@@ -14,3 +14,18 @@ html { font-family: 'Roboto', sans-serif; }
 .App-intro {
   font-size: large;
 }
+/* cal month label */
+.rbc-toolbar-label {
+  font-size: 1.3em;
+  text-align: left;
+
+}
+
+/* cal event label */
+.rbc-event-content{
+  font-size: 0.6em;
+}
+
+.upcoming-events-header {
+  text-align: center;
+}
