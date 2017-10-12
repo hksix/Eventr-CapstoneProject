@@ -113,7 +113,7 @@ class SubmitButton extends Component {
       
       return (
         <div>
-          <RaisedButton label="Sumbit" onClick={this.handleOpen}> <Confetti active={this.state.open} config={config}/> </RaisedButton>
+          <RaisedButton label="Submit" onClick={this.handleOpen}> <Confetti active={this.state.open} config={config}/> </RaisedButton>
           <Dialog
             title="Lets do this"
             actions={actions}

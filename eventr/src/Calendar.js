@@ -1,7 +1,9 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import moment from 'moment';
 import BigCalendar from 'react-big-calendar';
 import 'react-big-calendar/lib/css/react-big-calendar.css';
+import axios from 'axios';
+import { ROOT_URL } from './App.js'
 
 
 BigCalendar.momentLocalizer(moment);
@@ -10,46 +12,53 @@ export class Calendar extends Component {
     constructor(props){
         super(props);
         this.state = {
-            events: [
-              {
-                "title": "Demo Day",
-                "start": new Date(2017, 9, 17),
-                "end": new Date(2017, 9, 17),
-                "desc": "We Graduate Today!",
-                "cat": "Graduation",
-                "color": "red"
-              },
-              {
-                "title": "Hamza Job Day",
-                "start": new Date(2017, 9, 3),
-                "end": new Date(2017, 9, 3),
-                "desc": "Hamza got a job!",
-                "cat": "Other",
-                "color": "Green"
-              },
-              {
-                "title": "Friday the 13th",
-                "start": new Date(2017, 9, 13),
-                "end": new Date(2017, 9, 13),
-                "desc": "Luckiest day of the year",
-                "cat": "Holiday",
-                "color": "purple"
-              }
-            ]
+            events: [],
+            calendarData:[]
         };
-        this.handleSelevtEvent = this.handleSelectEvent.bind(this);
+
+        this.handleSelectEvent = this.handleSelectEvent.bind(this);
         BigCalendar.setLocalizer(BigCalendar.momentLocalizer(moment));
     }
 
-    handleSelectEvent({start, end}) {
-        this.state.events.push({start: start, end: end});
-        this.setState({});
-    }
+    componentDidMount() {
+      const current_user = 1;
+      const hostingEvents = axios.get(`${ROOT_URL}/events/host/${current_user}`);
+      const attendingEvents = axios.get(`${ROOT_URL}/events/guest/${current_user}`);
 
-    // onSlotChange(slotInfo) {
-    //   var startDate = moment(slotInfo.start.toLocaleString()).format("YYYY-MM-DDm:ss");
-    //   var endDate = moment(slotInfo.end.toLocaleString()).format("YYYY-MM-DDm:ss");
-    // }
+      Promise.all([hostingEvents, attendingEvents])
+        .then((res) => {
+          this.setState({events: res}, () => {
+            var idExists = {};
+            this.state.events.map(index => {
+              
+              
+              index.data.map(val => {
+                if (!idExists.hasOwnProperty(val.id)) {
+
+                  idExists[val.id] = true;
+                this.state.calendarData.push( {
+                  "id": val.id,
+                  "title": val.name,
+                  "start": new Date( parseInt(val.date.slice(0,4)), parseInt(val.date.slice(5,7))-1, parseInt(val.date.slice(8,11)) ),
+                  "end": new Date( parseInt(val.date.slice(0,4)), parseInt(val.date.slice(5,7))-1, parseInt(val.date.slice(8,11)) ),
+                  "desc": val.description,
+                  "cat": val.category_id,
+                }); 
+              } 
+              });  
+            });
+          });
+        });
+    }
+    
+
+
+
+    handleSelectEvent(selectedEvent) {
+        // this.state.events.push({start: start, end: end});
+        // this.setState({});
+        console.log(selectedEvent)
+    }
 
     // eventStyleGetter() {
     //   var backgroundColor = event.color;
@@ -67,13 +76,13 @@ export class Calendar extends Component {
     render() {
       return (
         <div className="event-calendar">
-          <BigCalendar    
-          popup="True"
+          <BigCalendar 
+          popup='True'
           popupOffset={30}
+          key={this.state.calendarData.id}   
           culture='en'
-          events={this.state.events}
-          onSelectEvent={(eventInfo) => this.handleSelectEvent(eventInfo)}
-          eventPropGetter={(event) => ({style: {backgroundColor: event.color, height: "55px"}})}
+          events={this.state.calendarData}
+          onSelectEvent={(selectedEvent) => this.handleSelectEvent(selectedEvent)}
           defaultDate={new Date()}
           views={{month: true}}
           defaultView="month"
