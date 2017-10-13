@@ -32,7 +32,7 @@ export class Calendar extends Component {
               return index.data.map(val => {
                 if (!idExists.hasOwnProperty(val.id)) {
                   idExists[val.id] = true;
-                  return ( {
+                    const eventInfo = {
                     "id": val.id,
                     "title": val.name,
                     "date": val.date,
@@ -43,7 +43,11 @@ export class Calendar extends Component {
                     "host": val.host_id,
                     "location": val.location,
                     "time": val.time,
-                  }); 
+                  }; 
+                  if (eventInfo.host == current_user) {
+                    eventInfo.isHost = true;
+                  }
+                  return (eventInfo);
                 } 
               });  
             });
@@ -53,8 +57,23 @@ export class Calendar extends Component {
         });
     }
 
+    createEventStyles(val) {
+      const eventStyle = {
+        style: {
+          backgroundColor: "#7c5cb7", 
+          height: "25px"
+        }
+      }
+      if(val.isHost) {
+        eventStyle.style.backgroundColor = 'black';
+      }
+      return eventStyle;
+    }
+
 
     render() {
+      
+      
       return (
         <div className="event-calendar">
           <BigCalendar 
@@ -69,7 +88,7 @@ export class Calendar extends Component {
           views={{month: true, week: true}}
           defaultView="month"
           style={{height: "500px"}}
-          eventPropGetter={(val) => ({style: {backgroundColor: "#7c5cb7", height: "25px"}})}
+          eventPropGetter={val => this.createEventStyles(val)}
           />
         </div>
       );
