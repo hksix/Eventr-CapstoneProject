@@ -234,14 +234,14 @@ export class SetEvent extends Component {
 
         <div style={styles.slide}>
             <h2 style={styles.headline} >Summary page</h2>
-            <p>Name: {this.state.eventName}</p>
-            <p>Description: {this.state.eventDiscription}</p>
-            <p>Location: {this.state.eventLocation}</p>
-            <p>Time: {this.state.eventTime.toString()}</p>
-            <p>Date: {this.state.eventDate.toString()}</p>
-            <p>Type:{this.state.eventType.toString()}</p>
-            <p>Number of people invited: {this.state.eventPeopleCount} {this.state.eventPeopleNames}</p>
-            <p>Number of required items needed:{this.state.eventItems}</p>
+            <p>Name: <u> {this.state.eventName}</u></p>
+            <p>Description: <u>{this.state.eventDiscription}</u></p>
+            <p>Location: <u>{this.state.eventLocation}</u></p>
+            <p>Time: <u>{this.state.eventTime.toString()}</u></p>
+            <p>Date: <u>{this.state.eventDate.toString()}</u></p>
+            <p>Type: <u>{this.state.eventType.toString()}</u></p>
+            <p>Number of people invited: <u>{this.state.eventPeopleCount} {this.state.eventPeopleNames}</u></p>
+            <p>Number of required items needed: <u>{this.state.eventItems}</u></p>
             <SubmitButton
             changeHandler={this._handleSubmit}></SubmitButton> 
         </div>
@@ -288,7 +288,9 @@ export class SetEvent extends Component {
     })
   }
   _handleSubmit=(e)=>{
-    // e.preventDefault();
+    if(this.state.eventName === '' || this.state.eventDate === ''){
+      alert('woah chill.. before we continue please fill out all forms.' )
+    }else{
     axios.post(`${ROOT_URL}/events`,{
       host_id: 333,
       'name': `${this.state.eventName}`,
@@ -304,5 +306,6 @@ export class SetEvent extends Component {
       console.log(error);
     })
   }
+}
 
 }
