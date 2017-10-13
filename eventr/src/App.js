@@ -10,6 +10,8 @@ import { MenuHeader } from './Menubar.js'
 
 import axios from 'axios';
 import apikey from './apikeys.js';
+
+import LandingPage from './landingPage/LandingPage.js'
 // export const ROOT_URL = `http://localhost:8090/api/v1/${apikey}`;
 export const ROOT_URL = `http://ec2-52-207-242-113.compute-1.amazonaws.com/api/v1/${apikey}`;
 
@@ -93,6 +95,7 @@ class App extends Component {
                 )
             }
             </header>
+            {/* <LandingPage/> */}
           <div className="container">
             {this.props.children}
           </div>
