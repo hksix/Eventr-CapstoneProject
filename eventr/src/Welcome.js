@@ -48,9 +48,11 @@ const Welcome2 = (props) =>(
         <div style={SubHeader}>
             <Card style={cardbox}>
                 <div> 
-                    <p><u>{props.title}</u></p>
-                    <p><u>{props.start}</u></p>
-                    <p><u>{props.desc}</u></p>
+                    <p><b>Name:</b> {props.title}</p>
+                    <p><b>Date:</b> {props.date}</p>
+                    <p><b>Time:</b> {props.time}</p>
+                    <p><b>Description:</b> {props.desc}</p>
+                    <p><b>Hosted By:</b> {props.host}</p>
                 </div>
                 <div style={{position:'relative', float:'right'}}>
                 <EditDropdown />
@@ -59,7 +61,11 @@ const Welcome2 = (props) =>(
         </div>
         <div style={SubHeader}>
             <Card style={cardbox}>
-                <div><u>Location</u></div>
+                <div>
+                    <u>Location</u>
+                    <p>{props.location}</p>
+                    
+                </div>
                 <MapsPlace/>
                 <div style={{position:'relative', float:'right'}}>
                 <EditDropdown />
@@ -67,12 +73,6 @@ const Welcome2 = (props) =>(
             </Card>
             <Card style={cardbox}>
                 <div><u>Friends invited</u></div>
-                <div style={{position:'relative', float:'right'}}>
-                <EditDropdown />
-                </div>
-            </Card>
-            <Card style={cardbox}>
-                <div><u>Upcoming Dates</u></div>
                 <div style={{position:'relative', float:'right'}}>
                 <EditDropdown />
                 </div>
@@ -120,7 +120,14 @@ export class Welcome extends Component {
        let eventElement = <p></p>;
         if (this.state.event) {
            eventElement = (<Card className='welcomeBox'>
-                <Welcome2 title={this.state.event.title} date={this.state.event.start} description={this.state.event.desc} />
+                <Welcome2 
+                    title={this.state.event.title} 
+                    desc={this.state.event.desc} 
+                    date={this.state.event.date}
+                    time={this.state.event.time}
+                    host={this.state.event.host} 
+                    location={this.state.event.location}
+                    />
             </Card>);
         }
 
