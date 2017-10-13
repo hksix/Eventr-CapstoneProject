@@ -59,7 +59,7 @@ class MenuOptions extends Component {
                 className="menubar"
                 value={this.state.value}
                 onChange={this.handleChange}>
-                <Tab icon = {<img src="../logo2.png"/>} className="eventr-logo">
+                <Tab icon = {<img src="../logo4.png"/>} className="eventr-logo">
                 </Tab>
 
                 <Tab icon={<FontIcon className="material-icons">home</FontIcon>}
@@ -110,9 +110,9 @@ class MenuOptions extends Component {
                     value="c"
                     containerElement={<Link to="/nearby" />}>
                     <div className="main-content-container">
-                      <div className="side-content-container">
-                        
-                      </div>
+                    <div className="side-content-container">
+                    <UserMenu />
+                    </div>
                       <div >
                         <MapContainer />
                       </div>
