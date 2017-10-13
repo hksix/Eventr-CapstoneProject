@@ -115,6 +115,15 @@ export class Welcome extends Component {
         this.setState({event: calendarData})
     }
     getHeaderColor(isHost) {
+        var header = {
+            textAlign: 'center',
+            color: 'white',
+            paddingTop: '15px',
+            paddingBottom: '15px',
+            // fontSize: '14px',
+            fontSize: '1.3em',
+            fontWeight: 400,
+        }
         if (isHost) {
             header.backgroundColor = "#1b0859";
         }
@@ -123,7 +132,17 @@ export class Welcome extends Component {
         }
         return header;
     }
- 
+    
+    getHostName(isHost, host) {
+        if(isHost) {
+            return "You!"
+        }
+        else {
+            return host
+        }
+    }
+
+
 
     render(){
        let eventElement = <p></p>;
@@ -134,7 +153,7 @@ export class Welcome extends Component {
                     desc={this.state.event.desc} 
                     date={this.state.event.date}
                     time={this.state.event.time}
-                    host={this.state.event.host} 
+                    host={this.getHostName(this.state.event.isHost,this.state.event.host)} 
                     location={this.state.event.location}
                     headerColor={this.getHeaderColor(this.state.event.isHost)}
                     />
