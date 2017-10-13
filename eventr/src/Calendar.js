@@ -35,6 +35,7 @@ export class Calendar extends Component {
                   return ( {
                     "id": val.id,
                     "title": val.name,
+                    "date": val.date,
                     "start": new Date( parseInt(val.date.slice(0,4)), parseInt(val.date.slice(5,7))-1, parseInt(val.date.slice(8,11)) ),
                     "end": new Date( parseInt(val.date.slice(0,4)), parseInt(val.date.slice(5,7))-1, parseInt(val.date.slice(8,11)) ),
                     "desc": val.description,
