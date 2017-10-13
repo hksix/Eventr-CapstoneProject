@@ -14,7 +14,7 @@ import ItemsCheckList from './updateEventComponents/ItemsCheckList.js'
 
 import MapsPlace from 'material-ui/svg-icons/maps/place';
 
-const header = {
+var header = {
     textAlign: 'center',
     backgroundColor: '#4c3187',
     color: 'white',
@@ -44,7 +44,7 @@ const cardbox={
 
 const Welcome2 = (props) =>(
     <header>
-        <h3 style={header} className="welcome">{props.title}</h3>
+        <h3 style={props.headerColor} className="welcome">{props.title}</h3>
         <div style={SubHeader}>
             <Card style={cardbox}>
                 <div> 
@@ -114,7 +114,16 @@ export class Welcome extends Component {
     makeEventDetail = (calendarData) => {
         this.setState({event: calendarData})
     }
-
+    getHeaderColor(isHost) {
+        if (isHost) {
+            header.backgroundColor = "#1b0859";
+        }
+        else {
+            header.backgroundColor = "#4c3187";
+        }
+        return header;
+    }
+ 
 
     render(){
        let eventElement = <p></p>;
@@ -127,6 +136,7 @@ export class Welcome extends Component {
                     time={this.state.event.time}
                     host={this.state.event.host} 
                     location={this.state.event.location}
+                    headerColor={this.getHeaderColor(this.state.event.isHost)}
                     />
             </Card>);
         }

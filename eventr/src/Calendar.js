@@ -65,7 +65,7 @@ export class Calendar extends Component {
         }
       }
       if(val.isHost) {
-        eventStyle.style.backgroundColor = 'black';
+        eventStyle.style.backgroundColor = "#1b0850";
       }
       return eventStyle;
     }
