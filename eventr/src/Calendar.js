@@ -24,13 +24,12 @@ export class Calendar extends Component {
       const current_user = 1;
       const hostingEvents = axios.get(`${ROOT_URL}/events/host/${current_user}`);
       const attendingEvents = axios.get(`${ROOT_URL}/events/guest/${current_user}`);
-
       Promise.all([hostingEvents, attendingEvents])
         .then((res) => {
           this.setState({events: res}, () => {
             var idExists = {};
             const newCalData = this.state.events.map(index => {
-              console.log(index.data.length)
+              console.log(index);
               return index.data.map(val => {
                 if (!idExists.hasOwnProperty(val.id)) {
                   idExists[val.id] = true;
@@ -41,6 +40,9 @@ export class Calendar extends Component {
                     "end": new Date( parseInt(val.date.slice(0,4)), parseInt(val.date.slice(5,7))-1, parseInt(val.date.slice(8,11)) ),
                     "desc": val.description,
                     "cat": val.category_id,
+                    "host": val.host_id,
+                    "location": val.location,
+                    "time": val.time,
                   }); 
                 } 
               });  
