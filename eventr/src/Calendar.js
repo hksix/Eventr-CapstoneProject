@@ -16,7 +16,6 @@ export class Calendar extends Component {
             calendarData:[]
         };
 
-        this.handleSelectEvent = this.handleSelectEvent.bind(this);
         BigCalendar.setLocalizer(BigCalendar.momentLocalizer(moment));
     }
 
@@ -52,26 +51,11 @@ export class Calendar extends Component {
           });
         });
     }
-    
 
+    onEventClick() {
 
-
-    handleSelectEvent(selectedEvent) {
-        // this.state.events.push({start: start, end: end});
-        // this.setState({});
-        console.log(selectedEvent)
     }
-
-    // eventStyleGetter() {
-    //   var backgroundColor = event.color;
-    //   var styles = {
-    //     height: "55px",
-    //     backgroundColor: backgroundColor,
-    //     opacity: 0.8
-          
-    //   }
-
-    // }
+    
 
 
 
@@ -79,13 +63,15 @@ export class Calendar extends Component {
       return (
         <div className="event-calendar">
           <BigCalendar 
-
+          popup='True'
+          popupOffset={30}
+          selectable
           key={this.state.calendarData.id}   
           culture='en'
           events={this.state.calendarData}
-          onSelectEvent={(selectedEvent) => this.handleSelectEvent(selectedEvent)}
+          onSelectEvent={calendarData => this.props.handleEventClick(calendarData)}
           defaultDate={new Date()}
-          views={{month: true}}
+          views={{month: true, week: true}}
           defaultView="month"
           style={{height: "500px"}}
           eventPropGetter={(val) => ({style: {backgroundColor: "#7c5cb7", height: "25px"}})}
@@ -96,5 +82,4 @@ export class Calendar extends Component {
   }
 
 
-            // popup='True'
-          // popupOffset={30}
+          
