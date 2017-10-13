@@ -44,13 +44,13 @@ const cardbox={
 
 const Welcome2 = (props) =>(
     <header>
-        <h3 style={header} className="welcome">Bob's party</h3>
+        <h3 style={header} className="welcome">{props.title}</h3>
         <div style={SubHeader}>
             <Card style={cardbox}>
                 <div> 
-                    <p><u>Event Name</u></p>
-                    <p><u>Event Time</u></p>
-                    <p><u>Event Description</u></p>
+                    <p><u>{props.title}</u></p>
+                    <p><u>{props.start}</u></p>
+                    <p><u>{props.desc}</u></p>
                 </div>
                 <div style={{position:'relative', float:'right'}}>
                 <EditDropdown />
@@ -107,20 +107,33 @@ export class Welcome extends Component {
         super(props);
         this.state = {
             name: '',
+            event: null
         };
     }
+
+    makeEventDetail = (calendarData) => {
+        this.setState({event: calendarData})
+    }
+
+
     render(){
+       let eventElement = <p></p>;
+        if (this.state.event) {
+           eventElement = (<Card className='welcomeBox'>
+                <Welcome2 title={this.state.event.title} date={this.state.event.start} description={this.state.event.desc} />
+            </Card>);
+        }
+
         return(
             <div className="profilepg">
                 <Card>
                     <AppBarExampleIcon/>
                 </Card>
                 <Paper>
-                <Calendar/>
+                <Calendar handleEventClick={this.makeEventDetail} />
                 </Paper>
-                <Card className='welcomeBox'>
-                    <Welcome2 />
-                 </Card>
+                {eventElement}
+            
             </div>
         )
     }
