@@ -24,7 +24,10 @@ body {
   height: 150px;
   font: 300 18px/20px "Open Sans",open-sans,sans-serif;
 }
-
+.eventr-logo > div > div > img {
+  height: 70px;
+  width: 70px;
+}
 @media screen and (min-width: 764px){
   .main-content-container {
     /* border: 1px solid violet; */
