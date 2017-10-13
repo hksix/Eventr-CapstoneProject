@@ -17,6 +17,7 @@ import {
 import { Welcome } from './Welcome.js';
 import { SetEvent } from './SetEvent.js';
 import UserMenu from './sidemenu/UserMenu.js';
+import Settings from './Settings.js';
 import Footer from './Footer.js';
 import './index.css';
 import MapContainer from "./GoogleMap/MapContainer.js";
@@ -58,8 +59,9 @@ class MenuOptions extends Component {
                 className="menubar"
                 value={this.state.value}
                 onChange={this.handleChange}>
-                <img src="../logo2.png" style={{height: 70, width: 70,marginLeft: 20}}/>
-                
+                <Tab icon = {<img src="../logo2.png"/>} className="eventr-logo">
+                </Tab>
+
                 <Tab icon={<FontIcon className="material-icons">home</FontIcon>}
                     label="HOME"
                     value="a"
@@ -109,7 +111,7 @@ class MenuOptions extends Component {
                     containerElement={<Link to="/nearby" />}>
                     <div className="main-content-container">
                       <div className="side-content-container">
-                        <UserMenu />
+                        
                       </div>
                       <div >
                         <MapContainer />
@@ -124,9 +126,11 @@ class MenuOptions extends Component {
                     containerElement={<Link to="/profile" />}>
                     <div className="main-content-container">
                       <div className="side-content-container">
-                        <UserMenu />
+                      <UserMenu />
                       </div>
-                      
+                      <div className="changing-content-container" >
+                        <Settings />
+                      </div>
                     </div>
                 </Tab>
               </Tabs>
