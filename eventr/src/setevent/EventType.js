@@ -25,7 +25,7 @@ export default class PartyTypeTable extends Component {
       selected: [null],
       types:[],
       defaultItems:'',
-      value: 1
+      value: null
     };
   }
   componentDidMount(){
@@ -37,21 +37,19 @@ export default class PartyTypeTable extends Component {
   isSelected = (name) => {
       return name === this.props.type 
   };
-  handleRowSelection = (selectedRows) => {
-      this.setState({
-          selected: selectedRows,
-        },this.handleTypeSelector
-      )
-  };
-  handleChange = (event, index, value) => this.setState({value});
+
+  handleChange = (event, index, value) => {
+    console.log(index)
+    this.setState({value:index},this.handleTypeSelector
+    );
+  }
 
   handleTypeSelector = ()=>{
-      var selectionNum = this.state.selected
+      var selectionNum = this.state.value
         // var selectedType = []
         if(this.state.types[selectionNum] !== undefined ){
           axios.get(`${ROOT_URL}/event_categories/${selectionNum}/items`)
             .then((res)=>{
-              console.log(res.data)
               this.setState({
                 defaultItems:res.data.map((item)=>{
                   return item.item_name
@@ -66,12 +64,11 @@ export default class PartyTypeTable extends Component {
       }
   
   render() { 
-    
     return (
       <div>
         <h2 style={styles.headline}>Select type of event</h2>  
           {/* <Table onRowSelection={this.handleRowSelection} height={this.state.height}>  */}
-          <DropDownMenu onRowSelection={this.handleRowSelection} value={this.state.value} onChange={this.handleChange} maxHeight={300}>
+          <DropDownMenu  value={this.state.value} onChange={this.handleChange} maxHeight={300}>
           {this.state.types.map((type, indx) =>
             
             <MenuItem primaryText={type.category_name} value={indx} selected={this.isSelected(type.category_name)}/>
