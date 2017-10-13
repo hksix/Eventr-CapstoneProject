@@ -53,12 +53,6 @@ export class Calendar extends Component {
         });
     }
 
-    onEventClick() {
-
-    }
-    
-
-
 
     render() {
       return (
