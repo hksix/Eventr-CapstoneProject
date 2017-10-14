@@ -50,7 +50,8 @@ const Welcome2 = (props) =>(
                 <div> 
                     <p><b>Name:</b> {props.title}</p>
                     <p><b>Date:</b> {props.date}</p>
-                    <p><b>Time:</b> {props.time}</p>
+                    <p><b>Time:</b>{ props.time}</p>
+                    <p><b>Location:</b> {props.location}</p>
                     <p><b>Description:</b> {props.desc}</p>
                     <p><b>Hosted By:</b> {props.host}</p>
                 </div>
@@ -63,7 +64,7 @@ const Welcome2 = (props) =>(
             <Card style={cardbox}>
                 <div>
                     <u>Location</u>
-                    <p>{props.location}</p>     
+                    <p></p>     
                 </div>
                 <MapsPlace/>
                 <div style={{position:'relative', float:'right'}}>
@@ -141,6 +142,7 @@ export class Welcome extends Component {
             return "You are hosting this event!"
         }
         else {
+            console.log(host)
             return host
         }
     }
@@ -149,21 +151,22 @@ export class Welcome extends Component {
     render(){
        let eventElement = <p></p>;
         if (this.state.event) {
-           eventElement = (<Card className='welcomeBox'>
-                <Welcome2 
-                    title={this.state.event.title} 
-                    desc={this.state.event.desc} 
-                    date={this.state.event.date}
-                    time={this.state.event.time}
-                    host={this.getHostName(this.state.event.isHost,this.state.event.host)} 
-                    location={this.state.event.location}
-                    headerColor={this.getHeaderColor(this.state.event.isHost)}
-                    />
-            </Card>);
+           eventElement = (
+                <Card className='welcomeBox'> 
+                    <Welcome2 
+                        title={this.state.event.title} 
+                        desc={this.state.event.desc} 
+                        date={this.state.event.date}
+                        time={this.state.event.time}
+                        host={this.getHostName(this.state.event.isHost,this.state.event.host)} 
+                        location={this.state.event.location}
+                        headerColor={this.getHeaderColor(this.state.event.isHost)}
+                        />
+                </Card>);
         }
 
         return(
-            <div className="profilepg">
+            <div className="profilepg" >
                 <Card>
                     <AppBarExampleIcon/>
                 </Card>

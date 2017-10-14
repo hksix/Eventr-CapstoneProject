@@ -63,7 +63,7 @@ export class Calendar extends Component {
       const eventStyle = {
         style: {
           backgroundColor: "#7c5cb7", 
-          height: "25px"
+          height: "25px",
         }
       }
       if(val.isHost) {
@@ -89,7 +89,7 @@ export class Calendar extends Component {
           defaultDate={new Date()}
           views={{month: true, week: true}}
           defaultView="month"
-          style={{height: "500px"}}
+          style={{height: "600px"}}
           eventPropGetter={val => this.createEventStyles(val)}
           />
         </div>
