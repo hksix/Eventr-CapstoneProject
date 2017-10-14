@@ -17,7 +17,7 @@ import MapsPlace from 'material-ui/svg-icons/maps/place';
 var header = {
     textAlign: 'center',
     backgroundColor: '#4c3187',
-    color: 'white',
+    color: '#f5f5f5',
     paddingTop: '15px',
     paddingBottom: '15px',
     // fontSize: '14px',
@@ -118,7 +118,7 @@ export class Welcome extends Component {
     getHeaderColor(isHost) {
         var header = {
             textAlign: 'center',
-            color: 'white',
+            color: '#f5f5f5',
             paddingTop: '15px',
             paddingBottom: '15px',
             // fontSize: '14px',

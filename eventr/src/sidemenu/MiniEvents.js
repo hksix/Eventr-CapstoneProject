@@ -5,9 +5,6 @@ import axios from 'axios';
 import { ROOT_URL } from '../App.js';
 
 
-
-const events = []
-
 export default class MiniEvents extends Component {
   constructor(props) {
     super(props);

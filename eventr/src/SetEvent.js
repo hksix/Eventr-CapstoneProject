@@ -6,7 +6,7 @@ import Dialog from 'material-ui/Dialog';
 import FlatButton from 'material-ui/FlatButton';
 import RaisedButton from 'material-ui/RaisedButton';
 
-import ItemList from './ListOfItems.js'
+import ItemList from './ListOfItems.js';
 // import SubmitSnackBar from './Submit.js'
 import Card from 'material-ui/Card';
 import { ROOT_URL } from './App.js';
@@ -16,10 +16,11 @@ import axios from 'axios';
 // import RaisedButton from 'material-ui/RaisedButton';
 
 
-import {DateSelector, TimeSelector, LocationSelector} from './setevent/WhenWhere.js'
-import {NameSelector, DescriptionSelector} from './setevent/NameDesc.js'
-import PartyTypeTable  from './setevent/EventType.js'
-import { SelectFriends} from './setevent/SelectFriends.js'
+import {DateSelector, TimeSelector, LocationSelector} from './setevent/WhenWhere.js';
+import {NameSelector, DescriptionSelector} from './setevent/NameDesc.js';
+import PartyTypeTable  from './setevent/EventType.js';
+import { SelectFriends} from './setevent/SelectFriends.js';
+import EventTypeDefaultItems from './EventTypeDefaultItems';
 // google maps drawer for example
 // request invite
 // public event toggle - radius from current location  but doesnt show actual location // trending parties in area 
@@ -72,9 +73,6 @@ const styles = {
  * You can also close this dialog by clicking outside the dialog, or with the 'Esc' key.
  */
 class SubmitButton extends Component {
-  constructor(props){
-    super(props);
-  }
     state = {
       open: false,
     };
@@ -83,22 +81,14 @@ class SubmitButton extends Component {
     handleOpen = () => {
       this.setState({open: true});
     };
-  
     handleClose = () => {
-      
       this.setState({open: false});
-      
     };
     handleTouchTap = () => {
-      this.setState({
-        open: true,
-      });
+      this.setState({open: true,});
     };
-  
     handleRequestClose = () => {
-      this.setState({
-        open: false,
-      });
+      this.setState({open: false,});
     };
     handleSubmitAndClose = ()=>{
       this.handleRequestClose();
@@ -156,7 +146,7 @@ export class SetEvent extends Component {
       eventID:'',
       eventPeopleCount:'',
       eventPeopleNames:'',
-      eventItems:'',
+      eventItems:[],
     };
   }
 
@@ -223,12 +213,13 @@ export class SetEvent extends Component {
             changeHandler={this._handleInviteChange}/>
             
         </div>
-
+          
         <div style={styles.slide}>
             <PartyTypeTable type={this.state.eventType}
-            changeHandler={this._handleTypeChange}/>
+            changeHandler={this._handleTypeChange} autoWidth={false}/>
+            <EventTypeDefaultItems defaultItems={this.state.eventItems}/>
             <h2 style={styles.headline}>Items page</h2>
-            <ItemList defaultItems={this.state.eventItems}/> 
+            <ItemList/> 
         </div>
 
         <div style={styles.slide}>
@@ -273,7 +264,8 @@ export class SetEvent extends Component {
       eventTime: newTime
     })
   }
-  _handleTypeChange=(newType,newID, newDefaultItems)=>{
+  _handleTypeChange=(newType, newID, newDefaultItems)=>{
+    console.log()
     this.setState({
       eventType: newType,
       eventID: newID,
@@ -291,7 +283,7 @@ export class SetEvent extends Component {
       alert('woah chill.. before we continue please fill out all forms.' )
     }else{
     axios.post(`${ROOT_URL}/events`,{
-      host_id: 333,
+      host_id: 3,
       'name': `${this.state.eventName}`,
       'description': `${this.state.eventDiscription}`,
       'date': `${this.state.eventDate.toString()}`,

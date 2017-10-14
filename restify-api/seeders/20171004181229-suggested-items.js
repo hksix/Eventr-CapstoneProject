@@ -19,32 +19,32 @@ module.exports = {
       category_id: 1
     },
     {
-      id: 401,
+      id: 201,
       item_name: 'Soda',
       category_id: 2
     },
     {
-      id: 400,
+      id: 200,
       item_name: 'Juice',
       category_id: 2
     },
     {
-      id: 4,
+      id: 202,
       item_name: 'Beer',
       category_id: 2
     },
     {
-      id: 407,
+      id: 207,
       item_name: 'Wine',
       category_id: 2
     },
     {
-      id: 408,
+      id: 208,
       item_name: 'General Alcoholic Beverages',
       category_id: 2
     },
     {
-      id: 409,
+      id: 209,
       item_name: 'Liquor',
       category_id: 2
     },
@@ -54,7 +54,7 @@ module.exports = {
       category_id: 3,
     },
     {
-      id: 4011,
+      id: 401,
       item_name: 'Plates',
       category_id: 4,
     },
@@ -169,7 +169,7 @@ module.exports = {
       category_id: 3,
     },
     {
-      id: 3071,
+      id: 317,
       item_name: 'Party Hats',
       category_id: 3,
     },

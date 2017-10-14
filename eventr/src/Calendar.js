@@ -28,7 +28,7 @@ export class Calendar extends Component {
           this.setState({events: res}, () => {
             var idExists = {};
             const newCalData = this.state.events.map(index => {
-              console.log(index);
+              // console.log(index);
               return index.data.map(val => {
                 if (!idExists.hasOwnProperty(val.id)) {
                   idExists[val.id] = true;
@@ -36,15 +36,17 @@ export class Calendar extends Component {
                     "id": val.id,
                     "title": val.name,
                     "date": val.date,
-                    "start": new Date( parseInt(val.date.slice(0,4)), parseInt(val.date.slice(5,7))-1, parseInt(val.date.slice(8,11)) ),
-                    "end": new Date( parseInt(val.date.slice(0,4)), parseInt(val.date.slice(5,7))-1, parseInt(val.date.slice(8,11)) ),
+                    // simply inserted ,10 as radix to mitigate errors received within console
+                    // https://stackoverflow.com/questions/7818903/jslint-says-missing-radix-parameter-what-should-i-do
+                    "start": new Date( parseInt(val.date.slice(0,4),10), parseInt(val.date.slice(5,7),10)-1, parseInt(val.date.slice(8,11),10) ),
+                    "end": new Date( parseInt(val.date.slice(0,4),10), parseInt(val.date.slice(5,7),10)-1, parseInt(val.date.slice(8,11),10) ),
                     "desc": val.description,
                     "cat": val.category_id,
                     "host": val.host_id,
                     "location": val.location,
                     "time": val.time,
                   }; 
-                  if (eventInfo.host == current_user) {
+                  if (eventInfo.host === current_user) {
                     eventInfo.isHost = true;
                   }
                   return (eventInfo);

@@ -5,31 +5,23 @@ body {
   line-height: 1.9em;
   background-color: #f5f5f6;
 }
-h1 {
+.h1-landing-page {
   font: 300 50px/65px "Open Sans",open-sans,sans-serif;
   color:white;
 }
-h2 {
+.h2-landing-page {
   font: 300 35px/52px "Open Sans",open-sans,sans-serif;
   color: #333c4e;
 }
-h3 {
+.h3-landing-page {
   font: 300 30px/47px "Open Sans",open-sans,sans-serif;
   color: white;
 }
-nav {
-  height: 70px;
-  background-color: #00B4CE;
-  box-shadow: 2px 2px 5px lightgray;
-}
-.top-logo img {
-  height: 50px;
-}
-main {
-  margin-bottom: 150px;
-}
+
+
 .landing-header-container {
   max-height: 500px;
+  margin-bottom: 150px;
 }
 .navigation {
   display: flex;
