@@ -37,6 +37,7 @@ export default class EventTypeDefaultItems extends Component {
       
   this.state = {
     defaultItems: [],
+    value: '',
     };
   }
   componentWillMount = () => {
@@ -56,6 +57,12 @@ export default class EventTypeDefaultItems extends Component {
       console.log(label)
       }
   }
+
+  handleChange = (e) => {
+		this.setState({
+			value: e.target.value
+		});
+	}
 
   
   render() {

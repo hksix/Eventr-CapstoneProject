@@ -20,24 +20,29 @@ class Form extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			value: ''
+			value: '',
+			description: ''
 		};
-		this.handleChange = this.handleChange.bind(this);
-		this.handleNewTodoAddition = this.handleNewTodoAddition.bind(this);
 	}
 	
-	handleChange(event) {
+	handleChange = (event) => {
 		this.setState({
 			value: event.target.value
 		});
 	}
+	handleDescChange = (event) => {
+		this.setState({
+			description: event.target.description
+		});
+	}
 	
-	handleNewTodoAddition() {
+	handleNewTodoAddition = () => {
         // console.log(this.input.value);
 		if(this.input.value !== '') {
 			this.props.addTodo(this.input.value);
 			this.setState({
-				value: ''
+				value: '',
+				description: ''
 			});
 			
 			this.input.placeholder = "Add Items here...";
@@ -63,6 +68,11 @@ class Form extends Component {
 					hintText="Type in items needed..."
 					value={this.state.value}
 					onChange={this.handleChange}
+				/>
+				<TextField
+					hintText="Description"
+					description={this.state.description}
+					onChange={this.handleDescChange}
 				/>
 				<FloatingButtonAdd  />
 				<br />
@@ -127,8 +137,8 @@ class ItemList extends Component {
 			id: '',
 			value:'',
 		}
-			
-        const introData = [
+
+		const introData = [
 			{
 				id: -3, 
 				value: "This is where your stuff will go"
@@ -165,7 +175,7 @@ class ItemList extends Component {
 		
 		const todo = { 
 			value: val, 
-			id: id 
+			id: id,
 		};
 		
 		this.state.data.push(todo);

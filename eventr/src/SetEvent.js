@@ -231,7 +231,7 @@ export class SetEvent extends Component {
             changeHandler={this._handleTypeChange} autoWidth={false}/>
             <EventTypeDefaultItems defaultItems={this.state.eventItems}/>
             <h2 style={styles.headline}>Items page</h2>
-            <ItemList /> 
+            <ItemList/> 
         </div>
 
         <div style={styles.slide}>
