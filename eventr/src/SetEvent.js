@@ -6,7 +6,7 @@ import Dialog from 'material-ui/Dialog';
 import FlatButton from 'material-ui/FlatButton';
 import RaisedButton from 'material-ui/RaisedButton';
 
-import ItemList from './ListOfItems.js';
+
 // import SubmitSnackBar from './Submit.js'
 import Card from 'material-ui/Card';
 import { ROOT_URL } from './App.js';
@@ -15,12 +15,12 @@ import axios from 'axios';
 
 // import RaisedButton from 'material-ui/RaisedButton';
 
-
+import ItemList from './setevent/ListOfItems.js';
 import {DateSelector, TimeSelector, LocationSelector} from './setevent/WhenWhere.js';
 import {NameSelector, DescriptionSelector} from './setevent/NameDesc.js';
-import PartyTypeTable  from './setevent/EventType.js';
+import EventType from './setevent/EventType.js';
 import { SelectFriends} from './setevent/SelectFriends.js';
-import EventTypeDefaultItems from './EventTypeDefaultItems';
+import EventTypeDefaultItems from './setevent/EventTypeDefaultItems';
 // google maps drawer for example
 // request invite
 // public event toggle - radius from current location  but doesnt show actual location // trending parties in area 
@@ -215,7 +215,7 @@ export class SetEvent extends Component {
         </div>
           
         <div style={styles.slide}>
-            <PartyTypeTable type={this.state.eventType}
+            <EventType type={this.state.eventType}
             changeHandler={this._handleTypeChange} autoWidth={false}/>
             <EventTypeDefaultItems defaultItems={this.state.eventItems}/>
             <h2 style={styles.headline}>Items page</h2>
@@ -232,8 +232,7 @@ export class SetEvent extends Component {
             <p>Type: <u>{this.state.eventType.toString()}</u></p>
             <p>Number of people invited: <u>{this.state.eventPeopleCount} {this.state.eventPeopleNames}</u></p>
             <p>Number of required items needed: <u>{this.state.eventItems}</u></p>
-            <SubmitButton
-            changeHandler={this._handleSubmit}></SubmitButton> 
+            <SubmitButton changeHandler={this._handleSubmit}></SubmitButton> 
         </div>
         </SwipeableViews>
       </Card>

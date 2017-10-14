@@ -16,7 +16,8 @@ import MenuItem from 'material-ui/MenuItem';
 //     },
 //   };
 
-export default class PartyTypeTable extends Component {
+// rendered to SetEvent.js
+export default class EventType extends Component {
     constructor(props){
         super(props);
         
@@ -39,7 +40,7 @@ export default class PartyTypeTable extends Component {
       return name === this.props.type 
   };
 
-  // when PartyTypeTable component has a category select, the value is then passed into this function to set the value state for EventType
+  // when EventType component has a category select, the value is then passed into this function to set the value state for EventType
   // This value is then sent to the database as an axios call through handleTypeSelector() to retreive those items associated with that category with the value provided
   // ex: taco night in the DB has a value of 0. Therefore, if taco night is selected by the user, the value of 0 is passed to the database and returns the list of defalut items associated with value 0 (taco night)
   handleChange = (event, index, value) => {
