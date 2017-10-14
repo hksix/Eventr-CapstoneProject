@@ -25,10 +25,7 @@ export default class UserMenu extends Component {
   componentWillReceiveProps(nextProps){
     this.setState({
       userProfile: nextProps.user
-    },()=>{
-      if(this.state.userProfile !== undefined){
-      // console.log(this.state.userProfile.name)
-      }
+    
     });
   }
 

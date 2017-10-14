@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import LandingPage from '../landingPage/LandingPage.js';
 
 class Home extends Component {
   login() {
@@ -22,11 +23,13 @@ class Home extends Component {
                 <Link to="main">Main page</Link>
                 .
               </h4>
+              <LandingPage/>
               </div>
             )
         }
         {
           !isAuthenticated() && (
+            <div>
               <h4>
                 You are not logged in! Please{' '}
                 <a
@@ -37,8 +40,12 @@ class Home extends Component {
                 </a>
                 {' '}to continue.
               </h4>
+
+              <LandingPage/>
+              </div>
             )
         }
+        
       </div>
     );
   }

@@ -71,7 +71,7 @@ class MenuOptions extends Component {
                     <Route exact path="/home"/>
                     <div className="main-content-container">
                       <div className="side-content-container">
-                        <UserMenu />
+                      <UserMenu user={this.props.userdata}/>
                       </div>
                       <div className="changing-content-container" >
                         <Welcome />
@@ -93,7 +93,7 @@ class MenuOptions extends Component {
 
                     <div className="main-content-container">
                       <div className="side-content-container">
-                        <UserMenu />
+                      <UserMenu user={this.props.userdata}/>
                       </div>
                       <div className="changing-content-container" >
                         <SetEvent />
@@ -112,7 +112,7 @@ class MenuOptions extends Component {
                     containerElement={<Link to="/nearby" />}>
                     <div className="main-content-container">
                     <div className="side-content-container">
-                    <UserMenu />
+                    <UserMenu user={this.props.userdata}/>
                     </div>
                       <div >
                         <MapContainer />

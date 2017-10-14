@@ -47,6 +47,7 @@ class App extends Component {
     
     return (
       <div className="App">
+        {/* <LandingPage/> */}
         <header>
           <button
               className="btn-margin"
@@ -95,9 +96,10 @@ class App extends Component {
                 )
             }
             </header>
-            {/* <LandingPage/> */}
+            
           <div className="container">
             {this.props.children}
+            
           </div>
       </div>
     );

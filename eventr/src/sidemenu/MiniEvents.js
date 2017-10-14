@@ -21,7 +21,7 @@ export default class MiniEvents extends Component {
       this.setState({
         data: res.data
       })
-      console.log(this.state.data)
+      // console.log(this.state.data)
     })
   }
 

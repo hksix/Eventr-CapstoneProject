@@ -20,7 +20,7 @@ export default class MiniProfile extends Component {
     super(props);
     this.state = {
       open: false,
-      ProfileData:'',
+      ProfileData:props.userProfileData,
       fName: '',
     };
   }
@@ -31,47 +31,37 @@ export default class MiniProfile extends Component {
   };
 
   componentDidMount = () => {
-    // if(this.props.userProfileData !== undefined){
+
+    if(this.props.userProfileData !== undefined){
     axios.get(`${ROOT_URL}/users/3`).then((res) => {
       this.setState({
-        fName: res.data.fName,
-        lName: res.data.lName,
-        email: res.data.email,
+        fName: "loading",
+        lName: "loading",
+        email: "loading",
         location: res.data.location,
         phone: res.data.phone,
-        profPic: res.data.profPic,
+        profPic: 'loading',
         createdAt: res.data.createdAt
       })
     })
-  // }
   }
+}
+
+  componentWillReceiveProps(nextProps){
+      this.setState({
+        ProfileData: nextProps.userProfileData.family_name,
+        fName: nextProps.userProfileData.given_name,
+        lName: nextProps.userProfileData.family_name,
+        email: nextProps.userProfileData.nickname+'@gmail.com',
+        profPic:nextProps.userProfileData.picture,
+      })
+}
   
-  // componentWillReceiveProps(nextProps){
-  //   if(this.props.userProfileData === undefined){
-  //     this.setState({
-  //       fName:'test'
-  //     })
-  //   }else{
-  //   this.setState({
-  //     fName:nextProps.userProfileData,
-  //     ProfileData:nextProps.userProfileData
-  //   })
-  //   console.log(nextProps.userProfileData)
-  // }
-    
-    
-    // if(nextProps.userProfileData !== undefined){
-    // this.setState({
-    //   ProfileData:nextProps.userProfileData,
-    //   lName:nextProps.userProfileData
-    // },()=>{
-    //   this.setState({
-    //     lName:this.state.ProfileData
-    //   })
-    // })
-    // }
-    
-  // }
+componentWillUpdate(nextProps, nextState){
+  console.log(nextProps, nextState)
+  // console.log(nextProps.userProfileData)
+}
+
 
   save = () => {
     axios.put(`${ROOT_URL}/users/3`, {
@@ -89,7 +79,7 @@ export default class MiniProfile extends Component {
   }
   
   render(){
-    console.log(this.state.ProfileData)
+    // console.log(this.state.ProfileData)
     const styles = {
       title: {
         cursor: 'pointer',

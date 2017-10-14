@@ -68,7 +68,7 @@ class ProfileBox extends Component {
           title="Profile Picture"
           avatar={this.props.profPic}
         />
-        <h3 style={style.text}>Welcome {this.props.fName} {this.props.lName}!</h3>
+        <h3 style={style.text}>Welcome <u>{this.props.fName} {this.props.lName}</u>!</h3>
         <h3 style={style.text}>Phone: {this.props.phone}</h3>
         <h3 style={style.text}>Location: {this.props.location}</h3>
         <h3 style={style.text}>Email: {this.props.email}</h3>
@@ -117,7 +117,7 @@ class ProfileBox extends Component {
           floatingLabelFixed={true} 
           hintText={this.props.email}
           type='text'
-          onChange={this._handleEcmailChange}>
+          onChange={this._handleEmailChange}>
         </TextField>
 
         <br />
