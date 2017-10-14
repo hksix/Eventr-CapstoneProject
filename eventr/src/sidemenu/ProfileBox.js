@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Card, CardActions, CardHeader, CardTitle} from 'material-ui/Card';
+import {Card, CardHeader} from 'material-ui/Card';
 import FlatButton from 'material-ui/FlatButton';
 // import axios from 'axios';
 // import { ROOT_URL } from '../App.js';

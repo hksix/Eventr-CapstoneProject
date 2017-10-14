@@ -1,8 +1,9 @@
 import React, {Component} from 'react';
 import Alerts from './Alerts.js';
+
 import MiniProfile from './MiniProfile.js';
 import MiniEvents from './MiniEvents.js';
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+// import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
 
 

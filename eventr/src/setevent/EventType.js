@@ -1,20 +1,20 @@
 import React, {Component} from 'react';
-import {Table,TableBody,TableRow,TableRowColumn,} from 'material-ui/Table';
+// import {Table,TableBody,TableRow,TableRowColumn,} from 'material-ui/Table';
 import axios from 'axios';
 import { ROOT_URL } from '../App.js';
 
 import DropDownMenu from 'material-ui/DropDownMenu';
 import MenuItem from 'material-ui/MenuItem';
 
-const styles = {
-    headline: {
-      fontSize: 24,
-      paddingTop: 16,
-      marginBottom: 12,
-      fontWeight: 400,
-      textAlign: 'center',
-    },
-  };
+// const styles = {
+//     headline: {
+//       fontSize: 24,
+//       paddingTop: 16,
+//       marginBottom: 12,
+//       fontWeight: 400,
+//       textAlign: 'center',
+//     },
+//   };
 
 export default class PartyTypeTable extends Component {
     constructor(props){

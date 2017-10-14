@@ -73,9 +73,6 @@ const styles = {
  * You can also close this dialog by clicking outside the dialog, or with the 'Esc' key.
  */
 class SubmitButton extends Component {
-  constructor(props){
-    super(props);
-  }
     state = {
       open: false,
     };

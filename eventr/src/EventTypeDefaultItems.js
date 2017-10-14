@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 
-import Divider from 'material-ui/Divider';
+// import Divider from 'material-ui/Divider';
 import TextField from 'material-ui/TextField';       
 import Checkbox from 'material-ui/Checkbox';     
 

@@ -62,7 +62,7 @@ class Form extends Component {
 			</div>
 		);
 	}
-	
+
 	_handleChange = (event) => {
 		this.setState({
 			value: event.target.value
@@ -73,7 +73,6 @@ class Form extends Component {
 			description: event.target.description
 		});
 	}
-	
 	_handleNewitemAddition = () => {
         // console.log(this.input.value);
 		if(this.input.value !== '') {
