@@ -72,7 +72,7 @@ class ProfileBox extends Component {
         <h3 style={style.text}>Phone: {this.props.phone}</h3>
         <h3 style={style.text}>Location: {this.props.location}</h3>
         <h3 style={style.text}>Email: {this.props.email}</h3>
-        <h3 style={style.text}>Member Since {this.props.createdAt}</h3>
+        <h3 style={style.text}>Last Update: {this.props.createdAt}</h3>
         <br />
         <FlatButton label="Edit" open={this.state.open} onClick={this.edit} style={{marginLeft:10, marginTop:10, marginBottom:10}}/>
       </Card>
