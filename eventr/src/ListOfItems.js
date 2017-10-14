@@ -69,11 +69,11 @@ class Form extends Component {
 					value={this.state.value}
 					onChange={this.handleChange}
 				/>
-				<TextField
+				{/* <TextField
 					hintText="Description"
 					description={this.state.description}
 					onChange={this.handleDescChange}
-				/>
+				/> */}
 				<FloatingButtonAdd  />
 				<br />
 				<div id="blank" style={{display:'none' }}>
@@ -150,19 +150,17 @@ class ItemList extends Component {
 		this.state = { 
 			data: localData || introData
 		};
-		// binding methods
-		this.addTodo = this.addTodo.bind(this);
 		this.removeTodo = this.removeTodo.bind(this);
 		
 	}
 
 	// Handler to update localStorage
-	updateLocalStorage() {
+	updateLocalStorage = () => {
 		if (typeof(Storage) !== "undefined")
 			localStorage.todos = JSON.stringify(this.state.data);
 	}
 	// Handler to add todo
-	addTodo(val) {
+	addTodo = (val) => {
 		let id;
 		// if localStorage is available then increase localStorage count
 		// else use global window object's id variable
@@ -188,7 +186,7 @@ class ItemList extends Component {
 		});
 	}
 	// Handler to remove todo
-	removeTodo(id) {
+	removeTodo = (id) => {
 		// filter out the todo that has to be removed
 		const list = this.state.data.filter(todo => {
 			if (todo.id !== id)
