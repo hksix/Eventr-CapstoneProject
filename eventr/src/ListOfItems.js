@@ -4,8 +4,9 @@ import FloatingActionButton from 'material-ui/FloatingActionButton';
 import ContentAdd from 'material-ui/svg-icons/content/add';
 import ContentRemove from 'material-ui/svg-icons/content/clear';
 
-import axios from 'axios';
-import { ROOT_URL } from './App.js';
+// import axios from 'axios';
+// import { ROOT_URL } from './App.js';
+
 
 // Component Structure
 // --------------------
@@ -23,33 +24,7 @@ class Form extends Component {
 			value: '',
 			description: ''
 		};
-	}
-	
-	handleChange = (event) => {
-		this.setState({
-			value: event.target.value
-		});
-	}
-	handleDescChange = (event) => {
-		this.setState({
-			description: event.target.description
-		});
-	}
-	
-	handleNewitemAddition = () => {
-        // console.log(this.input.value);
-		if(this.input.value !== '') {
-			this.props._addItemToEvent(this.input.value);
-			this.setState({
-				value: '',
-				description: ''
-			});
-			
-			this.input.placeholder = "Add Items here...";
-		}
-	}
-	
-	
+	}	
 	render() {
         const FloatingButtonAdd = () => (
             <div>
@@ -67,12 +42,12 @@ class Form extends Component {
 				<TextField
 					hintText="Type in items needed..."
 					value={this.state.value}
-					onChange={this.handleChange}
+					onChange={this._handleChange}
 				/>
 				<TextField
 					hintText="Description"
 					description={this.state.description}
-					onChange={this.handleDescChange}
+					onChange={this._handleDescriptionChange}
 				/>
 				<FloatingButtonAdd  />
 				<br />
@@ -82,12 +57,38 @@ class Form extends Component {
 							this.input = node;
 						}}
 					value={this.state.value}
-					onChange={this.handleChange}/>
+					onChange={this._handleChange}/>
 				</div>
 			</div>
 		);
 	}
+	
+	_handleChange = (event) => {
+		this.setState({
+			value: event.target.value
+		});
+	}
+	_handleDescriptionChange = (event) => {
+		this.setState({
+			description: event.target.description
+		});
+	}
+	
+	_handleNewitemAddition = () => {
+        // console.log(this.input.value);
+		if(this.input.value !== '') {
+			this.props._addItemToEvent(this.input.value);
+			this.setState({
+				value: '',
+				description: ''
+			});
+			
+			this.input.placeholder = "Add Items here...";
+		}
+	}
 }
+
+
 
 //Renders within ItemList component
 //lists all items for event added so far
