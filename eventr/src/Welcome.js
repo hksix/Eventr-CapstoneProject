@@ -73,7 +73,7 @@ const Welcome2 = (props) =>(
             <Card style={cardbox}>
                 <div>
                     <u>Friends invited</u>
-                    <p>{props.invited</p>
+                    <p>{props.invited}</p>
                 </div>
                 <div style={{position:'relative', float:'right'}}>
                 <EditDropdown />
