@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import LandingPage from '../landingPage/LandingPage.js';
 
-import LandingPage from '../landingPage/LandingPage.js';
 
 class Home extends Component {
   login() {
