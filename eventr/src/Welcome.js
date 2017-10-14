@@ -63,8 +63,7 @@ const Welcome2 = (props) =>(
             <Card style={cardbox}>
                 <div>
                     <u>Location</u>
-                    <p>{props.location}</p>
-                    
+                    <p>{props.location}</p>     
                 </div>
                 <MapsPlace/>
                 <div style={{position:'relative', float:'right'}}>
@@ -72,7 +71,10 @@ const Welcome2 = (props) =>(
                 </div>
             </Card>
             <Card style={cardbox}>
-                <div><u>Friends invited</u></div>
+                <div>
+                    <u>Friends invited</u>
+                    <p>{props.invited</p>
+                </div>
                 <div style={{position:'relative', float:'right'}}>
                 <EditDropdown />
                 </div>
@@ -114,7 +116,7 @@ export class Welcome extends Component {
     makeEventDetail = (calendarData) => {
         this.setState({event: calendarData})
     }
-    
+
     getHeaderColor(isHost) {
         var header = {
             textAlign: 'center',
@@ -142,7 +144,6 @@ export class Welcome extends Component {
             return host
         }
     }
-
 
 
     render(){
