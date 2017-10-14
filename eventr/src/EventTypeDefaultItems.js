@@ -44,9 +44,33 @@ export default class EventTypeDefaultItems extends Component {
     this.selectedCheckboxes = new Set();
   }
   
-  // used this function over material ui updateCheck because on click was causing all items to be checked
+  render() {
+    return (
+      <div style={styles.checkboxContainer}>  
+
+        {/* maps through database of items attached to types of events to then populate certain items associated with event */}
+        {this.props.defaultItems.map((item, indx) => (
+        <div style={{display: 'flex', alignItems: 'center', justifyContent: 'space-around'}}>
+          <Checkbox 
+            label={item} 
+            key={item.indx} 
+            onCheck={this._toggleCheckbox}
+            style={styles.checkbox}/>
+            <TextField
+              floatingLabelText="Description"
+              style={styles.textField}
+              onChange={this._handleChangeName}
+            >
+            </TextField>
+          </div>
+        ))}
+      </div>
+    )
+  }
+
+    // used this function over material ui updateCheck because on click was causing all items to be checked
   //http://react.tips/checkboxes-in-react/ 
-  toggleCheckbox = (label) => {
+  _toggleCheckbox = (label) => {
     // checks box
     if (this.selectedCheckboxes.has(label)) {
       this.selectedCheckboxes.delete(label);
@@ -58,37 +82,11 @@ export default class EventTypeDefaultItems extends Component {
       }
   }
 
-  handleChange = (e) => {
+  _handleChangeName = (e) => {
 		this.setState({
 			value: e.target.value
 		});
 	}
-
-  
-  render() {
-    return (
-      <div style={styles.checkboxContainer}>  
-
-        {/* maps through database of items attached to types of events to then populate certain items associated with event */}
-        {this.props.defaultItems.map((item, indx) => (
-        <div style={{display: 'flex', alignItems: 'center', justifyContent: 'space-around'}}>
-          <Checkbox 
-            label={item} 
-            key={item} 
-            onCheck={this.toggleCheckbox}
-            style={styles.checkbox}/>
-            <TextField
-              floatingLabelText="Description"
-              style={styles.textField}
-              onChange={this._handleChangeName}
-            >
-            </TextField>
-            <Divider />
-          </div>
-        ))}
-      </div>
-    )
-  }
 
           
 }
