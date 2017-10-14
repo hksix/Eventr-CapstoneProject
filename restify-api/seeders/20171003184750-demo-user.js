@@ -173,6 +173,24 @@ module.exports = {
         phone: '4043332266',
         location: 'Atlanta'
       },
+      {
+        id: 20,
+        fName: 'Tamby',
+        lName: "Kojak",
+        profPic: 'Tamby.jpg',
+        email: 'Tamby@gmail.com',
+        phone: '4043332266',
+        location: 'Atlanta'
+      },
+      {
+        id: 21,
+        fName: 'Zakia',
+        lName: "Whiteside",
+        profPic: 'Zakia.jpg',
+        email: 'Zakia@gmail.com',
+        phone: '4043332266',
+        location: 'Atlanta'
+      },
 
     ], {});
   },
