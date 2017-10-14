@@ -170,11 +170,12 @@ export class LocationSelector extends Component{
         return(
             <div>
             <TextField
-            floatingLabelText="Address"
-            floatingLabelStyle={styles.floatingLabelStyle}
-            floatingLabelFocusStyle={styles.floatingLabelFocusStyle}
-            onChange={this._handleChangeLocation}
-        />
+                style={{textAlign: 'right', width: "40%"}}
+                floatingLabelText="Address"
+                floatingLabelStyle={styles.floatingLabelStyle}
+                floatingLabelFocusStyle={styles.floatingLabelFocusStyle}
+                onChange={this._handleChangeLocation}
+            />
         <IconMenuExampleScrollable/>
         </div>
         )
