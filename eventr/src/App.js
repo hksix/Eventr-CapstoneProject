@@ -95,10 +95,11 @@ class App extends Component {
                 )
             }
             </header>
-            {/* <LandingPage/> */}
+            
           <div className="container">
             {this.props.children}
           </div>
+          <LandingPage/>
       </div>
     );
   }
