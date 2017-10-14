@@ -44,8 +44,10 @@ export const makeMainRoutes = () => {
         render={props =>
           !auth.isAuthenticated()
             ? <Redirect to="/home" />
-            : <MyAwesomeReactComponent auth={auth} {...props} />}
+            : <MyAwesomeReactComponent auth={auth} {...props} />
+            }
         />
+
           <Route path="/callback" render={(props) => {
             handleAuthentication(props);
             return <Callback {...props} /> 

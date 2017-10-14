@@ -3,30 +3,40 @@ import Alerts from './Alerts.js';
 
 import MiniProfile from './MiniProfile.js';
 import MiniEvents from './MiniEvents.js';
+
 // import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import getMuiTheme from 'material-ui/styles/getMuiTheme';
 
 
+const muiTheme = getMuiTheme({
+  palette: {
+    primary1Color: '#4c3187',
+    primary2Color: '#7c5cb7',
+    primary3Color: '#1b0859',
+    accent1Color: '#B16CFF',
+    accent2Color: '#7c5cb7',
+    canvasColor: 'white',
+    pickerHeaderColor: '#7c5cb7',
+  }
+});
 
 export default class UserMenu extends Component {
-  // componentWillMount() {
-  //   this.setState({ profile: {} });
-  //   const { userProfile, getProfile } = this.props.auth;
-  //   if (!userProfile) {
-  //     getProfile((err, profile) => {
-  //       this.setState({ profile });
-  //     });
-  //   } else {
-  //     this.setState({ profile: userProfile });
-  //   }
-  // }
+    state={
+      userProfile: null
+    }
+  
+  componentWillReceiveProps(nextProps){
+    this.setState({
+      userProfile: nextProps.user
+    
+    });
+  }
 
   render(){
-    // const { profile } = this.state;
-    // console.log(this.state.profile)
+    // console.log(this.state.userProfile)
     return(
-      
       <div>
-        <MiniProfile />
+        <MiniProfile userProfileData={this.state.userProfile}  />
         <Alerts />
         <MiniEvents />
       </div>

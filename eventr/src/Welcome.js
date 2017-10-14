@@ -114,6 +114,7 @@ export class Welcome extends Component {
     makeEventDetail = (calendarData) => {
         this.setState({event: calendarData})
     }
+    
     getHeaderColor(isHost) {
         var header = {
             textAlign: 'center',
@@ -135,7 +136,7 @@ export class Welcome extends Component {
     
     getHostName(isHost, host) {
         if(isHost) {
-            return "You!"
+            return "You are hosting this event!"
         }
         else {
             return host

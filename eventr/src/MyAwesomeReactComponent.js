@@ -37,10 +37,12 @@ const muiTheme = getMuiTheme({
 });
 
 class MenuOptions extends Component {
+
   constructor(props) {
     super(props);
     this.state = {
-      value: 'a'
+      value: 'a',
+      userdata: null,
     };
   }
   handleChange = (value) => {
@@ -50,7 +52,6 @@ class MenuOptions extends Component {
   };
 
   render(){
-  
     return (
     
       <Router>
@@ -62,6 +63,7 @@ class MenuOptions extends Component {
           <Tab icon = {<img src="../logo4.png" alt="Eventr Logo - lightbulb with E inside"/>} className="eventr-logo">
           </Tab>
 
+
           <Tab icon={<FontIcon className="material-icons">home</FontIcon>}
               label="HOME"
               value="a"
@@ -70,16 +72,15 @@ class MenuOptions extends Component {
               <Route exact path="/home"/>
               <div className="main-content-container">
                 <div className="side-content-container">
-                  <UserMenu />
+                <UserMenu user={this.props.userdata}/>
                 </div>
                 <div className="changing-content-container" >
                   <Welcome />
                 </div>
               </div>
-              
+
           </Tab>
-          
-          
+
 
           {/* renders events page */}
           <Tab
@@ -92,15 +93,13 @@ class MenuOptions extends Component {
 
               <div className="main-content-container">
                 <div className="side-content-container">
-                  <UserMenu />
+                <UserMenu user={this.props.userdata}/>
                 </div>
                 <div className="changing-content-container" >
                   <SetEvent />
                 </div>
               </div>
-
           </Tab>
-
 
 
           {/* renders map */}
@@ -111,7 +110,7 @@ class MenuOptions extends Component {
               containerElement={<Link to="/nearby" />}>
               <div className="main-content-container">
               <div className="side-content-container">
-              <UserMenu />
+              <UserMenu user={this.props.userdata}/>
               </div>
                 <div >
                   <MapContainer />
@@ -126,7 +125,7 @@ class MenuOptions extends Component {
               containerElement={<Link to="/profile" />}>
               <div className="main-content-container">
                 <div className="side-content-container">
-                <UserMenu />
+                <UserMenu user={this.props.userdata}/>
                 </div>
                 <div className="changing-content-container" >
                   <Settings />
@@ -155,11 +154,11 @@ export default class MyAwesomeReactComponent extends Component {
   }
   render() {
     const { profile } = this.state;
-    console.log(this.state.profile)
+    // console.log(this.state.profile)
     return (
       <MuiThemeProvider muiTheme={muiTheme}>
         <div>
-          <MenuOptions />
+          <MenuOptions userdata={this.state.profile}/>
           <Footer />
         </div>
       </MuiThemeProvider>
