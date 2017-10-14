@@ -25,7 +25,7 @@ export default class PartyTypeTable extends Component {
       selected: [null],
       types:[],
       defaultItems:'',
-      value: null
+      value: -1,
     };
   }
   componentDidMount(){
@@ -39,8 +39,7 @@ export default class PartyTypeTable extends Component {
   };
 
   handleChange = (event, index, value) => {
-    console.log(index)
-    this.setState({value:index},this.handleTypeSelector
+    this.setState({value:value},this.handleTypeSelector
     );
   }
 
@@ -55,7 +54,6 @@ export default class PartyTypeTable extends Component {
                   return item.item_name
                 })
               },()=>{
-                // console.log(this.state.defaultItems)
                 this.props.changeHandler(this.state.types[selectionNum].category_name, this.state.selected, this.state.defaultItems)
               })
             })
@@ -66,15 +64,23 @@ export default class PartyTypeTable extends Component {
   render() { 
     return (
       <div>
-        <h2 style={styles.headline}>Select type of event</h2>  
-          {/* <Table onRowSelection={this.handleRowSelection} height={this.state.height}>  */}
-          <DropDownMenu  value={this.state.value} onChange={this.handleChange} maxHeight={300}>
-          {this.state.types.map((type, indx) =>
-            
+        {/* <h2 style={styles.headline}>Select type of event</h2>   */}
+          <DropDownMenu  
+            autoWidth={false} 
+            style={{width: 250}}
+            value={this.state.value} 
+            onChange={this.handleChange} 
+            maxHeight={300} >
+
+            {/* starts value at -1 because when map through this.state.types the index starts at 0 */}
+            <MenuItem primaryText="Select a party category" value={-1}/>
+
+            {/* maps through database of types of events to then populate certain items associated with event */}
+            {this.state.types.map((type, indx) =>
             <MenuItem primaryText={type.category_name} value={indx} selected={this.isSelected(type.category_name)}/>
           )}
           </DropDownMenu>
-          {/* </Table> */}
+          
       </div>
     );
   }
