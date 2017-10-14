@@ -12,7 +12,7 @@ import { ROOT_URL } from './App.js';
 // Container
 // --> Form
 // --> List
-// ----> Todo
+// ----> item
 
 
 
@@ -36,10 +36,10 @@ class Form extends Component {
 		});
 	}
 	
-	handleNewTodoAddition = () => {
+	handleNewitemAddition = () => {
         // console.log(this.input.value);
 		if(this.input.value !== '') {
-			this.props.addTodo(this.input.value);
+			this.props._addItemToEvent(this.input.value);
 			this.setState({
 				value: '',
 				description: ''
@@ -54,7 +54,7 @@ class Form extends Component {
         const FloatingButtonAdd = () => (
             <div>
                 <FloatingActionButton mini={true}>
-                    <ContentAdd onClick={this.handleNewTodoAddition} />
+                    <ContentAdd onClick={this.handleNewitemAddition} />
                 </FloatingActionButton>
             </div>
         );
@@ -69,11 +69,11 @@ class Form extends Component {
 					value={this.state.value}
 					onChange={this.handleChange}
 				/>
-				{/* <TextField
+				<TextField
 					hintText="Description"
 					description={this.state.description}
 					onChange={this.handleDescChange}
-				/> */}
+				/>
 				<FloatingButtonAdd  />
 				<br />
 				<div id="blank" style={{display:'none' }}>
@@ -89,45 +89,51 @@ class Form extends Component {
 	}
 }
 
-const Todo = ({todo, remove}) => {
-    const FloatingButtonRemove = () => (
-        <div>
-            <FloatingActionButton mini={true} secondary={true}>
-              <ContentRemove onClick={()=> {
-				    		remove(todo.id)}} 
-              />
-            </FloatingActionButton>
-        </div>
-    );
-	// single todo 
-	return (
-		<div>
-			{todo.value}
-      <FloatingButtonRemove/>
-		</div>
-	);
-};
-
-const List = ({todos, remove}) => {
-	let allTodos = [];
+//Renders within ItemList component
+//lists all items for event added so far
+const ListAllItemsForEvent = ({items, remove}) => {
+	let allitems = [];
 	
-	if(todos.length > 0) {
-		allTodos = todos.map(todo => {
-			// passing todo and remove method reference
-			return (<Todo todo={todo} remove={remove} key={todo.id} />);
-			//return (<p>{todo.value}</p>);
+	if(items.length > 0) {
+		allitems = items.map(item => {
+			// passing item function below and remove method reference
+			return (<CreatingItemForEvent item={item} remove={remove} key={item.id} />);
+			//return (<p>{item.value}</p>);
 		});
 	} else {
-		allTodos.push(<h3>No items added!</h3>);	
+		allitems.push(<h3>No items added!</h3>);	
 	}
 	
 	return (
 		<div>
 			<span> Items: </span>
-			{allTodos}
+			{allitems}
 		</div>
 	);
 };
+
+// Renders within ItemList component
+// returns item typed in PLUS a remove button for later use
+const CreatingItemForEvent = ({item, remove}) => {
+	const FloatingButtonRemove = () => (
+		<div>
+			<FloatingActionButton mini={true} secondary={true}>
+				<ContentRemove onClick={()=> {
+					console.log("removing item")
+					remove(item.id)}} 
+				/>
+			</FloatingActionButton>
+		</div>
+		);
+	// single item 
+	return (
+		<div>
+			{item.value}
+			<FloatingButtonRemove/>
+		</div>
+	);
+};
+
 
 
 class ItemList extends Component {
@@ -137,30 +143,53 @@ class ItemList extends Component {
 			id: '',
 			value:'',
 		}
-
 		const introData = [
 			{
 				id: -3, 
 				value: "This is where your stuff will go"
 			},
 		];
-		
-        
-		const localData = localStorage.todos && JSON.parse(localStorage.todos);
+
+		const localData = localStorage.items && JSON.parse(localStorage.items);
 		this.state = { 
 			data: localData || introData
 		};
-		this.removeTodo = this.removeTodo.bind(this);
 		
 	}
+	componentDidMount() {
+		// localStorage.clear();
+		localStorage.removeItem('count');
+		if (typeof(Storage) !== "undefined") {
+			if(!localStorage.items) {
+				localStorage.items = JSON.stringify(this.state.data);
+			}
+			if(!localStorage.count) {
+				localStorage.count = 0;
+			}
 
-	// Handler to update localStorage
-	updateLocalStorage = () => {
-		if (typeof(Storage) !== "undefined")
-			localStorage.todos = JSON.stringify(this.state.data);
+		} else {
+			window.id = 0;
+		}
 	}
-	// Handler to add todo
-	addTodo = (val) => {
+
+	
+	render() {
+		return (
+			<div id="container">
+				<Form additem={this._addItemToEvent} />
+				<ListAllItemsForEvent items={this.state.data} remove={this._removeItemFromEvent} />
+			</div>
+		);
+	}
+
+	//**************************** EVENT HANDLERS FOR ITEM LIST COMPONENT *************************************** */
+	// Handler to update localStorage
+	_updateLocalStorage = () => {
+		if (typeof(Storage) !== "undefined")
+			localStorage.items = JSON.stringify(this.state.data);
+	}
+	// Handler to add item to event list when making event
+	_addItemToEvent = (val) => {
 		let id;
 		// if localStorage is available then increase localStorage count
 		// else use global window object's id variable
@@ -171,59 +200,36 @@ class ItemList extends Component {
 			id = window.id++;
 		}
 		
-		const todo = { 
+		const item = { 
 			value: val, 
 			id: id,
 		};
-		
-		this.state.data.push(todo);
-		// update state
+	
+		this.state.data.push(item);
 		this.setState({
-			data: this.state.data
-		}, () => {
-			// update localStorage
-			this.updateLocalStorage();
+				data: this.state.data
+			}, () => {
+			this._updateLocalStorage();
 		});
 	}
-	// Handler to remove todo
-	removeTodo = (id) => {
-		// filter out the todo that has to be removed
-		const list = this.state.data.filter(todo => {
-			if (todo.id !== id)
-				return todo;
+	// Handler of event to remove item
+	_removeItemFromEvent = (id) => {
+		// filter out the item that has to be removed
+		const list = this.state.data.filter(item => {
+			if (item.id !== id)
+				return item;
 		});
-		// update state
 		this.setState({
 			data: list
 		}, () => {
-			// update localStorage
-			this.updateLocalStorage();
+			this._updateLocalStorage();
 		});
 	}
 	
-	componentDidMount() {
-		// localStorage.clear();
-		localStorage.removeItem('count');
-		if (typeof(Storage) !== "undefined") {
-			if(!localStorage.todos) {
-				localStorage.todos = JSON.stringify(this.state.data);
-			}
-			if(!localStorage.count) {
-				localStorage.count = 0;
-			}
 
-		} else {
-			window.id = 0;
-		}
-	}
+
+
 	
-	render() {
-		return (
-			<div id="container">
-				<Form addTodo={this.addTodo} />
-				<List todos={this.state.data} remove={this.removeTodo} />
-			</div>
-		);
-	}
+	
 }
 export default ItemList;
