@@ -31,6 +31,7 @@ export default class PartyTypeTable extends Component {
   componentDidMount(){
     axios.get(`${ROOT_URL}/event_categories`)
     .then((res) => {
+      console.log(res.data.data)
       this.setState({types:res.data.data})
     })
   }
@@ -38,28 +39,33 @@ export default class PartyTypeTable extends Component {
       return name === this.props.type 
   };
 
+  // when PartyTypeTable component has a category select, the value is then passed into this function to set the value state for EventType
+  // This value is then sent to the database as an axios call through handleTypeSelector() to retreive those items associated with that category with the value provided
+  // ex: taco night in the DB has a value of 0. Therefore, if taco night is selected by the user, the value of 0 is passed to the database and returns the list of defalut items associated with value 0 (taco night)
   handleChange = (event, index, value) => {
+    console.log(index)
+    console.log(value)
     this.setState({value:value},this.handleTypeSelector
     );
   }
 
   handleTypeSelector = ()=>{
       var selectionNum = this.state.value
-        // var selectedType = []
-        if(this.state.types[selectionNum] !== undefined ){
-          axios.get(`${ROOT_URL}/event_categories/${selectionNum}/items`)
-            .then((res)=>{
-              this.setState({
-                defaultItems:res.data.map((item)=>{
-                  return item.item_name
-                })
-              },()=>{
-                this.props.changeHandler(this.state.types[selectionNum].category_name, this.state.selected, this.state.defaultItems)
+      if(this.state.types[selectionNum] !== undefined ){
+        axios.get(`${ROOT_URL}/event_categories/${selectionNum}/items`)
+          .then((res)=>{
+            console.log(res)
+            this.setState({
+              defaultItems:res.data.map((item)=>{
+                return item.item_name
               })
+            },()=>{
+              this.props.changeHandler(this.state.types[selectionNum].category_name, this.state.selected, this.state.defaultItems)
             })
-              // this.props.changeHandler(this.state.types[selectionNum].category_name, this.state.selected)
-          }
+          })
+            // this.props.changeHandler(this.state.types[selectionNum].category_name, this.state.selected)
       }
+    }
   
   render() { 
     return (
@@ -77,7 +83,7 @@ export default class PartyTypeTable extends Component {
 
             {/* maps through database of types of events to then populate certain items associated with event */}
             {this.state.types.map((type, indx) =>
-            <MenuItem primaryText={type.category_name} value={indx} selected={this.isSelected(type.category_name)}/>
+            <MenuItem primaryText={type.category_name} value={indx} key={type.id} selected={this.isSelected(type.category_name)}/>
           )}
           </DropDownMenu>
           

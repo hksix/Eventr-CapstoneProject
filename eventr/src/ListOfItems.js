@@ -22,7 +22,7 @@ class Form extends Component {
 		super(props);
 		this.state = {
 			value: '',
-			description: ''
+			name: ''
 		};
 	}	
 	render() {
@@ -46,7 +46,7 @@ class Form extends Component {
 				/>
 				<TextField
 					hintText="Description"
-					description={this.state.description}
+					name={this.state.description}
 					onChange={this._handleDescriptionChange}
 				/>
 				<FloatingButtonAdd  />
@@ -56,7 +56,7 @@ class Form extends Component {
 						ref={node => {
 							this.input = node;
 						}}
-					value={this.state.value}
+						value={this.state.value}
 					onChange={this._handleChange}/>
 				</div>
 			</div>
@@ -70,7 +70,7 @@ class Form extends Component {
 	}
 	_handleDescriptionChange = (event) => {
 		this.setState({
-			description: event.target.description
+			description: event.target.name
 		});
 	}
 	_handleNewitemAddition = () => {

@@ -81,22 +81,14 @@ class SubmitButton extends Component {
     handleOpen = () => {
       this.setState({open: true});
     };
-  
     handleClose = () => {
-      
       this.setState({open: false});
-      
     };
     handleTouchTap = () => {
-      this.setState({
-        open: true,
-      });
+      this.setState({open: true,});
     };
-  
     handleRequestClose = () => {
-      this.setState({
-        open: false,
-      });
+      this.setState({open: false,});
     };
     handleSubmitAndClose = ()=>{
       this.handleRequestClose();
@@ -273,7 +265,8 @@ export class SetEvent extends Component {
       eventTime: newTime
     })
   }
-  _handleTypeChange=(newType,newID, newDefaultItems)=>{
+  _handleTypeChange=(newType, newID, newDefaultItems)=>{
+    console.log()
     this.setState({
       eventType: newType,
       eventID: newID,
@@ -289,7 +282,7 @@ export class SetEvent extends Component {
   _handleSubmit=(e)=>{
     // e.preventDefault();
     axios.post(`${ROOT_URL}/events`,{
-      host_id: 333,
+      host_id: 3,
       'name': `${this.state.eventName}`,
       'description': `${this.state.eventDiscription}`,
       'date': `${this.state.eventDate.toString()}`,

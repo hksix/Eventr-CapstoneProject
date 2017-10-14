@@ -53,7 +53,7 @@ export default class EventTypeDefaultItems extends Component {
         <div style={{display: 'flex', alignItems: 'center', justifyContent: 'space-around'}}>
           <Checkbox 
             label={item} 
-            key={item.indx} 
+            key={item.index} 
             onCheck={this._toggleCheckbox}
             style={styles.checkbox}/>
             <TextField
