@@ -58,10 +58,118 @@ module.exports = {
       },
       {
         id: 7,
-        fName: 'Bobby',
-        lName: 'Bob',
-        profPic: 'bobby.jpg',
-        email: 'bobby@bob.com',
+        fName: 'Chris',
+        lName: 'Aquino',
+        profPic: 'chris.jpg',
+        email: 'chris@gmail.com',
+        phone: '4043332266',
+        location: 'Atlanta'
+      },
+      {
+        id: 8,
+        fName: 'Will',
+        lName: 'Elliot',
+        profPic: 'will.jpg',
+        email: 'will@gmail.com',
+        phone: '4043332266',
+        location: 'Atlanta'
+      },
+      {
+        id: 9,
+        fName: 'Natalie',
+        lName: 'Ventura',
+        profPic: 'Natalie.jpg',
+        email: 'Natalie@gmail.com',
+        phone: '4043332266',
+        location: 'Atlanta'
+      },
+      {
+        id: 10,
+        fName: 'Tim',
+        lName: 'Brady',
+        profPic: 'Tim.jpg',
+        email: 'Tim@gmail.com',
+        phone: '4043332266',
+        location: 'Atlanta'
+      },
+      {
+        id: 11,
+        fName: 'Tom',
+        lName: "D'Ostillo",
+        profPic: 'Tom.jpg',
+        email: 'Tom@gmail.com',
+        phone: '4043332266',
+        location: 'Atlanta'
+      },
+      {
+        id: 12,
+        fName: 'Aaron',
+        lName: "Sosa",
+        profPic: 'Aaron.jpg',
+        email: 'Aaron@gmail.com',
+        phone: '4043332266',
+        location: 'Atlanta'
+      },
+      {
+        id: 13,
+        fName: 'John',
+        lName: "Hartert",
+        profPic: 'John.jpg',
+        email: 'John@gmail.com',
+        phone: '4043332266',
+        location: 'Atlanta'
+      },
+      {
+        id: 14,
+        fName: 'Liz',
+        lName: "Obermeyer",
+        profPic: 'Liz.jpg',
+        email: 'Liz@gmail.com',
+        phone: '4043332266',
+        location: 'Atlanta'
+      },
+      {
+        id: 15,
+        fName: 'Andrew',
+        lName: "Kroll",
+        profPic: 'Andrew.jpg',
+        email: 'Andrew@gmail.com',
+        phone: '4043332266',
+        location: 'Atlanta'
+      },
+      {
+        id: 16,
+        fName: 'Max',
+        lName: "Irvine",
+        profPic: 'Max.jpg',
+        email: 'Max@gmail.com',
+        phone: '4043332266',
+        location: 'Atlanta'
+      },
+      {
+        id: 17,
+        fName: 'James',
+        lName: "Hong",
+        profPic: 'James.jpg',
+        email: 'James@gmail.com',
+        phone: '4043332266',
+        location: 'Atlanta'
+      },
+      {
+        id: 18,
+        fName: 'Jake',
+        lName: "Haden",
+        profPic: 'Jake.jpg',
+        email: 'Jake@gmail.com',
+        phone: '4043332266',
+        location: 'Atlanta'
+      },
+      {
+        id: 19,
+        fName: 'Max',
+        lName: "McChensey",
+        profPic: 'Max.jpg',
+        email: 'Max@gmail.com',
         phone: '4043332266',
         location: 'Atlanta'
       },
