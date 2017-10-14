@@ -20,6 +20,8 @@ export default class MiniProfile extends Component {
     super(props);
     this.state = {
       open: false,
+      ProfileData:'',
+      fName: '',
     };
   }
   handleToggle = () => {
@@ -29,6 +31,7 @@ export default class MiniProfile extends Component {
   };
 
   componentDidMount = () => {
+    // if(this.props.userProfileData !== undefined){
     axios.get(`${ROOT_URL}/users/3`).then((res) => {
       this.setState({
         fName: res.data.fName,
@@ -40,12 +43,37 @@ export default class MiniProfile extends Component {
         createdAt: res.data.createdAt
       })
     })
+  // }
   }
   
-  
+  // componentWillReceiveProps(nextProps){
+  //   if(this.props.userProfileData === undefined){
+  //     this.setState({
+  //       fName:'test'
+  //     })
+  //   }else{
+  //   this.setState({
+  //     fName:nextProps.userProfileData,
+  //     ProfileData:nextProps.userProfileData
+  //   })
+  //   console.log(nextProps.userProfileData)
+  // }
+    
+    
+    // if(nextProps.userProfileData !== undefined){
+    // this.setState({
+    //   ProfileData:nextProps.userProfileData,
+    //   lName:nextProps.userProfileData
+    // },()=>{
+    //   this.setState({
+    //     lName:this.state.ProfileData
+    //   })
+    // })
+    // }
+    
+  // }
 
   save = () => {
-    console.log(this.state.lName)
     axios.put(`${ROOT_URL}/users/3`, {
       fName: this.state.fName,
       lName: this.state.lName,
@@ -61,6 +89,7 @@ export default class MiniProfile extends Component {
   }
   
   render(){
+    console.log(this.state.ProfileData)
     const styles = {
       title: {
         cursor: 'pointer',
