@@ -40,7 +40,8 @@ class MenuOptions extends Component {
       constructor(props) {
         super(props);
         this.state = {
-          value: 'a'
+          value: 'a',
+          userdata: null,
         };
       }
       handleChange = (value) => {
@@ -126,7 +127,7 @@ class MenuOptions extends Component {
                     containerElement={<Link to="/profile" />}>
                     <div className="main-content-container">
                       <div className="side-content-container">
-                      <UserMenu />
+                      <UserMenu user={this.props.userdata}/>
                       </div>
                       <div className="changing-content-container" >
                         <Settings />
@@ -155,11 +156,11 @@ class MenuOptions extends Component {
         }
         render() {
           const { profile } = this.state;
-          console.log(this.state.profile)
+          // console.log(this.state.profile)
           return (
             <MuiThemeProvider muiTheme={muiTheme}>
               <div>
-                <MenuOptions />
+                <MenuOptions userdata={this.state.profile}/>
                 <Footer />
               </div>
             </MuiThemeProvider>

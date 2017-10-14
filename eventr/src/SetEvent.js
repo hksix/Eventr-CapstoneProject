@@ -167,7 +167,6 @@ export class SetEvent extends Component {
   };
 
   render() {
-    console.log(this.state.eventItems)
     
     return (
       
