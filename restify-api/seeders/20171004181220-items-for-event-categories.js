@@ -903,9 +903,169 @@ module.exports = {
       events_category_id: 7,
       item_id: 301
     },
-  ])
 
-  },
+    //*********************  GRADUATION PARTY  ***************************
+    {
+      //cups
+      events_category_id: 8,
+      item_id: 406
+    },
+    {
+      //plates
+      events_category_id: 8,
+      item_id: 401
+    },
+    {
+      //forks
+      events_category_id: 8,
+      item_id: 402
+    },
+    {
+      //knives
+      events_category_id: 8,
+      item_id: 403
+    },
+    {
+      //spoons
+      events_category_id: 8,
+      item_id: 404
+    },
+    {
+      //bowls
+      events_category_id: 8,
+      item_id: 405
+    },
+    {
+      //ground beef
+      events_category_id: 8,
+      item_id: 135
+    },
+    {
+      //veggies
+      events_category_id: 8,
+      item_id: 133,
+    },
+    {
+      //streamers
+      events_category_id: 8,
+      item_id: 303,
+    },
+    {
+      //pinata
+      events_category_id: 8,
+      item_id: 308,
+    },
+    {
+      //playlist
+      events_category_id: 8,
+      item_id: 702,
+    },
+    {
+      //snacks
+      events_category_id: 8,
+      item_id: 102,
+    },
+    {
+      //beer
+      events_category_id: 8,
+      item_id: 202,
+    },
+    {
+      //soda
+      events_category_id: 8,
+      item_id: 201,
+    },
+    {
+      //liquor
+      events_category_id: 8,
+      item_id: 209,
+    },
+    {
+      //banners
+      events_category_id: 8,
+      item_id: 301
+    },
+    {
+      //cups
+      events_category_id: 8,
+      item_id: 406
+    },
+    {
+      //plates
+      events_category_id: 8,
+      item_id: 401
+    },
+    {
+      //forks
+      events_category_id: 8,
+      item_id: 402
+    },
+    {
+      //knives
+      events_category_id: 7,
+      item_id: 403
+    },
+    {
+      //spoons
+      events_category_id: 8,
+      item_id: 404
+    },
+    {
+      //bowls
+      events_category_id: 8,
+      item_id: 405
+    },
+    {
+      //ground beef
+      events_category_id: 8,
+      item_id: 135
+    },
+    {
+      //veggies
+      events_category_id: 8,
+      item_id: 133,
+    },
+    {
+      //streamers
+      events_category_id: 8,
+      item_id: 303,
+    },
+    {
+      //pinata
+      events_category_id: 8,
+      item_id: 308,
+    },
+    {
+      //playlist
+      events_category_id: 8,
+      item_id: 702,
+    },
+    {
+      //snacks
+      events_category_id: 8,
+      item_id: 102,
+    },
+    {
+      //beer
+      events_category_id: 8,
+      item_id: 4,
+    },
+    {
+      //soda
+      events_category_id: 8,
+      item_id: 401,
+    },
+    {
+      //liquor
+      events_category_id: 8,
+      item_id: 409,
+    },
+    {
+      //banners
+      events_category_id: 8,
+      item_id: 301
+    },
+  ])
 
   down: (queryInterface, Sequelize) => {
     return queryInterface.bulkDelete('ItemsForEventCategories', null, {});
