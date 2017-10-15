@@ -42,27 +42,26 @@ class ItemList extends Component {
             itemList = items.map((item, index) => {
                 if(item.ownderid === null){
                     return (
-                    <div>
-                        <div key={item.index} value={item.ownerid}>
-                            {item.quantity} 
-                            {item.itemname}: 
-                            {item.description}
-                            
-                        </div> 
+                    <div key={item.index} value={item.ownerid}>
+                        {item.quantity} 
+                        {item.itemname}: 
+                        {item.description}
                         <a href="" 
-                            onClick={this.itemCheckedOff}
+                            onClick={this.props.toggle}
                         >✓</a>
-                        <small style={{color:'green'}}>{item.ownerid}</small>
                     </div>)
                 } else {
                     return (
                     <div key={item.index} value={item.ownerid}>
+                        <del>
                         {item.quantity} 
                         {item.itemname} 
                         {item.description} 
+                        </del>
                         <a href="" 
-                            onClick={this.itemCheckedOff}
+                            onClick={this.props.toggle}
                         >✓</a>
+                        <small style={{color:'green'}}>{item.ownerid}</small>
                     </div>)
                 }})
         } else {
@@ -140,10 +139,11 @@ export default class ItemsCheckList extends Component {
     // passed to ItemList class above
     // sets state if item has been checked or not
     toggleTask = (event, value) => {
+        event.preventDefault();
         if(value === null){
-
+            console.log("working")
         } else {
-            
+            value = this.props.username
         }
     }
     
