@@ -14,16 +14,16 @@ import ItemsCheckList from './updateEventComponents/ItemsCheckList.js'
 
 import MapsPlace from 'material-ui/svg-icons/maps/place';
 
-var header = {
-    textAlign: 'center',
-    backgroundColor: '#4c3187',
-    color: 'white',
-    paddingTop: '15px',
-    paddingBottom: '15px',
-    // fontSize: '14px',
-    fontSize: '1.3em',
-    fontWeight: 400,
-};
+// var header = {
+//     textAlign: 'center',
+//     backgroundColor: '#4c3187',
+//     color: 'white',
+//     paddingTop: '15px',
+//     paddingBottom: '15px',
+//     // fontSize: '14px',
+//     fontSize: '1.3em',
+//     fontWeight: 400,
+// };
 
 const SubHeader = {
     // height: '400px',
