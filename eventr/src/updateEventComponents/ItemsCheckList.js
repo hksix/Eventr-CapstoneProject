@@ -1,6 +1,8 @@
 import React, {Component} from 'react'
 
 import _ from 'lodash'
+import axios from 'axios';
+import { ROOT_URL } from '../App.js'
 
 class NewItem extends Component {
     createNewItemForEvent = (event) => {
@@ -32,26 +34,49 @@ class NewItem extends Component {
 // passes props to item Class to render list of items to DOM
 class ItemList extends Component {
 
-    itemCheckedOff = (event) => {
+    itemCheckedOff = (event, itemname, quantity, description, ownerid) => {
         event.preventDefault();
+        console.log("item checked off list")
         this.props.toggle(this.props.item);
+        this.props.saveItemToEventDB(itemname, quantity, description, ownerid);
     }
     itemsToBeRendered = (items) => {
         let itemList = []
         console.log(items)
         if(items.length > 0){
             itemList = items.map((item, index) => {
-                return (
-                <div>
-                    <div key={item.index}>
+                if(item.ownderid === null){
+                    return (
+                    <div>
+                        <div key={item.index}>
+                            {item.quantity} 
+                            {item.itemname}: 
+                            {item.description}
+                        </div> 
+                        <a href="" 
+                            onClick={this.itemCheckedOff(
+                                this.item.itemname, 
+                                this.item.quantity, 
+                                this.item.description,
+                                this.item.ownerid)}
+                        >✓</a>
+                        <small style={{color:'green'}}>{item.ownerid}</small>
+                    </div>)
+                } else {
+                    return (
+                    <div>
                         {item.quantity} 
-                        {item.itemname}: 
-                        {item.description}
-                    </div> 
-                    <a href="" onClick={this.itemCheckedOff}>✓</a>
-                    <small style={{color:'green'}}>Hamza</small>
-                </div>
-            )})
+                        {item.itemname} 
+                        {item.description} 
+                        <a href="" 
+                            onClick={this.itemCheckedOff(
+                                this.item.itemname, 
+                                this.item.quantity, 
+                                this.item.description,
+                                this.item.ownerid)}
+                        >✓</a>
+                    </div>)
+                }})
         } else {
             itemList.push(<li>No items added to event</li>)
         }
@@ -68,30 +93,12 @@ class ItemList extends Component {
         return (
             <div>
                 {this.itemsToBeRendered(this.props.items)}
-
             </div>
         );
     }
 }
 
-// class Item extends Component {
 
-//     render() {
-//         let item = this.props.item
-//         console.log(this.props.item)
-//         return (
-//             <li>
-//                 <del key={this.props.key} id={this.props.ownerid}>
-//                     {this.props.itemname} 
-//                     {this.props.description}
-//                     {this.props.quantity}
-//                 </del> 
-//                     <a href="" onClick={this.itemCheckedOff}>✓</a>
-//                 <small style={{color:'green'}}>Hamza</small>
-//             </li>
-//         );
-//     }
-// }
 
 // this componente gets rendered to DOM
 // passes createItem function as prop to NewItem Class so users can add additional items to event
@@ -101,19 +108,45 @@ export default class ItemsCheckList extends Component {
         super();
         this.state = {
             items: [],
+            eventid: '',
         }
     }
     // receives list of items for event as props from Welcome.js
-
+    componentDidMount = () => {
+        this.setState({
+            items: this.props.items,
+            eventid: this.props.eventid
+        })
+    }
     // passed to NewItem class above
     createItem = (text, quantity, description) => {
-        this.items.push({
+        this.state.items.push({
             itemname: text,
             quantity: quantity,
             description: text,
             done: false
         });
-        console.log(this.items)
+    }
+
+    // update item in db
+    //server.putt('/api/v1/event_inventory/:eventid', addItemToInventory);
+    saveItemToEventDB = (itemname, quantity, description, ownerid) => {
+        console.log(itemname, quantity, description, ownderid)
+        if(ownerid === null){
+            axios.put(`${ROOT_URL}/event_inventory/${this.props.eventid}`, {
+                itemname: itemname,
+                quantity: quantity,
+                ownerid: ownderid,
+                description: description
+            })
+        } else {
+            axios.put(`${ROOT_URL}/event_inventory/${this.props.eventid}`, {
+                itemname: itemname,
+                quantity: quantity,
+                ownerid: null,
+                description: description
+            })
+        }
     }
 
     // passed to ItemList class above
@@ -133,3 +166,26 @@ export default class ItemsCheckList extends Component {
         );
     }
 }
+
+
+
+
+
+// class Item extends Component {
+
+//     render() {
+//         let item = this.props.item
+//         console.log(this.props.item)
+//         return (
+//             <li>
+//                 <del key={this.props.key} id={this.props.ownerid}>
+//                     {this.props.itemname} 
+//                     {this.props.description}
+//                     {this.props.quantity}
+//                 </del> 
+//                     <a href="" onClick={this.itemCheckedOff}>✓</a>
+//                 <small style={{color:'green'}}>Hamza</small>
+//             </li>
+//         );
+//     }
+// }
