@@ -43,7 +43,7 @@ class ItemList extends Component {
                 if(item.ownderid === null){
                     return (
                     <div>
-                        <div key={item.index} >
+                        <div key={item.index} value={item.ownerid}>
                             {item.quantity} 
                             {item.itemname}: 
                             {item.description}
@@ -56,7 +56,7 @@ class ItemList extends Component {
                     </div>)
                 } else {
                     return (
-                    <div key={item.index} >
+                    <div key={item.index} value={item.ownerid}>
                         {item.quantity} 
                         {item.itemname} 
                         {item.description} 
@@ -139,8 +139,12 @@ export default class ItemsCheckList extends Component {
 
     // passed to ItemList class above
     // sets state if item has been checked or not
-    toggleTask = () => {
-        
+    toggleTask = (event, value) => {
+        if(value === null){
+
+        } else {
+            
+        }
     }
     
     render() {
