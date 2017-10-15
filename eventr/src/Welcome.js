@@ -46,19 +46,22 @@ const cardbox={
 const Welcome2 = (props) =>(
 
     <header>
-        <h3 style={props.headerColor} className="welcome">{props.title}</h3>
+        <h3 style={props.headerColor} className="welcome">
+            {props.title}
+        </h3>
+
         <div style={SubHeader}>
             <Card style={cardbox}>
                 <div> 
                     <p><b>Name:</b> {props.title}</p>
                     <p><b>Date:</b> {props.date}</p>
                     <p><b>Time:</b>{ props.time}</p>
-                    <p><b>Location:</b> {props.location}</p>
+                    
                     <p><b>Description:</b> {props.desc}</p>
                     <p><b>Hosted By:</b> {props.host}</p>
                 </div>
                 <div style={{position:'relative', float:'right'}}>
-                <EditDropdown />
+                
                 </div>
             </Card>
         </div>
@@ -66,19 +69,20 @@ const Welcome2 = (props) =>(
             <Card style={cardbox}>
                 <div>
                     <u>Location</u>
-                    <p></p>     
+                    
+                    <p>{props.location}</p>     
                 </div>
                 <MapsPlace/>
                 <div style={{position:'relative', float:'right'}}>
-                <EditDropdown />
+               
                 </div>
             </Card>
             <Card style={cardbox}>
-                <div><u>Friends invited</u></div>
+                <div><u>Guests</u></div>
                 {props.invited}
 
                 <div style={{position:'relative', float:'right'}}>
-                <EditDropdown/>
+               
                 </div>
             </Card>
         </div>
@@ -87,11 +91,11 @@ const Welcome2 = (props) =>(
                 <div> <u>List of Items box</u> </div>
                 <ItemsCheckList userName={props.userdata} />
                 <div style={{position:'relative', float:'right'}}>
-                <EditDropdown />
+                
                 </div>
             </Card>
         </div>
-        
+        <div style={{textAlign:'right'}}>{props.isHost ? <EditDropdown/>: null }</div>
     </header>
 );
 
@@ -135,7 +139,6 @@ export class Welcome extends Component {
           color: '#f5f5f5',
           paddingTop: '15px',
           paddingBottom: '15px',
-          // fontSize: '14px',
           fontSize: '1.3em',
           fontWeight: 400,
       }
@@ -203,6 +206,7 @@ export class Welcome extends Component {
                   desc={this.state.event.desc} 
                   date={this.state.event.date}
                   time={this.state.event.time}
+                  isHost = {this.state.event.isHost}
                   host={this.getHostName(this.state.event.isHost,this.state.event.host)} 
                   location={this.state.event.location}
                   headerColor={this.getHeaderColor(this.state.event.isHost)}
