@@ -56,12 +56,12 @@ class MenuOptions extends Component {
     
       <Router>
         
-        <Tabs
-          className="menubar"
-          value={this.state.value}
-          onChange={this.handleChange}>
-          <Tab icon = {<img src="../logo4.png" alt="Eventr Logo - lightbulb with E inside"/>} className="eventr-logo">
-          </Tab>
+              <Tabs
+                className="menubar"
+                value={this.state.value}
+                onChange={this.handleChange}>
+                <Tab icon = {<img src="../logo4.png" alt="Eventr Logo - lightbulb with E inside"/>} className="eventr-logo">
+                </Tab>
 
 
           <Tab icon={<FontIcon className="material-icons">home</FontIcon>}
@@ -77,6 +77,7 @@ class MenuOptions extends Component {
                 <div className="changing-content-container" >
                   <Welcome user={this.props.userdata} />
                 </div>
+
               </div>
 
           </Tab>
