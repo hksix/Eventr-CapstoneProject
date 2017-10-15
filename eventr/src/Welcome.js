@@ -75,7 +75,7 @@ const Welcome2 = (props) =>(
             </Card>
             <Card style={cardbox}>
                 <div><u>Friends invited</u></div>
-                <p>{props.invited}</p>
+                {props.invited}
                 <div style={{position:'relative', float:'right'}}>
                 <EditDropdown/>
                 </div>
@@ -121,6 +121,7 @@ export class Welcome extends Component {
     }
 
     makeEventDetail = (calendarData) => {
+        this.getInvitedForParty(calendarData.id);
         this.setState({
             event: calendarData,
             eventid: calendarData.id
@@ -157,18 +158,37 @@ export class Welcome extends Component {
     
 
     getInvitedForParty = (eventid) => {
-        let invitedList = []
         axios.get(`${ROOT_URL}/guests/event/${eventid}`).then((res) => {
-            invitedList.push(res.data.data)
-            console.log(invitedList)
+            this.setState({
+                invited: res.data.data
+            })
         })
-        console.log(invitedList)
     }
- 
-
     
+    setInvitedList = (invited) => {
+        let guestList = []
+        if(invited.length > 0){
+            guestList = invited.map(guest =>{
+                let attending = ''
+                if(guest.attending === false){
+                    attending = "Attending"
+                } else {
+                    attending = "Not attending"
+                }
+                
+                return <p key={guest.index}>{guest.userid} {attending}</p>
+            })
+        } else {
+            guestList.push(<h3>No one is invited to this event</h3>)
+        }
+        console.log(guestList)
+        return (
+            <div>
+                {guestList}
+            </div>
+        )
+    }
     
-
     render(){
        let eventElement = <p></p>;
         
@@ -176,7 +196,7 @@ export class Welcome extends Component {
             console.log("starting")
             eventElement = (<Card className='welcomeBox'>
             <Welcome2 
-                invited={this.getInvitedForParty(this.state.event.id)}
+                invited={this.setInvitedList(this.state.invited)}
                 title={this.state.event.title} 
                 desc={this.state.event.desc} 
                 date={this.state.event.date}
@@ -197,7 +217,6 @@ export class Welcome extends Component {
                     <Calendar handleEventClick={this.makeEventDetail} />
                 </Paper>
                 {eventElement}
-            
             </div>
         )
     }
