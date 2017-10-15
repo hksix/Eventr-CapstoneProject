@@ -52,7 +52,8 @@ const Welcome2 = (props) =>(
                 <div> 
                     <p><b>Name:</b> {props.title}</p>
                     <p><b>Date:</b> {props.date}</p>
-                    <p><b>Time:</b> {props.time}</p>
+                    <p><b>Time:</b>{ props.time}</p>
+                    <p><b>Location:</b> {props.location}</p>
                     <p><b>Description:</b> {props.desc}</p>
                     <p><b>Hosted By:</b> {props.host}</p>
                 </div>
@@ -65,8 +66,7 @@ const Welcome2 = (props) =>(
             <Card style={cardbox}>
                 <div>
                     <u>Location</u>
-                    <p>{props.location}</p>
-                    
+                    <p></p>     
                 </div>
                 <MapsPlace/>
                 <div style={{position:'relative', float:'right'}}>
@@ -76,6 +76,7 @@ const Welcome2 = (props) =>(
             <Card style={cardbox}>
                 <div><u>Friends invited</u></div>
                 {props.invited}
+
                 <div style={{position:'relative', float:'right'}}>
                 <EditDropdown/>
                 </div>
@@ -110,116 +111,117 @@ const AppBarExampleIcon = () => (
 
 
 export class Welcome extends Component {
-    constructor(props){
-        super(props);
-        this.state = {
-            name: '',
-            event: null,
-            eventid: null,
-            invited: [],
-        };
-    }
+  constructor(props){
+      super(props);
+      this.state = {
+          name: '',
+          event: null,
+          eventid: null,
+          invited: [],
+      };
+  }
 
-    makeEventDetail = (calendarData) => {
-        this.getInvitedForParty(calendarData.id);
-        this.setState({
-            event: calendarData,
-            eventid: calendarData.id
-        })
-    }
-    
-    getHeaderColor(isHost) {
-        var header = {
-            textAlign: 'center',
-            color: '#f5f5f5',
-            paddingTop: '15px',
-            paddingBottom: '15px',
-            // fontSize: '14px',
-            fontSize: '1.3em',
-            fontWeight: 400,
-        }
-        if (isHost) {
-            header.backgroundColor = "#1b0859";
-        }
-        else {
-            header.backgroundColor = "#4c3187";
-        }
-        return header;
-    }
-    
-    getHostName(isHost, host) {
-        if(isHost) {
-            return "You are hosting this event!"
-        }
-        else {
-            return host
-        }
-    }
-    
+  makeEventDetail = (calendarData) => {
+      this.getInvitedForParty(calendarData.id);
+      this.setState({
+          event: calendarData,
+          eventid: calendarData.id
+      })
+  }
 
-    getInvitedForParty = (eventid) => {
-        axios.get(`${ROOT_URL}/guests/event/${eventid}`).then((res) => {
-            this.setState({
-                invited: res.data.data
-            })
-        })
-    }
-    
-    setInvitedList = (invited) => {
-        let guestList = []
-        if(invited.length > 0){
-            guestList = invited.map(guest =>{
-                let attending = ''
-                if(guest.attending === false){
-                    attending = "Attending"
-                } else {
-                    attending = "Not attending"
-                }
-                
-                return <p key={guest.index}>{guest.userid} {attending}</p>
-            })
-        } else {
-            guestList.push(<h3>No one is invited to this event</h3>)
-        }
-        console.log(guestList)
-        return (
-            <div>
-                {guestList}
-            </div>
-        )
-    }
-    
-    render(){
-       let eventElement = <p></p>;
-        
-        if (this.state.event) {
-            console.log("starting")
-            eventElement = (<Card className='welcomeBox'>
-            <Welcome2 
-                invited={this.setInvitedList(this.state.invited)}
-                title={this.state.event.title} 
-                desc={this.state.event.desc} 
-                date={this.state.event.date}
-                time={this.state.event.time}
-                host={this.getHostName(this.state.event.isHost,this.state.event.host)} 
-                location={this.state.event.location}
-                headerColor={this.getHeaderColor(this.state.event.isHost)}
-                />
-            </Card>)
-        };
+  getHeaderColor(isHost) {
+      var header = {
+          textAlign: 'center',
+          color: '#f5f5f5',
+          paddingTop: '15px',
+          paddingBottom: '15px',
+          // fontSize: '14px',
+          fontSize: '1.3em',
+          fontWeight: 400,
+      }
+      if (isHost) {
+          header.backgroundColor = "#1b0859";
+      }
+      else {
+          header.backgroundColor = "#4c3187";
+      }
+      return header;
+  }
 
-        return(
-            <div className="profilepg">
-                <Card>
-                    <AppBarExampleIcon/>
-                </Card>
-                <Paper>
-                    <Calendar handleEventClick={this.makeEventDetail} />
-                </Paper>
-                {eventElement}
-            </div>
-        )
-    }
+  getHostName(isHost, host) {
+      if(isHost) {
+          return "You are hosting this event!"
+      }
+      else {
+          console.log(host)
+          return host
+      }
+  }
+
+
+
+  getInvitedForParty = (eventid) => {
+      axios.get(`${ROOT_URL}/guests/event/${eventid}`).then((res) => {
+          this.setState({
+              invited: res.data.data
+          })
+      })
+  }
+
+  setInvitedList = (invited) => {
+      let guestList = []
+      if(invited.length > 0){
+          guestList = invited.map(guest =>{
+              let attending = ''
+              if(guest.attending === false){
+                  attending = "Attending"
+              } else {
+                  attending = "Not attending"
+              }
+
+              return <p key={guest.index}>{guest.userid} {attending}</p>
+          })
+      } else {
+          guestList.push(<h3>No one is invited to this event</h3>)
+      }
+      console.log(guestList)
+      return (
+          <div>
+              {guestList}
+          </div>
+      )
+  }
+
+
+  render(){
+     let eventElement = <p></p>;
+      if (this.state.event) {
+         eventElement = (
+            <Card className='welcomeBox'> 
+              <Welcome2 
+                  title={this.state.event.title} 
+                  desc={this.state.event.desc} 
+                  date={this.state.event.date}
+                  time={this.state.event.time}
+                  host={this.getHostName(this.state.event.isHost,this.state.event.host)} 
+                  location={this.state.event.location}
+                  headerColor={this.getHeaderColor(this.state.event.isHost)}
+                  />
+            </Card>);
+      }
+
+      return(
+          <div className="profilepg" >
+              <Card>
+                  <AppBarExampleIcon/>
+              </Card>
+              <Paper>
+                  <Calendar handleEventClick={this.makeEventDetail} />
+              </Paper>
+              {eventElement}
+          </div>
+      )
+  }
 }
 
 
