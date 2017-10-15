@@ -61,7 +61,7 @@ class ItemList extends Component {
                         <a href="" 
                             onClick={this.props.toggle}
                         >✓</a>
-                        <small style={{color:'green'}}>{item.ownerid}</small>
+                        <small style={{color:'green'}}></small>
                     </div>)
                 }})
         } else {
@@ -141,9 +141,12 @@ export default class ItemsCheckList extends Component {
     toggleTask = (event, value) => {
         event.preventDefault();
         if(value === null){
-            console.log("working")
+            console.log("no one has used this event")
+        } if(value === this.props.userName.id){
+            console.log(this.props.userName)
+            console.log("you own this item")
         } else {
-            value = this.props.username
+            console.log(value + 'has this item')
         }
     }
     
