@@ -51,8 +51,8 @@ const Welcome2 = (props) =>(
             <Card style={cardbox}>
                 <div> 
                     <p><b>Name:</b> {props.title}</p>
-                    <p><b>Date:</b> {props.date}</p>
-                    <p><b>Time:</b>{ props.time}</p>
+                    <p><b>Date:</b> {props.date.slice(0, 10)}</p>
+                    <p><b>Time:</b>{props.time}</p>
                     <p><b>Location:</b> {props.location}</p>
                     <p><b>Description:</b> {props.desc}</p>
                     <p><b>Hosted By:</b> {props.host}</p>
@@ -66,7 +66,7 @@ const Welcome2 = (props) =>(
             <Card style={cardbox}>
                 <div>
                     <u>Location</u>
-                    <p></p>     
+                    <p>{props.location}</p>     
                 </div>
                 <MapsPlace/>
                 <div style={{position:'relative', float:'right'}}>

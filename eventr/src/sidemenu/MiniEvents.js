@@ -26,7 +26,11 @@ export default class MiniEvents extends Component {
 
   render(){
     const events = this.state.data.map(function(data) {
-      return(<CardText><b>{data.name}</b><br/>{data.date}</CardText>)
+      const year = data.date.slice(0,4);
+      const month = data.date.slice(5,7);
+      const day = data.date.slice(8,10);
+      const eventDate = month + '-' + day + '-' + year;
+      return(<CardText><b>{data.name}:<br/></b>{eventDate}</CardText>)
     })
     return(
       <Card >
