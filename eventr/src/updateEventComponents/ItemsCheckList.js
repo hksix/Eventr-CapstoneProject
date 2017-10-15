@@ -43,12 +43,12 @@ class ItemList extends Component {
                 if(item.ownderid === null){
                     return (
                     <div key={item.index} value={item.ownerid}>
-                        {item.quantity} 
-                        {item.itemname}: 
-                        {item.description}
+                        <span> {item.quantity} </span>
+                        <span> {item.itemname} </span>
+                        <span> {item.description} </span>
                         <a href="" 
                             onClick={this.props.toggle}
-                        >✓</a>
+                        > ✓ </a>
                     </div>)
                 } else {
                     return (
