@@ -34,12 +34,7 @@ class NewItem extends Component {
 // passes props to item Class to render list of items to DOM
 class ItemList extends Component {
 
-    itemCheckedOff = (event, itemname, quantity, description, ownerid) => {
-        event.preventDefault();
-        console.log("item checked off list")
-        this.props.toggle(this.props.item);
-        this.props.saveItemToEventDB(itemname, quantity, description, ownerid);
-    }
+
     itemsToBeRendered = (items) => {
         let itemList = []
         console.log(items)
@@ -48,32 +43,25 @@ class ItemList extends Component {
                 if(item.ownderid === null){
                     return (
                     <div>
-                        <div key={item.index}>
+                        <div key={item.index} >
                             {item.quantity} 
                             {item.itemname}: 
                             {item.description}
+                            
                         </div> 
                         <a href="" 
-                            onClick={this.itemCheckedOff(
-                                this.item.itemname, 
-                                this.item.quantity, 
-                                this.item.description,
-                                this.item.ownerid)}
+                            onClick={this.itemCheckedOff}
                         >✓</a>
                         <small style={{color:'green'}}>{item.ownerid}</small>
                     </div>)
                 } else {
                     return (
-                    <div>
+                    <div key={item.index} >
                         {item.quantity} 
                         {item.itemname} 
                         {item.description} 
                         <a href="" 
-                            onClick={this.itemCheckedOff(
-                                this.item.itemname, 
-                                this.item.quantity, 
-                                this.item.description,
-                                this.item.ownerid)}
+                            onClick={this.itemCheckedOff}
                         >✓</a>
                     </div>)
                 }})
@@ -131,12 +119,12 @@ export default class ItemsCheckList extends Component {
     // update item in db
     //server.putt('/api/v1/event_inventory/:eventid', addItemToInventory);
     saveItemToEventDB = (itemname, quantity, description, ownerid) => {
-        console.log(itemname, quantity, description, ownderid)
+        console.log(itemname, quantity, description, ownerid)
         if(ownerid === null){
             axios.put(`${ROOT_URL}/event_inventory/${this.props.eventid}`, {
                 itemname: itemname,
                 quantity: quantity,
-                ownerid: ownderid,
+                ownerid: ownerid,
                 description: description
             })
         } else {
@@ -151,17 +139,15 @@ export default class ItemsCheckList extends Component {
 
     // passed to ItemList class above
     // sets state if item has been checked or not
-    toggleTask = (item) => {
-        let task = _.find(this.props.items, item);
-        task.done = !task.done;
-        this.setState({items: this.state.items});
+    toggleTask = () => {
+        
     }
     
     render() {
         return (
             <div>
                 <NewItem createItem={this.createItem} />
-                <ItemList items={this.props.items} toggle={this.toggleTask}/>
+                <ItemList items={this.props.items} save={this.props.saveItemToEventDB} toggle={this.toggleTask}/>
             </div>
         );
     }
