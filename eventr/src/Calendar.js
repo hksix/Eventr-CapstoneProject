@@ -37,7 +37,6 @@ export class Calendar extends Component {
                   const month = val.date.slice(5,7);
                   const day = val.date.slice(8,10);
                   const eventDate = month + '-' + day + '-' + year;
-                  console.log(eventDate);
                     const eventInfo = {
                     "id": val.id,
                     "title": val.name,
