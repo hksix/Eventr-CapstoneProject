@@ -53,14 +53,12 @@ class ItemList extends Component {
                 } else {
                     return (
                     <div key={item.index} value={item.ownerid} user={this.props.user}>
-                        <del>
-                        {item.quantity} 
-                        {item.itemname} 
-                        {item.description} 
-                        </del>
+                        <del> {item.quantity} </del>
+                        <del> {item.itemname} </del>
+                        <del> {item.description} </del>
                         <a href="" 
                             onClick={this.props.toggle}
-                        >✓</a>
+                        > ✓ </a>
                         <small style={{color:'green'}}></small>
                     </div>)
                 }})
