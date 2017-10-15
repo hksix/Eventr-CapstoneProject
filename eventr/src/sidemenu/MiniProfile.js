@@ -62,7 +62,7 @@ export default class MiniProfile extends Component {
 }
   
 componentWillUpdate(nextProps, nextState){
-  console.log(nextProps, nextState)
+  // console.log(nextProps, nextState)
   // console.log(nextProps.userProfileData)
 }
 
@@ -77,7 +77,7 @@ componentWillUpdate(nextProps, nextState){
       phone: this.state.phone,
       location: this.state.location,
     }).then((res) => {
-      console.log(res)
+      // console.log(res)
     }).catch((err) => {
       console.log(err)
     })

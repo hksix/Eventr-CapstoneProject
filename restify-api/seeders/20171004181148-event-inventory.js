@@ -8,7 +8,7 @@ module.exports = {
       itemname: 'Cups',
       quantity: '40',
       categoryid: 4,
-      ownerid: 1,
+      ownerid: null,
       description: 'solo cups'
     },
     {
@@ -17,7 +17,7 @@ module.exports = {
       itemname: 'Plates',
       quantity: '50',
       categoryid: 4,
-      ownerid: 1,
+      ownerid: null,
       description: 'purple'
     },
     {
@@ -26,7 +26,7 @@ module.exports = {
       itemname: 'Forks',
       quantity: '50',
       categoryid: 4,
-      ownerid: 2,
+      ownerid: null,
       description: 'plastic'
     },
     {
@@ -35,7 +35,7 @@ module.exports = {
       itemname: 'Misc',
       quantity: '50',
       categoryid: 5,
-      ownerid: 2,
+      ownerid: null,
       description: 'Other'
     },
     {
@@ -44,7 +44,7 @@ module.exports = {
       itemname: 'Indoor Speakers',
       quantity: '1',
       categoryid: 6,
-      ownerid: 2,
+      ownerid: null,
       description: 'Small to hook up to iPod'
     },
     {
@@ -53,7 +53,7 @@ module.exports = {
       itemname: 'Cupcakes',
       quantity: '50',
       categoryid: 1,
-      ownerid: 2,
+      ownerid: null,
       description: '25 vanilla, 25 chocolate'
     },
     {
@@ -62,7 +62,7 @@ module.exports = {
       itemname: 'Beer',
       quantity: '24',
       categoryid: 2,
-      ownerid: 2,
+      ownerid: null,
       description: 'Budlight and Stella please'
     },
     {
@@ -71,7 +71,7 @@ module.exports = {
       itemname: 'Cups',
       quantity: '40',
       categoryid: 4,
-      ownerid: 2,
+      ownerid: null,
       description: 'solo cups'
     },
     {
@@ -80,7 +80,7 @@ module.exports = {
       itemname: 'Plates',
       quantity: '20',
       categoryid: 4,
-      ownerid: 2,
+      ownerid: null,
       description: 'purple'
     },
     {
@@ -89,7 +89,7 @@ module.exports = {
       itemname: 'Forks',
       quantity: '20',
       categoryid: 4,
-      ownerid: 2,
+      ownerid: null,
       description: 'plastic'
     },
     {
@@ -98,7 +98,7 @@ module.exports = {
       itemname: 'Outdoor Speaker',
       quantity: '1',
       categoryid: 6,
-      ownerid: 2,
+      ownerid: null,
       description: 'portable if you have it!'
     },
     {
@@ -107,7 +107,7 @@ module.exports = {
       itemname: 'Cupcakes',
       quantity: '50',
       categoryid: 1,
-      ownerid: 2,
+      ownerid: null,
       description: '25 strawberry, 25 chocolate'
     },
     {
@@ -116,7 +116,7 @@ module.exports = {
       itemname: 'Beer',
       quantity: '12',
       categoryid: 2,
-      ownerid: 3,
+      ownerid: null,
       description: 'Budlight'
     },
     {
@@ -125,7 +125,7 @@ module.exports = {
       itemname: 'Beer',
       quantity: '12',
       categoryid: 2,
-      ownerid: 3,
+      ownerid: null,
       description: 'Stella'
     },
     {
@@ -134,7 +134,7 @@ module.exports = {
       itemname: 'Wine',
       quantity: '4',
       categoryid: 2,
-      ownerid: 3,
+      ownerid: null,
       description: 'Cabernet'
     },
     {
@@ -143,7 +143,7 @@ module.exports = {
       itemname: 'Wine',
       quantity: '4',
       categoryid: 2,
-      ownerid: 3,
+      ownerid: null,
       description: 'Chardonnay'
     },
     {
@@ -152,7 +152,7 @@ module.exports = {
       itemname: 'Cups',
       quantity: '40',
       categoryid: 4,
-      ownerid: 3,
+      ownerid: null,
       description: 'solo cups'
     },
     {
@@ -161,7 +161,7 @@ module.exports = {
       itemname: 'Streamers',
       quantity: '15',
       categoryid: 3,
-      ownerid: 3,
+      ownerid: null,
       description: 'white and pink'
     },
     {
@@ -170,7 +170,7 @@ module.exports = {
       itemname: 'Party Hats',
       quantity: '15',
       categoryid: 3,
-      ownerid: 3,
+      ownerid: null,
       description: 'bacholorette theme'
     },
     {
@@ -179,7 +179,7 @@ module.exports = {
       itemname: 'Cupcakes',
       quantity: '10',
       categoryid: 1,
-      ownerid: 3,
+      ownerid: null,
       description: 'chocolate'
     },
     {
@@ -188,7 +188,7 @@ module.exports = {
       itemname: 'Juice',
       quantity: '4',
       categoryid: 2,
-      ownerid: 3,
+      ownerid: null,
       description: 'Oj for mimosas!'
     },
     {
@@ -197,7 +197,7 @@ module.exports = {
       itemname: 'Wine',
       quantity: '4',
       categoryid: 2,
-      ownerid: 3,
+      ownerid: null,
       description: 'Champagine'
     },
     {
@@ -206,7 +206,7 @@ module.exports = {
       itemname: 'Liquor',
       quantity: '2',
       categoryid: 2,
-      ownerid: 3,
+      ownerid: null,
       description: 'Small handle of vodka to make screwdrivers'
     },
     {
@@ -215,7 +215,7 @@ module.exports = {
       itemname: 'Party Favors',
       quantity: '10',
       categoryid: 3,
-      ownerid: 3,
+      ownerid: null,
       description: 'Sparkly necklaces'
     },
     {
@@ -224,7 +224,7 @@ module.exports = {
       itemname: 'Party Favors',
       quantity: '1',
       categoryid: 3,
-      ownerid: 3,
+      ownerid: null,
       description: 'Bachelorette sash. Make it adorable'
     },
     {
@@ -233,7 +233,7 @@ module.exports = {
       itemname: 'Dancers',
       quantity: '3',
       categoryid: 3,
-      ownerid: 3,
+      ownerid: null,
       description: 'Yup'
     },
     {
@@ -242,7 +242,7 @@ module.exports = {
       itemname: 'Playlist',
       quantity: '3',
       categoryid: 3,
-      ownerid: 3,
+      ownerid: null,
       description: 'Needing a playlist for pregame'
     },
     {
@@ -251,7 +251,7 @@ module.exports = {
       itemname: 'Cups',
       quantity: '40',
       categoryid: 4,
-      ownerid: 3,
+      ownerid: null,
       description: 'solo cups'
     },
     {
@@ -260,7 +260,7 @@ module.exports = {
       itemname: 'Playlist',
       quantity: '3',
       categoryid: 3,
-      ownerid: 3,
+      ownerid: null,
       description: 'Needing a playlist for night fires'
     },
     {
@@ -269,7 +269,7 @@ module.exports = {
       itemname: 'Streamers',
       quantity: '15',
       categoryid: 3,
-      ownerid: 3,
+      ownerid: null,
       description: 'white'
     },
     {
@@ -278,7 +278,7 @@ module.exports = {
       itemname: 'Party Hats',
       quantity: '15',
       categoryid: 3,
-      ownerid: 3,
+      ownerid: null,
       description: 'beach theme'
     },
     {
@@ -287,7 +287,7 @@ module.exports = {
       itemname: 'Cupcakes',
       quantity: '10',
       categoryid: 1,
-      ownerid: 3,
+      ownerid: null,
       description: 'chocolate'
     },
     {
@@ -296,7 +296,7 @@ module.exports = {
       itemname: 'Beer',
       quantity: '24',
       categoryid: 2,
-      ownerid: 3,
+      ownerid: null,
       description: 'Budlight Lime and Corona please'
     },
     {
@@ -305,7 +305,7 @@ module.exports = {
       itemname: 'Fruit',
       quantity: '6',
       categoryid: 1,
-      ownerid: 3,
+      ownerid: null,
       description: 'Limes'
     },
     {
@@ -314,7 +314,7 @@ module.exports = {
       itemname: 'Wine',
       quantity: '4',
       categoryid: 2,
-      ownerid: 3,
+      ownerid: null,
       description: 'Tidos Vodka'
     },
     {
@@ -323,7 +323,7 @@ module.exports = {
       itemname: 'Soda',
       quantity: '12',
       categoryid: 2,
-      ownerid: 3,
+      ownerid: null,
       description: 'Gingner Beer for moscole mules'
     },
     {
@@ -332,7 +332,7 @@ module.exports = {
       itemname: 'Snacks',
       quantity: '1',
       categoryid: 2,
-      ownerid: 3,
+      ownerid: null,
       description: 'Chips and Dip'
     },
     {
@@ -341,7 +341,7 @@ module.exports = {
       itemname: 'Snacks',
       quantity: '1',
       categoryid: 2,
-      ownerid: 3,
+      ownerid: null,
       description: 'Doritos'
     },
     {
@@ -350,7 +350,7 @@ module.exports = {
       itemname: 'Snacks',
       quantity: '1',
       categoryid: 2,
-      ownerid: 3,
+      ownerid: null,
       description: 'Pita and Hummus'
     },
     {
@@ -359,7 +359,7 @@ module.exports = {
       itemname: 'Cups',
       quantity: '40',
       categoryid: 4,
-      ownerid: 1,
+      ownerid: null,
       description: 'solo cups'
     },
     {
@@ -368,7 +368,7 @@ module.exports = {
       itemname: 'Snacks',
       quantity: '1',
       categoryid: 2,
-      ownerid: 3,
+      ownerid: null,
       description: 'Chips and Dip'
     },
     {
@@ -377,7 +377,7 @@ module.exports = {
       itemname: 'Snacks',
       quantity: '1',
       categoryid: 2,
-      ownerid: 3,
+      ownerid: null,
       description: 'Kettle Popcorn'
     },
     {
@@ -386,7 +386,7 @@ module.exports = {
       itemname: 'Snacks',
       quantity: '1',
       categoryid: 2,
-      ownerid: 3,
+      ownerid: null,
       description: 'Pita and Hummus'
     },
     {
@@ -395,7 +395,7 @@ module.exports = {
       itemname: 'Streamers',
       quantity: '5',
       categoryid: 3,
-      ownerid: 3,
+      ownerid: null,
       description: 'Navy Blue'
     },
     {
@@ -404,7 +404,7 @@ module.exports = {
       itemname: 'Party Hats',
       quantity: '15',
       categoryid: 3,
-      ownerid: 3,
+      ownerid: null,
       description: 'Over the Hill'
     },
     {
@@ -413,7 +413,7 @@ module.exports = {
       itemname: 'Cake',
       quantity: '1',
       categoryid: 1,
-      ownerid: 3,
+      ownerid: null,
       description: 'To feed 50 people saying "Robertson\'s Family Reunion 2017". Preferably half vanilla, half chocolate with vanilla frosting'
     },
     {
@@ -422,7 +422,7 @@ module.exports = {
       itemname: 'Soda',
       quantity: '5',
       categoryid: 2,
-      ownerid: 3,
+      ownerid: null,
       description: 'Dr Pepper, Coke, diet Coke'
     },
     {
@@ -431,7 +431,7 @@ module.exports = {
       itemname: 'Wine',
       quantity: '3',
       categoryid: 2,
-      ownerid: 3,
+      ownerid: null,
       description: 'Pino Noir'
     },
     {
@@ -440,7 +440,7 @@ module.exports = {
       itemname: 'Forks',
       quantity: '100',
       categoryid: 2,
-      ownerid: 3,
+      ownerid: null,
       description: 'white plastic'
     },
     {
@@ -449,7 +449,7 @@ module.exports = {
       itemname: 'Spoons',
       quantity: '100',
       categoryid: 2,
-      ownerid: 3,
+      ownerid: null,
       description: 'white plastic'
     },
     {
@@ -458,7 +458,7 @@ module.exports = {
       itemname: 'Knives',
       quantity: '100',
       categoryid: 2,
-      ownerid: 3,
+      ownerid: null,
       description: 'white plastic'
     },
     {
@@ -467,7 +467,7 @@ module.exports = {
       itemname: 'Plates',
       quantity: '50',
       categoryid: 2,
-      ownerid: 3,
+      ownerid: null,
       description: 'Large navy blue'
     },
     {
@@ -476,7 +476,7 @@ module.exports = {
       itemname: 'Plates',
       quantity: '50',
       categoryid: 2,
-      ownerid: 3,
+      ownerid: null,
       description: 'Small navy blue'
     },
     {
@@ -485,7 +485,7 @@ module.exports = {
       itemname: 'Burgers',
       quantity: '20',
       categoryid: 1,
-      ownerid: 3,
+      ownerid: null,
       description: 'Turkey burgers pre-made'
     },
     {
@@ -494,7 +494,7 @@ module.exports = {
       itemname: 'Hotdogs',
       quantity: '20',
       categoryid: 1,
-      ownerid: 3,
+      ownerid: null,
       description: 'Jumbo'
     },
     {
@@ -503,7 +503,7 @@ module.exports = {
       itemname: 'Buns',
       quantity: '50',
       categoryid: 1,
-      ownerid: 3,
+      ownerid: null,
       description: '25 Hotdog and 25 buger buns'
     },
     {
@@ -512,7 +512,7 @@ module.exports = {
       itemname: 'Side Item',
       quantity: '3',
       categoryid: 1,
-      ownerid: 3,
+      ownerid: null,
       description: 'need more side items!'
     },
     {
@@ -521,7 +521,7 @@ module.exports = {
       itemname: 'Other Meat Option',
       quantity: '10',
       categoryid: 1,
-      ownerid: 3,
+      ownerid: null,
       description: 'Chicken Breasts'
     },
     {
@@ -530,7 +530,7 @@ module.exports = {
       itemname: 'Condements',
       quantity: '2',
       categoryid: 1,
-      ownerid: 3,
+      ownerid: null,
       description: 'Ketchup'
     },
     {
@@ -539,7 +539,7 @@ module.exports = {
       itemname: 'Condements',
       quantity: '2',
       categoryid: 1,
-      ownerid: 3,
+      ownerid: null,
       description: 'Mustard'
     },
     {
@@ -548,7 +548,7 @@ module.exports = {
       itemname: 'Condements',
       quantity: '2',
       categoryid: 1,
-      ownerid: 3,
+      ownerid: null,
       description: 'Sweet Relish'
     },
     {
@@ -557,7 +557,7 @@ module.exports = {
       itemname: 'Condements',
       quantity: '2',
       categoryid: 1,
-      ownerid: 3,
+      ownerid: null,
       description: 'Spicy Mustard'
     },
     {
@@ -566,7 +566,7 @@ module.exports = {
       itemname: 'Salad',
       quantity: '1',
       categoryid: 1,
-      ownerid: 3,
+      ownerid: null,
       description: 'Large Pasta Salad'
     },
     {
@@ -575,7 +575,7 @@ module.exports = {
       itemname: 'Salad',
       quantity: '1',
       categoryid: 1,
-      ownerid: 3,
+      ownerid: null,
       description: 'Spinach and fruit salad'
     },
     {
@@ -584,7 +584,7 @@ module.exports = {
       itemname: 'Fruit',
       quantity: '1',
       categoryid: 1,
-      ownerid: 3,
+      ownerid: null,
       description: 'Assorted large platter. Whatever is in season'
     },
     {
@@ -593,7 +593,7 @@ module.exports = {
       itemname: 'Fruit',
       quantity: '1',
       categoryid: 1,
-      ownerid: 3,
+      ownerid: null,
       description: 'Ranch and Balsamic'
     },
     {
@@ -602,7 +602,7 @@ module.exports = {
       itemname: 'Table Cloth',
       quantity: '4',
       categoryid: 3,
-      ownerid: 3,
+      ownerid: null,
       description: 'Navy blue picnic table size'
     },
     {
@@ -611,7 +611,7 @@ module.exports = {
       itemname: 'Balloons',
       quantity: '20',
       categoryid: 3,
-      ownerid: 3,
+      ownerid: null,
       description: 'Navy blue and white assorted'
     },
     ])
