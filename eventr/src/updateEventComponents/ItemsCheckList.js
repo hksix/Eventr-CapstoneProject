@@ -67,8 +67,8 @@ class Todo extends Component {
 }
 
 export default class ItemsCheckList extends Component {
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
         
         this.state = {
             todos: [
@@ -104,6 +104,7 @@ export default class ItemsCheckList extends Component {
     }
     
     render() {
+        console.log(this.props.userName)
         return (
             <div>
                 <NewTodo createTask={this.createTask.bind(this)} />
