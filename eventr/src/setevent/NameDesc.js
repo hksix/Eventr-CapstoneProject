@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import TextField from 'material-ui/TextField';
-import {orange500, blue500} from 'material-ui/styles/colors';
+// import {orange500, blue500} from 'material-ui/styles/colors';
 
 
 const styles = {
@@ -28,11 +28,11 @@ export class NameSelector extends Component{
             <div style={{textAlign: 'center'}}>
             <h2 style={{textAlign: 'center'}}>Enter your event's name and description:</h2> 
                 <TextField
-                  
-                  floatingLabelText="Name"
-                  floatingLabelStyle={styles.floatingLabelStyle}
-                  floatingLabelFocusStyle={styles.floatingLabelFocusStyle}
-                  onChange={this._handleChangeName}
+                    style={{textAlign: 'left', width: "50%"}}
+                    floatingLabelText="Name"
+                    floatingLabelStyle={styles.floatingLabelStyle}
+                    floatingLabelFocusStyle={styles.floatingLabelFocusStyle}
+                    onChange={this._handleChangeName}
                 >
                 </TextField>
                 </div>
@@ -52,13 +52,13 @@ export class DescriptionSelector extends Component{
                 <div  style={{textAlign: 'center'}}>
                       {/* <h2 style={styles.headline} style={{textAlign: 'center'}}>Description.</h2> */}
                 <TextField
-                  style={{textAlign: 'left', width: "50%", border:"1px solid gray"}}
-                  floatingLabelText="Description"
-                  floatingLabelStyle={styles.floatingLabelStyle}
-                  floatingLabelFocusStyle={styles.floatingLabelFocusStyle}
-                  multiLine={true}
-                  rows={2}
-                  onChange={this._handleDiscName}
+                    style={{textAlign: 'left', width: "50%"}}
+                    floatingLabelText="Description"
+                    floatingLabelStyle={styles.floatingLabelStyle}
+                    floatingLabelFocusStyle={styles.floatingLabelFocusStyle}
+                    multiLine={true}
+                    rows={2}
+                    onChange={this._handleDiscName}
                   >
                 </TextField>
                 </div>

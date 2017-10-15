@@ -6,7 +6,7 @@ import Dialog from 'material-ui/Dialog';
 import FlatButton from 'material-ui/FlatButton';
 import RaisedButton from 'material-ui/RaisedButton';
 
-import ItemList from './ListOfItems.js'
+
 // import SubmitSnackBar from './Submit.js'
 import Card from 'material-ui/Card';
 import { ROOT_URL } from './App.js';
@@ -15,11 +15,12 @@ import axios from 'axios';
 
 // import RaisedButton from 'material-ui/RaisedButton';
 
-
-import {DateSelector, TimeSelector, LocationSelector} from './setevent/WhenWhere.js'
-import {NameSelector, DescriptionSelector} from './setevent/NameDesc.js'
-import PartyTypeTable  from './setevent/EventType.js'
-import { SelectFriends} from './setevent/SelectFriends.js'
+import ItemList from './setevent/ListOfItems.js';
+import {DateSelector, TimeSelector, LocationSelector} from './setevent/WhenWhere.js';
+import {NameSelector, DescriptionSelector} from './setevent/NameDesc.js';
+import EventType from './setevent/EventType.js';
+import { SelectFriends} from './setevent/SelectFriends.js';
+import EventTypeDefaultItems from './setevent/EventTypeDefaultItems';
 // google maps drawer for example
 // request invite
 // public event toggle - radius from current location  but doesnt show actual location // trending parties in area 
@@ -72,9 +73,6 @@ const styles = {
  * You can also close this dialog by clicking outside the dialog, or with the 'Esc' key.
  */
 class SubmitButton extends Component {
-  constructor(props){
-    super(props);
-  }
     state = {
       open: false,
     };
@@ -83,22 +81,14 @@ class SubmitButton extends Component {
     handleOpen = () => {
       this.setState({open: true});
     };
-  
     handleClose = () => {
-      
       this.setState({open: false});
-      
     };
     handleTouchTap = () => {
-      this.setState({
-        open: true,
-      });
+      this.setState({open: true,});
     };
-  
     handleRequestClose = () => {
-      this.setState({
-        open: false,
-      });
+      this.setState({open: false,});
     };
     handleSubmitAndClose = ()=>{
       this.handleRequestClose();
@@ -156,7 +146,7 @@ export class SetEvent extends Component {
       eventID:'',
       eventPeopleCount:'',
       eventPeopleNames:'',
-      eventItems:'',
+      eventItems:[],
     };
   }
 
@@ -167,7 +157,6 @@ export class SetEvent extends Component {
   };
 
   render() {
-    console.log(this.state.eventItems)
     
     return (
       
@@ -224,26 +213,26 @@ export class SetEvent extends Component {
             changeHandler={this._handleInviteChange}/>
             
         </div>
-
+          
         <div style={styles.slide}>
-            <PartyTypeTable type={this.state.eventType}
-            changeHandler={this._handleTypeChange}/>
+            <EventType type={this.state.eventType}
+            changeHandler={this._handleTypeChange} autoWidth={false}/>
+            <EventTypeDefaultItems defaultItems={this.state.eventItems}/>
             <h2 style={styles.headline}>Items page</h2>
-            <ItemList defaultItems={this.state.eventItems}/> 
+            <ItemList/> 
         </div>
 
         <div style={styles.slide}>
             <h2 style={styles.headline} >Summary page</h2>
-            <p>Name: {this.state.eventName}</p>
-            <p>Description: {this.state.eventDiscription}</p>
-            <p>Location: {this.state.eventLocation}</p>
-            <p>Time: {this.state.eventTime.toString()}</p>
-            <p>Date: {this.state.eventDate.toString()}</p>
-            <p>Type:{this.state.eventType.toString()}</p>
-            <p>Number of people invited: {this.state.eventPeopleCount} {this.state.eventPeopleNames}</p>
-            <p>Number of required items needed:{this.state.eventItems}</p>
-            <SubmitButton
-            changeHandler={this._handleSubmit}></SubmitButton> 
+            <p>Name: <u> {this.state.eventName}</u></p>
+            <p>Description: <u>{this.state.eventDiscription}</u></p>
+            <p>Location: <u>{this.state.eventLocation}</u></p>
+            <p>Time: <u>{this.state.eventTime.toString()}</u></p>
+            <p>Date: <u>{this.state.eventDate.toString()}</u></p>
+            <p>Type: <u>{this.state.eventType.toString()}</u></p>
+            <p>Number of people invited: <u>{this.state.eventPeopleCount} {this.state.eventPeopleNames}</u></p>
+            <p>Number of required items needed: <u>{this.state.eventItems}</u></p>
+            <SubmitButton changeHandler={this._handleSubmit}></SubmitButton> 
         </div>
         </SwipeableViews>
       </Card>
@@ -274,7 +263,8 @@ export class SetEvent extends Component {
       eventTime: newTime
     })
   }
-  _handleTypeChange=(newType,newID, newDefaultItems)=>{
+  _handleTypeChange=(newType, newID, newDefaultItems)=>{
+    console.log()
     this.setState({
       eventType: newType,
       eventID: newID,
@@ -288,9 +278,11 @@ export class SetEvent extends Component {
     })
   }
   _handleSubmit=(e)=>{
-    // e.preventDefault();
+    if(this.state.eventName === '' || this.state.eventDate === ''){
+      alert('woah chill.. before we continue please fill out all forms.' )
+    }else{
     axios.post(`${ROOT_URL}/events`,{
-      host_id: 333,
+      host_id: 3,
       'name': `${this.state.eventName}`,
       'description': `${this.state.eventDiscription}`,
       'date': `${this.state.eventDate.toString()}`,
@@ -304,5 +296,6 @@ export class SetEvent extends Component {
       console.log(error);
     })
   }
+}
 
 }

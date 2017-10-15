@@ -12,7 +12,7 @@ module.exports = {
     {
       //plates
       events_category_id: 0,
-      item_id: 4011
+      item_id: 401
     },
     {
       //forks
@@ -67,17 +67,17 @@ module.exports = {
     {
       //beer
       events_category_id: 0,
-      item_id: 4,
+      item_id: 202,
     },
     {
       //soda
       events_category_id: 0,
-      item_id: 401,
+      item_id: 201,
     },
     {
       //liquor
       events_category_id: 0,
-      item_id: 409,
+      item_id: 209,
     },
     {
       //banners
@@ -93,7 +93,7 @@ module.exports = {
     {
       //plates
       events_category_id: 1,
-      item_id: 4011
+      item_id: 401
     },
     {
       //forks
@@ -131,11 +131,6 @@ module.exports = {
       item_id: 303,
     },
     {
-      //pinata
-      events_category_id: 1,
-      item_id: 308,
-    },
-    {
       //playlist
       events_category_id: 1,
       item_id: 702,
@@ -148,17 +143,17 @@ module.exports = {
     {
       //beer
       events_category_id: 1,
-      item_id: 4,
+      item_id: 202,
     },
     {
       //soda
       events_category_id: 1,
-      item_id: 401,
+      item_id: 201,
     },
     {
       //liquor
       events_category_id: 1,
-      item_id: 409,
+      item_id: 209,
     },
     {
       //banners
@@ -174,7 +169,7 @@ module.exports = {
     {
       //plates
       events_category_id: 2,
-      item_id: 4011
+      item_id: 401
     },
     {
       //forks
@@ -229,17 +224,17 @@ module.exports = {
     {
       //beer
       events_category_id: 2,
-      item_id: 4,
+      item_id: 202,
     },
     {
       //soda
       events_category_id: 2,
-      item_id: 401,
+      item_id: 201,
     },
     {
       //liquor
       events_category_id: 2,
-      item_id: 409,
+      item_id: 209,
     },
     {
       //banners
@@ -254,7 +249,7 @@ module.exports = {
     {
       //plates
       events_category_id: 2,
-      item_id: 4011
+      item_id: 401
     },
     {
       //forks
@@ -309,17 +304,17 @@ module.exports = {
     {
       //beer
       events_category_id: 2,
-      item_id: 4,
+      item_id: 202,
     },
     {
       //soda
       events_category_id: 2,
-      item_id: 401,
+      item_id: 201,
     },
     {
       //liquor
       events_category_id: 2,
-      item_id: 409,
+      item_id: 209,
     },
     {
       //banners
@@ -334,41 +329,6 @@ module.exports = {
       item_id: 406
     },
     {
-      //plates
-      events_category_id: 3,
-      item_id: 4011
-    },
-    {
-      //forks
-      events_category_id: 3,
-      item_id: 402
-    },
-    {
-      //knives
-      events_category_id: 3,
-      item_id: 403
-    },
-    {
-      //spoons
-      events_category_id: 3,
-      item_id: 404
-    },
-    {
-      //bowls
-      events_category_id: 3,
-      item_id: 405
-    },
-    {
-      //ground beef
-      events_category_id: 3,
-      item_id: 135
-    },
-    {
-      //veggies
-      events_category_id: 3,
-      item_id: 133,
-    },
-    {
       //streamers
       events_category_id: 3,
       item_id: 303,
@@ -391,22 +351,42 @@ module.exports = {
     {
       //beer
       events_category_id: 3,
-      item_id: 4,
+      item_id: 202,
     },
     {
       //soda
       events_category_id: 3,
-      item_id: 401,
+      item_id: 201,
     },
     {
       //liquor
       events_category_id: 3,
-      item_id: 409,
+      item_id: 209,
     },
     {
       //banners
       events_category_id: 3,
       item_id: 301
+    },
+    {
+      //Party favors
+      events_category_id: 3,
+      item_id: 306
+    },
+    {
+      //Party hats
+      events_category_id: 3,
+      item_id: 317
+    },
+    {
+      //miscelanious
+      events_category_id: 3,
+      item_id: 500
+    },
+    {
+      //indor speakers
+      events_category_id: 3,
+      item_id: 601
     },
 //*********************  REUNION  ***************************
     {
@@ -417,7 +397,7 @@ module.exports = {
     {
       //plates
       events_category_id: 4,
-      item_id: 4011
+      item_id: 401
     },
     {
       //forks
@@ -453,11 +433,6 @@ module.exports = {
       //streamers
       events_category_id: 4,
       item_id: 303,
-    },
-    {
-      //pinata
-      events_category_id: 4,
-      item_id: 308,
     },
     {
       //playlist
@@ -498,7 +473,7 @@ module.exports = {
     {
       //plates
       events_category_id: 5,
-      item_id: 4011
+      item_id: 401
     },
     {
       //forks
@@ -521,9 +496,44 @@ module.exports = {
       item_id: 405
     },
     {
-      //ground beef
+      //salad
       events_category_id: 5,
-      item_id: 135
+      item_id: 125
+    },
+    {
+      //salad dressing
+      events_category_id: 5,
+      item_id: 127
+    },
+    {
+      //hotdogs
+      events_category_id: 5,
+      item_id: 118
+    },
+    {
+      //burgers
+      events_category_id: 5,
+      item_id: 117
+    },
+    {
+      //buns
+      events_category_id: 5,
+      item_id: 122
+    },
+    {
+      //condements
+      events_category_id: 5,
+      item_id: 123
+    },
+    {
+      //vegetarian option
+      events_category_id: 5,
+      item_id: 120
+    },
+    {
+      //fruit
+      events_category_id: 5,
+      item_id: 130
     },
     {
       //veggies
@@ -536,9 +546,14 @@ module.exports = {
       item_id: 303,
     },
     {
-      //pinata
+      //streamers
       events_category_id: 5,
-      item_id: 308,
+      item_id: 303,
+    },
+    {
+      //table cloth
+      events_category_id: 5,
+      item_id: 304
     },
     {
       //playlist
@@ -553,17 +568,17 @@ module.exports = {
     {
       //beer
       events_category_id: 5,
-      item_id: 4,
+      item_id: 202,
     },
     {
       //soda
       events_category_id: 5,
-      item_id: 401,
+      item_id: 201,
     },
     {
       //liquor
       events_category_id: 5,
-      item_id: 409,
+      item_id: 209,
     },
     {
       //banners
@@ -579,7 +594,7 @@ module.exports = {
     {
       //plates
       events_category_id: 6,
-      item_id: 4011
+      item_id: 401
     },
     {
       //forks
@@ -600,11 +615,6 @@ module.exports = {
       //bowls
       events_category_id: 6,
       item_id: 405
-    },
-    {
-      //ground beef
-      events_category_id: 6,
-      item_id: 135
     },
     {
       //veggies
@@ -659,7 +669,7 @@ module.exports = {
     {
       //plates
       events_category_id: 6,
-      item_id: 4011
+      item_id: 401
     },
     {
       //forks
@@ -714,17 +724,17 @@ module.exports = {
     {
       //beer
       events_category_id: 6,
-      item_id: 4,
+      item_id: 202,
     },
     {
       //soda
       events_category_id: 6,
-      item_id: 401,
+      item_id: 201,
     },
     {
       //liquor
       events_category_id: 6,
-      item_id: 409,
+      item_id: 209,
     },
     {
       //banners
@@ -741,7 +751,7 @@ module.exports = {
     {
       //plates
       events_category_id: 7,
-      item_id: 4011
+      item_id: 401
     },
     {
       //forks
@@ -796,17 +806,17 @@ module.exports = {
     {
       //beer
       events_category_id: 7,
-      item_id: 4,
+      item_id: 202,
     },
     {
       //soda
       events_category_id: 7,
-      item_id: 401,
+      item_id: 201,
     },
     {
       //liquor
       events_category_id: 7,
-      item_id: 409,
+      item_id: 209,
     },
     {
       //banners
@@ -821,7 +831,7 @@ module.exports = {
     {
       //plates
       events_category_id: 7,
-      item_id: 4011
+      item_id: 401
     },
     {
       //forks

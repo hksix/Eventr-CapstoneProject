@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 //Material UI
-import {Card, CardActions, CardHeader, CardTitle, CardText} from 'material-ui/Card';
+import {Card, CardActions, CardHeader, CardTitle} from 'material-ui/Card';
 import FlatButton from 'material-ui/FlatButton';
 import Drawer from 'material-ui/Drawer';
 import AppBar from 'material-ui/AppBar';
@@ -20,6 +20,8 @@ export default class MiniProfile extends Component {
     super(props);
     this.state = {
       open: false,
+      ProfileData:props.userProfileData,
+      fName: '',
     };
   }
   handleToggle = () => {
@@ -29,23 +31,41 @@ export default class MiniProfile extends Component {
   };
 
   componentDidMount = () => {
+
+    if(this.props.userProfileData !== undefined){
     axios.get(`${ROOT_URL}/users/3`).then((res) => {
       this.setState({
-        fName: res.data.fName,
-        lName: res.data.lName,
-        email: res.data.email,
+        fName: "loading",
+        lName: "loading",
+        email: "loading",
         location: res.data.location,
         phone: res.data.phone,
-        profPic: res.data.profPic,
+        profPic: 'loading',
         createdAt: res.data.createdAt
       })
     })
   }
+}
+
+  componentWillReceiveProps(nextProps){
+      this.setState({
+        ProfileData: nextProps.userProfileData.family_name,
+        fName: nextProps.userProfileData.given_name,
+        lName: nextProps.userProfileData.family_name,
+        email: nextProps.userProfileData.nickname+'@gmail.com',
+        profPic:nextProps.userProfileData.picture,
+        createdAt: nextProps.userProfileData.updated_at,
+        userID:nextProps.userProfileData.sub,
+      })
+}
   
-  
+componentWillUpdate(nextProps, nextState){
+  console.log(nextProps, nextState)
+  // console.log(nextProps.userProfileData)
+}
+
 
   save = () => {
-    console.log(this.state.lName)
     axios.put(`${ROOT_URL}/users/3`, {
       fName: this.state.fName,
       lName: this.state.lName,
@@ -61,6 +81,7 @@ export default class MiniProfile extends Component {
   }
   
   render(){
+    // console.log(this.state.ProfileData)
     const styles = {
       title: {
         cursor: 'pointer',

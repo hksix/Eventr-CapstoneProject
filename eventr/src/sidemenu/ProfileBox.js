@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Card, CardActions, CardHeader, CardTitle} from 'material-ui/Card';
+import {Card, CardHeader} from 'material-ui/Card';
 import FlatButton from 'material-ui/FlatButton';
 // import axios from 'axios';
 // import { ROOT_URL } from '../App.js';
@@ -68,11 +68,11 @@ class ProfileBox extends Component {
           title="Profile Picture"
           avatar={this.props.profPic}
         />
-        <h3 style={style.text}>Welcome {this.props.fName} {this.props.lName}!</h3>
+        <h3 style={style.text}>Welcome <u>{this.props.fName} {this.props.lName}</u>!</h3>
         <h3 style={style.text}>Phone: {this.props.phone}</h3>
         <h3 style={style.text}>Location: {this.props.location}</h3>
         <h3 style={style.text}>Email: {this.props.email}</h3>
-        <h3 style={style.text}>Member Since {this.props.createdAt}</h3>
+        <h3 style={style.text}>Last Update: {this.props.createdAt}</h3>
         <br />
         <FlatButton label="Edit" open={this.state.open} onClick={this.edit} style={{marginLeft:10, marginTop:10, marginBottom:10}}/>
       </Card>
@@ -117,7 +117,7 @@ class ProfileBox extends Component {
           floatingLabelFixed={true} 
           hintText={this.props.email}
           type='text'
-          onChange={this._handleEcmailChange}>
+          onChange={this._handleEmailChange}>
         </TextField>
 
         <br />

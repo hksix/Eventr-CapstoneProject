@@ -28,7 +28,7 @@ class TodoList extends Component {
         
         for (let index in todos) {
             items.push(
-                <Todo todo={todos[index]} key={index} toggle={this.props.toggle}/>
+                <Todo todo={todos[index]} key={index} toggle={this.props.toggle} user={this.props.user}/>
             );
         }
         
@@ -53,7 +53,7 @@ class Todo extends Component {
             return (
                 <li>
                     <del>{todo.text}</del> <a href="" onClick={this.done.bind(this)}>✓</a>
-                    <small style={{color:'green'}}>Hamza</small>
+                    <small style={{color:'green'}}>{this.props.user}</small>
                 </li>
             );
         } else {
@@ -67,8 +67,8 @@ class Todo extends Component {
 }
 
 export default class ItemsCheckList extends Component {
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
         
         this.state = {
             todos: [
@@ -107,7 +107,7 @@ export default class ItemsCheckList extends Component {
         return (
             <div>
                 <NewTodo createTask={this.createTask.bind(this)} />
-                <TodoList todos={this.state.todos} toggle={this.toggleTask.bind(this)} />
+                <TodoList todos={this.state.todos} user={this.props.userName.name} toggle={this.toggleTask.bind(this)} />
             </div>
         );
     }

@@ -1,9 +1,9 @@
 import React, {Component} from 'react';
 import TextField from 'material-ui/TextField';
-import {orange500, blue500} from 'material-ui/styles/colors';
 import DatePicker from 'material-ui/DatePicker';
 import TimePicker from 'material-ui/TimePicker';
 
+// import {orange500, blue500} from 'material-ui/styles/colors';
 
 import IconMenu from 'material-ui/IconMenu';
 import MenuItem from 'material-ui/MenuItem';
@@ -114,10 +114,10 @@ export class DateSelector extends Component {
         var days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
         var d = new Date(date);
         var day = days[d.getDay()];
-        var date = d.getDate();
+        date = d.getDate();
         var month = months[d.getMonth()];
         var year = d.getFullYear();
-        this.props.changeHandler(day + " "+ " " + date + " " + month + " " + year);
+        this.props.changeHandler(day + " " + date + " " + month + " " + year);
     };
 }
 
@@ -170,11 +170,12 @@ export class LocationSelector extends Component{
         return(
             <div>
             <TextField
-            floatingLabelText="Address"
-            floatingLabelStyle={styles.floatingLabelStyle}
-            floatingLabelFocusStyle={styles.floatingLabelFocusStyle}
-            onChange={this._handleChangeLocation}
-        />
+                style={{textAlign: 'right', width: "40%"}}
+                floatingLabelText="Address"
+                floatingLabelStyle={styles.floatingLabelStyle}
+                floatingLabelFocusStyle={styles.floatingLabelFocusStyle}
+                onChange={this._handleChangeLocation}
+            />
         <IconMenuExampleScrollable/>
         </div>
         )

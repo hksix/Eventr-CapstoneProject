@@ -1,17 +1,17 @@
 import React, { Component } from 'react';
 // import {BrowserRouter, Route, Switch, Link} from 'react-router-dom';
 
-// import './App.css';
 // import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 // import MyAwesomeReactComponent from './MyAwesomeReactComponent';
+
+// import './App.css';
+// import axios from 'axios';
+// import LandingPage from './landingPage/LandingPage.js'
 // import ItemRegistry from './itemRegistry';
+// import { MenuHeader } from './Menubar.js';
 
-import { MenuHeader } from './Menubar.js'
-
-import axios from 'axios';
 import apikey from './apikeys.js';
 
-import LandingPage from './landingPage/LandingPage.js'
 // export const ROOT_URL = `http://localhost:8090/api/v1/${apikey}`;
 export const ROOT_URL = `http://ec2-52-207-242-113.compute-1.amazonaws.com/api/v1/${apikey}`;
 
@@ -47,6 +47,7 @@ class App extends Component {
     
     return (
       <div className="App">
+        {/* <LandingPage/> */}
         <header>
           <button
               className="btn-margin"
@@ -95,10 +96,12 @@ class App extends Component {
                 )
             }
             </header>
-            {/* <LandingPage/> */}
+            
           <div className="container">
             {this.props.children}
+            
           </div>
+
       </div>
     );
   }

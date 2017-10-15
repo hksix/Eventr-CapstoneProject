@@ -6,10 +6,10 @@ import Callback from './Callback/Callback';
 import Auth from './Auth/Auth';
 import history from './history';
 
-import  MenuHeader from './Menubar.js'
 import Profile from './Profile/Profile';
 import MyAwesomeReactComponent from './MyAwesomeReactComponent.js';
-import UserMenu from './sidemenu/UserMenu'
+// import  MenuHeader from './Menubar.js'
+// import UserMenu from './sidemenu/UserMenu'
 
 const auth = new Auth();
 
@@ -44,8 +44,10 @@ export const makeMainRoutes = () => {
         render={props =>
           !auth.isAuthenticated()
             ? <Redirect to="/home" />
-            : <MyAwesomeReactComponent auth={auth} {...props} />}
+            : <MyAwesomeReactComponent auth={auth} {...props} />
+            }
         />
+
           <Route path="/callback" render={(props) => {
             handleAuthentication(props);
             return <Callback {...props} /> 
