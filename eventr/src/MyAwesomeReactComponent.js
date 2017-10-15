@@ -75,7 +75,7 @@ class MenuOptions extends Component {
                 <UserMenu user={this.props.userdata}/>
                 </div>
                 <div className="changing-content-container" >
-                  <Welcome />
+                  <Welcome user={this.props.userdata} />
                 </div>
               </div>
 

@@ -85,7 +85,7 @@ const Welcome2 = (props) =>(
         <div style={SubHeader}>
             <Card style={cardbox}>
                 <div> <u>List of Items box</u> </div>
-                <ItemsCheckList/>
+                <ItemsCheckList userName={props.userdata} />
                 <div style={{position:'relative', float:'right'}}>
                 <EditDropdown />
                 </div>
@@ -208,6 +208,7 @@ export class Welcome extends Component {
                   headerColor={this.getHeaderColor(this.state.event.isHost)}
                   userdata={this.props.user}
                   />
+
             </Card>);
       }
 
