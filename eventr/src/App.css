@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto');
 
-html { font-family: 'Roboto', sans-serif; }
+/* html { font-family: 'Roboto', sans-serif; } */
 
 
 
@@ -10,10 +10,10 @@ html { font-family: 'Roboto', sans-serif; }
   padding: 20px;
   color: white;
 }
-
+/* 
 .App-intro {
   font-size: large;
-}
+} */
 /* cal month label */
 .rbc-toolbar-label {
   font-size: 1.3em;

@@ -289,6 +289,7 @@ function deleteUser(request,response,next){
 
 //************************************************** GUESTS ****************************** 
 
+//server.get(`${extension}/guests/event/:eventid`, getAllGuestsByEvent);
 function getAllGuestsByEvent(request,response,next) {
     models.Guests.findAll({
         where: {

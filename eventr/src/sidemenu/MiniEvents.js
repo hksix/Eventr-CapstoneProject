@@ -5,9 +5,6 @@ import axios from 'axios';
 import { ROOT_URL } from '../App.js';
 
 
-
-const events = []
-
 export default class MiniEvents extends Component {
   constructor(props) {
     super(props);
@@ -29,7 +26,7 @@ export default class MiniEvents extends Component {
 
   render(){
     const events = this.state.data.map(function(data) {
-      return(<CardText>{data.name} {data.date}</CardText>)
+      return(<CardText><b>{data.name}</b><br/>{data.date}</CardText>)
     })
     return(
       <Card >

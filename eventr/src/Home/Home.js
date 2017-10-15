@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import LandingPage from '../landingPage/LandingPage.js';
 
+
 class Home extends Component {
   login() {
     this.props.auth.login();
@@ -24,7 +25,7 @@ class Home extends Component {
                 .
               </h4>
               <LandingPage/>
-              </div>
+            </div>
             )
         }
         {
@@ -40,9 +41,9 @@ class Home extends Component {
                 </a>
                 {' '}to continue.
               </h4>
-
               <LandingPage/>
-              </div>
+            </div>
+
             )
         }
         

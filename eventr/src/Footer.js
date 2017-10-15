@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 
 const footer = {
   backgroundColor: '#4c3187',
-  color: 'white',
+  color: '#f5f5f5',
   display: 'flex',
   alignItems: 'center',
   justifyContent: 'center',

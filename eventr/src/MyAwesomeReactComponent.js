@@ -31,27 +31,32 @@ const muiTheme = getMuiTheme({
     primary3Color: '#1b0859',
     accent1Color: '#B16CFF',
     accent2Color: '#7c5cb7',
-    canvasColor: 'white',
+    canvasColor: '#f5f5f5',
     pickerHeaderColor: '#7c5cb7',
   }
 });
 
 class MenuOptions extends Component {
-      constructor(props) {
-        super(props);
-        this.state = {
-          value: 'a',
-          userdata: null,
-        };
-      }
-      handleChange = (value) => {
-        this.setState({
-          value: value,
-        });
-      };
 
-      render(){
+  constructor(props) {
+    super(props);
+    this.state = {
+      value: 'a',
+      userdata: null,
+    };
+  }
+  handleChange = (value) => {
+    this.setState({
+      value: value,
+    });
+  };
+
+  render(){
+    return (
+    
+      <Router>
         
+
         return (
           
             <Router>
@@ -162,8 +167,92 @@ class MenuOptions extends Component {
               <div>
                 <MenuOptions userdata={this.state.profile}/>
                 <Footer />
+
               </div>
-            </MuiThemeProvider>
-          );
-        }
-      }
+
+          </Tab>
+
+
+          {/* renders events page */}
+          <Tab
+              icon={<FontIcon className="material-icons">event</FontIcon>}
+              label="Create Event"
+              value="b"
+              containerElement={<Link to="/events" />}
+              >
+              <Route exact path="/events"/>
+
+              <div className="main-content-container">
+                <div className="side-content-container">
+                <UserMenu user={this.props.userdata}/>
+                </div>
+                <div className="changing-content-container" >
+                  <SetEvent />
+                </div>
+              </div>
+          </Tab>
+
+
+          {/* renders map */}
+          <Tab
+              icon={<MapsPersonPin />}
+              label="NEARBY"
+              value="c"
+              containerElement={<Link to="/nearby" />}>
+              <div className="main-content-container">
+              <div className="side-content-container">
+              <UserMenu user={this.props.userdata}/>
+              </div>
+                <div >
+                  <MapContainer />
+                </div>
+              </div>
+          </Tab>
+          {/* renders user's profile */}
+          <Tab
+              icon={<FontIcon className="material-icons">settings</FontIcon>}
+              label="Settings"
+              value="d"
+              containerElement={<Link to="/profile" />}>
+              <div className="main-content-container">
+                <div className="side-content-container">
+                <UserMenu user={this.props.userdata}/>
+                </div>
+                <div className="changing-content-container" >
+                  <Settings />
+                </div>
+              </div>
+          </Tab>
+        </Tabs>
+      </Router>
+    );
+  }
+}
+
+
+
+export default class MyAwesomeReactComponent extends Component {
+  componentWillMount() {
+    this.setState({ profile: {} });
+    const { userProfile, getProfile } = this.props.auth;
+    if (!userProfile) {
+      getProfile((err, profile) => {
+        this.setState({ profile });
+      });
+    } else {
+      this.setState({ profile: userProfile });
+    }
+  }
+  render() {
+    const { profile } = this.state;
+    // console.log(this.state.profile)
+    return (
+      <MuiThemeProvider muiTheme={muiTheme}>
+        <div>
+          <MenuOptions userdata={this.state.profile}/>
+          <Footer />
+        </div>
+      </MuiThemeProvider>
+    );
+  }
+}
