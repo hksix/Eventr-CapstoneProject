@@ -19,8 +19,17 @@ module.exports = (sequelize, DataTypes) => {
       defaultValue: sequelize.literal('CURRENT_TIMESTAMP(3)'),
     },
   });
-  // Events.prototype.getByUser = function(options) {
-
-  // }
+  Events.prototype.getGuests = function(options) {
+    options.include = [{
+      model: sequelize.models.Guests,
+      attributes: ['attending'],
+      where: {
+        eventid: this.get('id')
+      }
+    }];
+    return sequelize.models.Users.findAll(options);
+  }
   return Events;
 };
+
+

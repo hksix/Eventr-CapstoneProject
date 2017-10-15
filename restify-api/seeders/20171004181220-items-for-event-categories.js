@@ -1066,6 +1066,7 @@ module.exports = {
       item_id: 301
     },
   ])
+},
 
   down: (queryInterface, Sequelize) => {
     return queryInterface.bulkDelete('ItemsForEventCategories', null, {});
