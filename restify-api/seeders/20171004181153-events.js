@@ -46,6 +46,16 @@ module.exports = {
       date: '2017-10-25',
       location: '1212 Peachtree Cir NE Atlanta GA 30329',
       category_id: 4,
+    },
+    {
+      id: 6,
+      host_id: 2,
+      name: 'Demo Day Party',
+      description: 'Come celebrate with us!',
+      date: '2016-10-17',
+      time: '19:00:00',
+      location: '3423 Piedmont Rd NE, Atlanta, GA 30305',
+      category_id: 8,
     }
     ])
   },
