@@ -52,7 +52,7 @@ class ItemList extends Component {
                     </div>)
                 } else {
                     return (
-                    <div key={item.index} value={item.ownerid}>
+                    <div key={item.index} value={item.ownerid} user={this.props.user}>
                         <del>
                         {item.quantity} 
                         {item.itemname} 
@@ -66,6 +66,7 @@ class ItemList extends Component {
                 }})
         } else {
             itemList.push(<li>No items added to event</li>)
+
         }
         return(
             <ul>
@@ -86,13 +87,31 @@ class ItemList extends Component {
 }
 
 
+    render() {
+        let todo = this.props.todo;
+        if (todo.done) {
+            return (
+                <li>
+                    <del>{todo.text}</del> <a href="" onClick={this.done.bind(this)}>✓</a>
+                    <small style={{color:'green'}}>{this.props.user}</small>
+                </li>
+            );
+        } else {
+            return (
+                <li>
+                    {todo.text} <a href="" onClick={this.done.bind(this)}>✓</a>
+                </li>
+            );
+        }
+    }
+}
 
 // this componente gets rendered to DOM
 // passes createItem function as prop to NewItem Class so users can add additional items to event
 // passes toggleTask function as prop to ItemList
 export default class ItemsCheckList extends Component {
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
         this.state = {
             items: [],
             eventid: '',
@@ -151,7 +170,7 @@ export default class ItemsCheckList extends Component {
         return (
             <div>
                 <NewItem createItem={this.createItem} />
-                <ItemList items={this.props.items} save={this.props.saveItemToEventDB} toggle={this.toggleTask}/>
+                <ItemList items={this.props.items} user={this.props.userName.name} save={this.props.saveItemToEventDB} toggle={this.toggleTask}/>
             </div>
         );
     }

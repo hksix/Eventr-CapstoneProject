@@ -25,6 +25,23 @@ function getAllEvents(request, response, next) {
         console.log(err)
     });
 }
+//server.get('/api/v1/event/:event_id/guests', getGuestProfilesByEvent); 
+function getGuestProfilesByEvent(request, response, next) {
+    models.Events.findOne({
+        where: {
+            'id': request.params.event_id
+        }
+
+    }).then(function(event) {
+        var options = {}
+        event.getGuests(options).then(results => {
+            response.send(results);
+            next();
+        }).catch(function(err) {
+            console.log(err)
+        });
+    });
+}
 
 function getAllEventsByHost(request, response, next) {
     models.Events.findAll({
@@ -575,6 +592,7 @@ server.post(`${extension}/event_inventory/:event_id`, addItemToInventory);
 server.put(`${extension}/event_inventory/:id`, updateItemInInventory);
 server.del(`${extension}/event_inventory/:id`, deleteItemFromInventory);
 
+server.get(`${extension}/event/:event_id/guests`, getGuestProfilesByEvent); 
 
 // module.exports = server;
 server.listen(8090, function() {

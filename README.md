@@ -10,7 +10,7 @@
 <p>Event creating app to make the users less focused on planning and more excited for an event.</p>
 
 #Goals
-<li>Connet with friends over Facebook OAuth</li>
+<li>Connect with friends over Facebook OAuth</li>
 <li>Admin settings and ability to grant others admin privlages</li>
 
 
@@ -47,7 +47,7 @@
 
 # Architecture
 * Frontend: React, Redux
-* Backend API: Node.js, Express, PostgreSQL    
+* Backend API: Node.js, Restify, Sequelize, PostgreSQL    
 * Server: AWS EC2, Nginx, SSL
 * Keywords: Modular Architecture, Progressive Web App, Microsystems, Machine Learning, User Experience
 
@@ -60,7 +60,7 @@
 
 
 ### Backend Stages
-* Stage 1: Create SQL database and connect with express router
+* Stage 1: Create SQL database and connect with restify router
 * Stage 2: Create data api with separate routers for common CRUD operations needed for frontend functionality
 * Stage 3: Convert direct SQL Queries to sequalize ORM
 * Stage 4: Convert modular routes and components into microsystems for scalability

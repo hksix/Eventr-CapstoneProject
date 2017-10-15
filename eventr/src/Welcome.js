@@ -15,16 +15,16 @@ import ItemsCheckList from './updateEventComponents/ItemsCheckList.js'
 
 import MapsPlace from 'material-ui/svg-icons/maps/place';
 
-var header = {
-    textAlign: 'center',
-    backgroundColor: '#4c3187',
-    color: '#f5f5f5',
-    paddingTop: '15px',
-    paddingBottom: '15px',
-    // fontSize: '14px',
-    fontSize: '1.3em',
-    fontWeight: 400,
-};
+// var header = {
+//     textAlign: 'center',
+//     backgroundColor: '#4c3187',
+//     color: 'white',
+//     paddingTop: '15px',
+//     paddingBottom: '15px',
+//     // fontSize: '14px',
+//     fontSize: '1.3em',
+//     fontWeight: 400,
+// };
 
 const SubHeader = {
     // height: '400px',
@@ -46,19 +46,22 @@ const cardbox={
 const Welcome2 = (props) =>(
 
     <header>
-        <h3 style={props.headerColor} className="welcome">{props.title}</h3>
+        <h3 style={props.headerColor} className="welcome">
+            {props.title}
+        </h3>
+
         <div style={SubHeader}>
             <Card style={cardbox}>
                 <div> 
                     <p><b>Name:</b> {props.title}</p>
-                    <p><b>Date:</b> {props.date}</p>
-                    <p><b>Time:</b>{props.time}</p>
                     <p><b>Location:</b> {props.location}</p>
+                    <p><b>Date:</b> {props.date.slice(0, 10)}</p>
+                    <p><b>Time:</b>{props.time}</p>
                     <p><b>Description:</b> {props.desc}</p>
                     <p><b>Hosted By:</b> {props.host}</p>
                 </div>
                 <div style={{position:'relative', float:'right'}}>
-                <EditDropdown />
+                
                 </div>
             </Card>
         </div>
@@ -70,28 +73,28 @@ const Welcome2 = (props) =>(
                 </div>
                 <MapsPlace/>
                 <div style={{position:'relative', float:'right'}}>
-                <EditDropdown />
+               
                 </div>
             </Card>
             <Card style={cardbox}>
-                <div><u>Friends invited</u></div>
+                <div><u>Guests</u></div>
                 {props.invited}
 
                 <div style={{position:'relative', float:'right'}}>
-                <EditDropdown/>
+               
                 </div>
             </Card>
         </div>
         <div style={SubHeader}>
             <Card style={cardbox}>
                 <div> <u>List of Items box</u> </div>
-                <ItemsCheckList items={props.items} eventid={props.eventid}/>
+                <ItemsCheckList userName={props.userdata}  items={props.items} eventid={props.eventid}/>
                 <div style={{position:'relative', float:'right'}}>
-                <EditDropdown />
+                
                 </div>
             </Card>
         </div>
-        
+        <div style={{textAlign:'right'}}>{props.isHost ? <EditDropdown/>: null }</div>
     </header>
 );
 
@@ -141,7 +144,6 @@ export class Welcome extends Component {
           color: '#f5f5f5',
           paddingTop: '15px',
           paddingBottom: '15px',
-          // fontSize: '14px',
           fontSize: '1.3em',
           fontWeight: 400,
       }
@@ -223,7 +225,9 @@ export class Welcome extends Component {
                 location={this.state.event.location}
                 headerColor={this.getHeaderColor(this.state.event.isHost)}
                 items={this.state.itemsForEvent}
+                userdata={this.props.user}
                 />
+
             </Card>);
       }
 

@@ -25,7 +25,7 @@ export default class EditDropdown extends Component {
           onChange={this._handleChangeSingle}
           value={this.state.valueSingle}
         >
-          <MenuItem value="1" primaryText="Edit" />
+          <MenuItem value="1" primaryText="Edit Event" />
         </IconMenu>
        
       </div>

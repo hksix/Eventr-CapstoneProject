@@ -92,6 +92,21 @@ module.exports = {
       attending: true,
       eventid: 5
     },
+    {
+      userid: 1,
+      attending: true,
+      eventid: 6
+   },
+   {
+     userid: 2,
+     attending: true,
+     eventid: 6
+   },
+   {
+     userid: 3,
+     attending: true,
+     eventid: 6
+   },
     ])
   },
 
