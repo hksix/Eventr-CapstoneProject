@@ -32,7 +32,7 @@ export class NameSelector extends Component{
                     floatingLabelText="Name"
                     floatingLabelStyle={styles.floatingLabelStyle}
                     floatingLabelFocusStyle={styles.floatingLabelFocusStyle}
-                  o nChange={this._handleChangeName}
+                    onChange={this._handleChangeName}
                 >
                 </TextField>
                 </div>

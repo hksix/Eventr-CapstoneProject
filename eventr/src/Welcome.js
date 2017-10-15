@@ -162,6 +162,7 @@ export class Welcome extends Component {
           return host
       }
   }
+
   // server.get('/api/v1/event_inventory/:event_id', getInventoryForEvent);
   getItemsForParty = (eventid) => {
     axios.get(`${ROOT_URL}/event_inventory/${eventid}`).then((res) => {
@@ -172,7 +173,9 @@ export class Welcome extends Component {
         console.log(this.state.itemsForEvent)
     })
   }
+
 //server.get(`${extension}/guests/event/:eventid`, getAllGuestsByEvent);
+// 10/15 - needs inner join query within sever.js to retreive name from id
   getInvitedForParty = (eventid) => {
       axios.get(`${ROOT_URL}/guests/event/${eventid}`).then((res) => {
           this.setState({
