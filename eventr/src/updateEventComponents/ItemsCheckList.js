@@ -31,9 +31,7 @@ class NewItem extends Component {
 
 // passes props to item Class to render list of items to DOM
 class ItemList extends Component {
-    componentWillReceiveProps = (nextProps) => {
 
-    }
     itemCheckedOff = (event) => {
         event.preventDefault();
         this.props.toggle(this.props.item);
@@ -44,7 +42,7 @@ class ItemList extends Component {
         if(items.length > 0){
             itemList = items.map((item, index) => {
                 return (
-                    <div>
+                <div>
                     <div key={item.index}>
                         {item.quantity} 
                         {item.itemname}: 
@@ -52,7 +50,7 @@ class ItemList extends Component {
                     </div> 
                     <a href="" onClick={this.itemCheckedOff}>✓</a>
                     <small style={{color:'green'}}>Hamza</small>
-                    </div>
+                </div>
             )})
         } else {
             itemList.push(<li>No items added to event</li>)
@@ -76,23 +74,24 @@ class ItemList extends Component {
     }
 }
 
-class Item extends Component {
-    render() {
-        let item = this.props.item
-        console.log(this.props.item)
-        return (
-            <li>
-                <del key={this.props.key} id={this.props.ownerid}>
-                    {this.props.itemname} 
-                    {this.props.description}
-                    {this.props.quantity}
-                </del> 
-                    <a href="" onClick={this.itemCheckedOff}>✓</a>
-                <small style={{color:'green'}}>Hamza</small>
-            </li>
-        );
-    }
-}
+// class Item extends Component {
+
+//     render() {
+//         let item = this.props.item
+//         console.log(this.props.item)
+//         return (
+//             <li>
+//                 <del key={this.props.key} id={this.props.ownerid}>
+//                     {this.props.itemname} 
+//                     {this.props.description}
+//                     {this.props.quantity}
+//                 </del> 
+//                     <a href="" onClick={this.itemCheckedOff}>✓</a>
+//                 <small style={{color:'green'}}>Hamza</small>
+//             </li>
+//         );
+//     }
+// }
 
 // this componente gets rendered to DOM
 // passes createItem function as prop to NewItem Class so users can add additional items to event
