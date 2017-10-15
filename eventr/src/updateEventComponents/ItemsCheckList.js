@@ -87,24 +87,6 @@ class ItemList extends Component {
 }
 
 
-    render() {
-        let todo = this.props.todo;
-        if (todo.done) {
-            return (
-                <li>
-                    <del>{todo.text}</del> <a href="" onClick={this.done.bind(this)}>✓</a>
-                    <small style={{color:'green'}}>{this.props.user}</small>
-                </li>
-            );
-        } else {
-            return (
-                <li>
-                    {todo.text} <a href="" onClick={this.done.bind(this)}>✓</a>
-                </li>
-            );
-        }
-    }
-}
 
 // this componente gets rendered to DOM
 // passes createItem function as prop to NewItem Class so users can add additional items to event

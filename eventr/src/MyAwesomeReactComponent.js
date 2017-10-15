@@ -21,6 +21,12 @@ import Settings from './Settings.js';
 import Footer from './Footer.js';
 import './index.css';
 import MapContainer from "./GoogleMap/MapContainer.js";
+
+
+import axios from 'axios';
+import { ROOT_URL } from './App.js';
+
+
 // import PartyTypeTable from './setevent/EventType.js';
 
 // import { Calendar } from './Calendar.js'
@@ -67,7 +73,7 @@ class MenuOptions extends Component {
               </div>
             </div>
           </Tab>
-          <Tab icon={<FontIcon className="material-icons">event</FontIcon>} label="CREATE EVENT" value="b" containerElement={<Link to="/events" />} >
+          <Tab icon={<FontIcon className="material-icons">event</FontIcon>} label="CREATE EVENT" value="b" containerElement={<Link to="/create-event" />} >
             <Route exact path="/events"/>
             <div className="main-content-container">
               <div className="side-content-container">
@@ -109,20 +115,45 @@ class MenuOptions extends Component {
 
 
 export default class MyAwesomeReactComponent extends Component {
-  componentWillMount() {
-    this.setState({ profile: {} });
+  // componentWillMount() {
+  //   this.setState({ profile: {} });
+  //   const { userProfile, getProfile } = this.props.auth;
+  //   if (!userProfile) {
+  //     getProfile((err, profile) => {
+  //       this.setState({ profile });
+  //       console.log(this.state)
+  //     });
+  //   } else {
+  //     this.setState({ profile: userProfile });
+  //   }
+  // }
+
+  constructor(props){
+    super(props);
+    this.state = {
+        profile: {},
+        
+    };
+  }
+  componentDidMount() {
+    // axios.get(`${ROOT_URL}/events/host/${this.state.profile}`).then(res=> {console.log(res)});
+  //  console.log(this.state.profile) 
+  // this.setState({ profile: {} });
     const { userProfile, getProfile } = this.props.auth;
     if (!userProfile) {
       getProfile((err, profile) => {
         this.setState({ profile });
+        console.log(this.state)
       });
     } else {
       this.setState({ profile: userProfile });
     }
+    // axios.get(`${ROOT_URL}/events/host/1`).then(res=> {console.log(res)});
+
   }
   render() {
-    const { profile } = this.state;
-    // console.log(this.state.profile)
+    // const { profile } = this.state;
+    // console.log(profile)
     return (
       <MuiThemeProvider muiTheme={muiTheme}>
         <div>
