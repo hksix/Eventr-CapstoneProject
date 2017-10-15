@@ -206,6 +206,7 @@ export class Welcome extends Component {
                   host={this.getHostName(this.state.event.isHost,this.state.event.host)} 
                   location={this.state.event.location}
                   headerColor={this.getHeaderColor(this.state.event.isHost)}
+                  userdata={this.props.user}
                   />
             </Card>);
       }
