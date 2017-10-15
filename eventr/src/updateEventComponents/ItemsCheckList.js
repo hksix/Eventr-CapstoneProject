@@ -43,25 +43,23 @@ class ItemList extends Component {
                 if(item.ownderid === null){
                     return (
                     <div key={item.index} value={item.ownerid}>
-                        {item.quantity} 
-                        {item.itemname}: 
-                        {item.description}
+                        <span> {item.quantity} </span>
+                        <span> {item.itemname} </span>
+                        <span> {item.description} </span>
                         <a href="" 
                             onClick={this.props.toggle}
-                        >✓</a>
+                        > ✓ </a>
                     </div>)
                 } else {
                     return (
                     <div key={item.index} value={item.ownerid} user={this.props.user}>
-                        <del>
-                        {item.quantity} 
-                        {item.itemname} 
-                        {item.description} 
-                        </del>
+                        <del> {item.quantity} </del>
+                        <del> {item.itemname} </del>
+                        <del> {item.description} </del>
                         <a href="" 
                             onClick={this.props.toggle}
-                        >✓</a>
-                        <small style={{color:'green'}}>{item.ownerid}</small>
+                        > ✓ </a>
+                        <small style={{color:'green'}}></small>
                     </div>)
                 }})
         } else {
@@ -86,25 +84,6 @@ class ItemList extends Component {
     }
 }
 
-
-    render() {
-        let todo = this.props.todo;
-        if (todo.done) {
-            return (
-                <li>
-                    <del>{todo.text}</del> <a href="" onClick={this.done.bind(this)}>✓</a>
-                    <small style={{color:'green'}}>{this.props.user}</small>
-                </li>
-            );
-        } else {
-            return (
-                <li>
-                    {todo.text} <a href="" onClick={this.done.bind(this)}>✓</a>
-                </li>
-            );
-        }
-    }
-}
 
 // this componente gets rendered to DOM
 // passes createItem function as prop to NewItem Class so users can add additional items to event
@@ -160,9 +139,12 @@ export default class ItemsCheckList extends Component {
     toggleTask = (event, value) => {
         event.preventDefault();
         if(value === null){
-            console.log("working")
+            console.log("no one has used this event")
+        } if(value === this.props.userName.id){
+            console.log(this.props.userName)
+            console.log("you own this item")
         } else {
-            value = this.props.username
+            console.log(value + 'has this item')
         }
     }
     
