@@ -85,7 +85,7 @@ const Welcome2 = (props) =>(
         <div style={SubHeader}>
             <Card style={cardbox}>
                 <div> <u>List of Items box</u> </div>
-                <ItemsCheckList items={props.items}/>
+                <ItemsCheckList items={props.items} eventid={props.eventid}/>
                 <div style={{position:'relative', float:'right'}}>
                 <EditDropdown />
                 </div>
@@ -213,6 +213,7 @@ export class Welcome extends Component {
         eventElement = (
             <Card className='welcomeBox'> 
               <Welcome2 
+                eventid={this.state.eventid}
                 invited={this.setInvitedList(this.state.invited)}
                 title={this.state.event.title} 
                 desc={this.state.event.desc} 
