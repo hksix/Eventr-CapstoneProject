@@ -14,6 +14,7 @@ import ProfileBox from './ProfileBox.js';
 import axios from 'axios';
 import { ROOT_URL } from '../App.js';
 
+// const user = 1;
 
 export default class MiniProfile extends Component {
   constructor(props) {
@@ -31,19 +32,20 @@ export default class MiniProfile extends Component {
   };
 
   componentDidMount = () => {
-
-    if(this.props.userProfileData !== undefined){
-    axios.get(`${ROOT_URL}/users/3`).then((res) => {
+    // const user = '1';
+    if(this.props.userProfileData == undefined){
+    // axios.get(`${ROOT_URL}/users/${user}`).then((res) => {
       this.setState({
         fName: "loading",
         lName: "loading",
         email: "loading",
-        location: res.data.location,
-        phone: res.data.phone,
-        profPic: 'loading',
-        createdAt: res.data.createdAt
+        location: "",
+        phone: "",
+        email: "",
+        profPic: "loading",
+        createdAt: "loading"
       })
-    })
+    // })
   }
 }
 
@@ -52,7 +54,7 @@ export default class MiniProfile extends Component {
         ProfileData: nextProps.userProfileData.family_name,
         fName: nextProps.userProfileData.given_name,
         lName: nextProps.userProfileData.family_name,
-        email: nextProps.userProfileData.nickname+'@gmail.com',
+        email: nextProps.userProfileData.email,
         profPic:nextProps.userProfileData.picture,
         createdAt: nextProps.userProfileData.updated_at,
         userID:nextProps.userProfileData.sub,
@@ -66,7 +68,8 @@ componentWillUpdate(nextProps, nextState){
 
 
   save = () => {
-    axios.put(`${ROOT_URL}/users/3`, {
+    const user = this.userID;
+    axios.put(`${ROOT_URL}/users/${user}`, {
       fName: this.state.fName,
       lName: this.state.lName,
       profPic: this.state.profPic,
@@ -87,7 +90,7 @@ componentWillUpdate(nextProps, nextState){
         cursor: 'pointer',
       },
     };
-    
+    var profTitle = `Welcome ${this.state.fName}!`;
     return(
       <Card >
         <CardHeader
@@ -96,7 +99,7 @@ componentWillUpdate(nextProps, nextState){
           avatar={this.state.profPic}
         />
 
-        <CardTitle title="Welcome" subtitle={this.state.fName} />
+        <CardTitle title={profTitle}/>
        
         <CardActions>
           <FlatButton label="View Profile" onClick={this.handleToggle} />

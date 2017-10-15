@@ -220,7 +220,7 @@ export class Welcome extends Component {
                   <AppBarExampleIcon/>
               </Card>
               <Paper>
-                  <Calendar handleEventClick={this.makeEventDetail} />
+                  <Calendar handleEventClick={this.makeEventDetail} userdata={this.props.user}/>
               </Paper>
               {eventElement}
           </div>

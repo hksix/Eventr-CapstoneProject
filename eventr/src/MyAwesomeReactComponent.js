@@ -53,85 +53,52 @@ class MenuOptions extends Component {
 
   render(){
     return (
-    
       <Router>
-        
-              <Tabs
-                className="menubar"
-                value={this.state.value}
-                onChange={this.handleChange}>
-                <Tab icon = {<img src="../logo4.png" alt="Eventr Logo - lightbulb with E inside"/>} className="eventr-logo">
-                </Tab>
-
-
-          <Tab icon={<FontIcon className="material-icons">home</FontIcon>}
-              label="HOME"
-              value="a"
-              containerElement={<Link to="/home" />}
-          >
-              <Route exact path="/home"/>
-              <div className="main-content-container">
-                <div className="side-content-container">
-                <UserMenu user={this.props.userdata}/>
-                </div>
-                <div className="changing-content-container" >
-                  <Welcome user={this.props.userdata} />
-                </div>
-
-              </div>
-
-          </Tab>
-
-
-          {/* renders events page */}
-          <Tab
-              icon={<FontIcon className="material-icons">event</FontIcon>}
-              label="Create Event"
-              value="b"
-              containerElement={<Link to="/events" />}
-              >
-              <Route exact path="/events"/>
-
-              <div className="main-content-container">
-                <div className="side-content-container">
-                <UserMenu user={this.props.userdata}/>
-                </div>
-                <div className="changing-content-container" >
-                  <SetEvent />
-                </div>
-              </div>
-          </Tab>
-
-
-          {/* renders map */}
-          <Tab
-              icon={<MapsPersonPin />}
-              label="NEARBY"
-              value="c"
-              containerElement={<Link to="/nearby" />}>
-              <div className="main-content-container">
+        <Tabs className="menubar" value={this.state.value} onChange={this.handleChange}>
+          <Tab icon={<img src="../logo4.png" alt="Eventr Logo - lightbulb with E inside"/>} className="eventr-logo"></Tab>
+          <Tab icon={<FontIcon className="material-icons">home</FontIcon>} label="HOME" value="a" containerElement={<Link to="/home" />} >
+            <Route exact path="/home"/>
+            <div className="main-content-container">
               <div className="side-content-container">
-              <UserMenu user={this.props.userdata}/>
+                <UserMenu user={this.props.userdata}/>
               </div>
-                <div >
-                  <MapContainer />
-                </div>
+              <div className="changing-content-container" >
+                <Welcome user={this.props.userdata} />
               </div>
+            </div>
           </Tab>
-          {/* renders user's profile */}
-          <Tab
-              icon={<FontIcon className="material-icons">settings</FontIcon>}
-              label="Settings"
-              value="d"
-              containerElement={<Link to="/profile" />}>
-              <div className="main-content-container">
-                <div className="side-content-container">
+          <Tab icon={<FontIcon className="material-icons">event</FontIcon>} label="CREATE EVENT" value="b" containerElement={<Link to="/events" />} >
+            <Route exact path="/events"/>
+            <div className="main-content-container">
+              <div className="side-content-container">
+                <UserMenu user={this.props.userdata}/>
+              </div>
+              <div className="changing-content-container" >
+                <SetEvent />
+              </div>
+            </div>
+          </Tab>
+          <Tab icon={<MapsPersonPin />} label="NEARBY" value="c" containerElement={<Link to="/nearby" />} >
+            <Route exact path="/nearby"/>
+            <div className="main-content-container">
+              <div className="side-content-container">
+                <UserMenu user={this.props.userdata}/>
+              </div>
+              <div >
+                <MapContainer />
+              </div>
+            </div>
+          </Tab>
+          <Tab icon={<FontIcon className="material-icons">settings</FontIcon>} label="SETTINGS" value="d" containerElement={<Link to="/settings" />} >
+            <Route exact path="/settings"/>
+            <div className="main-content-container">
+              <div className="side-content-container">
                 <UserMenu user={this.props.userdata}/>
                 </div>
                 <div className="changing-content-container" >
                   <Settings />
                 </div>
-              </div>
+            </div>
           </Tab>
         </Tabs>
       </Router>
