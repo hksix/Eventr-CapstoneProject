@@ -52,7 +52,7 @@ const Welcome2 = (props) =>(
                 <div> 
                     <p><b>Name:</b> {props.title}</p>
                     <p><b>Date:</b> {props.date}</p>
-                    <p><b>Time:</b>{ props.time}</p>
+                    <p><b>Time:</b>{props.time}</p>
                     <p><b>Location:</b> {props.location}</p>
                     <p><b>Description:</b> {props.desc}</p>
                     <p><b>Hosted By:</b> {props.host}</p>
@@ -66,7 +66,7 @@ const Welcome2 = (props) =>(
             <Card style={cardbox}>
                 <div>
                     <u>Location</u>
-                    <p></p>     
+                    <p>{props.location}</p>     
                 </div>
                 <MapsPlace/>
                 <div style={{position:'relative', float:'right'}}>
@@ -85,7 +85,7 @@ const Welcome2 = (props) =>(
         <div style={SubHeader}>
             <Card style={cardbox}>
                 <div> <u>List of Items box</u> </div>
-                <ItemsCheckList/>
+                <ItemsCheckList items={props.items}/>
                 <div style={{position:'relative', float:'right'}}>
                 <EditDropdown />
                 </div>
@@ -105,7 +105,7 @@ const AppBarExampleIcon = () => (
     />
 );
 
-//server.get(`${extension}/guests/event/:eventid`, getAllGuestsByEvent);
+
 
 
 
@@ -118,15 +118,21 @@ export class Welcome extends Component {
           event: null,
           eventid: null,
           invited: [],
+          itemsForEvent: []
       };
   }
 
+  // grabs data from Calendar.js for event that user has clicked on
+  // sets eventid here so there's not an infinate loop later when render guest invited to party
   makeEventDetail = (calendarData) => {
-      this.getInvitedForParty(calendarData.id);
-      this.setState({
-          event: calendarData,
-          eventid: calendarData.id
-      })
+     //console.log(calendarData)
+    let event = calendarData.id
+    this.getInvitedForParty(event)
+    this.getItemsForParty(event)
+    this.setState({
+        event: calendarData,
+        eventid: event
+    })
   }
 
   getHeaderColor(isHost) {
@@ -153,13 +159,20 @@ export class Welcome extends Component {
           return "You are hosting this event!"
       }
       else {
-          console.log(host)
           return host
       }
   }
-
-
-
+  // server.get('/api/v1/event_inventory/:event_id', getInventoryForEvent);
+  getItemsForParty = (eventid) => {
+    axios.get(`${ROOT_URL}/event_inventory/${eventid}`).then((res) => {
+        console.log(res)
+        this.setState({
+            itemsForEvent: res.data.data
+        })
+        console.log(this.state.itemsForEvent)
+    })
+  }
+//server.get(`${extension}/guests/event/:eventid`, getAllGuestsByEvent);
   getInvitedForParty = (eventid) => {
       axios.get(`${ROOT_URL}/guests/event/${eventid}`).then((res) => {
           this.setState({
@@ -178,13 +191,11 @@ export class Welcome extends Component {
               } else {
                   attending = "Not attending"
               }
-
               return <p key={guest.index}>{guest.userid} {attending}</p>
           })
       } else {
           guestList.push(<h3>No one is invited to this event</h3>)
       }
-      console.log(guestList)
       return (
           <div>
               {guestList}
@@ -194,19 +205,21 @@ export class Welcome extends Component {
 
 
   render(){
-     let eventElement = <p></p>;
-      if (this.state.event) {
-         eventElement = (
+    let eventElement = <p></p>;
+    if (this.state.event) {
+        eventElement = (
             <Card className='welcomeBox'> 
               <Welcome2 
-                  title={this.state.event.title} 
-                  desc={this.state.event.desc} 
-                  date={this.state.event.date}
-                  time={this.state.event.time}
-                  host={this.getHostName(this.state.event.isHost,this.state.event.host)} 
-                  location={this.state.event.location}
-                  headerColor={this.getHeaderColor(this.state.event.isHost)}
-                  />
+                invited={this.setInvitedList(this.state.invited)}
+                title={this.state.event.title} 
+                desc={this.state.event.desc} 
+                date={this.state.event.date}
+                time={this.state.event.time}
+                host={this.getHostName(this.state.event.isHost,this.state.event.host)} 
+                location={this.state.event.location}
+                headerColor={this.getHeaderColor(this.state.event.isHost)}
+                items={this.state.itemsForEvent}
+                />
             </Card>);
       }
 
