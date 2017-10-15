@@ -23,6 +23,7 @@ export default class LogoutButton extends Component {
         <RaisedButton 
           label="LogOut"
           primary={true}
+          style={{width: '100px'}}
           keyboardFocused={true}
           onClick={this.onButtonClick}
           ></RaisedButton>
