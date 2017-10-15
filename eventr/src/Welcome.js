@@ -3,7 +3,8 @@ import React, {Component} from 'react';
 // import {cyan400} from 'material-ui/styles/colors';
 import {Card} from 'material-ui/Card';
 import './App.css';
-// import axios from 'axios';
+import axios from 'axios';
+import { ROOT_URL } from './App.js'
 import Paper from 'material-ui/Paper';
 import { Calendar } from './Calendar.js'
 
@@ -43,6 +44,7 @@ const cardbox={
 
 
 const Welcome2 = (props) =>(
+
     <header>
         <h3 style={props.headerColor} className="welcome">{props.title}</h3>
         <div style={SubHeader}>
@@ -72,12 +74,11 @@ const Welcome2 = (props) =>(
                 </div>
             </Card>
             <Card style={cardbox}>
-                <div>
-                    <u>Friends invited</u>
-                    <p>{props.invited}</p>
-                </div>
+                <div><u>Friends invited</u></div>
+                {props.invited}
+
                 <div style={{position:'relative', float:'right'}}>
-                <EditDropdown />
+                <EditDropdown/>
                 </div>
             </Card>
         </div>
@@ -94,6 +95,8 @@ const Welcome2 = (props) =>(
     </header>
 );
 
+
+
 const AppBarExampleIcon = () => (
     <AppBar
     className="upcoming-events-header"
@@ -102,82 +105,123 @@ const AppBarExampleIcon = () => (
     />
 );
 
+//server.get(`${extension}/guests/event/:eventid`, getAllGuestsByEvent);
+
 
 
 
 export class Welcome extends Component {
-    constructor(props){
-        super(props);
-        this.state = {
-            name: '',
-            event: null
-        };
-    }
+  constructor(props){
+      super(props);
+      this.state = {
+          name: '',
+          event: null,
+          eventid: null,
+          invited: [],
+      };
+  }
 
-    makeEventDetail = (calendarData) => {
-        this.setState({event: calendarData})
-    }
+  makeEventDetail = (calendarData) => {
+      this.getInvitedForParty(calendarData.id);
+      this.setState({
+          event: calendarData,
+          eventid: calendarData.id
+      })
+  }
 
-    getHeaderColor(isHost) {
-        var header = {
-            textAlign: 'center',
-            color: '#f5f5f5',
-            paddingTop: '15px',
-            paddingBottom: '15px',
-            // fontSize: '14px',
-            fontSize: '1.3em',
-            fontWeight: 400,
-        }
-        if (isHost) {
-            header.backgroundColor = "#1b0859";
-        }
-        else {
-            header.backgroundColor = "#4c3187";
-        }
-        return header;
-    }
-    
-    getHostName(isHost, host) {
-        if(isHost) {
-            return "You are hosting this event!"
-        }
-        else {
-            console.log(host)
-            return host
-        }
-    }
+  getHeaderColor(isHost) {
+      var header = {
+          textAlign: 'center',
+          color: '#f5f5f5',
+          paddingTop: '15px',
+          paddingBottom: '15px',
+          // fontSize: '14px',
+          fontSize: '1.3em',
+          fontWeight: 400,
+      }
+      if (isHost) {
+          header.backgroundColor = "#1b0859";
+      }
+      else {
+          header.backgroundColor = "#4c3187";
+      }
+      return header;
+  }
+
+  getHostName(isHost, host) {
+      if(isHost) {
+          return "You are hosting this event!"
+      }
+      else {
+          console.log(host)
+          return host
+      }
+  }
 
 
-    render(){
-       let eventElement = <p></p>;
-        if (this.state.event) {
-           eventElement = (
-                <Card className='welcomeBox'> 
-                    <Welcome2 
-                        title={this.state.event.title} 
-                        desc={this.state.event.desc} 
-                        date={this.state.event.date}
-                        time={this.state.event.time}
-                        host={this.getHostName(this.state.event.isHost,this.state.event.host)} 
-                        location={this.state.event.location}
-                        headerColor={this.getHeaderColor(this.state.event.isHost)}
-                        />
-                </Card>);
-        }
 
-        return(
-            <div className="profilepg" >
-                <Card>
-                    <AppBarExampleIcon/>
-                </Card>
-                <Paper>
-                <Calendar handleEventClick={this.makeEventDetail} />
-                </Paper>
-                {eventElement}
-            
-            </div>
-        )
-    }
+  getInvitedForParty = (eventid) => {
+      axios.get(`${ROOT_URL}/guests/event/${eventid}`).then((res) => {
+          this.setState({
+              invited: res.data.data
+          })
+      })
+  }
+
+  setInvitedList = (invited) => {
+      let guestList = []
+      if(invited.length > 0){
+          guestList = invited.map(guest =>{
+              let attending = ''
+              if(guest.attending === false){
+                  attending = "Attending"
+              } else {
+                  attending = "Not attending"
+              }
+
+              return <p key={guest.index}>{guest.userid} {attending}</p>
+          })
+      } else {
+          guestList.push(<h3>No one is invited to this event</h3>)
+      }
+      console.log(guestList)
+      return (
+          <div>
+              {guestList}
+          </div>
+      )
+  }
+
+
+  render(){
+     let eventElement = <p></p>;
+      if (this.state.event) {
+         eventElement = (
+            <Card className='welcomeBox'> 
+              <Welcome2 
+                  title={this.state.event.title} 
+                  desc={this.state.event.desc} 
+                  date={this.state.event.date}
+                  time={this.state.event.time}
+                  host={this.getHostName(this.state.event.isHost,this.state.event.host)} 
+                  location={this.state.event.location}
+                  headerColor={this.getHeaderColor(this.state.event.isHost)}
+                  />
+            </Card>);
+      }
+
+      return(
+          <div className="profilepg" >
+              <Card>
+                  <AppBarExampleIcon/>
+              </Card>
+              <Paper>
+                  <Calendar handleEventClick={this.makeEventDetail} />
+              </Paper>
+              {eventElement}
+          </div>
+      )
+  }
 }
 
 

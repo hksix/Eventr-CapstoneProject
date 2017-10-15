@@ -74,7 +74,8 @@ class Form extends Component {
 		});
 	}
 	_handleNewitemAddition = () => {
-        // console.log(this.input.value);
+		// console.log(this.input.value);
+		// this.props._addItemToEvent comes from SetEvent.js 
 		if(this.input.value !== '') {
 			this.props._addItemToEvent(this.input.value);
 			this.setState({
@@ -89,7 +90,7 @@ class Form extends Component {
 
 
 
-//Renders within ItemList component
+//Renders within ItemList component below
 //lists all items for event added so far
 const ListAllItemsForEvent = ({items, remove}) => {
 	let allitems = [];
@@ -112,7 +113,7 @@ const ListAllItemsForEvent = ({items, remove}) => {
 	);
 };
 
-// Renders within ItemList component
+// Renders within ItemList component below
 // returns item typed in PLUS a remove button for later use
 const CreatingItemForEvent = ({item, remove}) => {
 	const FloatingButtonRemove = () => (
@@ -166,7 +167,6 @@ class ItemList extends Component {
 			if(!localStorage.count) {
 				localStorage.count = 0;
 			}
-
 		} else {
 			window.id = 0;
 		}
@@ -183,13 +183,15 @@ class ItemList extends Component {
 	}
 
 	//**************************** EVENT HANDLERS FOR ITEM LIST COMPONENT *************************************** */
+
+
 	// Handler to update localStorage
 	_updateLocalStorage = () => {
 		if (typeof(Storage) !== "undefined")
 			localStorage.items = JSON.stringify(this.state.data);
 	}
 	// Handler to add item to event list when making event
-	_addItemToEvent = (val) => {
+	_addItemToEvent = (val, desc) => {
 		let id;
 		// if localStorage is available then increase localStorage count
 		// else use global window object's id variable
@@ -202,6 +204,7 @@ class ItemList extends Component {
 		
 		const item = { 
 			value: val, 
+			description: desc,
 			id: id,
 		};
 	
@@ -212,6 +215,8 @@ class ItemList extends Component {
 			this._updateLocalStorage();
 		});
 	}
+
+
 	// Handler of event to remove item
 	_removeItemFromEvent = (id) => {
 		// filter out the item that has to be removed
@@ -225,11 +230,6 @@ class ItemList extends Component {
 			this._updateLocalStorage();
 		});
 	}
-	
 
-
-
-	
-	
 }
 export default ItemList;

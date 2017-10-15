@@ -32,6 +32,7 @@ const styles = {
 
 const itemsForEvent = []
 
+// rendered to SetEvent.js 
 export default class EventTypeDefaultItems extends Component {
   constructor(props){
       super(props);

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import LandingPage from '../landingPage/LandingPage.js';
 
+
 class Home extends Component {
   login() {
     this.props.auth.login();

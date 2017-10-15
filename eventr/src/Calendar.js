@@ -25,6 +25,7 @@ export class Calendar extends Component {
       const attendingEvents = axios.get(`${ROOT_URL}/events/guest/${current_user}`);
       Promise.all([hostingEvents, attendingEvents])
         .then((res) => {
+          console.log(res)
           this.setState({events: res}, () => {
             var idExists = {};
             const newCalData = this.state.events.map(index => {
@@ -92,7 +93,7 @@ export class Calendar extends Component {
           style={{height: "600px"}}
           eventPropGetter={val => this.createEventStyles(val)}
           />
-        </div>
+        </div> 
       );
     }
   }
