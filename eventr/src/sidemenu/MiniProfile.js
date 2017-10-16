@@ -68,7 +68,8 @@ componentWillUpdate(nextProps, nextState){
 
 
   save = () => {
-    const user = this.userID;
+    const user = this.state.userID;
+    // console.log(user);
     axios.put(`${ROOT_URL}/users/${user}`, {
       fName: this.state.fName,
       lName: this.state.lName,

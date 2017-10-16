@@ -174,7 +174,7 @@ class ProfileBox extends Component {
     });
   }
   _handleClick = (e) => {
-    console.log("working")
+    console.log("saving")
     this._handleTouchTap()
     this.props.onSave()
   }		    
