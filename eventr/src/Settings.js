@@ -1,6 +1,8 @@
 import React, {Component} from 'react';
 import LogoutButton from './LogoutButton.js';
 import About from './About.js';
+import Dialog from 'material-ui/Dialog';
+import RaisedButton from 'material-ui/FlatButton';
 
 class Settings extends Component {
 
@@ -11,23 +13,19 @@ class Settings extends Component {
     render() {
         const { isAuthenticated } = this.props.auth;
         return (
-
-            <div>Settings page
-             {
-                
-                    <button
-                      className="btn-margin"
-                      onClick={this.logout.bind(this)}
-                    >
-                    <LogoutButton/>
-                      
-                    </button>
-              }
-              <div className="container">
-            {this.props.children}
-            
-          </div>
-              </div>
+            <div>
+                <About />
+                <RaisedButton 
+                  label="LogOut"
+                  primary={true}
+                  style={{width: '100px'}}
+                  keyboardFocused={true}
+                  style={{backgroundColor: '#1b0859', color: 'white'}}
+                  onClick={this.logout.bind(this)}
+                ></RaisedButton>
+              
+              <div className="container">{this.props.children}</div>
+            </div>
 
         )
     }
