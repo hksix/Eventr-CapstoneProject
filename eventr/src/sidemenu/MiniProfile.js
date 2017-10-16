@@ -21,7 +21,7 @@ export default class MiniProfile extends Component {
     super(props);
     this.state = {
       open: false,
-      ProfileData:props.userProfileData,
+      ProfileData: props.userProfileData,
       fName: '',
     };
   }
