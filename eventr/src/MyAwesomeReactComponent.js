@@ -143,7 +143,8 @@ export default class MyAwesomeReactComponent extends Component {
     if (!userProfile) {
       getProfile((err, profile) => {
         this.setState({ profile });
-        console.log(this.state.profile.sub)
+        console.log(this.state.profile.given_name)
+        axios.post(`${ROOT_URL}/currentuser/${this.state.profile.sub}/${this.state.profile.given_name}/${this.state.profile.family_name}`).then(console.log("helloooooooo"))
       });
     } else {
       this.setState({ profile: userProfile });

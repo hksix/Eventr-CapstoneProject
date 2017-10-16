@@ -3,7 +3,7 @@
 module.exports = {
   up: (queryInterface, Sequelize) => {
       return queryInterface.bulkInsert('Users', [{
-        id: 1,
+        id: '1',
         fName: 'Hamaz',
         lName: 'Haseeb',
         profPic: 'hh.jpg',
@@ -12,7 +12,7 @@ module.exports = {
         location: 'Atlanta'
       },
       {
-        id: 2,
+        id: '2',
         fName: 'Steph',
         lName: 'Asmar',
         profPic: 'sh.jpg',
@@ -21,7 +21,7 @@ module.exports = {
         location: 'Atlanta'
       },
       {
-        id: 3,
+        id: '3',
         fName: 'Katie',
         lName: 'Lane',
         profPic: 'kl.jpg',
@@ -30,7 +30,7 @@ module.exports = {
         location: 'Atlanta'
       },
       {
-        id: 4,
+        id: '4',
         fName: 'Jen',
         lName: 'Johnson',
         profPic: 'jj.jpg',
@@ -39,7 +39,7 @@ module.exports = {
         location: 'Atlanta'
       },
       {
-        id: 5,
+        id: '5',
         fName: 'Sarah',
         lName: 'Abbey',
         profPic: 'sa.jpg',
@@ -48,7 +48,7 @@ module.exports = {
         location: 'Atlanta'
       },
       {
-        id: 6,
+        id: '6',
         fName: 'Bob',
         lName: 'Ross',
         profPic: 'Bob.jpg',
@@ -57,7 +57,7 @@ module.exports = {
         location: 'Atlanta'
       },
       {
-        id: 7,
+        id: '7',
         fName: 'Chris',
         lName: 'Aquino',
         profPic: 'chris.jpg',
@@ -66,7 +66,7 @@ module.exports = {
         location: 'Atlanta'
       },
       {
-        id: 8,
+        id: '8',
         fName: 'Will',
         lName: 'Elliot',
         profPic: 'will.jpg',
@@ -75,7 +75,7 @@ module.exports = {
         location: 'Atlanta'
       },
       {
-        id: 9,
+        id: '9',
         fName: 'Natalie',
         lName: 'Ventura',
         profPic: 'Natalie.jpg',
@@ -84,7 +84,7 @@ module.exports = {
         location: 'Atlanta'
       },
       {
-        id: 10,
+        id: '10',
         fName: 'Tim',
         lName: 'Brady',
         profPic: 'Tim.jpg',
@@ -93,7 +93,7 @@ module.exports = {
         location: 'Atlanta'
       },
       {
-        id: 11,
+        id: '11',
         fName: 'Tom',
         lName: "D'Ostillo",
         profPic: 'Tom.jpg',
@@ -102,7 +102,7 @@ module.exports = {
         location: 'Atlanta'
       },
       {
-        id: 12,
+        id: '12',
         fName: 'Aaron',
         lName: "Sosa",
         profPic: 'Aaron.jpg',
@@ -111,7 +111,7 @@ module.exports = {
         location: 'Atlanta'
       },
       {
-        id: 13,
+        id: '13',
         fName: 'John',
         lName: "Hartert",
         profPic: 'John.jpg',
@@ -120,7 +120,7 @@ module.exports = {
         location: 'Atlanta'
       },
       {
-        id: 14,
+        id: '14',
         fName: 'Liz',
         lName: "Obermeyer",
         profPic: 'Liz.jpg',
@@ -129,7 +129,7 @@ module.exports = {
         location: 'Atlanta'
       },
       {
-        id: 15,
+        id: '15',
         fName: 'Andrew',
         lName: "Kroll",
         profPic: 'Andrew.jpg',
@@ -138,7 +138,7 @@ module.exports = {
         location: 'Atlanta'
       },
       {
-        id: 16,
+        id: '16',
         fName: 'Max',
         lName: "Irvine",
         profPic: 'Max.jpg',
@@ -147,7 +147,7 @@ module.exports = {
         location: 'Atlanta'
       },
       {
-        id: 17,
+        id: '17',
         fName: 'James',
         lName: "Hong",
         profPic: 'James.jpg',
@@ -156,7 +156,7 @@ module.exports = {
         location: 'Atlanta'
       },
       {
-        id: 18,
+        id: '18',
         fName: 'Jake',
         lName: "Haden",
         profPic: 'Jake.jpg',
@@ -165,7 +165,7 @@ module.exports = {
         location: 'Atlanta'
       },
       {
-        id: 19,
+        id: '19',
         fName: 'Max',
         lName: "McChensey",
         profPic: 'Max.jpg',
@@ -174,7 +174,7 @@ module.exports = {
         location: 'Atlanta'
       },
       {
-        id: 20,
+        id: '20',
         fName: 'Tamby',
         lName: "Kojak",
         profPic: 'Tamby.jpg',
@@ -183,7 +183,7 @@ module.exports = {
         location: 'Atlanta'
       },
       {
-        id: 21,
+        id: '21',
         fName: 'Zakia',
         lName: "Whiteside",
         profPic: 'Zakia.jpg',
