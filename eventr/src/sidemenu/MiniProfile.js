@@ -22,7 +22,13 @@ export default class MiniProfile extends Component {
     this.state = {
       open: false,
       ProfileData: props.userProfileData,
-      fName: '',
+      // fName: props.userProfileData.given_name,
+      // lName: props.userProfileData.family_name,
+      // email: "",
+      // location: "",
+      // phone: "",
+      // email: "",
+      // profPic: props.userProfileData.picture,
     };
   }
   handleToggle = () => {
@@ -33,32 +39,38 @@ export default class MiniProfile extends Component {
 
   componentDidMount = () => {
     // const user = '1';
-    if(this.props.userProfileData == undefined){
+    // if(this.props.userProfileData == undefined){
     // axios.get(`${ROOT_URL}/users/${user}`).then((res) => {
-      this.setState({
-        fName: "loading",
-        lName: "loading",
-        email: "loading",
-        location: "",
-        phone: "",
-        email: "",
-        profPic: "loading",
-        createdAt: "loading"
-      })
+      // this.setState({
+      //   fName: "loading",
+      //   lName: "loading",
+      //   email: "loading",
+      //   location: "",
+      //   phone: "",
+      //   email: "",
+      //   profPic: "loading",
+      //   createdAt: "loading"
+      // })
     // })
-  }
+  // }
+
+
 }
 
   componentWillReceiveProps(nextProps){
       this.setState({
-        ProfileData: nextProps.userProfileData.family_name,
-        fName: nextProps.userProfileData.given_name,
-        lName: nextProps.userProfileData.family_name,
+        // ProfileData: nextProps.userProfileData.family_name,
+        fName: nextProps.userProfileData.fName,
+        lName: nextProps.userProfileData.lName,
         email: nextProps.userProfileData.email,
-        profPic:nextProps.userProfileData.picture,
-        createdAt: nextProps.userProfileData.updated_at,
-        userID:nextProps.userProfileData.userid,
+        profPic: nextProps.userProfileData.profPic,
+        location: nextProps.userProfileData.location,
+        phone: nextProps.userProfileData.phone,
+        // createdAt: nextProps.userProfileData.updated_at,
+        userid:nextProps.userProfileData.userid,
       })
+
+
 }
   
 componentWillUpdate(nextProps, nextState){
@@ -68,36 +80,40 @@ componentWillUpdate(nextProps, nextState){
 
 
   save = () => {
-    const user = this.state.userID;
+    // this.props.handleUpdate(this.state.userID, this.state)
+    this.props.handleUpdate(this.state.userid, this.state)
+    console.log(this.state.phone);
     // console.log(user);
-    axios.put(`${ROOT_URL}/users/${user}`, {
-      fName: this.state.fName,
-      lName: this.state.lName,
-      profPic: this.state.profPic,
-      email: this.state.email,
-      phone: this.state.phone,
-      location: this.state.location,
-    }).then((res) => {
-      // console.log(res)
-    }).catch((err) => {
-      console.log(err)
-    })
+    // axios.put(`${ROOT_URL}/users/${user}`, {
+    //   fName: this.state.fName,
+    //   lName: this.state.lName,
+    //   profPic: this.state.profPic,
+    //   email: this.state.email,
+    //   phone: this.state.phone,
+    //   location: this.state.location,
+    // }).then((res) => {
+    //   // console.log(res)
+    // }).catch((err) => {
+    //   console.log(err)
+    // })
+
   }
   
   render(){
-    // console.log(this.state.ProfileData)
+    console.log(this.state.phone)
     const styles = {
       title: {
         cursor: 'pointer',
       },
     };
-    var profTitle = `Welcome ${this.state.fName}!`;
+    // console.log(this.props.userProfileData);
+    var profTitle = `Welcome ${this.props.userProfileData.fName}!`;
     return(
       <Card >
         <CardHeader
           title={this.state.fName}
           subtitle={this.state.lName}
-          avatar={this.state.profPic}
+          avatar={this.state.picture}
         />
 
         <CardTitle title={profTitle}/>
@@ -111,7 +127,8 @@ componentWillUpdate(nextProps, nextState){
                 title="Profile" 
                 iconElementLeft={<IconButton><NavigationClose /></IconButton>}/>
               <ProfileBox 
-                onNameChange={this.handleLastNameChange}
+                onFirstNameChange={this.handleFirstNameChange}
+                onLastNameChange={this.handleLastNameChange}
                 onLocationChange={this.handleLocationChange}
                 onPhoneChange={this.handlePhoneChange}
                 onEmailChange={this.handleEmailChange}
@@ -122,7 +139,7 @@ componentWillUpdate(nextProps, nextState){
                 phone={this.state.phone}
                 email={this.state.email}
                 profPic={this.state.profPic}
-                createdAt={this.state.createdAt}
+                // createdAt={this.props.userProfileData.given_name}
                 onSave={this.save}
               />
             </Drawer>
@@ -131,6 +148,11 @@ componentWillUpdate(nextProps, nextState){
     )
   }
 
+  handleFirstNameChange=(name)=> {
+    this.setState({
+      fName: name
+    })
+  }
   handleLastNameChange=(name)=> {
     this.setState({
       lName: name

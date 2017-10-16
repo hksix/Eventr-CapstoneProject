@@ -55,7 +55,7 @@ class MenuOptions extends Component {
             <Route exact path="/home"/>
             <div className="main-content-container">
               <div className="side-content-container">
-                <UserMenu user={this.props.userdata}/>
+                <UserMenu handleUpdate={this.props.handleUpdate} user={this.props.userdata}/>
               </div>
               <div className="changing-content-container" >
                 <Welcome user={this.props.userdata} />
@@ -66,7 +66,7 @@ class MenuOptions extends Component {
             <Route exact path="/events"/>
             <div className="main-content-container">
               <div className="side-content-container">
-                <UserMenu user={this.props.userdata}/>
+                <UserMenu handleUpdate={this.props.handleUpdate} user={this.props.userdata}/>
               </div>
               <div className="changing-content-container" >
                 <SetEvent />
@@ -77,7 +77,7 @@ class MenuOptions extends Component {
             <Route exact path="/nearby"/>
             <div className="main-content-container">
               <div className="side-content-container">
-                <UserMenu user={this.props.userdata}/>
+                <UserMenu handleUpdate={this.props.handleUpdate} user={this.props.userdata}/>
               </div>
               <div >
                 <MapContainer />
@@ -88,7 +88,7 @@ class MenuOptions extends Component {
             <Route exact path="/settings"/>
             <div className="main-content-container">
               <div className="side-content-container">
-                <UserMenu user={this.props.userdata}/>
+                <UserMenu handleUpdate={this.props.handleUpdate} user={this.props.userdata}/>
                 </div>
                 <div className="changing-content-container" >
                   <Settings />
@@ -114,8 +114,23 @@ export default class UserStateComponent extends Component {
     const { userProfile, getProfile } = this.props.auth;
     if (!userProfile) {
       getProfile((err, profile) => {
-        this.setState({ profile: {...profile, userid: parseInt(profile.sub.slice(9))}});
-        axios.post(`${ROOT_URL}/currentuser/${this.state.profile.userid}/${this.state.profile.given_name}/${this.state.profile.family_name}`);
+        this.setState({ profile: {...profile, userid: parseInt(profile.sub.slice(9))}},
+        () => {
+          axios.post(`${ROOT_URL}/currentuser/${this.state.profile.userid}/${this.state.profile.given_name}/${this.state.profile.family_name}`)
+          .then((res) => {
+            this.setState({
+              profile: { ...profile,
+                email: res.data.email,
+                fName: res.data.fName,
+                lName: res.data.lName,
+                userid: res.data.id,
+                phone: res.data.phone,
+                profPic: res.data.profPic,
+                location: res.data.location
+              }
+            })
+          })        
+        })
       });
     } else {
       this.setState({ profile: userProfile });
@@ -124,13 +139,46 @@ export default class UserStateComponent extends Component {
 
   }
   render() {
+    console.log(this.state.profile)
     return (
       <MuiThemeProvider muiTheme={muiTheme}>
         <div>
-          <MenuOptions userdata={this.state.profile}/>
+          <MenuOptions handleUpdate={this._updateUser} userdata={this.state.profile}/>
           <Footer />
         </div>
       </MuiThemeProvider>
     );
+  }
+  _updateUserOnServer = (userID, userObj) => {
+  console.log(userObj);
+    axios.put(`${ROOT_URL}/users/${userID}`, {
+      fName: userObj.fName,
+      lName: userObj.lName,
+      profPic: userObj.profPic,
+      email: userObj.email,
+      phone: userObj.phone,
+      location: userObj.location,
+    }).then((res) => {
+      
+    }).catch((err) => {
+      
+    })
+  }
+  _updateUserInState = (userID, userObj) => {
+    console.log(userObj)
+    this.setState({
+      profile: {
+        fName: userObj.fName,
+        lName: userObj.lName,
+        profPic: userObj.profPic,
+        email: userObj.email,
+        phone: userObj.phone,
+        location: userObj.location,
+      }
+    });
+  }
+  _updateUser = (userID, userObj) => {
+    this._updateUserOnServer(userID, userObj);
+    this._updateUserInState(userID, userObj);
   }
 }

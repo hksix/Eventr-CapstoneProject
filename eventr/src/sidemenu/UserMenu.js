@@ -35,7 +35,7 @@ export default class UserMenu extends Component {
     // console.log(this.state.userProfile)
     return(
       <div>
-        <MiniProfile userProfileData={this.props.user}  />
+        <MiniProfile userProfileData={this.props.user} handleUpdate={this.props.handleUpdate} />
         <Alerts />
         <MiniEvents />
       </div>
