@@ -25,7 +25,6 @@ export class Calendar extends Component {
         const current_user = this.state.userdata.userid;
         // console.log(nextProps.userdata.userid);
           // var current_user = this.state.userData.userid;
-
         // console.log(this.state.userData)
     // }
     // componentDidMount() {
@@ -72,7 +71,7 @@ export class Calendar extends Component {
             });
             //https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/Reduce?v=b#Flatten_an_array_of_arrays
             this.setState({calendarData: newCalData.reduce((a, b) => {return a.concat(b)}, [])})
-          });
+          })
         });
 
       });

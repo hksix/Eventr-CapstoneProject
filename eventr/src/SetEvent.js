@@ -219,11 +219,11 @@ export class SetEvent extends Component {
         </div>
           
         <div style={styles.slide}>
+            <h2 style={styles.headline}>Items page</h2>
             <EventType type={this.state.eventType}
             changeHandler={this._handleTypeChange} autoWidth={false}/>
             <EventTypeDefaultItems defaultItems={this.state.eventItems}/>
-            <h2 style={styles.headline}>Items page</h2>
-            <ItemList/> 
+            <ItemList changeHandler={this._addItemToEvent}/> 
         </div>
 
         <div style={styles.slide}>
@@ -235,7 +235,7 @@ export class SetEvent extends Component {
             <p>Date: <u>{this.state.eventDate.toString()}</u></p>
             <p>Type: <u>{this.state.eventType.toString()}</u></p>
             <p>Number of people invited: <u>{this.state.eventPeopleCount} {this.state.eventPeopleNames}</u></p>
-            <p>Number of required items needed: <u>{this.state.eventItems}</u></p>
+            <p>Items: <u>{this.state.eventItems}</u></p>
             <SubmitButton changeHandler={this._handleSubmit}></SubmitButton> 
         </div>
         </SwipeableViews>
@@ -272,7 +272,6 @@ export class SetEvent extends Component {
     this.setState({
       eventType: newType,
       eventID: newID,
-      eventItems: newDefaultItems,
     })
   }
   _handleInviteChange=(newInvites, names)=>{
@@ -280,6 +279,10 @@ export class SetEvent extends Component {
       eventPeopleCount: newInvites,
       eventPeopleNames: names
     })
+  }
+  _addItemToEvent = (newItem) => {
+    console.log(newItem)
+    this.state.eventItems.push(newItem)
   }
   _handleSubmit=(e)=>{
     if(this.state.eventName === '' || this.state.eventDate === ''){

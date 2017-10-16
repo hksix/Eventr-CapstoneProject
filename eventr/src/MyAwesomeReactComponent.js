@@ -10,6 +10,8 @@ import {
     Link,
     // withRouter
   } from 'react-router-dom';
+
+import LandingPage from './landingPage/LandingPage.js';
 import { Welcome } from './Welcome.js';
 import { SetEvent } from './SetEvent.js';
 import UserMenu from './sidemenu/UserMenu.js';
@@ -51,7 +53,9 @@ class MenuOptions extends Component {
     return (
       <Router>
         <Tabs className="menubar" value={this.state.value} onChange={this.handleChange}>
-          <Tab icon={<img src="../logo4.png" alt="Eventr Logo - lightbulb with E inside"/>} className="eventr-logo" value="logo"></Tab>
+          <Tab icon={<img src="../logo4.png" alt="Eventr Logo - lightbulb with E inside"/>} value="L" className="eventr-logo" containerElement={<Link to="/landingpage" />} >
+            <LandingPage />
+          </Tab>
           <Tab icon={<FontIcon className="material-icons">home</FontIcon>} label="HOME" value="a" containerElement={<Link to="/home" />} >
             <Route exact path="/home"/>
             <div className="main-content-container">

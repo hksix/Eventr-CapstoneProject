@@ -22,14 +22,14 @@ class Form extends Component {
 		super(props);
 		this.state = {
 			value: '',
-			name: ''
+			description: '',
 		};
 	}	
 	render() {
         const FloatingButtonAdd = () => (
             <div>
                 <FloatingActionButton mini={true}>
-                    <ContentAdd onClick={this.handleNewitemAddition} />
+                    <ContentAdd onClick={this._handleNewitemAddition} />
                 </FloatingActionButton>
             </div>
         );
@@ -46,10 +46,10 @@ class Form extends Component {
 				/>
 				<TextField
 					hintText="Description"
-					name={this.state.description}
+					description={this.state.description}
 					onChange={this._handleDescriptionChange}
 				/>
-				<FloatingButtonAdd  />
+				<FloatingButtonAdd />
 				<br />
 				<div id="blank" style={{display:'none' }}>
 					<input 
@@ -57,32 +57,34 @@ class Form extends Component {
 							this.input = node;
 						}}
 						value={this.state.value}
+						description={this.state.description}
 					onChange={this._handleChange}/>
 				</div>
 			</div>
 		);
 	}
-
+	// handles when user types
 	_handleChange = (event) => {
 		this.setState({
 			value: event.target.value
 		});
 	}
+	// handles when user types
 	_handleDescriptionChange = (event) => {
 		this.setState({
 			description: event.target.name
 		});
 	}
 	_handleNewitemAddition = () => {
-		// console.log(this.input.value);
+		console.log(this.input.value);
+		console.log(this.input.description);
 		// this.props._addItemToEvent comes from SetEvent.js 
 		if(this.input.value !== '') {
-			this.props._addItemToEvent(this.input.value);
+			this.props.onChange(this.input.value, this.input.description);
 			this.setState({
 				value: '',
 				description: ''
 			});
-			
 			this.input.placeholder = "Add Items here...";
 		}
 	}
@@ -129,7 +131,7 @@ const CreatingItemForEvent = ({item, remove}) => {
 	// single item 
 	return (
 		<div>
-			{item.value}
+			{item.value} {item.name}
 			<FloatingButtonRemove/>
 		</div>
 	);
@@ -176,7 +178,7 @@ class ItemList extends Component {
 	render() {
 		return (
 			<div id="container">
-				<Form additem={this._addItemToEvent} />
+				<Form additem={this._addItemToEvent} onChange={this.props.changeHandler}/>
 				<ListAllItemsForEvent items={this.state.data} remove={this._removeItemFromEvent} />
 			</div>
 		);
@@ -192,6 +194,7 @@ class ItemList extends Component {
 	}
 	// Handler to add item to event list when making event
 	_addItemToEvent = (val, desc) => {
+		console.log("trying to add item")
 		let id;
 		// if localStorage is available then increase localStorage count
 		// else use global window object's id variable
