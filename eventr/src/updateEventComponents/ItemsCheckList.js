@@ -4,32 +4,33 @@ import _ from 'lodash'
 import axios from 'axios';
 import { ROOT_URL } from '../App.js'
 
-class NewItem extends Component {
-    createNewItemForEvent = (event) => {
-        event.preventDefault();
-        let text = this.refs.NewItemText.value;
-        let description = this.refs.NewItemDescription.value;
-        let quantity = this.refs.NewItemQuantity.value;
-        if (text) {
-            this.props.createItem(text, quantity, description);
-            this.refs.NewItemText.value = '';
-            this.refs.NewItemDescription.value = '';
-            this.refs.NewItemQuantity.value = '';
-        }
-    }
-    // ability to add more items to event from welcome page
-    render() {
-        return (
-            <form onSubmit={this.createNewItemForEvent}>
-                <label>Add more</label> 
-                <input type="text" ref="NewItemText" placeholder="Item"/> 
-                <input type="text" ref="NewItemDescription" placeholder="Description"/>
-                <input type="text" ref="NewItemQuantity" placeholder="Qty" style={{width: 30}}/>
-                <button type="submit">+</button>
-            </form>
-        );
-    }
-}
+// class NewItem extends Component {
+//     createNewItemForEvent = (event) => {
+//         event.preventDefault();
+//         let text = this.refs.NewItemText.value;
+//         let description = this.refs.NewItemDescription.value;
+//         let quantity = this.refs.NewItemQuantity.value;
+//         console.log(text)
+//         if (text) {
+//             this.props.changeHandler(text, quantity, description);
+//             this.refs.NewItemText.value = '';
+//             this.refs.NewItemDescription.value = '';
+//             this.refs.NewItemQuantity.value = '';
+//         } 
+//     }
+//     // ability to add more items to event from welcome page
+//     render() {
+//         return (
+//             <form onSubmit={this.createNewItemForEvent}>
+//                 <label>Add more</label> 
+//                 <input type="text" ref="NewItemText" placeholder="Item"/> 
+//                 <input type="text" ref="NewItemDescription" placeholder="Description"/>
+//                 <input type="text" ref="NewItemQuantity" placeholder="Qty" style={{width: 30}}/>
+//                 <button type="submit">+</button>
+//             </form>
+//         );
+//     }
+// }
 
 // passes props to item Class to render list of items to DOM
 class ItemList extends Component {
@@ -38,33 +39,43 @@ class ItemList extends Component {
     itemsToBeRendered = (items) => {
         let itemList = []
         console.log(items)
+        
         if(items.length > 0){
             itemList = items.map((item, index) => {
-                if(item.ownderid === null){
+                console.log(item.ownerid)
+                if(item.ownerid){
                     return (
-                    <div key={item.index} value={item.ownerid}>
-                        <span> {item.quantity} </span>
-                        <span> {item.itemname} </span>
-                        <span> {item.description} </span>
-                        <a href="" 
-                            onClick={this.props.toggle}
-                        > ✓ </a>
+                        <div>
+                        <a href=""
+                            key={item.itemname} 
+                            value={item.ownerid}
+                            onClick={(e) => {
+                                e.preventDefault(),
+                                this.props.toggle(item, index) }}>
+                        <del> {item.quantity} </del>
+                        <del> {item.itemname} </del>
+                        <del> {item.description} </del> ✓ </a>
+                        <small style={{color:'green'}}>{item.ownerid}</small>
                     </div>)
                 } else {
                     return (
-                    <div key={item.index} value={item.ownerid} user={this.props.user}>
-                        <del> {item.quantity} </del>
-                        <del> {item.itemname} </del>
-                        <del> {item.description} </del>
-                        <a href="" 
-                            onClick={this.props.toggle}
-                        > ✓ </a>
-                        <small style={{color:'green'}}></small>
-                    </div>)
+                        <div>
+                            <a 
+                            href="" 
+                            key={item.itemname} 
+                            value={item.ownerid}
+                            onClick={(e) => {
+                                    e.preventDefault(), 
+                                    this.props.toggle(item, index)}}>
+                            <span> {item.quantity} </span>
+                            <span> {item.itemname} </span>
+                            <span> {item.description} </span>
+                             ✓ </a>
+                        </div>)
+                    
                 }})
         } else {
             itemList.push(<li>No items added to event</li>)
-
         }
         return(
             <ul>
@@ -75,7 +86,6 @@ class ItemList extends Component {
     }
     
     render() {
-        console.log(this.props.items)
         return (
             <div>
                 {this.itemsToBeRendered(this.props.items)}
@@ -97,62 +107,54 @@ export default class ItemsCheckList extends Component {
         }
     }
     // receives list of items for event as props from Welcome.js
-    componentDidMount = () => {
+    componentWillReceiveProps = (nextProps) => {
         this.setState({
-            items: this.props.items,
-            eventid: this.props.eventid
+            items: nextProps.items,
+            eventid: nextProps.eventid
         })
     }
+    
     // passed to NewItem class above
     createItem = (text, quantity, description) => {
-        this.state.items.push({
+        console.log("trying to create item")
+        let addedItem = []
+        addedItem.push({
             itemname: text,
             quantity: quantity,
             description: text,
-            done: false
-        });
+            ownerid: null
+        })
+        console.log(addedItem)
+        this.props.handleClick(text, quantity, )
     }
 
-    // update item in db
-    //server.putt('/api/v1/event_inventory/:eventid', addItemToInventory);
-    saveItemToEventDB = (itemname, quantity, description, ownerid) => {
-        console.log(itemname, quantity, description, ownerid)
-        if(ownerid === null){
-            axios.put(`${ROOT_URL}/event_inventory/${this.props.eventid}`, {
-                itemname: itemname,
-                quantity: quantity,
-                ownerid: ownerid,
-                description: description
-            })
-        } else {
-            axios.put(`${ROOT_URL}/event_inventory/${this.props.eventid}`, {
-                itemname: itemname,
-                quantity: quantity,
-                ownerid: null,
-                description: description
-            })
-        }
-    }
 
     // passed to ItemList class above
     // sets state if item has been checked or not
-    toggleTask = (event, value) => {
-        event.preventDefault();
-        if(value === null){
-            console.log("no one has used this event")
-        } if(value === this.props.userName.id){
-            console.log(this.props.userName)
-            console.log("you own this item")
+    toggleTask = (item, index) => {
+        console.log("Toggling")
+        console.log(index)
+        let newItem = item;
+        let newState = this.state.items
+        if(item.ownerid === null){
+            newItem.ownerid = this.props.userName.name
+        } else if (item.ownerid === this.props.userName.name){
+            newItem.ownerid = null
+            console.log("if ownerid has props and now back to null")
         } else {
-            console.log(value + 'has this item')
-        }
+            console.log(item.ownerid + ' has this item')
+        } 
+        newState[index] = newItem;
+        this.setState({
+            items: newState
+        })
     }
     
     render() {
         return (
             <div>
-                <NewItem createItem={this.createItem} />
-                <ItemList items={this.props.items} user={this.props.userName.name} save={this.props.saveItemToEventDB} toggle={this.toggleTask}/>
+                {/* <NewItem createItem={this.createItem} /> */}
+                <ItemList items={this.state.items} user={this.props.userName.name} save={this.saveItemToEventDB} toggle={this.toggleTask}/>
             </div>
         );
     }
@@ -180,3 +182,28 @@ export default class ItemsCheckList extends Component {
 //         );
 //     }
 // }
+
+    // update item in db
+    //server.putt('/api/v1/event_inventory/:eventid', addItemToInventory);
+    // saveItemToEventDB = (item) => {
+    //     console.log(item)
+    //     if(item.ownerid){
+    //         axios.put(`${ROOT_URL}/event_inventory/${this.props.eventid}`, {
+    //             itemname: item.itemname,
+    //             quantity: item.quantity,
+    //             ownerid: item.ownerid,
+    //             description: item.description
+    //         }).then((res) => {
+    //             console.log(res)
+    //         })
+    //     } else {
+    //         axios.put(`${ROOT_URL}/event_inventory/${this.props.eventid}`, {
+    //             itemname: item.itemname,
+    //             quantity: item.quantity,
+    //             ownerid: null,
+    //             description: item.description
+    //         }).then((res) => {
+    //             console.log(res)
+    //         })
+    //     } 
+    // }
