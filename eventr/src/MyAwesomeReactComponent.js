@@ -132,6 +132,7 @@ export default class MyAwesomeReactComponent extends Component {
     super(props);
     this.state = {
         profile: {},
+        userid: null
         
     };
   }
@@ -143,8 +144,8 @@ export default class MyAwesomeReactComponent extends Component {
     if (!userProfile) {
       getProfile((err, profile) => {
         this.setState({ profile });
-        console.log(this.state.profile.given_name)
-        axios.post(`${ROOT_URL}/currentuser/${this.state.profile.sub}/${this.state.profile.given_name}/${this.state.profile.family_name}`).then(console.log("helloooooooo"))
+        this.setState({userid: parseInt(this.state.profile.sub.slice(9))})
+        axios.post(`${ROOT_URL}/currentuser/${this.state.userid}/${this.state.profile.given_name}/${this.state.profile.family_name}`);
       });
     } else {
       this.setState({ profile: userProfile });

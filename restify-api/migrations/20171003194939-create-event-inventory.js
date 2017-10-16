@@ -27,7 +27,7 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       ownerid: {
-        type: Sequelize.INTEGER
+        type: Sequelize.BIGINT
       },
       description: {
         type: Sequelize.STRING
