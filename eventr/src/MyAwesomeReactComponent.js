@@ -58,6 +58,7 @@ class MenuOptions extends Component {
   };
 
   render(){
+    
     return (
       <Router>
         <Tabs className="menubar" value={this.state.value} onChange={this.handleChange}>
@@ -95,14 +96,18 @@ class MenuOptions extends Component {
               </div>
             </div>
           </Tab>
-          <Tab icon={<FontIcon className="material-icons">settings</FontIcon>} label="SETTINGS" value="d" containerElement={<Link to="/settings" />} >
-            <Route exact path="/settings"/>
-            <div className="main-content-container">
-              <div className="side-content-container">
+          {/* renders user's profile */}
+          <Tab
+              icon={<FontIcon className="material-icons">settings</FontIcon>}
+              label="Settings"
+              value="d"
+              containerElement={<Link to="/settings" />}>
+              <div className="main-content-container">
+                <div className="side-content-container">
                 <UserMenu user={this.props.userdata}/>
                 </div>
                 <div className="changing-content-container" >
-                  <Settings />
+                  <Settings auth={this.props.auth}/>
                 </div>
             </div>
           </Tab>
@@ -152,12 +157,14 @@ export default class MyAwesomeReactComponent extends Component {
 
   }
   render() {
-    // const { profile } = this.state;
-    // console.log(profile)
+    // console.log(this.props.auth)
+    const { profile } = this.state;
+    // console.log(this.state.profile)
+
     return (
       <MuiThemeProvider muiTheme={muiTheme}>
         <div>
-          <MenuOptions userdata={this.state.profile}/>
+          <MenuOptions userdata={this.state.profile} auth={this.props.auth}/>
           <Footer />
         </div>
       </MuiThemeProvider>
