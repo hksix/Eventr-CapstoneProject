@@ -57,7 +57,7 @@ export default class MiniProfile extends Component {
         email: nextProps.userProfileData.email,
         profPic:nextProps.userProfileData.picture,
         createdAt: nextProps.userProfileData.updated_at,
-        userID:nextProps.userProfileData.sub,
+        userID:nextProps.userProfileData.userid,
       })
 }
   
