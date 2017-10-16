@@ -51,6 +51,7 @@ export default class EventType extends Component {
   }
 
   handleTypeSelector = ()=>{
+    console.log("trying to handle call to db")
       var selectionNum = this.state.value
       if(this.state.types[selectionNum] !== undefined ){
         axios.get(`${ROOT_URL}/event_categories/${selectionNum}/items`)
@@ -61,6 +62,7 @@ export default class EventType extends Component {
                 return item.item_name
               })
             },()=>{
+              console.log(this.state.defaultItems)
               this.props.changeHandler(this.state.types[selectionNum].category_name, this.state.selected, this.state.defaultItems)
             })
           })
