@@ -23,8 +23,18 @@ export const makeMainRoutes = () => {
   return (
       <Router history={history} component={App}>
         <div>
-          <Route path="/" render={(props) => <App auth={auth} {...props} />} />
-          <Route path="/home" render={(props) =>  <Home auth={auth} {...props}  />}   />
+          <Route 
+            path="/" 
+            render={(props) =>
+              !auth.isAuthenticated()
+              ? <Redirect to="/home" />
+              :<MyAwesomeReactComponent auth={auth} {...props} />} />
+
+          <Route 
+          path="/home" render={(props) =>  
+          <Home auth={auth} {...props}  />
+          }/>
+
           <Route
           path="/profile"
           render={props =>
@@ -39,14 +49,14 @@ export const makeMainRoutes = () => {
             ? <Redirect to="/home" />
             : <MiniProfile auth={auth} {...props} />}
         /> */}
-        <Route
+        {/* <Route
         path="/main"
         render={props =>
           !auth.isAuthenticated()
             ? <Redirect to="/home" />
             : <UserStateComponent auth={auth} {...props} />
             }
-        />
+        /> */}
 
           <Route path="/callback" render={(props) => {
             handleAuthentication(props);

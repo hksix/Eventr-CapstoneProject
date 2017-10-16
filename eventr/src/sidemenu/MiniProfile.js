@@ -29,6 +29,7 @@ export default class MiniProfile extends Component {
       // phone: "",
       // email: "",
       // profPic: props.userProfileData.picture,
+
     };
   }
   handleToggle = () => {

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 // import {BrowserRouter, Route, Switch, Link} from 'react-router-dom';
 
 // import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-// import MyAwesomeReactComponent from './MyAwesomeReactComponent';
+import MyAwesomeReactComponent from './MyAwesomeReactComponent';
 
 // import './App.css';
 // import axios from 'axios';
@@ -12,8 +12,8 @@ import React, { Component } from 'react';
 
 import apikey from './apikeys.js';
 
-export const ROOT_URL = `http://localhost:8090/api/v1/${apikey}`;
-// export const ROOT_URL = `http://ec2-52-207-242-113.compute-1.amazonaws.com/api/v1/${apikey}`;
+//export const ROOT_URL = `http://localhost:8090/api/v1/${apikey}`;
+export const ROOT_URL = `http://ec2-52-207-242-113.compute-1.amazonaws.com/api/v1/${apikey}`;
 
 
 

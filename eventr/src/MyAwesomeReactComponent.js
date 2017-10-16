@@ -2,14 +2,18 @@ import React, {Component} from 'react';
 import {Tabs, Tab} from 'material-ui/Tabs';
 import FontIcon from 'material-ui/FontIcon';
 import MapsPersonPin from 'material-ui/svg-icons/maps/person-pin';
+// import Paper from 'material-ui/Paper';
+
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
+// import FetchData from './axios.js';
 import {
     BrowserRouter as Router,
     Route,
     Link,
     // withRouter
   } from 'react-router-dom';
+
 import { Welcome } from './Welcome.js';
 import { SetEvent } from './SetEvent.js';
 import UserMenu from './sidemenu/UserMenu.js';
@@ -17,9 +21,15 @@ import Settings from './Settings.js';
 import Footer from './Footer.js';
 import './index.css';
 import MapContainer from "./GoogleMap/MapContainer.js";
+
+
 import axios from 'axios';
 import { ROOT_URL } from './App.js';
 
+
+// import PartyTypeTable from './setevent/EventType.js';
+
+// import { Calendar } from './Calendar.js'
 const muiTheme = getMuiTheme({
   palette: {
     primary1Color: '#4c3187',
@@ -47,10 +57,11 @@ class MenuOptions extends Component {
   };
 
   render(){
+    
     return (
       <Router>
         <Tabs className="menubar" value={this.state.value} onChange={this.handleChange}>
-          <Tab icon={<img src="../logo4.png" alt="Eventr Logo - lightbulb with E inside"/>} className="eventr-logo" value="logo"></Tab>
+          <Tab icon={<img src="../logo4.png" alt="Eventr Logo - lightbulb with E inside"/>} className="eventr-logo"></Tab>
           <Tab icon={<FontIcon className="material-icons">home</FontIcon>} label="HOME" value="a" containerElement={<Link to="/home" />} >
             <Route exact path="/home"/>
             <div className="main-content-container">
@@ -91,7 +102,7 @@ class MenuOptions extends Component {
                 <UserMenu handleUpdate={this.props.handleUpdate} user={this.props.userdata}/>
                 </div>
                 <div className="changing-content-container" >
-                  <Settings />
+                  <Settings auth={this.props.auth}/>
                 </div>
             </div>
           </Tab>
@@ -111,6 +122,9 @@ export default class UserStateComponent extends Component {
     };
   }
   componentDidMount() {
+    // axios.get(`${ROOT_URL}/events/host/${this.state.profile}`).then(res=> {console.log(res)});
+  //  console.log(this.state.profile) 
+  // this.setState({ profile: {} });
     const { userProfile, getProfile } = this.props.auth;
     // if (!userProfile) {
       getProfile((err, profile) => {

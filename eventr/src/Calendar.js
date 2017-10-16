@@ -13,9 +13,9 @@ export class Calendar extends Component {
         super(props);
         this.state = {
             events: [],
-            calendarData:[],
-            userdata: []
+            calendarData:[]
         };
+
         BigCalendar.setLocalizer(BigCalendar.momentLocalizer(moment));
     }
     componentWillReceiveProps(nextProps) {
@@ -61,9 +61,6 @@ export class Calendar extends Component {
             this.setState({calendarData: newCalData.reduce((a, b) => {return a.concat(b)}, [])})
           });
         });
-
-      });
-    
     }
 
     createEventStyles(val) {
@@ -86,7 +83,7 @@ export class Calendar extends Component {
       return (
         <div className="event-calendar">
           <BigCalendar 
-          popup={true}
+          popup='True'
           popupOffset={30}
           selectable
           key={this.state.calendarData.id}   

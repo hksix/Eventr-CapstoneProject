@@ -31,6 +31,7 @@ export default class UserMenu extends Component {
   //   // });
   // }
 
+
   render(){
     // console.log(this.state.userProfile)
     return(

@@ -94,7 +94,7 @@ const Welcome2 = (props) =>(
                 </div>
             </Card>
         </div>
-        <div style={{textAlign:'right'}}>{ props.isHost? <EditDropdown/>: null }</div>
+        <div style={{textAlign:'right'}}>{props.isHost ? <EditDropdown/>: null }</div>
     </header>
 );
 
@@ -221,7 +221,6 @@ export class Welcome extends Component {
                 desc={this.state.event.desc} 
                 date={this.state.event.date}
                 time={this.state.event.time}
-                isHost={this.state.event.isHost}
                 host={this.getHostName(this.state.event.isHost,this.state.event.host)} 
                 location={this.state.event.location}
                 headerColor={this.getHeaderColor(this.state.event.isHost)}

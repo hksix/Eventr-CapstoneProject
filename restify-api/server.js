@@ -280,6 +280,7 @@ function findOrAddUser(request, response, next) {
      
 }
 
+
 //server.put('/api/v1/users/:id', updateUser);
 function updateUser(request,response,next){
     if (!verifyRequiredParamsForUser(request)){
@@ -621,8 +622,6 @@ server.put(`${extension}/event_inventory/:id`, updateItemInInventory);
 server.del(`${extension}/event_inventory/:id`, deleteItemFromInventory);
 
 server.get(`${extension}/event/:event_id/guests`, getGuestProfilesByEvent); 
-server.post(`${extension}/currentuser/:id/:fName/:lName`, findOrAddUser);
-
 
 // module.exports = server;
 server.listen(8090, function() {
