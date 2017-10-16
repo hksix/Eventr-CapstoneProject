@@ -18,18 +18,17 @@ export class Calendar extends Component {
 
         BigCalendar.setLocalizer(BigCalendar.momentLocalizer(moment));
     }
-
-    componentDidMount() {
-      const current_user = this.props.userData;
-      const hostingEvents = axios.get(`${ROOT_URL}/events/host/3`);
-      const attendingEvents = axios.get(`${ROOT_URL}/events/guest/3`);
+    componentWillReceiveProps(nextProps) {
+      this.setState({userdata: nextProps.userdata}, () => {
+        const current_user = this.state.userdata.userid;
+      const hostingEvents = axios.get(`${ROOT_URL}/events/host/${current_user}`);
+      const attendingEvents = axios.get(`${ROOT_URL}/events/guest/${current_user}`);
       Promise.all([hostingEvents, attendingEvents])
         .then((res) => {
           console.log(res)
           this.setState({events: res}, () => {
             var idExists = {};
             const newCalData = this.state.events.map(index => {
-              // console.log(index);
               return index.data.map(val => {
                 if (!idExists.hasOwnProperty(val.id)) {
                   idExists[val.id] = true;
