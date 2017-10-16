@@ -28,7 +28,6 @@ export default class UserMenu extends Component {
   componentWillReceiveProps(nextProps){
     this.setState({
       userProfile: nextProps.user
-    
     });
   }
 

@@ -13,14 +13,23 @@ export class Calendar extends Component {
         super(props);
         this.state = {
             events: [],
-            calendarData:[]
+            calendarData:[],
+            userdata: []
         };
-
         BigCalendar.setLocalizer(BigCalendar.momentLocalizer(moment));
     }
+    componentWillReceiveProps(nextProps) {
+      // console.log(nextProps);
+      this.setState({userdata: nextProps.userdata}, () => {
+        // console.log(nextProps.userdata);
+        const current_user = this.state.userdata.userid;
+        // console.log(nextProps.userdata.userid);
+          // var current_user = this.state.userData.userid;
 
-    componentDidMount() {
-      const current_user = this.props.userData;
+        // console.log(this.state.userData)
+    // }
+    // componentDidMount() {
+      // const current_user = this.state.userData.userid;
       const hostingEvents = axios.get(`${ROOT_URL}/events/host/${current_user}`);
       const attendingEvents = axios.get(`${ROOT_URL}/events/guest/${current_user}`);
       Promise.all([hostingEvents, attendingEvents])
@@ -51,7 +60,10 @@ export class Calendar extends Component {
                     "location": val.location,
                     "time": val.time,
                   }; 
-                  if (eventInfo.host === current_user) {
+                  // console.log(parseInt(eventInfo.host));
+                  // console.log(current_user);
+                  if (parseInt(eventInfo.host) === current_user) {
+                    // eventInfo.host = current_user;
                     eventInfo.isHost = true;
                   }
                   return (eventInfo);
@@ -62,6 +74,9 @@ export class Calendar extends Component {
             this.setState({calendarData: newCalData.reduce((a, b) => {return a.concat(b)}, [])})
           });
         });
+
+      });
+    
     }
 
     createEventStyles(val) {
@@ -84,7 +99,7 @@ export class Calendar extends Component {
       return (
         <div className="event-calendar">
           <BigCalendar 
-          popup='True'
+          popup={true}
           popupOffset={30}
           selectable
           key={this.state.calendarData.id}   
