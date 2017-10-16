@@ -93,7 +93,7 @@ export class Calendar extends Component {
           events={this.state.calendarData}
           onSelectEvent={calendarData => this.props.handleEventClick(calendarData)}
           defaultDate={new Date()}
-          views={{month: true, week: true}}
+          views={{month: true}}
           defaultView="month"
           style={{height: "600px"}}
           eventPropGetter={val => this.createEventStyles(val)}
