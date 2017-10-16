@@ -285,12 +285,13 @@ export class SetEvent extends Component {
     })
   }
   
-  _addItemToEvent = (newValue, newDescription) => {
+  _addItemToEvent = (newValue, newDescription, newQuantity) => {
     console.log(newItem)
     let newItem = {}
     newItem.push({
       value: newValue,
-      newDescription
+      description: newDescription,
+      quantity: newQuantity
     })
     this.state.finalItemsForEvent.push(newItem)
   }

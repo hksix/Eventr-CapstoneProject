@@ -4,33 +4,33 @@ import _ from 'lodash'
 import axios from 'axios';
 import { ROOT_URL } from '../App.js'
 
-class NewItem extends Component {
-    createNewItemForEvent = (event) => {
-        event.preventDefault();
-        let text = this.refs.NewItemText.value;
-        let description = this.refs.NewItemDescription.value;
-        let quantity = this.refs.NewItemQuantity.value;
-        console.log(text)
-        if (text) {
-            this.props.createItem(text, quantity, description);
-            this.refs.NewItemText.value = '';
-            this.refs.NewItemDescription.value = '';
-            this.refs.NewItemQuantity.value = '';
-        } 
-    }
-    // ability to add more items to event from welcome page
-    render() {
-        return (
-            <form onSubmit={this.createNewItemForEvent}>
-                <label>Add more</label> 
-                <input type="text" ref="NewItemText" placeholder="Item"/> 
-                <input type="text" ref="NewItemDescription" placeholder="Description"/>
-                <input type="text" ref="NewItemQuantity" placeholder="Qty" style={{width: 30}}/>
-                <button type="submit">+</button>
-            </form>
-        );
-    }
-}
+// class NewItem extends Component {
+//     createNewItemForEvent = (event) => {
+//         event.preventDefault();
+//         let text = this.refs.NewItemText.value;
+//         let description = this.refs.NewItemDescription.value;
+//         let quantity = this.refs.NewItemQuantity.value;
+//         console.log(text)
+//         if (text) {
+//             this.props.changeHandler(text, quantity, description);
+//             this.refs.NewItemText.value = '';
+//             this.refs.NewItemDescription.value = '';
+//             this.refs.NewItemQuantity.value = '';
+//         } 
+//     }
+//     // ability to add more items to event from welcome page
+//     render() {
+//         return (
+//             <form onSubmit={this.createNewItemForEvent}>
+//                 <label>Add more</label> 
+//                 <input type="text" ref="NewItemText" placeholder="Item"/> 
+//                 <input type="text" ref="NewItemDescription" placeholder="Description"/>
+//                 <input type="text" ref="NewItemQuantity" placeholder="Qty" style={{width: 30}}/>
+//                 <button type="submit">+</button>
+//             </form>
+//         );
+//     }
+// }
 
 // passes props to item Class to render list of items to DOM
 class ItemList extends Component {
@@ -125,7 +125,7 @@ export default class ItemsCheckList extends Component {
             ownerid: null
         })
         console.log(addedItem)
-        this.props.handleClick(addedItem)
+        this.props.handleClick(text, quantity, )
     }
 
 
@@ -153,7 +153,7 @@ export default class ItemsCheckList extends Component {
     render() {
         return (
             <div>
-                <NewItem createItem={this.createItem} />
+                {/* <NewItem createItem={this.createItem} /> */}
                 <ItemList items={this.state.items} user={this.props.userName.name} save={this.saveItemToEventDB} toggle={this.toggleTask}/>
             </div>
         );
