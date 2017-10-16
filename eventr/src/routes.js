@@ -30,7 +30,12 @@ export const makeMainRoutes = () => {
               ? <Redirect to="/home" />
               :<MyAwesomeReactComponent auth={auth} {...props} />} />
 
-          <Route path="/home" render={(props) =>  <Home auth={auth} {...props}  />}   />
+          <Route 
+          path="/home" 
+          render={(props) =>  
+          <Home auth={auth} {...props}  />
+          }/>
+
           <Route
           path="/profile"
           render={props =>
