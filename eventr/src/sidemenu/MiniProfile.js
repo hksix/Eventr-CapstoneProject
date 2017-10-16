@@ -63,7 +63,7 @@ export default class MiniProfile extends Component {
         fName: nextProps.userProfileData.fName,
         lName: nextProps.userProfileData.lName,
         email: nextProps.userProfileData.email,
-        profPic: nextProps.userProfileData.profPic,
+        profPic: nextProps.userProfileData.picture,
         location: nextProps.userProfileData.location,
         phone: nextProps.userProfileData.phone,
         // createdAt: nextProps.userProfileData.updated_at,
@@ -113,7 +113,7 @@ componentWillUpdate(nextProps, nextState){
         <CardHeader
           title={this.state.fName}
           subtitle={this.state.lName}
-          avatar={this.state.picture}
+          avatar={this.state.profPic}
         />
 
         <CardTitle title={profTitle}/>

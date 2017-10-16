@@ -128,7 +128,7 @@ export default class UserStateComponent extends Component {
                 profPic: res.data.profPic,
                 location: res.data.location
               }
-            })
+            }, () => console.log(profile))
           })        
         })
       });
