@@ -10,7 +10,7 @@ module.exports = (sequelize, DataTypes) => {
     //event category ex: taco night is 0
     categoryid: DataTypes.INTEGER,
     //whoever owns the event
-    ownerid: DataTypes.INTEGER,
+    ownerid: DataTypes.BIGINT,
     description: DataTypes.STRING,
     createdAt: {
       type: DataTypes.DATE(3),
