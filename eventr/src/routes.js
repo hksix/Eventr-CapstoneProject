@@ -7,7 +7,7 @@ import Auth from './Auth/Auth';
 import history from './history';
 
 import Profile from './Profile/Profile';
-import MyAwesomeReactComponent from './MyAwesomeReactComponent.js';
+import UserStateComponent from './MyAwesomeReactComponent.js';
 // import  MenuHeader from './Menubar.js'
 // import UserMenu from './sidemenu/UserMenu'
 
@@ -44,7 +44,7 @@ export const makeMainRoutes = () => {
         render={props =>
           !auth.isAuthenticated()
             ? <Redirect to="/home" />
-            : <MyAwesomeReactComponent auth={auth} {...props} />
+            : <UserStateComponent auth={auth} {...props} />
             }
         />
 

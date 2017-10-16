@@ -38,7 +38,6 @@ class MenuOptions extends Component {
     super(props);
     this.state = {
       value: 'a',
-      userdata: null,
     };
   }
   handleChange = (value) => {
@@ -104,11 +103,11 @@ class MenuOptions extends Component {
 
 
 
-export default class MyAwesomeReactComponent extends Component {
+export default class UserStateComponent extends Component {
   constructor(props){
     super(props);
     this.state = {
-        profile: {}        
+        profile: {},      
     };
   }
   componentDidMount() {
