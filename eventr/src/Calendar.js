@@ -19,18 +19,8 @@ export class Calendar extends Component {
         BigCalendar.setLocalizer(BigCalendar.momentLocalizer(moment));
     }
     componentWillReceiveProps(nextProps) {
-      // console.log(nextProps);
-      // console.log(nextProps.userdata.userid)
       this.setState({userdata: nextProps.userdata}, () => {
-        // console.log(nextProps.userdata);
         const current_user = this.state.userdata.userid;
-        // console.log(nextProps.userdata.userid);
-          // var current_user = this.state.userData.userid;
-
-        // console.log(this.state.userData)
-    // }
-    // componentDidMount() {
-      // const current_user = this.state.userData.userid;
       const hostingEvents = axios.get(`${ROOT_URL}/events/host/${current_user}`);
       const attendingEvents = axios.get(`${ROOT_URL}/events/guest/${current_user}`);
       Promise.all([hostingEvents, attendingEvents])
@@ -39,7 +29,6 @@ export class Calendar extends Component {
           this.setState({events: res}, () => {
             var idExists = {};
             const newCalData = this.state.events.map(index => {
-              // console.log(index);
               return index.data.map(val => {
                 if (!idExists.hasOwnProperty(val.id)) {
                   idExists[val.id] = true;
@@ -61,10 +50,7 @@ export class Calendar extends Component {
                     "location": val.location,
                     "time": val.time,
                   }; 
-                  // console.log(parseInt(eventInfo.host));
-                  // console.log(current_user);
                   if (eventInfo.host === current_user) {
-                    // eventInfo.host = current_user;
                     eventInfo.isHost = true;
                   }
                   return (eventInfo);
