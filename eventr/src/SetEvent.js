@@ -182,11 +182,15 @@ export class SetEvent extends Component {
             onChangeIndex={this.handleChange}
         >
         <div id="name&Description">
-          <NameSelector name={this.state.eventName}
+          <div>
+            <h2 style={styles.headline}>Enter your event's name and description:</h2> 
+            <NameSelector name={this.state.eventName}
             changeHandler={this._handleNameChange}/>
-          <br/>
-          <DescriptionSelector disc={this.state.eventDiscription}
+          </div>
+          <div>
+            <DescriptionSelector disc={this.state.eventDiscription}
             changeHandler={this._handleDiscripChange}/>
+          </div>
         </div>
 
         <div id="When&where" style={{textAlign: 'center'}}>

@@ -251,6 +251,33 @@ function addUser(request,response,next){
         console.log(err)
     });
 }
+
+//currentuser/:id/:fName/:lName/
+function findOrAddUser(request, response, next) {
+    models.Users.find({
+        where: {
+            'id': request.params.id
+        }
+    }).then(user => {
+        if(user){
+            response.send(user);
+            next();
+        }
+        else {
+            models.Users.create({
+                id: request.params.id,
+                fName: request.params.fName,
+                lName: request.params.lName
+            }).then(res => {
+                response.send(res);
+                next();
+            })
+        }
+    });
+
+     
+}
+
 //server.put('/api/v1/users/:id', updateUser);
 function updateUser(request,response,next){
     if (!verifyRequiredParamsForUser(request)){
@@ -593,6 +620,8 @@ server.put(`${extension}/event_inventory/:id`, updateItemInInventory);
 server.del(`${extension}/event_inventory/:id`, deleteItemFromInventory);
 
 server.get(`${extension}/event/:event_id/guests`, getGuestProfilesByEvent); 
+server.post(`${extension}/currentuser/:id/:fName/:lName`, findOrAddUser);
+
 
 // module.exports = server;
 server.listen(8090, function() {

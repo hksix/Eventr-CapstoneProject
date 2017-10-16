@@ -2,11 +2,8 @@ import React, {Component} from 'react';
 import {Tabs, Tab} from 'material-ui/Tabs';
 import FontIcon from 'material-ui/FontIcon';
 import MapsPersonPin from 'material-ui/svg-icons/maps/person-pin';
-// import Paper from 'material-ui/Paper';
-
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
-// import FetchData from './axios.js';
 import {
     BrowserRouter as Router,
     Route,
@@ -22,9 +19,9 @@ import Settings from './Settings.js';
 import Footer from './Footer.js';
 import './index.css';
 import MapContainer from "./GoogleMap/MapContainer.js";
-// import PartyTypeTable from './setevent/EventType.js';
+import axios from 'axios';
+import { ROOT_URL } from './App.js';
 
-// import { Calendar } from './Calendar.js'
 const muiTheme = getMuiTheme({
   palette: {
     primary1Color: '#4c3187',
@@ -59,7 +56,6 @@ class MenuOptions extends Component {
           <Tab icon={<img src="../logo4.png" alt="Eventr Logo - lightbulb with E inside"/>} value="L" className="eventr-logo" containerElement={<Link to="/landingpage" />} >
             <LandingPage />
           </Tab>
-
           <Tab icon={<FontIcon className="material-icons">home</FontIcon>} label="HOME" value="a" containerElement={<Link to="/home" />} >
             <Route exact path="/home"/>
             <div className="main-content-container">
@@ -71,7 +67,7 @@ class MenuOptions extends Component {
               </div>
             </div>
           </Tab>
-          <Tab icon={<FontIcon className="material-icons">event</FontIcon>} label="CREATE EVENT" value="b" containerElement={<Link to="/events" />} >
+          <Tab icon={<FontIcon className="material-icons">event</FontIcon>} label="CREATE EVENT" value="b" containerElement={<Link to="/create-event" />} >
             <Route exact path="/events"/>
             <div className="main-content-container">
               <div className="side-content-container">
@@ -113,20 +109,26 @@ class MenuOptions extends Component {
 
 
 export default class MyAwesomeReactComponent extends Component {
-  componentWillMount() {
-    this.setState({ profile: {} });
+  constructor(props){
+    super(props);
+    this.state = {
+        profile: {}        
+    };
+  }
+  componentDidMount() {
     const { userProfile, getProfile } = this.props.auth;
     if (!userProfile) {
       getProfile((err, profile) => {
-        this.setState({ profile });
+        this.setState({ profile: {...profile, userid: parseInt(profile.sub.slice(9))}});
+        axios.post(`${ROOT_URL}/currentuser/${this.state.profile.userid}/${this.state.profile.given_name}/${this.state.profile.family_name}`);
       });
     } else {
       this.setState({ profile: userProfile });
     }
+   
+
   }
   render() {
-    const { profile } = this.state;
-    // console.log(this.state.profile)
     return (
       <MuiThemeProvider muiTheme={muiTheme}>
         <div>

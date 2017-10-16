@@ -1,13 +1,15 @@
 import React, {Component} from 'react';
+import LogoutButton from './LogoutButton.js';
+import About from './About.js';
 
 
 class Settings extends Component {
-    // constructor(props){
-    //     super(props);
-    // }
     render() {
         return (
-            <div>Settings page</div>
+            <div>
+                <About />
+                <LogoutButton />
+            </div>    
         )
     }
 }
