@@ -253,7 +253,7 @@ function addUser(request,response,next){
     });
 }
 
-//currentuser/:id/:fName/:lName/
+//currentuser/:id/:fName/:lName/:pic
 function findOrAddUser(request, response, next) {
     models.Users.find({
         where: {
@@ -268,7 +268,8 @@ function findOrAddUser(request, response, next) {
             models.Users.create({
                 id: request.params.id,
                 fName: request.params.fName,
-                lName: request.params.lName
+                lName: request.params.lName,
+                // profPic: request.params.pic
             }).then(res => {
                 response.send(res);
                 next();

@@ -115,7 +115,7 @@ export default class UserStateComponent extends Component {
     if (!userProfile) {
       getProfile((err, profile) => {
         this.setState({ profile: {...profile, userid: parseInt(profile.sub.slice(9))}},
-        () => {
+        () => { console.log(profile)
           axios.post(`${ROOT_URL}/currentuser/${this.state.profile.userid}/${this.state.profile.given_name}/${this.state.profile.family_name}`)
           .then((res) => {
             this.setState({

@@ -20,6 +20,7 @@ export class Calendar extends Component {
     }
     componentWillReceiveProps(nextProps) {
       // console.log(nextProps);
+      console.log(nextProps.userdata)
       this.setState({userdata: nextProps.userdata}, () => {
         // console.log(nextProps.userdata);
         const current_user = this.state.userdata.userid;
