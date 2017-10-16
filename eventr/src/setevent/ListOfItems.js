@@ -177,7 +177,7 @@ class ItemList extends Component {
 	render() {
 		return (
 			<div id="container">
-				<Form additem={this._addItemToEvent} />
+				<Form additem={this._addItemToEvent} onChange={this.props.onChange}/>
 				<ListAllItemsForEvent items={this.state.data} remove={this._removeItemFromEvent} />
 			</div>
 		);

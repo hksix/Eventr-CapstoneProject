@@ -277,9 +277,8 @@ export class SetEvent extends Component {
     })
   }
   _addItemToEvent = (newItem) => {
-    this.setState({
-      eventItems: newItem
-    })
+    console.log(newItem)
+    this.state.eventItems.push(newItem)
   }
   _handleSubmit=(e)=>{
     if(this.state.eventName === '' || this.state.eventDate === ''){
