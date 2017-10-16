@@ -169,9 +169,8 @@ export class Welcome extends Component {
     this.addItemForParty(item)
   }
   //server.post('/api/v1/event_inventory/:eventid', addItemToInventory);
+  // gets items added in list of items box and adds them to the database
   addItemForParty = (item) => {
-      console.log(item[0].itemname)
-      console.log(item[0].itemname)
     axios.post(`${ROOT_URL}/event_inventory/${this.state.eventid}`, {
         eventid: this.state.eventid,
         defaultItemid: null,
@@ -181,7 +180,6 @@ export class Welcome extends Component {
         ownerid: this.props.user.id,
         description: item[0].description
     }).then((res) => {
-        console.log(res)
         this.getItemsForParty(this.state.eventid)
     })
   }

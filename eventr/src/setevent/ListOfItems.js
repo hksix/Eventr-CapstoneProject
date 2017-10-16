@@ -29,7 +29,7 @@ class Form extends Component {
         const FloatingButtonAdd = () => (
             <div>
                 <FloatingActionButton mini={true}>
-                    <ContentAdd onClick={this.handleNewitemAddition} />
+                    <ContentAdd onClick={this._handleNewitemAddition} />
                 </FloatingActionButton>
             </div>
         );
@@ -49,7 +49,7 @@ class Form extends Component {
 					name={this.state.description}
 					onChange={this._handleDescriptionChange}
 				/>
-				<FloatingButtonAdd  />
+				<FloatingButtonAdd />
 				<br />
 				<div id="blank" style={{display:'none' }}>
 					<input 
@@ -62,27 +62,28 @@ class Form extends Component {
 			</div>
 		);
 	}
-
+	// handles when user types
 	_handleChange = (event) => {
+		console.log("working")
 		this.setState({
 			value: event.target.value
 		});
 	}
+	// handles when user types
 	_handleDescriptionChange = (event) => {
 		this.setState({
 			description: event.target.name
 		});
 	}
 	_handleNewitemAddition = () => {
-		// console.log(this.input.value);
+		console.log(this.input.value);
 		// this.props._addItemToEvent comes from SetEvent.js 
 		if(this.input.value !== '') {
-			this.props._addItemToEvent(this.input.value);
+			this.props.onChange(this.input.value);
 			this.setState({
 				value: '',
 				description: ''
 			});
-			
 			this.input.placeholder = "Add Items here...";
 		}
 	}
