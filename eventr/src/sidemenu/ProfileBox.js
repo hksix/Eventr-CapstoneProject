@@ -62,17 +62,18 @@ class ProfileBox extends Component {
 
   // this is how side profile looks without editing
   renderNormal = () => {
+    const profTitle = this.props.fName + ' ' + this.props.lName;
     return (
       <Card style={style.cardStyle}>
         <CardHeader
-          title="Profile Picture"
+          title={profTitle}
           avatar={this.props.profPic}
         />
         <h3 style={style.text}>Welcome <u>{this.props.fName} {this.props.lName}</u>!</h3>
         <h3 style={style.text}>Phone: {this.props.phone}</h3>
         <h3 style={style.text}>Location: {this.props.location}</h3>
         <h3 style={style.text}>Email: {this.props.email}</h3>
-        <h3 style={style.text}>Last Update: {this.props.createdAt}</h3>
+        {/* <h3 style={style.text}>Last Update: {this.props.createdAt}</h3> */}
         <br />
         <FlatButton label="Edit" open={this.state.open} onClick={this.edit} style={{marginLeft:10, marginTop:10, marginBottom:10}}/>
       </Card>
@@ -84,7 +85,13 @@ class ProfileBox extends Component {
     return (
       <Card style={style.cardStyle}>
         <h2 style={style.editText}>Edit your profile</h2>
-        
+        <TextField 
+          style={style.text} 
+          floatingLabelText="FirstName" 
+          floatingLabelFixed={true} 
+          hintText={this.props.fName}
+          onChange={this._handleLastNameChange}>
+        </TextField>
         <TextField 
           style={style.text} 
           floatingLabelText="Last Name" 
@@ -104,7 +111,7 @@ class ProfileBox extends Component {
 
         <TextField 
           style={style.text} 
-          floatingLabelText="New Default Location" 
+          floatingLabelText="Location" 
           floatingLabelFixed={true} 
           hintText={this.props.location}
           type='text'
@@ -113,7 +120,7 @@ class ProfileBox extends Component {
 
         <TextField 
           style={style.text} 
-          floatingLabelText="New Email" 
+          floatingLabelText="Email" 
           floatingLabelFixed={true} 
           hintText={this.props.email}
           type='text'
