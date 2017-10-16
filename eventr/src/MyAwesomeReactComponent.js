@@ -165,7 +165,8 @@ export default class UserStateComponent extends Component {
     })
   }
   _updateUserInState = (userID, userObj) => {
-    console.log(userObj)
+    // console.log(userObj.profPic)
+    // debugger
     this.setState({
       profile: {
         fName: userObj.fName,

@@ -63,7 +63,7 @@ export default class MiniProfile extends Component {
         fName: nextProps.userProfileData.fName,
         lName: nextProps.userProfileData.lName,
         email: nextProps.userProfileData.email,
-        profPic: nextProps.userProfileData.picture,
+        profPic: nextProps.userProfileData.profPic,
         location: nextProps.userProfileData.location,
         phone: nextProps.userProfileData.phone,
         // createdAt: nextProps.userProfileData.updated_at,
@@ -82,7 +82,8 @@ componentWillUpdate(nextProps, nextState){
   save = () => {
     // this.props.handleUpdate(this.state.userID, this.state)
     this.props.handleUpdate(this.state.userid, this.state)
-    console.log(this.state.phone);
+    // console.log(this.state.profPic)
+    // console.log(this.state.phone);
     // console.log(user);
     // axios.put(`${ROOT_URL}/users/${user}`, {
     //   fName: this.state.fName,
@@ -100,7 +101,8 @@ componentWillUpdate(nextProps, nextState){
   }
   
   render(){
-    console.log(this.state.phone)
+    
+    console.log(this.state.profPic)
     const styles = {
       title: {
         cursor: 'pointer',
@@ -132,13 +134,14 @@ componentWillUpdate(nextProps, nextState){
                 onLocationChange={this.handleLocationChange}
                 onPhoneChange={this.handlePhoneChange}
                 onEmailChange={this.handleEmailChange}
-                onProfPicChange={this.handleProfPicChange}
+                // onProfPicChange={this.handleProfPicChange}
                 fName={this.state.fName}
                 lName={this.state.lName}
                 location={this.state.location}
                 phone={this.state.phone}
                 email={this.state.email}
                 profPic={this.state.profPic}
+               
                 // createdAt={this.props.userProfileData.given_name}
                 onSave={this.save}
               />
