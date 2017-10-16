@@ -2,7 +2,7 @@
 module.exports = (sequelize, DataTypes) => {
   var Guests = sequelize.define('Guests', {
     eventid: DataTypes.INTEGER,
-    userid: DataTypes.BIGINT,
+    userid: DataTypes.INTEGER,
     attending: DataTypes.BOOLEAN,
     createdAt: {
       type: DataTypes.DATE(3),

@@ -20,7 +20,6 @@ body {
   background-attachment: fixed;
   background-size: cover;
   padding-top: 10px;
-  align-items: center;
 }
 .side-content-container {
   width: 80%;
@@ -54,7 +53,7 @@ body {
     /* border: 1px solid violet; */
     width: 100%;
     display: flex;
-    margin: 0 auto;
+    /* margin: 0 auto; */
     padding-top: 100px;
     justify-content: space-around;
     /* align-items: center; */
@@ -97,7 +96,7 @@ body {
   .changing-content-container {
     /* border: 1px solid aqua; */
     justify-content: space-around;
-    width: 50%;
+    width: 60%;
   }
   .side-content-container {
     display: unset;
@@ -121,9 +120,9 @@ body {
   /* padding: 50px; */
 
 }
-/* .menubar > div{
+.menubar > div{
   box-shadow: 3px 3px 4px lightgrey;
-} */
+}
 
 
 

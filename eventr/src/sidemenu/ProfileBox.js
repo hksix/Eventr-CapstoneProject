@@ -62,19 +62,17 @@ class ProfileBox extends Component {
 
   // this is how side profile looks without editing
   renderNormal = () => {
-    const profTitle = this.props.fName + ' ' + this.props.lName;
     return (
       <Card style={style.cardStyle}>
         <CardHeader
-          title= {profTitle}
+          title="Profile Picture"
           avatar={this.props.profPic}
         />
-        <h3 style={style.text}>First Name: {this.props.fName}</h3>
-        <h3 style={style.text}>Last Name: {this.props.lName}</h3>
+        <h3 style={style.text}>Welcome <u>{this.props.fName} {this.props.lName}</u>!</h3>
         <h3 style={style.text}>Phone: {this.props.phone}</h3>
         <h3 style={style.text}>Location: {this.props.location}</h3>
         <h3 style={style.text}>Email: {this.props.email}</h3>
-        {/* <h3 style={style.text}>Last Update: {this.props.createdAt}</h3> */}
+        <h3 style={style.text}>Last Update: {this.props.createdAt}</h3>
         <br />
         <FlatButton label="Edit" open={this.state.open} onClick={this.edit} style={{marginLeft:10, marginTop:10, marginBottom:10}}/>
       </Card>
@@ -86,14 +84,7 @@ class ProfileBox extends Component {
     return (
       <Card style={style.cardStyle}>
         <h2 style={style.editText}>Edit your profile</h2>
-        <TextField 
-          style={style.text} 
-          floatingLabelText="First Name" 
-          floatingLabelFixed={true} 
-          hintText={this.props.fName}
-          onChange={this._handleFirstNameChange}>
-        </TextField>
-
+        
         <TextField 
           style={style.text} 
           floatingLabelText="Last Name" 
@@ -101,16 +92,7 @@ class ProfileBox extends Component {
           hintText={this.props.lName}
           onChange={this._handleLastNameChange}>
         </TextField>
-        
-        <TextField 
-          style={style.text} 
-          floatingLabelText="New Email" 
-          floatingLabelFixed={true} 
-          hintText={this.props.email}
-          type='text'
-          onChange={this._handleEmailChange}>
-        </TextField>
-        
+
         <TextField 
           style={style.text} 
           floatingLabelText="Phone Number" 
@@ -128,6 +110,16 @@ class ProfileBox extends Component {
           type='text'
           onChange={this._handleLocationChange}>
         </TextField>
+
+        <TextField 
+          style={style.text} 
+          floatingLabelText="New Email" 
+          floatingLabelFixed={true} 
+          hintText={this.props.email}
+          type='text'
+          onChange={this._handleEmailChange}>
+        </TextField>
+
         <br />
         <FlatButton 
           label="Save" 
@@ -174,7 +166,7 @@ class ProfileBox extends Component {
     });
   }
   _handleClick = (e) => {
-    console.log("saving")
+    console.log("working")
     this._handleTouchTap()
     this.props.onSave()
   }		    
@@ -184,9 +176,6 @@ class ProfileBox extends Component {
 
   // handle all edits of users profile and passes value back to MiniProfile to change state and save to database
 
-  _handleFirstNameChange=(e)=> {
-    this.props.onNameChange(e.target.value)
-  };
   _handleLastNameChange=(e)=> {
     this.props.onNameChange(e.target.value)
   };
@@ -199,9 +188,9 @@ class ProfileBox extends Component {
   _handleEmailChange=(e)=> {
     this.props.onEmailChange(e.target.value)
   };
-  // _handleProfPicChange=(e)q=> {
-  //   this.props.onProfPicChange(e.target.value)
-  // };
+  _handleProfPicChange=(e)=> {
+    this.props.onProfPicChange(e.target.value)
+  };
 }
 
 export default ProfileBox;

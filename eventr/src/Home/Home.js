@@ -11,7 +11,7 @@ class Home extends Component {
     const { isAuthenticated } = this.props.auth;
     return (
       <div className="container">
-        {
+        {/* {
           isAuthenticated() && (
             <div>
               <h4>
@@ -24,10 +24,10 @@ class Home extends Component {
                 <Link to="main">Main page</Link>
                 .
               </h4>
-              <LandingPage/>
+              
             </div>
             )
-        }
+        } */}
         {
           !isAuthenticated() && (
             <div>
