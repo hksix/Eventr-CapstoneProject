@@ -22,7 +22,7 @@ class Form extends Component {
 		super(props);
 		this.state = {
 			value: '',
-			name: ''
+			description: '',
 		};
 	}	
 	render() {
@@ -46,7 +46,7 @@ class Form extends Component {
 				/>
 				<TextField
 					hintText="Description"
-					name={this.state.description}
+					description={this.state.description}
 					onChange={this._handleDescriptionChange}
 				/>
 				<FloatingButtonAdd />
@@ -57,6 +57,7 @@ class Form extends Component {
 							this.input = node;
 						}}
 						value={this.state.value}
+						description={this.state.description}
 					onChange={this._handleChange}/>
 				</div>
 			</div>
@@ -64,7 +65,6 @@ class Form extends Component {
 	}
 	// handles when user types
 	_handleChange = (event) => {
-		console.log("working")
 		this.setState({
 			value: event.target.value
 		});
@@ -77,9 +77,10 @@ class Form extends Component {
 	}
 	_handleNewitemAddition = () => {
 		console.log(this.input.value);
+		console.log(this.input.description);
 		// this.props._addItemToEvent comes from SetEvent.js 
 		if(this.input.value !== '') {
-			this.props.onChange(this.input.value);
+			this.props.onChange(this.input.value, this.input.description);
 			this.setState({
 				value: '',
 				description: ''
@@ -130,7 +131,7 @@ const CreatingItemForEvent = ({item, remove}) => {
 	// single item 
 	return (
 		<div>
-			{item.value}
+			{item.value} {item.name}
 			<FloatingButtonRemove/>
 		</div>
 	);
@@ -177,7 +178,7 @@ class ItemList extends Component {
 	render() {
 		return (
 			<div id="container">
-				<Form additem={this._addItemToEvent} onChange={this.props.onChange}/>
+				<Form additem={this._addItemToEvent} onChange={this.props.changeHandler}/>
 				<ListAllItemsForEvent items={this.state.data} remove={this._removeItemFromEvent} />
 			</div>
 		);
@@ -193,6 +194,7 @@ class ItemList extends Component {
 	}
 	// Handler to add item to event list when making event
 	_addItemToEvent = (val, desc) => {
+		console.log("trying to add item")
 		let id;
 		// if localStorage is available then increase localStorage count
 		// else use global window object's id variable

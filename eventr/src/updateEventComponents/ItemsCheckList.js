@@ -40,26 +40,31 @@ class ItemList extends Component {
         console.log(items)
         if(items.length > 0){
             itemList = items.map((item, index) => {
+                console.log(item.ownerid)
                 if(item.ownderid === null){
                     return (
-                    <div key={item.index} value={item.ownerid}>
+                    <div>
+                        <a 
+                        href="" 
+                        key={item.index} 
+                        value={item.ownerid}
+                        onClick={this.props.toggle(this.value)}>
                         <span> {item.quantity} </span>
                         <span> {item.itemname} </span>
                         <span> {item.description} </span>
-                        <a href="" 
-                            onClick={this.props.toggle}
-                        > ✓ </a>
+                         ✓ </a>
                     </div>)
                 } else {
                     return (
-                    <div key={item.index} value={item.ownerid}>
+                        <div>
+                        <a href=""
+                            key={item.index} 
+                            value={item.ownerid}
+                            onClick={this.props.toggle}>
                         <del> {item.quantity} </del>
                         <del> {item.itemname} </del>
-                        <del> {item.description} </del>
-                        <a href="" 
-                            onClick={this.props.toggle}
-                        > ✓ </a>
-                        <small style={{color:'green'}}></small>
+                        <del> {item.description} </del> ✓ </a>
+                        <small style={{color:'green'}}>{item.ownerid}</small>
                     </div>)
                 }})
         } else {
@@ -142,11 +147,15 @@ export default class ItemsCheckList extends Component {
     // sets state if item has been checked or not
     toggleTask = (event, value) => {
         event.preventDefault();
+        console.log(value)
         if(value === null){
-            console.log("no one has used this event")
+            value = this.props.userName.id
+            console.log("if value is null")
+            console.log(value)
         } if(value === this.props.userName.id){
-            console.log(this.props.userName)
-            console.log("you own this item")
+            value = null
+            console.log("if value has props")
+            console.log(value)
         } else {
             console.log(value + 'has this item')
         }

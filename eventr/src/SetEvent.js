@@ -219,7 +219,7 @@ export class SetEvent extends Component {
             <EventType type={this.state.eventType}
             changeHandler={this._handleTypeChange} autoWidth={false}/>
             <EventTypeDefaultItems defaultItems={this.state.eventItems}/>
-            <ItemList onChange={this._addItemToEvent}/> 
+            <ItemList changeHandler={this._addItemToEvent}/> 
         </div>
 
         <div style={styles.slide}>

@@ -31,7 +31,6 @@ function getGuestProfilesByEvent(request, response, next) {
         where: {
             'id': request.params.event_id
         }
-
     }).then(function(event) {
         var options = {}
         event.getGuests(options).then(results => {
