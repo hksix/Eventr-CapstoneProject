@@ -18,7 +18,7 @@ export default class LandingPage extends Component{
                   </div>
                   <button id="get-started" href="#">GET STARTED</button>
                   <div className="video-container">
-                      <video autoplay loop className="fillWidth">
+                      <video autoPlay loop className="fillWidth">
                           <source src="images/Night-BBQ.mp4" type="video/mp4" />Your browser does not support the video tag. I suggest you upgrade your browser. 
                       </video>
                       <div className="poster hidden">

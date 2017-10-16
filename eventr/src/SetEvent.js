@@ -147,6 +147,7 @@ export class SetEvent extends Component {
       eventPeopleCount:'',
       eventPeopleNames:'',
       eventItems:[],
+      finalItemsForEvent: [],
     };
   }
 
@@ -221,9 +222,8 @@ export class SetEvent extends Component {
         <div style={styles.slide}>
             <EventType type={this.state.eventType}
             changeHandler={this._handleTypeChange} autoWidth={false}/>
-            <EventTypeDefaultItems defaultItems={this.state.eventItems}/>
-            <h2 style={styles.headline}>Items page</h2>
-            <ItemList/> 
+            <EventTypeDefaultItems defaultItems={this.state.eventItems} changeHandler={this._addItemToEvent}/>
+            <ItemList changeHandler={this._addItemToEvent}/> 
         </div>
 
         <div style={styles.slide}>
@@ -267,12 +267,15 @@ export class SetEvent extends Component {
       eventTime: newTime
     })
   }
+  // sets default items for whatever category was chosen in EventType.js
+  // then passes state to EventTypeDefaultItems.js to populate checklist
   _handleTypeChange=(newType, newID, newDefaultItems)=>{
-    console.log()
+    console.log("handling change of category")
     this.setState({
       eventType: newType,
       eventID: newID,
-      eventItems: newDefaultItems,
+      eventItems: newDefaultItems
+
     })
   }
   _handleInviteChange=(newInvites, names)=>{
@@ -281,6 +284,17 @@ export class SetEvent extends Component {
       eventPeopleNames: names
     })
   }
+  
+  _addItemToEvent = (newValue, newDescription) => {
+    console.log(newItem)
+    let newItem = {}
+    newItem.push({
+      value: newValue,
+      newDescription
+    })
+    this.state.finalItemsForEvent.push(newItem)
+  }
+
   _handleSubmit=(e)=>{
     if(this.state.eventName === '' || this.state.eventDate === ''){
       alert('woah chill.. before we continue please fill out all forms.' )
