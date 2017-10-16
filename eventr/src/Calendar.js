@@ -20,7 +20,7 @@ export class Calendar extends Component {
     }
     componentWillReceiveProps(nextProps) {
       // console.log(nextProps);
-      console.log(nextProps.userdata)
+      // console.log(nextProps.userdata.userid)
       this.setState({userdata: nextProps.userdata}, () => {
         // console.log(nextProps.userdata);
         const current_user = this.state.userdata.userid;
@@ -63,7 +63,7 @@ export class Calendar extends Component {
                   }; 
                   // console.log(parseInt(eventInfo.host));
                   // console.log(current_user);
-                  if (parseInt(eventInfo.host) === current_user) {
+                  if (eventInfo.host === current_user) {
                     // eventInfo.host = current_user;
                     eventInfo.isHost = true;
                   }

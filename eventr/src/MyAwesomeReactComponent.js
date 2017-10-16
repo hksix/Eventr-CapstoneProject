@@ -112,7 +112,7 @@ export default class UserStateComponent extends Component {
   }
   componentDidMount() {
     const { userProfile, getProfile } = this.props.auth;
-    if (!userProfile) {
+    // if (!userProfile) {
       getProfile((err, profile) => {
         this.setState({ profile: {...profile, userid: parseInt(profile.sub.slice(9))}},
         () => { console.log(profile)
@@ -132,9 +132,9 @@ export default class UserStateComponent extends Component {
           })        
         })
       });
-    } else {
-      this.setState({ profile: userProfile });
-    }
+    // } else {
+    //   this.setState({ profile: userProfile });
+    // }
    
 
   }
