@@ -28,7 +28,7 @@ export const makeMainRoutes = () => {
             render={(props) =>
               !auth.isAuthenticated()
               ? <Redirect to="/home" />
-              :<MyAwesomeReactComponent auth={auth} {...props} />} />
+              :<UserStateComponent auth={auth} {...props} />} />
 
           <Route 
           path="/home" render={(props) =>  

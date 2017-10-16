@@ -19,7 +19,8 @@ class Settings extends Component {
                       className="btn-margin"
                       onClick={this.logout.bind(this)}
                     >
-                      Log Out
+                    <LogoutButton/>
+                      
                     </button>
               }
               <div className="container">

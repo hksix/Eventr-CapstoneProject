@@ -21,8 +21,8 @@ export class Calendar extends Component {
     componentWillReceiveProps(nextProps) {
       this.setState({userdata: nextProps.userdata}, () => {
         const current_user = this.state.userdata.userid;
-      const hostingEvents = axios.get(`${ROOT_URL}/events/host/${current_user}`);
-      const attendingEvents = axios.get(`${ROOT_URL}/events/guest/${current_user}`);
+      const hostingEvents = axios.get(`${ROOT_URL}/events/host/3`);
+      const attendingEvents = axios.get(`${ROOT_URL}/events/guest/3`);
       Promise.all([hostingEvents, attendingEvents])
         .then((res) => {
           console.log(res)
@@ -61,7 +61,9 @@ export class Calendar extends Component {
             this.setState({calendarData: newCalData.reduce((a, b) => {return a.concat(b)}, [])})
           });
         });
-    }
+    })
+  }
+
 
     createEventStyles(val) {
       const eventStyle = {

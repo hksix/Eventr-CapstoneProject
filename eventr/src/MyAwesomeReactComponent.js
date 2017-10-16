@@ -157,7 +157,7 @@ export default class UserStateComponent extends Component {
     return (
       <MuiThemeProvider muiTheme={muiTheme}>
         <div>
-          <MenuOptions handleUpdate={this._updateUser} userdata={this.state.profile}/>
+          <MenuOptions handleUpdate={this._updateUser} userdata={this.state.profile} auth={this.props.auth}/>
           <Footer />
         </div>
       </MuiThemeProvider>
