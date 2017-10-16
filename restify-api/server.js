@@ -235,12 +235,12 @@ function addUser(request,response,next){
         return;
     }
     models.Users.create({
-        fName: request.params.fName,
-        lName: request.params.lName,
-        profPic: request.params.profPic,
-        email: request.params.email,
-        phone: request.params.phone,
-        location: request.params.location
+        fName: request.body.fName,
+        lName: request.body.lName,
+        profPic: request.body.profPic,
+        email: request.body.email,
+        phone: request.body.phone,
+        location: request.body.location
     }).then(function(user) {
         var data = {
             message: "New user created successfully",
@@ -449,13 +449,13 @@ function addItemToInventory(request,response,next){
             response.send('this item is already added')
         } else {
             models.EventInventory.create({
-                eventid: request.params.eventid,
-                defaultitmeid: request.params.defaultitemid,
-                itemname: request.params.itemname,
-                quantity: request.params.quantity,
-                categoryid: request.params.categoryid,
-                ownderid: request.params.ownderid,
-                description: request.params.description,
+                eventid: request.body.eventid,
+                defaultitmeid: request.body.defaultitemid,
+                itemname: request.body.itemname,
+                quantity: request.body.quantity,
+                categoryid: request.body.categoryid,
+                ownerid: request.body.ownerid,
+                description: request.body.description,
             }).then(function(item) {
                 var data = {
                     message: "New item added successfully",
