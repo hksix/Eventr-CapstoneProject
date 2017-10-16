@@ -21,21 +21,21 @@ const muiTheme = getMuiTheme({
 });
 
 export default class UserMenu extends Component {
-    state={
-      userProfile: null
-    }
+  //   state={
+  //     userProfile: null
+  //   }
   
-  componentWillReceiveProps(nextProps){
-    this.setState({
-      userProfile: nextProps.user
-    });
-  }
+  // componentWillReceiveProps(nextProps){
+  //   // this.setState({
+  //   //   userProfile: nextProps.user
+  //   // });
+  // }
 
   render(){
     // console.log(this.state.userProfile)
     return(
       <div>
-        <MiniProfile userProfileData={this.state.userProfile}  />
+        <MiniProfile userProfileData={this.props.user}  />
         <Alerts />
         <MiniEvents />
       </div>
