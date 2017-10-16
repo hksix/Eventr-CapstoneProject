@@ -2,7 +2,7 @@
 module.exports = (sequelize, DataTypes) => {
   var Events = sequelize.define('Events', {
     // event_id: DataTypes.BIGINT,
-    host_id: DataTypes.BIGINT,
+    host_id: DataTypes.INTEGER,
     name: DataTypes.STRING,
     description: DataTypes.STRING,
     date: DataTypes.DATE,

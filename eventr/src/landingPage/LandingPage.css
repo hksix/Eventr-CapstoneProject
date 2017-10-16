@@ -1,9 +1,4 @@
-.landing-page-container {
-  background-color: white !important;
-}
-.landing-main-container {
-  padding-bottom: 50px;
-}
+
 .h1-landing-page {
   font: 300 50px/65px "Open Sans",open-sans,sans-serif;
   color:white;
@@ -165,9 +160,6 @@
 @media screen and (min-width: 768px){
   .landing-header-container {
     height: 700px;
-  }
-  .landing-main-container {
-    padding-bottom: 150px;
   }
   .section-container,
   .about-container {

@@ -88,13 +88,13 @@ const Welcome2 = (props) =>(
         <div style={SubHeader}>
             <Card style={cardbox}>
                 <div> <u>List of Items box</u> </div>
-                <ItemsCheckList userName={props.userdata}  items={props.items} eventid={props.eventid} handleClick={props.handleAdditionOfItem}/>
+                <ItemsCheckList userName={props.userdata}  items={props.items} eventid={props.eventid}/>
                 <div style={{position:'relative', float:'right'}}>
                 
                 </div>
             </Card>
         </div>
-        <div style={{textAlign:'right'}}>{ props.isHost? <EditDropdown/>: null }</div>
+        <div style={{textAlign:'right'}}>{props.isHost ? <EditDropdown/>: null }</div>
     </header>
 );
 
@@ -165,29 +165,6 @@ export class Welcome extends Component {
       }
   }
 
-  handleAdditionOfItem = (item) => {
-    console.log("adding item in Welcome.js")
-    this.addItemForParty(item)
-  }
-  //server.post('/api/v1/event_inventory/:eventid', addItemToInventory);
-  // gets items added in list of items box and adds them to the database
-  addItemForParty = (item) => {
-    console.log(item[0].itemname)
-    console.log("item in addItemForParty in welcome.js")
-    console.log(this.state.eventid)
-    axios.post(`${ROOT_URL}/event_inventory/${this.state.eventid}`, {
-        eventid: this.state.eventid,
-        defaultItemid: null,
-        itemname: item[0].itemname,
-        quantity: item[0].quantity,
-        categoryid: null,
-        ownerid: item[0].ownerid,
-        description: item[0].description
-    }).then((res) => {
-        console.log(res)
-        this.getItemsForParty(this.state.eventid)
-    })
-  }
   // server.get('/api/v1/event_inventory/:event_id', getInventoryForEvent);
   getItemsForParty = (eventid) => {
     axios.get(`${ROOT_URL}/event_inventory/${eventid}`).then((res) => {
@@ -214,12 +191,10 @@ export class Welcome extends Component {
       if(invited.length > 0){
           guestList = invited.map(guest =>{
               let attending = ''
-              if (guest.attending){
-                 attending = "Attending"
-              } else if (guest.attending === false){
-                 attending = "Not Attending"
+              if(guest.attending === false){
+                  attending = "Attending"
               } else {
-                attending = "No response"
+                  attending = "Not attending"
               }
               return <p key={guest.index}>{guest.userid} {attending}</p>
           })
@@ -246,12 +221,10 @@ export class Welcome extends Component {
                 desc={this.state.event.desc} 
                 date={this.state.event.date}
                 time={this.state.event.time}
-                isHost={this.state.event.isHost}
                 host={this.getHostName(this.state.event.isHost,this.state.event.host)} 
                 location={this.state.event.location}
                 headerColor={this.getHeaderColor(this.state.event.isHost)}
                 items={this.state.itemsForEvent}
-                handleAdditionOfItem={this.handleAdditionOfItem}
                 userdata={this.props.user}
                 />
 

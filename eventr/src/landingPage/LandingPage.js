@@ -6,7 +6,7 @@ export default class LandingPage extends Component{
     render(){
         return(
 
-        <div className="landing-page-container">
+        <div>
 
           <header className="landing-header-container">
               <div className="homepage-hero-module">
@@ -90,13 +90,13 @@ export default class LandingPage extends Component{
                 </div>
           </main>
         
-          {/* <footer>
+          <footer>
             <div className="landing-footer-container">
               <div className="landing-footer-info">
               <h4 className="h4-landing-page">&copy; 2017 Eventr</h4>
               </div>
             </div>
-          </footer> */}
+          </footer>
 
         </div>
         

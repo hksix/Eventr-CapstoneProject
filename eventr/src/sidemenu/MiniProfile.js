@@ -21,7 +21,7 @@ export default class MiniProfile extends Component {
     super(props);
     this.state = {
       open: false,
-      ProfileData: props.userProfileData,
+      ProfileData:props.userProfileData,
       fName: '',
     };
   }
@@ -57,7 +57,7 @@ export default class MiniProfile extends Component {
         email: nextProps.userProfileData.email,
         profPic:nextProps.userProfileData.picture,
         createdAt: nextProps.userProfileData.updated_at,
-        userID:nextProps.userProfileData.userid,
+        userID:nextProps.userProfileData.sub,
       })
 }
   
@@ -68,8 +68,7 @@ componentWillUpdate(nextProps, nextState){
 
 
   save = () => {
-    const user = this.state.userID;
-    // console.log(user);
+    const user = this.userID;
     axios.put(`${ROOT_URL}/users/${user}`, {
       fName: this.state.fName,
       lName: this.state.lName,
