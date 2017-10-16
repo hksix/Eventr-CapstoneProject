@@ -14,7 +14,8 @@ export default class MiniEvents extends Component {
   }
   
   componentDidMount = () => {
-    axios.get(`${ROOT_URL}/events/guest/3`).then((res) => {
+    const user = '1';
+    axios.get(`${ROOT_URL}/events/guest/${user}`).then((res) => {
       this.setState({
         data: res.data
       })
@@ -26,17 +27,23 @@ export default class MiniEvents extends Component {
 
   render(){
     const events = this.state.data.map(function(data) {
-      return(<CardText><b>{data.name}</b><br/>{data.date}</CardText>)
+      const year = data.date.slice(0,4);
+      const month = data.date.slice(5,7);
+      const day = data.date.slice(8,10);
+      const eventDate = month + '-' + day + '-' + year;
+      return(<CardText><b>{data.name}:<br/></b>{eventDate}</CardText>)
     })
     return(
       <Card >
-        <CardTitle title="Events" subtitle="These are your upcomming events" />
+        <CardTitle title="Events" subtitle="Here are your upcoming events" />
         <CardText style={{height: '200px', overflow: 'scroll'}}>{events}</CardText>
-        <CardActions >
-          <FlatButton label="Action1" />
-          <FlatButton label="Action2" />
-        </CardActions>
+
       </Card>
     )
   }
 }
+
+{/* <CardActions >
+<FlatButton label="Action1" />
+<FlatButton label="Action2" />
+</CardActions> */}

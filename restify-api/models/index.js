@@ -54,6 +54,8 @@ db.EventCategories.hasMany(db.Events, {foreignKey: 'category_id'}); //each event
 
 db.Users.hasMany(db.Events, {foreignKey: 'host_id'}); //each event has a host user
 db.Events.hasMany(db.Guests, {foreignKey: 'eventid'});
+db.Users.hasMany(db.Guests, {foreignKey: 'userid'});
+db.Guests.hasMany(db.Users, {foreignKey:'id'});
 
 db.EventCategories.hasMany(db.SuggestedItems, {foreignKey: 'id'})
 db.SuggestedItems.hasMany(db.ItemsForEventCategories, {foreignKey: 'item_id'})

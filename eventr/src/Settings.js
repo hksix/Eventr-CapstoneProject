@@ -1,12 +1,17 @@
 import React, {Component} from 'react';
+import LogoutButton from './LogoutButton.js';
+import About from './About.js';
 
 class Settings extends Component {
+
       logout() {
         this.props.auth.logout();
       }
+
     render() {
         const { isAuthenticated } = this.props.auth;
         return (
+
             <div>Settings page
              {
                 
@@ -22,6 +27,7 @@ class Settings extends Component {
             
           </div>
               </div>
+
         )
     }
 }

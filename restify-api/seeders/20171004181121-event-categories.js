@@ -33,6 +33,10 @@ module.exports = {
     {
       id: 7,
       category_name: 'General Party'
+    },
+    {
+      id: 8,
+      category_name: 'Graduation'
     }
     ])
   },

@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {Card, CardActions, CardTitle, CardText} from 'material-ui/Card';
-import FlatButton from 'material-ui/FlatButton';
+// import FlatButton from 'material-ui/FlatButton';
 
 
 export default class Alerts extends Component {
@@ -8,15 +8,19 @@ export default class Alerts extends Component {
   render(){
     return(
       <Card >
-        <CardTitle title="Alerts" subtitle="These are your upcomming alerts" /> 
+        <CardTitle title="Notifications"/> 
         <CardText>
-          Pick up cake from Publix on Friday
+          You're invited to Demo Day After Party hosted by Stephanie Asmar! RSVP Here!
+          <br/><br/>
+          Katie RSVP'd YES to your Halloween Party 2017
         </CardText>
-        <CardActions>
-          <FlatButton label="Action1" />
-          <FlatButton label="Action2" />
-        </CardActions>
+        
       </Card>
     )
   }
 }
+
+// <CardActions>
+//           <FlatButton label="Action1" />
+//           <FlatButton label="Action2" />
+//         </CardActions>

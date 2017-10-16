@@ -20,7 +20,7 @@ export class Calendar extends Component {
     }
 
     componentDidMount() {
-      const current_user = 1;
+      const current_user = this.props.userData;
       const hostingEvents = axios.get(`${ROOT_URL}/events/host/${current_user}`);
       const attendingEvents = axios.get(`${ROOT_URL}/events/guest/${current_user}`);
       Promise.all([hostingEvents, attendingEvents])
@@ -33,10 +33,14 @@ export class Calendar extends Component {
               return index.data.map(val => {
                 if (!idExists.hasOwnProperty(val.id)) {
                   idExists[val.id] = true;
+                  const year = val.date.slice(0,4);
+                  const month = val.date.slice(5,7);
+                  const day = val.date.slice(8,10);
+                  const eventDate = month + '-' + day + '-' + year;
                     const eventInfo = {
                     "id": val.id,
                     "title": val.name,
-                    "date": val.date,
+                    "date": eventDate,
                     // simply inserted ,10 as radix to mitigate errors received within console
                     // https://stackoverflow.com/questions/7818903/jslint-says-missing-radix-parameter-what-should-i-do
                     "start": new Date( parseInt(val.date.slice(0,4),10), parseInt(val.date.slice(5,7),10)-1, parseInt(val.date.slice(8,11),10) ),
