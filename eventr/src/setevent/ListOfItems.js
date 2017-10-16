@@ -80,7 +80,7 @@ class Form extends Component {
 		console.log(this.input.description);
 		// this.props._addItemToEvent comes from SetEvent.js 
 		if(this.input.value !== '') {
-			this.props.onChange(this.input.value, this.input.description);
+			this.props.changeHandler(this.input.value, this.input.description);
 			this.setState({
 				value: '',
 				description: ''
