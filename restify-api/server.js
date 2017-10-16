@@ -347,6 +347,7 @@ function addGuest(request,response,next){
         models.Guests.create({
             eventid: request.body.eventid,
             userid: request.body.guestid,
+            attending: null
         }).then(function(guest) {
             var data = {
                 message: "New guest successfully added to event",

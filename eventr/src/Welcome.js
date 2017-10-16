@@ -166,20 +166,25 @@ export class Welcome extends Component {
   }
 
   handleAdditionOfItem = (item) => {
+    console.log("adding item in Welcome.js")
     this.addItemForParty(item)
   }
   //server.post('/api/v1/event_inventory/:eventid', addItemToInventory);
   // gets items added in list of items box and adds them to the database
   addItemForParty = (item) => {
+    console.log(item[0].itemname)
+    console.log("item in addItemForParty in welcome.js")
+    console.log(this.state.eventid)
     axios.post(`${ROOT_URL}/event_inventory/${this.state.eventid}`, {
         eventid: this.state.eventid,
         defaultItemid: null,
         itemname: item[0].itemname,
         quantity: item[0].quantity,
         categoryid: null,
-        ownerid: this.props.user.id,
+        ownerid: item[0].ownerid,
         description: item[0].description
     }).then((res) => {
+        console.log(res)
         this.getItemsForParty(this.state.eventid)
     })
   }
@@ -209,10 +214,12 @@ export class Welcome extends Component {
       if(invited.length > 0){
           guestList = invited.map(guest =>{
               let attending = ''
-              if(guest.attending === false){
-                  attending = "Attending"
+              if (guest.attending){
+                 attending = "Attending"
+              } else if (guest.attending === false){
+                 attending = "Not Attending"
               } else {
-                  attending = "Not attending"
+                attending = "No response"
               }
               return <p key={guest.index}>{guest.userid} {attending}</p>
           })
