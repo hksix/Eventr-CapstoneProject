@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 // import {BrowserRouter, Route, Switch, Link} from 'react-router-dom';
 
 // import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-// import MyAwesomeReactComponent from './MyAwesomeReactComponent';
+import MyAwesomeReactComponent from './MyAwesomeReactComponent';
 
 // import './App.css';
 // import axios from 'axios';
