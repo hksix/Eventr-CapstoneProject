@@ -61,7 +61,7 @@ class MenuOptions extends Component {
     return (
       <Router>
         <Tabs className="menubar" value={this.state.value} onChange={this.handleChange}>
-          <Tab icon={<img src="../logo4.png" alt="Eventr Logo - lightbulb with E inside"/>} className="eventr-logo"></Tab>
+          <Tab icon={<img src="../logo4.png" alt="Eventr Logo - lightbulb with E inside"/>} className="eventr-logo" value="logo"></Tab>
           <Tab icon={<FontIcon className="material-icons">home</FontIcon>} label="HOME" value="a" containerElement={<Link to="/home" />} >
             <Route exact path="/home"/>
             <div className="main-content-container">
@@ -143,12 +143,12 @@ export default class MyAwesomeReactComponent extends Component {
     if (!userProfile) {
       getProfile((err, profile) => {
         this.setState({ profile });
-        console.log(this.state)
+        console.log(this.state.profile.sub)
       });
     } else {
       this.setState({ profile: userProfile });
     }
-    // axios.get(`${ROOT_URL}/events/host/1`).then(res=> {console.log(res)});
+   
 
   }
   render() {

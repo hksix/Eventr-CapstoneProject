@@ -84,7 +84,7 @@ export class Calendar extends Component {
       return (
         <div className="event-calendar">
           <BigCalendar 
-          popup='True'
+          popup={true}
           popupOffset={30}
           selectable
           key={this.state.calendarData.id}   
