@@ -48,7 +48,6 @@ class MenuOptions extends Component {
     super(props);
     this.state = {
       value: 'a',
-      userdata: null,
     };
   }
   handleChange = (value) => {
@@ -67,7 +66,7 @@ class MenuOptions extends Component {
             <Route exact path="/home"/>
             <div className="main-content-container">
               <div className="side-content-container">
-                <UserMenu user={this.props.userdata}/>
+                <UserMenu handleUpdate={this.props.handleUpdate} user={this.props.userdata}/>
               </div>
               <div className="changing-content-container" >
                 <Welcome user={this.props.userdata} />
@@ -78,7 +77,7 @@ class MenuOptions extends Component {
             <Route exact path="/events"/>
             <div className="main-content-container">
               <div className="side-content-container">
-                <UserMenu user={this.props.userdata}/>
+                <UserMenu handleUpdate={this.props.handleUpdate} user={this.props.userdata}/>
               </div>
               <div className="changing-content-container" >
                 <SetEvent />
@@ -89,22 +88,18 @@ class MenuOptions extends Component {
             <Route exact path="/nearby"/>
             <div className="main-content-container">
               <div className="side-content-container">
-                <UserMenu user={this.props.userdata}/>
+                <UserMenu handleUpdate={this.props.handleUpdate} user={this.props.userdata}/>
               </div>
               <div >
                 <MapContainer />
               </div>
             </div>
           </Tab>
-          {/* renders user's profile */}
-          <Tab
-              icon={<FontIcon className="material-icons">settings</FontIcon>}
-              label="Settings"
-              value="d"
-              containerElement={<Link to="/settings" />}>
-              <div className="main-content-container">
-                <div className="side-content-container">
-                <UserMenu user={this.props.userdata}/>
+          <Tab icon={<FontIcon className="material-icons">settings</FontIcon>} label="SETTINGS" value="d" containerElement={<Link to="/settings" />} >
+            <Route exact path="/settings"/>
+            <div className="main-content-container">
+              <div className="side-content-container">
+                <UserMenu handleUpdate={this.props.handleUpdate} user={this.props.userdata}/>
                 </div>
                 <div className="changing-content-container" >
                   <Settings auth={this.props.auth}/>
@@ -119,25 +114,11 @@ class MenuOptions extends Component {
 
 
 
-export default class MyAwesomeReactComponent extends Component {
-  // componentWillMount() {
-  //   this.setState({ profile: {} });
-  //   const { userProfile, getProfile } = this.props.auth;
-  //   if (!userProfile) {
-  //     getProfile((err, profile) => {
-  //       this.setState({ profile });
-  //       console.log(this.state)
-  //     });
-  //   } else {
-  //     this.setState({ profile: userProfile });
-  //   }
-  // }
-
+export default class UserStateComponent extends Component {
   constructor(props){
     super(props);
     this.state = {
-        profile: {},
-        
+        profile: {},      
     };
   }
   componentDidMount() {
@@ -145,29 +126,74 @@ export default class MyAwesomeReactComponent extends Component {
   //  console.log(this.state.profile) 
   // this.setState({ profile: {} });
     const { userProfile, getProfile } = this.props.auth;
-    if (!userProfile) {
+    // if (!userProfile) {
       getProfile((err, profile) => {
-        this.setState({ profile });
-        console.log(this.state)
+        this.setState({ profile: {...profile, userid: parseInt(profile.sub.slice(9))}},
+        () => { console.log(profile)
+          axios.post(`${ROOT_URL}/currentuser/${this.state.profile.userid}/${this.state.profile.given_name}/${this.state.profile.family_name}`)
+          .then((res) => {
+            this.setState({
+              profile: { ...profile,
+                email: res.data.email,
+                fName: res.data.fName,
+                lName: res.data.lName,
+                userid: res.data.id,
+                phone: res.data.phone,
+                profPic: res.data.profPic,
+                location: res.data.location
+              }
+            }, () => console.log(profile))
+          })        
+        })
       });
-    } else {
-      this.setState({ profile: userProfile });
-    }
-    // axios.get(`${ROOT_URL}/events/host/1`).then(res=> {console.log(res)});
+    // } else {
+    //   this.setState({ profile: userProfile });
+    // }
+   
 
   }
   render() {
-    // console.log(this.props.auth)
-    const { profile } = this.state;
-    // console.log(this.state.profile)
-
+    console.log(this.state.profile)
     return (
       <MuiThemeProvider muiTheme={muiTheme}>
         <div>
-          <MenuOptions userdata={this.state.profile} auth={this.props.auth}/>
+          <MenuOptions handleUpdate={this._updateUser} userdata={this.state.profile}/>
           <Footer />
         </div>
       </MuiThemeProvider>
     );
+  }
+  _updateUserOnServer = (userID, userObj) => {
+  console.log(userObj);
+    axios.put(`${ROOT_URL}/users/${userID}`, {
+      fName: userObj.fName,
+      lName: userObj.lName,
+      profPic: userObj.profPic,
+      email: userObj.email,
+      phone: userObj.phone,
+      location: userObj.location,
+    }).then((res) => {
+      
+    }).catch((err) => {
+      
+    })
+  }
+  _updateUserInState = (userID, userObj) => {
+    // console.log(userObj.profPic)
+    // debugger
+    this.setState({
+      profile: {
+        fName: userObj.fName,
+        lName: userObj.lName,
+        profPic: userObj.profPic,
+        email: userObj.email,
+        phone: userObj.phone,
+        location: userObj.location,
+      }
+    });
+  }
+  _updateUser = (userID, userObj) => {
+    this._updateUserOnServer(userID, userObj);
+    this._updateUserInState(userID, userObj);
   }
 }

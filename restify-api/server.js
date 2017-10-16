@@ -252,6 +252,35 @@ function addUser(request,response,next){
         console.log(err)
     });
 }
+
+//currentuser/:id/:fName/:lName/:pic
+function findOrAddUser(request, response, next) {
+    models.Users.find({
+        where: {
+            'id': request.params.id
+        }
+    }).then(user => {
+        if(user){
+            response.send(user);
+            next();
+        }
+        else {
+            models.Users.create({
+                id: request.params.id,
+                fName: request.params.fName,
+                lName: request.params.lName,
+                // profPic: request.params.pic
+            }).then(res => {
+                response.send(res);
+                next();
+            })
+        }
+    });
+
+     
+}
+
+
 //server.put('/api/v1/users/:id', updateUser);
 function updateUser(request,response,next){
     if (!verifyRequiredParamsForUser(request)){
