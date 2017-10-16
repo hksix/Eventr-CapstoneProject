@@ -21,8 +21,8 @@ export class Calendar extends Component {
 
     componentDidMount() {
       const current_user = this.props.userData;
-      const hostingEvents = axios.get(`${ROOT_URL}/events/host/${current_user}`);
-      const attendingEvents = axios.get(`${ROOT_URL}/events/guest/${current_user}`);
+      const hostingEvents = axios.get(`${ROOT_URL}/events/host/3`);
+      const attendingEvents = axios.get(`${ROOT_URL}/events/guest/3`);
       Promise.all([hostingEvents, attendingEvents])
         .then((res) => {
           console.log(res)
