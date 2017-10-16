@@ -88,7 +88,7 @@ const Welcome2 = (props) =>(
         <div style={SubHeader}>
             <Card style={cardbox}>
                 <div> <u>List of Items box</u> </div>
-                <ItemsCheckList userName={props.userdata}  items={props.items} eventid={props.eventid}/>
+                <ItemsCheckList userName={props.userdata}  items={props.items} eventid={props.eventid} handleClick={props.handleAdditionOfItem}/>
                 <div style={{position:'relative', float:'right'}}>
                 
                 </div>
@@ -165,6 +165,26 @@ export class Welcome extends Component {
       }
   }
 
+  handleAdditionOfItem = (item) => {
+    this.addItemForParty(item)
+  }
+  //server.post('/api/v1/event_inventory/:eventid', addItemToInventory);
+  addItemForParty = (item) => {
+      console.log(item[0].itemname)
+      console.log(item[0].itemname)
+    axios.post(`${ROOT_URL}/event_inventory/${this.state.eventid}`, {
+        eventid: this.state.eventid,
+        defaultItemid: null,
+        itemname: item[0].itemname,
+        quantity: item[0].quantity,
+        categoryid: null,
+        ownerid: this.props.user.id,
+        description: item[0].description
+    }).then((res) => {
+        console.log(res)
+        this.getItemsForParty(this.state.eventid)
+    })
+  }
   // server.get('/api/v1/event_inventory/:event_id', getInventoryForEvent);
   getItemsForParty = (eventid) => {
     axios.get(`${ROOT_URL}/event_inventory/${eventid}`).then((res) => {
@@ -225,6 +245,7 @@ export class Welcome extends Component {
                 location={this.state.event.location}
                 headerColor={this.getHeaderColor(this.state.event.isHost)}
                 items={this.state.itemsForEvent}
+                handleAdditionOfItem={this.handleAdditionOfItem}
                 userdata={this.props.user}
                 />
 

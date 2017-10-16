@@ -21,8 +21,8 @@ export class Calendar extends Component {
 
     componentDidMount() {
       const current_user = this.props.userData;
-      const hostingEvents = axios.get(`${ROOT_URL}/events/host/${current_user}`);
-      const attendingEvents = axios.get(`${ROOT_URL}/events/guest/${current_user}`);
+      const hostingEvents = axios.get(`${ROOT_URL}/events/host/1`);
+      const attendingEvents = axios.get(`${ROOT_URL}/events/guest/1`);
       Promise.all([hostingEvents, attendingEvents])
         .then((res) => {
           console.log(res)
@@ -61,7 +61,7 @@ export class Calendar extends Component {
             });
             //https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/Reduce?v=b#Flatten_an_array_of_arrays
             this.setState({calendarData: newCalData.reduce((a, b) => {return a.concat(b)}, [])})
-          });
+          })
         });
     }
 

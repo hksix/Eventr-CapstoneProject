@@ -15,7 +15,7 @@ class NewItem extends Component {
             this.refs.NewItemText.value = '';
             this.refs.NewItemDescription.value = '';
             this.refs.NewItemQuantity.value = '';
-        }
+        } 
     }
     // ability to add more items to event from welcome page
     render() {
@@ -52,7 +52,7 @@ class ItemList extends Component {
                     </div>)
                 } else {
                     return (
-                    <div key={item.index} value={item.ownerid} user={this.props.user}>
+                    <div key={item.index} value={item.ownerid}>
                         <del> {item.quantity} </del>
                         <del> {item.itemname} </del>
                         <del> {item.description} </del>
@@ -64,7 +64,6 @@ class ItemList extends Component {
                 }})
         } else {
             itemList.push(<li>No items added to event</li>)
-
         }
         return(
             <ul>
@@ -97,20 +96,25 @@ export default class ItemsCheckList extends Component {
         }
     }
     // receives list of items for event as props from Welcome.js
-    componentDidMount = () => {
+    componentWillReceiveProps = (nextProps) => {
         this.setState({
-            items: this.props.items,
-            eventid: this.props.eventid
+            items: nextProps.items,
+            eventid: nextProps.eventid
         })
     }
+    
     // passed to NewItem class above
     createItem = (text, quantity, description) => {
-        this.state.items.push({
+        console.log("trying to create item")
+        let addedItem = []
+        addedItem.push({
             itemname: text,
             quantity: quantity,
             description: text,
-            done: false
-        });
+            ownerid: null
+        })
+        console.log(addedItem)
+        this.props.handleClick(addedItem)
     }
 
     // update item in db
@@ -152,7 +156,7 @@ export default class ItemsCheckList extends Component {
         return (
             <div>
                 <NewItem createItem={this.createItem} />
-                <ItemList items={this.props.items} user={this.props.userName.name} save={this.props.saveItemToEventDB} toggle={this.toggleTask}/>
+                <ItemList items={this.state.items} user={this.props.userName.name} save={this.props.saveItemToEventDB} toggle={this.toggleTask}/>
             </div>
         );
     }
