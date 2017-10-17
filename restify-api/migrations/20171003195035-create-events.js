@@ -12,7 +12,7 @@ module.exports = {
       //   type: Sequelize.BIGINT
       // },
       host_id: {
-        type: Sequelize.INTEGER,
+        type: Sequelize.BIGINT,
         // references: {
         //   model: 'Users',
         //   key: 'id'

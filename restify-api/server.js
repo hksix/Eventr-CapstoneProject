@@ -105,18 +105,15 @@ function verifyRequiredParamsForEvent(request){
 
 function addEvent(request,response,next){
     models.Events.create({
-        host_id: request.body['host_id'],
-        name: request.body['name'],
-        description: request.body['description'],
-        date: request.body['date'],
-        time: request.body['time'],
-        location: request.body['location'],
-        category_id: request.body['category_id'],
-    }).then(function(event) {
-        var data = {
-            data: event
-        };
-        response.send(data);
+        host_id: request.body.host_id,
+        name: request.body.name,
+        description: request.body.description,
+        date: request.body.date,
+        time: request.body.time,
+        location: request.body.location,
+        category_id: request.body.category_id,
+    }).then(function(event) {        
+        response.send(event);
         next();
     }).catch(function (err) {
         console.log(err)
@@ -622,7 +619,7 @@ server.put(`${extension}/event_inventory/:id`, updateItemInInventory);
 server.del(`${extension}/event_inventory/:id`, deleteItemFromInventory);
 
 server.get(`${extension}/event/:event_id/guests`, getGuestProfilesByEvent); 
-
+server.post(`${extension}/currentuser/:id/:fName/:lName`, findOrAddUser);
 // module.exports = server;
 server.listen(8090, function() {
     console.log('%s listening at %s', server.name, server.url);
