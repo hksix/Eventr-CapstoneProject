@@ -3,6 +3,7 @@ import {Tabs, Tab} from 'material-ui/Tabs';
 import FontIcon from 'material-ui/FontIcon';
 import MapsPersonPin from 'material-ui/svg-icons/maps/person-pin';
 // import Paper from 'material-ui/Paper';
+import LandingPage from './landingPage/LandingPage.js';
 
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
@@ -61,7 +62,9 @@ class MenuOptions extends Component {
     return (
       <Router>
         <Tabs className="menubar" value={this.state.value} onChange={this.handleChange}>
-          <Tab icon={<img src="../logo4.png" alt="Eventr Logo - lightbulb with E inside"/>} className="eventr-logo"></Tab>
+          <Tab icon={<img src="../logo4.png" alt="Eventr Logo - lightbulb with E inside"/>} className="eventr-logo">
+          <LandingPage/>
+          </Tab>
           <Tab icon={<FontIcon className="material-icons">home</FontIcon>} label="HOME" value="a" containerElement={<Link to="/home" />} >
             <Route exact path="/home"/>
             <div className="main-content-container">
@@ -80,7 +83,7 @@ class MenuOptions extends Component {
                 <UserMenu handleUpdate={this.props.handleUpdate} user={this.props.userdata}/>
               </div>
               <div className="changing-content-container" >
-                <SetEvent />
+                <SetEvent user={this.props.userdata}/>
               </div>
             </div>
           </Tab>
