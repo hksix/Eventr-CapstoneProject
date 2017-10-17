@@ -42,6 +42,13 @@ class Home extends Component {
                 
               </h6>
               <LandingPage/>
+              <footer>
+            <div className="landing-footer-container">
+              <div className="landing-footer-info">
+              <h4 className="h4-landing-page">&copy; 2017 Eventr</h4>
+              </div>
+            </div>
+          </footer> 
             </div>
 
             )

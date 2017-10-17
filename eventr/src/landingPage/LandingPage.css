@@ -155,9 +155,9 @@
 
 
 .landing-footer-container {
-  height: 200px;
-  background-color: #50B9D1;
-  border-top: 1px solid #007884;
+  /* height: 20px; */
+  background-color:slateblue;
+  /* border-top: 1px solid #007884; */
   display: flex;
   justify-content: center;
   align-items: center;
@@ -198,7 +198,7 @@
     font-size: 18px;
   }
   .landing-footer-container {
-    height: 300px;
+    /* height: 30px; */
   }
 }
 
