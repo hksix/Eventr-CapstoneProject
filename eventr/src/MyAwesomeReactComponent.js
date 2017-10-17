@@ -93,8 +93,8 @@ class MenuOptions extends Component {
               <div className="side-content-container">
                 <UserMenu handleUpdate={this.props.handleUpdate} user={this.props.userdata}/>
               </div>
-              <div >
-                <MapContainer />
+              <div className="changing-content-container" style={{backgroundColor: '#f5f5f5'}} >
+                <MapContainer style={{margin: 20}} />
               </div>
             </div>
           </Tab>
