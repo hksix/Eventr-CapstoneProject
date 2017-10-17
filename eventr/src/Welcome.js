@@ -14,7 +14,7 @@ import EditDropdown from './updateEventComponents/EditDropdown.js'
 import ItemsCheckList from './updateEventComponents/ItemsCheckList.js'
 
 import MapsPlace from 'material-ui/svg-icons/maps/place';
-
+import MapContainer from './GoogleMap/MapContainer.js';
 // var header = {
 //     textAlign: 'center',
 //     backgroundColor: '#4c3187',
@@ -71,9 +71,11 @@ const Welcome2 = (props) =>(
                     <u>Location</u>
                     <p>{props.location}</p>     
                 </div>
-                <MapsPlace/>
                 <div style={{position:'relative', float:'right'}}>
                
+                </div>
+                <div className="map-container-in-welcome" >
+                    <MapContainer />
                 </div>
             </Card>
             <Card style={cardbox}>
