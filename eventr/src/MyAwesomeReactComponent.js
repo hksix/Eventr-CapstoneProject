@@ -62,7 +62,7 @@ class MenuOptions extends Component {
     return (
       <Router>
         <Tabs className="menubar" value={this.state.value} onChange={this.handleChange}>
-          <Tab icon={<img src="../logo4.png" alt="Eventr Logo - lightbulb with E inside"/>} className="eventr-logo">
+          <Tab icon={<img src="../lightbulb-logo.png" alt="Eventr Logo - lightbulb with E inside"/>} className="eventr-logo">
           <LandingPage/>
           </Tab>
           <Tab icon={<FontIcon className="material-icons">home</FontIcon>} label="HOME" value="a" containerElement={<Link to="/home" />} >
