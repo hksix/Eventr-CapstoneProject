@@ -21,7 +21,7 @@ import Settings from './Settings.js';
 import Footer from './Footer.js';
 import './index.css';
 import MapContainer from "./GoogleMap/MapContainer.js";
-
+import LandingPage from './landingPage/LandingPage.js';
 
 import axios from 'axios';
 import { ROOT_URL } from './App.js';
@@ -61,7 +61,9 @@ class MenuOptions extends Component {
     return (
       <Router>
         <Tabs className="menubar" value={this.state.value} onChange={this.handleChange}>
-          <Tab icon={<img src="../logo4.png" alt="Eventr Logo - lightbulb with E inside"/>} className="eventr-logo"></Tab>
+          <Tab icon={<img src="../logo4.png" alt="Eventr Logo - lightbulb with E inside"/>} value="L" className="eventr-logo">
+            <LandingPage />
+          </Tab>
           <Tab icon={<FontIcon className="material-icons">home</FontIcon>} label="HOME" value="a" containerElement={<Link to="/home" />} >
             <Route exact path="/home"/>
             <div className="main-content-container">
