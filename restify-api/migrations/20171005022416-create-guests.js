@@ -12,7 +12,7 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       userid: {
-        type: Sequelize.INTEGER
+        type: Sequelize.BIGINT
       },
       attending: {
         type: Sequelize.BOOLEAN

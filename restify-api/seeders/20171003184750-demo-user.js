@@ -3,39 +3,39 @@
 module.exports = {
   up: (queryInterface, Sequelize) => {
       return queryInterface.bulkInsert('Users', [{
-        id: 1,
+        id: 10159438029050500,
         fName: 'Hamaz',
         lName: 'Haseeb',
-        profPic: 'hh.jpg',
+        profPic: 'https://scontent.xx.fbcdn.net/v/t1.0-1/p50x50/12669436_10156519015535501_7356841501209691754_n.jpg?oh=7937348260ae567fd7c51b416802b4a6&oe=5A7B0972',
         email: 'hamza@haseeb.com',
         phone: '4045056789',
         location: 'Atlanta'
       },
       {
-        id: 2,
+        id: 10104962580450882,
         fName: 'Steph',
         lName: 'Asmar',
-        profPic: 'sh.jpg',
+        profPic: 'https://scontent.xx.fbcdn.net/v/t1.0-1/p50x50/20638087_10104780656323292_8939046881194157868_n.jpg?oh=f92fae4c296b7b2cbdfe22097f46deed&oe=5A75D2D8',
         email: 'steph@asmar.com',
         phone: '4045056789',
         location: 'Atlanta'
       },
       {
-        id: 3,
+        id: 10155604585297184,
         fName: 'Katie',
         lName: 'Lane',
-        profPic: 'kl.jpg',
+        profPic: 'https://scontent.xx.fbcdn.net/v/t1.0-1/c0.0.50.50/p50x50/18740237_10155180569332184_4613134102951380289_n.jpg?oh=67f081b1b460bec30fd725f709eceae3&oe=5A7C0739',
         email: 'katie@lane.com',
         phone: '4045056789',
         location: 'Atlanta'
       },
       {
-        id: 4,
-        fName: 'Jen',
+        id: 10213816111942068,
+        fName: 'Jennifer',
         lName: 'Johnson',
-        profPic: 'jj.jpg',
-        email: 'jen@johns.com',
-        phone: '4045056789',
+        profPic: 'https://scontent.xx.fbcdn.net/v/t1.0-1/p50x50/20621819_10213269519157589_7085536892452020603_n.jpg?oh=7e186116e7f4cfa3b4017c4c7cf353a7&oe=5A6868FE',
+        email: 'jen@johnson.com',
+        phone: '4041234567',
         location: 'Atlanta'
       },
       {
