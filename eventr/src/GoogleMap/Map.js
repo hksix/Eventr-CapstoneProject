@@ -134,12 +134,14 @@ export default class Map extends Component {
          id="map"
          style={{
            height: 500,
-           width: '100%',
+           width: '90%',
+           margin: 'auto',
+           marginTop: 40,
          }}
          >Map should be here
         </div>
-        <input id="input" style={{height: 30, width: 400, marginTop: 40}}></input>
-        <input id="zipcode" style={{height: 30, width: 100, marginTop: 40}}></input>
+        <input id="input" style={{height: 30, width: 400, marginTop: 40, marginLeft: '5%'}}></input>
+        {/* <input id="zipcode" style={{height: 30, width: 100, marginTop: 40}}></input> */}
       </div>
     )
   }
