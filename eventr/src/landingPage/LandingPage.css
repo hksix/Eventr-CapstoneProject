@@ -21,9 +21,9 @@
   color: white;
 }
 
-
+.main-headline {
+}
 .landing-header-container {
-  max-height: 500px;
   margin-bottom: 150px;
 }
 .navigation {
@@ -66,26 +66,25 @@
 } */
 
 .main-headline {
+  margin-top: 20%;
+  margin-right: 10%;
+  margin-left: 20%;
   position: absolute;
   color: white;
   font-family: 'Open Sans', sans-serif;
-  width: 1000px;
   font-size: 1.5em;
   z-index: 20;
-  margin-left: 12%;
-  margin-top: 10;
   line-height: 2em;
+  text-align: center;
 }
 
 .sub-headline {
   position: absolute;
   color: white;
   font-family: 'Roboto', sans-serif;
-  width: 1000px;
   font-size: 1.5em;
   z-index: 20;
-  margin-left: 25%;
-  margin-top: 22%;
+  margin: 0 auto;
 }
 
 /* #get-started {
@@ -157,7 +156,6 @@
   align-items: center;
 }
 .landing-footer-info {
-  max-width: 400px;
   color: white;
 }
 
@@ -201,5 +199,7 @@
   .landing-description {
     width: 60%;
   }
-
+  .landing-header-container {
+    height: 900px;
+  }
 }

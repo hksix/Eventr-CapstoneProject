@@ -9,14 +9,12 @@ export default class LandingPage extends Component{
         <div className="landing-page-container">
 
           <header className="landing-header-container">
-              <div className="homepage-hero-module">
+              
                   <div className="main-headline">
                     <h1 className="h1-landing-page">EVENTR. INVENTING INTERESTING EVENTS.</h1>
+                    <h3 className="h3-landing-page">First of it's kind, event design & planning platform.</h3>
                   </div>
-                  <div className="sub-headline">
-                  <h3 className="h3-landing-page">First of it's kind, event design & planning platform.</h3>
-                  </div>
-                  <button id="get-started" href="#">GET STARTED</button>
+                  {/* <button id="get-started" href="#">GET STARTED</button> */}
                   <div className="video-container">
                       <video autoPlay loop className="fillWidth">
                           <source src="images/Night-BBQ.mp4" type="video/mp4" />Your browser does not support the video tag. I suggest you upgrade your browser. 
@@ -25,7 +23,7 @@ export default class LandingPage extends Component{
                           <img src="images/Night-BBQ.jpg" alt=""/>
                       </div>
                   </div>
-                </div>
+                
           </header>
           
           <main className="landing-main-container">
