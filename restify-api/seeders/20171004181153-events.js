@@ -34,9 +34,9 @@ module.exports = {
     {
       id: 4,
       host_id: 2,
-      name: 'Beach Weekend',
-      description: 'Renting a beachouse for the weekend and excited to see everyone',
-      date: '2018-01-25',
+      name: 'Halloween Party',
+      description: 'BOO!',
+      date: '2017-10-31',
       location: '404 East Bay St Savannah GA 31401',
       category_id: 1,
     },

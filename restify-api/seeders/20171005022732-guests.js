@@ -53,8 +53,8 @@ module.exports = {
       eventid: 3
     },
     {
-      userid: 1,
-       attending: false,
+      userid: 10213816111942068,
+       attending: true,
        eventid: 4
      },
      {
