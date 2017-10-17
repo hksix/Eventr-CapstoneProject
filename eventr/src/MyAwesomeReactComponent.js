@@ -3,7 +3,7 @@ import {Tabs, Tab} from 'material-ui/Tabs';
 import FontIcon from 'material-ui/FontIcon';
 import MapsPersonPin from 'material-ui/svg-icons/maps/person-pin';
 // import Paper from 'material-ui/Paper';
-// import LandingPage from './landingPage/LandingPage.js';
+import LandingPage from './landingPage/LandingPage.js';
 
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
@@ -22,8 +22,6 @@ import Settings from './Settings.js';
 import Footer from './Footer.js';
 import './index.css';
 import MapContainer from "./GoogleMap/MapContainer.js";
-import LandingPage from './landingPage/LandingPage.js';
-
 import axios from 'axios';
 import { ROOT_URL } from './App.js';
 

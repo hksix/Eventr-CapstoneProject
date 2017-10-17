@@ -7,7 +7,7 @@
 }
 .h1-landing-page {
   font: 300 50px/65px "Open Sans",open-sans,sans-serif;
-  color:white;
+  color:#10464D;
 }
 .h2-landing-page {
   font: 300 35px/52px "Open Sans",open-sans,sans-serif;
@@ -15,18 +15,28 @@
 }
 .h3-landing-page {
   font: 300 30px/47px "Open Sans",open-sans,sans-serif;
-  color: white;
+  color: powderblue;
 }
 .h4-landing-page {
   font: 300 20px/47px "Open Sans",open-sans,sans-serif;
   color: white;
 }
 
-.main-headline {
-  
-}
 .landing-header-container {
   margin-bottom: 150px;
+  background-image: url('/images/stringlights.jpeg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-origin: center;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  align-items: center;
+  align-content: center;
+  box-shadow: 8px 8px 6px lightgray;
+}
+.main-headline {
+
 }
 .navigation {
   display: flex;
@@ -51,10 +61,15 @@
   height: 100%;
   background-attachment: scroll;
   overflow: hidden;
+  box-shadow: 8px 8px 6px lightgray;
+  
 }
 .fillWidth {
+  display: block;
+  margin: 0 auto;
   width: 100%;
   z-index: 1;
+  
 }
 /* .filter {
   height: 100%;
@@ -66,11 +81,11 @@
   background: #50B9D1;
   opacity: 0.3;
 } */
-
+/* 
 .main-headline {
   margin-top: 10%;
   margin-right: 10%;
-  margin-left: 30%;
+  margin-left: 22%;
   position: absolute;
   color: white;
   font-family: 'Open Sans', sans-serif;
@@ -87,7 +102,7 @@
   font-size: 1.5em;
   z-index: 20;
   margin: 0 auto;
-}
+} */
 
 /* #get-started {
   position: absolute;
@@ -150,9 +165,9 @@
 
 
 .landing-footer-container {
-  height: 200px;
-  background-color: #50B9D1;
-  border-top: 1px solid #007884;
+  /* height: 20px; */
+  background-color:slateblue;
+  /* border-top: 1px solid #007884; */
   display: flex;
   justify-content: center;
   align-items: center;
@@ -193,7 +208,7 @@
     font-size: 18px;
   }
   .landing-footer-container {
-    height: 300px;
+    /* height: 30px; */
   }
 }
 
@@ -201,27 +216,7 @@
   .landing-description {
     width: 60%;
   }
-  .main-headline {
-    margin-top: 10%;
-    margin-right: 10%;
-    margin-left: 30%;
-    position: absolute;
-    color: white;
-    font-family: 'Open Sans', sans-serif;
-    font-size: 20em;
-    z-index: 20;
-    line-height: 2em;
-    text-align: center;
-  }
-  
-  .sub-headline {
-    position: absolute;
-    color: white;
-    font-family: 'Roboto', sans-serif;
-    font-size: 1.5em;
-    z-index: 20;
-    margin: 0 auto;
-  }
+
   .landing-header-container {
     height: 900px;
   }

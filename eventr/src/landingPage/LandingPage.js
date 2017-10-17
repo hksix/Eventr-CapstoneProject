@@ -12,17 +12,18 @@ export default class LandingPage extends Component{
               
                   <div className="main-headline">
                     <h1 className="h1-landing-page"><span style={{color: '#4c3187', fontSize:'2em'}}>EVENTR</span><br/> Your events, simplified.</h1>
-                    <h3 className="h3-landing-page">First of it's kind, event design & planning platform.</h3>
+                    <h3 className="h3-landing-page">First of it's kind, event creation, planning & management platform.</h3>
                   </div>
                   {/* <button id="get-started" href="#">GET STARTED</button> */}
-                  <div className="video-container">
-                      <video autoPlay loop className="fillWidth">
+                  {/* <div className="video-container">
+                    <img src='images/stringlights.jpeg' atl='lights' className="fillWidth"/>
+                      {/* <video autoPlay loop className="fillWidth">
                           <source src="images/Night-BBQ.mp4" type="video/mp4" />Your browser does not support the video tag. I suggest you upgrade your browser. 
-                      </video>
-                      <div className="poster hidden">
+                      </video> */}
+                      {/* <div className="poster hidden">
                           <img src="images/Night-BBQ.jpg" alt=""/>
                       </div>
-                  </div>
+                  </div>  */}
                 
           </header>
           
@@ -67,7 +68,7 @@ export default class LandingPage extends Component{
                   </div>
                 </div>
                 <div className="image-container">
-                  <img src="/images/mockup-boards.png" alt="displays of application on desktop, mobile, and tablet"/>
+                  <img src="/images/responsive3.png" alt="displays of application on desktop, mobile, and tablet"/>
                 </div>
               </div>
         
