@@ -7,7 +7,7 @@
 }
 .h1-landing-page {
   font: 300 50px/65px "Open Sans",open-sans,sans-serif;
-  color:white;
+  color:#10464D;
 }
 .h2-landing-page {
   font: 300 35px/52px "Open Sans",open-sans,sans-serif;
@@ -15,7 +15,7 @@
 }
 .h3-landing-page {
   font: 300 30px/47px "Open Sans",open-sans,sans-serif;
-  color: white;
+  color: powderblue;
 }
 .h4-landing-page {
   font: 300 20px/47px "Open Sans",open-sans,sans-serif;
@@ -51,10 +51,15 @@
   height: 100%;
   background-attachment: scroll;
   overflow: hidden;
+  box-shadow: 8px 8px 6px lightgray;
+  
 }
 .fillWidth {
+  display: block;
+  margin: 0 auto;
   width: 100%;
   z-index: 1;
+  
 }
 /* .filter {
   height: 100%;
@@ -70,7 +75,7 @@
 .main-headline {
   margin-top: 10%;
   margin-right: 10%;
-  margin-left: 30%;
+  margin-left: 22%;
   position: absolute;
   color: white;
   font-family: 'Open Sans', sans-serif;
@@ -150,9 +155,9 @@
 
 
 .landing-footer-container {
-  height: 200px;
-  background-color: #50B9D1;
-  border-top: 1px solid #007884;
+  /* height: 20px; */
+  background-color:slateblue;
+  /* border-top: 1px solid #007884; */
   display: flex;
   justify-content: center;
   align-items: center;
@@ -193,7 +198,7 @@
     font-size: 18px;
   }
   .landing-footer-container {
-    height: 300px;
+    /* height: 30px; */
   }
 }
 
@@ -204,7 +209,8 @@
   .main-headline {
     margin-top: 10%;
     margin-right: 10%;
-    margin-left: 30%;
+    margin-left: 25%;
+    display: block;
     position: absolute;
     color: white;
     font-family: 'Open Sans', sans-serif;
