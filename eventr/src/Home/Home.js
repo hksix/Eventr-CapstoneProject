@@ -31,16 +31,16 @@ class Home extends Component {
         {
           !isAuthenticated() && (
             <div>
-              <h4>
-                You are not logged in! Please{' '}
+              <h6 style={{margin:0}}>
+                
                 <a
-                  style={{ cursor: 'pointer', color: 'blue' }}
+                  style={{ cursor: 'pointer', color: 'purple',position:'absolute'}}
                   onClick={this.login.bind(this)}
                 >
                   <u>Log In</u>
                 </a>
-                {' '}to continue.
-              </h4>
+                
+              </h6>
               <LandingPage/>
             </div>
 
