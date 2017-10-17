@@ -34,10 +34,10 @@ class Home extends Component {
               <h6 style={{margin:0}}>
                 
                 <a
-                  style={{ cursor: 'pointer', color: 'slateblue',position:'absolute'}}
+                  style={{ cursor: 'pointer', color: 'white',position:'absolute', right:0}}
                   onClick={this.login.bind(this)}
                 >
-                  <u>Log In</u>
+                  <u style={{backgroundColor: 'slateblue', padding: 3, margin: 2, borderRadius: 1}}>Log In</u>
                 </a>
                 
               </h6>

@@ -15,15 +15,15 @@ export default class LandingPage extends Component{
                     <h3 className="h3-landing-page">First of it's kind, event creation, planning & management platform.</h3>
                   </div>
                   {/* <button id="get-started" href="#">GET STARTED</button> */}
-                  <div className="video-container">
+                  {/* <div className="video-container">
                     <img src='images/stringlights.jpeg' atl='lights' className="fillWidth"/>
                       {/* <video autoPlay loop className="fillWidth">
                           <source src="images/Night-BBQ.mp4" type="video/mp4" />Your browser does not support the video tag. I suggest you upgrade your browser. 
                       </video> */}
-                      <div className="poster hidden">
+                      {/* <div className="poster hidden">
                           <img src="images/Night-BBQ.jpg" alt=""/>
                       </div>
-                  </div>
+                  </div>  */}
                 
           </header>
           
