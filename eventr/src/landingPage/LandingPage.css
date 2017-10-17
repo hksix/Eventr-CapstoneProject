@@ -1,4 +1,9 @@
-
+.landing-page-container {
+  background-color: white !important;
+}
+.landing-main-container {
+  padding-bottom: 50px;
+}
 .h1-landing-page {
   font: 300 50px/65px "Open Sans",open-sans,sans-serif;
   color:white;
@@ -83,7 +88,7 @@
   margin-top: 22%;
 }
 
-#get-started {
+/* #get-started {
   position: absolute;
   z-index: 20;
   height: 55px;
@@ -102,7 +107,7 @@
 #get-started:hover {
   color: white;
   background-color: #50B9D1;
-}
+} */
 
 
 .hidden {
@@ -161,6 +166,9 @@
   .landing-header-container {
     height: 700px;
   }
+  .landing-main-container {
+     padding-bottom: 150px;
+   }
   .section-container,
   .about-container {
     margin-top: 200px;
