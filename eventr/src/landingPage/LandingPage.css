@@ -22,11 +22,21 @@
   color: white;
 }
 
-.main-headline {
-  
-}
 .landing-header-container {
   margin-bottom: 150px;
+  background-image: url('/images/stringlights.jpeg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-origin: center;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  align-items: center;
+  align-content: center;
+  box-shadow: 8px 8px 6px lightgray;
+}
+.main-headline {
+
 }
 .navigation {
   display: flex;
@@ -71,7 +81,7 @@
   background: #50B9D1;
   opacity: 0.3;
 } */
-
+/* 
 .main-headline {
   margin-top: 10%;
   margin-right: 10%;
@@ -92,7 +102,7 @@
   font-size: 1.5em;
   z-index: 20;
   margin: 0 auto;
-}
+} */
 
 /* #get-started {
   position: absolute;
@@ -206,28 +216,7 @@
   .landing-description {
     width: 60%;
   }
-  .main-headline {
-    margin-top: 10%;
-    margin-right: 10%;
-    margin-left: 25%;
-    display: block;
-    position: absolute;
-    color: white;
-    font-family: 'Open Sans', sans-serif;
-    font-size: 20em;
-    z-index: 20;
-    line-height: 2em;
-    text-align: center;
-  }
-  
-  .sub-headline {
-    position: absolute;
-    color: white;
-    font-family: 'Roboto', sans-serif;
-    font-size: 1.5em;
-    z-index: 20;
-    margin: 0 auto;
-  }
+
   .landing-header-container {
     height: 900px;
   }

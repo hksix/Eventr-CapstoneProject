@@ -15,7 +15,7 @@ export default class MiniEvents extends Component {
   
   componentDidMount = () => {
     const user = '10213816111942068';
-    axios.get(`${ROOT_URL}/events/guest/${user}`).then((res) => {
+    axios.get(`${ROOT_URL}/events/guest/3`).then((res) => {
       this.setState({
         data: res.data
       })
