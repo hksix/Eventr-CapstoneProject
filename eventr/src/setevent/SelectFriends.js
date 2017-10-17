@@ -7,16 +7,21 @@ import MenuItem from 'material-ui/MenuItem';
 // import RaisedButton from 'material-ui/RaisedButton';
 
 const persons = [
-    {value: 0, name: 'Oliver Hansen'},
-    {value: 1, name: 'Van Henry'},
-    {value: 2, name: 'April Tucker'},
-    {value: 3, name: 'Ralph Hubbard'},
-    {value: 4, name: 'Omar Alexander'},
-    {value: 5, name: 'Carlos Abbott'},
-    {value: 6, name: 'Miriam Wagner'},
-    {value: 7, name: 'Bradley Wilkerson'},
-    {value: 8, name: 'Virginia Andrews'},
-    {value: 9, name: 'Kelly Snyder'},
+   {value: 0, name: 'Steph Asmar'},
+    {value: 1, name: 'Hamza Haseeb'},
+    {value: 2, name: 'Katie Lane'},
+
+
+    // {value: 0, name: 'Oliver Hansen'},
+    // {value: 1, name: 'Van Henry'},
+    // {value: 2, name: 'April Tucker'},
+    // {value: 3, name: 'Ralph Hubbard'},
+    // {value: 4, name: 'Omar Alexander'},
+    // {value: 5, name: 'Carlos Abbott'},
+    // {value: 6, name: 'Miriam Wagner'},
+    // {value: 7, name: 'Bradley Wilkerson'},
+    // {value: 8, name: 'Virginia Andrews'},
+    // {value: 9, name: 'Kelly Snyder'},
   ];
     
 

@@ -43,8 +43,8 @@ module.exports = {
     {
       id: 5,
       host_id: 10213816111942068,
-      name: 'My Event!',
-      description: 'My Event Description',
+      name: 'My Birthday!',
+      description: 'Celebrate my bday!',
       date: '2017-11-15',
       time: '17:00',
       location: 'Downtown Atlanta',

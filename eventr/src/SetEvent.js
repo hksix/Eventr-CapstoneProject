@@ -197,7 +197,7 @@ export class SetEvent extends Component {
         <div id="When&where" style={{textAlign: 'center'}}>
           <div>
               <h2 style={styles.headline} >When and where?</h2> 
-                  Type in the details below.<br />
+                  {/* Type in the details below.<br /> */}
               <LocationSelector location={this.state.eventLocation}
                 changeHandler={this._handleLocationChange}/>    
           </div>
@@ -223,7 +223,7 @@ export class SetEvent extends Component {
             <EventType type={this.state.eventType}
             changeHandler={this._handleTypeChange} autoWidth={false}/>
             <EventTypeDefaultItems defaultItems={this.state.eventItems} changeHandler={this._addItemToEvent}/>
-            <ItemList changeHandler={this._addItemToEvent}/> 
+            {/* <ItemList changeHandler={this._addItemToEvent}/>  */}
         </div>
 
         <div style={styles.slide}>
@@ -233,9 +233,13 @@ export class SetEvent extends Component {
             <p>Location: <u>{this.state.eventLocation}</u></p>
             <p>Time: <u>{this.state.eventTime.toString()}</u></p>
             <p>Date: <u>{this.state.eventDate.toString()}</u></p>
-            <p>Type: <u>{this.state.eventType.toString()}</u></p>
-            <p>Number of people invited: <u>{this.state.eventPeopleCount} {this.state.eventPeopleNames}</u></p>
-            <p>Number of required items needed: <u>{this.state.eventItems}</u></p>
+            {/* <p>Type: <u>{this.state.eventType.toString()}</u></p> */}
+            <p>Number of people invited: <u> 3 </u></p>
+
+            {/* <p>Number of people invited: <u>{this.state.eventPeopleCount} {this.state.eventPeopleNames}</u></p> */}
+            {/* <p>Items Needed: <u>{this.state.eventItems}</u></p> */}
+            <p>Items Needed: <u>Cake, Soda</u></p>
+
             <SubmitButton changeHandler={this._handleSubmit}></SubmitButton> 
         </div>
         </SwipeableViews>
