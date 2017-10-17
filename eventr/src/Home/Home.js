@@ -35,6 +35,7 @@ class Home extends Component {
                 
                 <a
                   style={{ cursor: 'pointer', color: 'white',position:'absolute', right:0}}
+
                   onClick={this.login.bind(this)}
                 >
                   <u style={{backgroundColor: 'slateblue', padding: 3, margin: 2, borderRadius: 1}}>Log In</u>
