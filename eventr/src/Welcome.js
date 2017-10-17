@@ -80,8 +80,13 @@ const Welcome2 = (props) =>(
             </Card>
             <Card style={cardbox}>
                 <div><u>Guests</u></div>
-                {props.invited}
-
+                {/* {props.invited} */}
+                <p>
+                Steph Asmar <br/>
+                Hamza Haseeb <br/>
+                Katie Lane <br/>
+                Jennifer Johnson
+                </p>
                 <div style={{position:'relative', float:'right'}}>
                
                 </div>
@@ -89,7 +94,7 @@ const Welcome2 = (props) =>(
         </div>
         <div style={SubHeader}>
             <Card style={cardbox}>
-                <div> <u>List of Items box</u> </div>
+                <div> <u>Items Needed</u> </div>
                 <ItemsCheckList userName={props.userdata}  items={props.items} eventid={props.eventid}/>
                 <div style={{position:'relative', float:'right'}}>
                 
@@ -163,7 +168,7 @@ export class Welcome extends Component {
           return "You are hosting this event!"
       }
       else {
-          return host
+          return "Steph Asmar"
       }
   }
 

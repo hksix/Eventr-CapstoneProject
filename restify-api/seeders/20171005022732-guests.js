@@ -28,6 +28,26 @@ module.exports = {
       eventid: 1
     },
     {
+    userid: 10159438029050500,
+    attending: true,
+    eventid: 5
+  },
+  {
+    userid: 10104962580450882,
+    attending: true,
+    eventid: 5
+  },
+  {
+    userid: 10155604585297184,
+    attending: true,
+    eventid: 5
+  },
+  {
+   userid: 10213816111942068,
+    attending: true,
+    eventid: 5
+  },
+    {
       userid: 3,
       attending: false,
       eventid: 2

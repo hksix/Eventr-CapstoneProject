@@ -11,7 +11,7 @@ export default class LandingPage extends Component{
           <header className="landing-header-container">
               
                   <div className="main-headline">
-                    <h1 className="h1-landing-page">EVENTR. INVENTING INTERESTING EVENTS.</h1>
+                    <h1 className="h1-landing-page"><span style={{color: '#4c3187', fontSize:'2em'}}>EVENTR</span><br/> Your events, simplified.</h1>
                     <h3 className="h3-landing-page">First of it's kind, event design & planning platform.</h3>
                   </div>
                   {/* <button id="get-started" href="#">GET STARTED</button> */}

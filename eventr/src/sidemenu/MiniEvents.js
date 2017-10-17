@@ -14,7 +14,7 @@ export default class MiniEvents extends Component {
   }
   
   componentDidMount = () => {
-    const user = '1';
+    const user = '10213816111942068';
     axios.get(`${ROOT_URL}/events/guest/${user}`).then((res) => {
       this.setState({
         data: res.data
@@ -31,7 +31,7 @@ export default class MiniEvents extends Component {
       const month = data.date.slice(5,7);
       const day = data.date.slice(8,10);
       const eventDate = month + '-' + day + '-' + year;
-      return(<CardText><b>{data.name}:<br/></b>{eventDate}</CardText>)
+      return(<CardText><b>{data.name}<br/></b>{eventDate}</CardText>)
     })
     return(
       <Card >
