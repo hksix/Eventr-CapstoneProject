@@ -158,7 +158,7 @@ export class SetEvent extends Component {
   };
 
   render() {
-    
+    console.log(this.state)
     return (
       
       <Card>
@@ -297,13 +297,18 @@ export class SetEvent extends Component {
   }
 
   _handleSubmit=(e)=>{
+    console.log(this.state)
     if(this.state.eventName === '' || this.state.eventDate === ''){
       alert('woah chill.. before we continue please fill out all forms.' );
       // console.log(this.state.eventName);
     } else{
       // console.log('this.state.current_user');
     axios.post(`${ROOT_URL}/events`,{
+
       'host_id': 3,
+
+      //'host_id': `${this.props.user.userid}`,
+
       'name': `${this.state.eventName}`,
       'description': `${this.state.eventDiscription}`,
       'date': `${this.state.eventDate.toString()}`,
@@ -315,6 +320,7 @@ export class SetEvent extends Component {
     })
     .catch(function(error){
       console.log(error);
+      
     })
   }
 }
