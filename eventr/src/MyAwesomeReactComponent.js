@@ -22,8 +22,6 @@ import Settings from './Settings.js';
 import Footer from './Footer.js';
 import './index.css';
 import MapContainer from "./GoogleMap/MapContainer.js";
-// import LandingPage from './landingPage/LandingPage.js';
-
 import axios from 'axios';
 import { ROOT_URL } from './App.js';
 

@@ -67,7 +67,7 @@ export default class LandingPage extends Component{
                   </div>
                 </div>
                 <div className="image-container">
-                  <img src="/images/mockup-boards.png" alt="displays of application on desktop, mobile, and tablet"/>
+                  <img src="/images/responsive3.png" alt="displays of application on desktop, mobile, and tablet"/>
                 </div>
               </div>
         
