@@ -42,11 +42,12 @@ module.exports = {
     },
     {
       id: 5,
-      host_id: 1,
-      name: 'Family Reunion',
-      description: 'Celebrating our family',
-      date: '2017-10-25',
-      location: '1212 Peachtree Cir NE Atlanta GA 30329',
+      host_id: 10213816111942068,
+      name: 'My Event!',
+      description: 'My Event Description',
+      date: '2017-11-15',
+      time: '17:00',
+      location: 'Downtown Atlanta',
       category_id: 4,
     },
     {

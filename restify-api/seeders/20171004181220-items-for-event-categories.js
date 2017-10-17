@@ -85,7 +85,12 @@ module.exports = {
       item_id: 301
     },
 //********************* BIRTHDAY PARTY  ***************************
-    {
+{
+  //cake
+  events_category_id: 1,
+  item_id: 100
+}, 
+{
       //cups
       events_category_id: 1,
       item_id: 406

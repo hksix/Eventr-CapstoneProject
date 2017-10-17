@@ -89,7 +89,7 @@ const Welcome2 = (props) =>(
         </div>
         <div style={SubHeader}>
             <Card style={cardbox}>
-                <div> <u>List of Items box</u> </div>
+                <div> <u>Items Needed</u> </div>
                 <ItemsCheckList userName={props.userdata}  items={props.items} eventid={props.eventid}/>
                 <div style={{position:'relative', float:'right'}}>
                 
