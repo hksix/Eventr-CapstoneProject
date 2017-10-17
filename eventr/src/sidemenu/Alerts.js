@@ -10,9 +10,9 @@ export default class Alerts extends Component {
       <Card >
         <CardTitle title="Notifications"/> 
         <CardText>
-          You're invited to Demo Day After Party hosted by Stephanie Asmar! RSVP Here!
+          You're invited to Halloween Party! RSVP Here!
           <br/><br/>
-          Katie RSVP'd YES to your Halloween Party 2017
+          Katie RSVP'd YES to DigitalCrafts Demo Day!
         </CardText>
         
       </Card>
