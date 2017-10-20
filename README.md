@@ -2,31 +2,31 @@
 
 
 
-#Overall
+## Overall
 
 Demo: https://youtu.be/-iItbDLkB2s
 
 
-#MVP
+## MVP
 <p>Event creating app to make the users less focused on planning and more excited for an event.</p>
 
-#Goals
+## Goals
 <li>Connect with friends over Facebook OAuth</li>
 <li>Admin settings and ability to grant others admin privlages</li>
 
 
 
-#Stretch Goals
+## Stretch Goals
 <li>Meeting with vendors to promote their brand within our app</li>
 
 
 
 
-#Beginning WireFrames
+## Beginning WireFrames
 <img src="" alt="whiteboard with multiple pages of wireframes"/>
 
 
-# Features
+## Features
 * Create Event: Name, Type, Date, Time, Location
 * Invite Friends
 * Add Items
@@ -46,7 +46,7 @@ Demo: https://youtu.be/-iItbDLkB2s
 * Suggest public events to attend based on location or similar events attend in the past
 
 
-# Architecture
+## Architecture
 * Frontend: React, Redux
 * Backend API: Node.js, Restify, Sequelize, PostgreSQL    
 * Server: AWS EC2, Nginx, SSL
