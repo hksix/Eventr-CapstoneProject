@@ -389,23 +389,23 @@ module.exports = {
     //   ownerid: null,
     //   description: 'Pita and Hummus'
     // },
-    // {
-    //   eventid: 5,
-    //   defaultitemid: 303,
-    //   itemname: 'Streamers',
-    //   quantity: '5',
-    //   categoryid: 3,
-    //   ownerid: null,
-    //   description: 'Navy Blue'
-    // },
+    {
+      eventid: 5,
+      defaultitemid: 303,
+      itemname: 'Streamers',
+      // quantity: '5',
+      categoryid: 3,
+      ownerid: null,
+      // description: 'Navy Blue'
+    },
     // {
     //   eventid: 5,
     //   defaultitemid: 307,
     //   itemname: 'Party Hats',
-    //   quantity: '15',
+    //   // quantity: '15',
     //   categoryid: 3,
     //   ownerid: null,
-    //   description: 'Over the Hill'
+    //   // description: 'Over the Hill'
     // },
     {
       eventid: 5,
