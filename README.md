@@ -59,23 +59,23 @@ Demo: https://youtu.be/-iItbDLkB2s
 
 ### Screen Shots
 <h3>Desktop of home page when signed in to Eventr.</h3>
-<img src="/images/desktopscreenshot.png" height: '500px' alt="desktop version of application"/>
+<img src="eventr/public/images/desktopscreenshot.png" height= '500px' alt="desktop version of application"/>
 
 <h3>Mobile responsive design for user section when signed in.</h3>
-<img src="/images/mobilescreenshot.png" height: '500px' alt="mobile version of application"/>
+<img src="/eventr/public/images/mobilescreenshot.png" height='500' alt="mobile version of application"/>
 
 <h3>Desktop version of party information after clicking on event on user calendar.</h3>
-<img src="/images/desktoppartyinfo.png" height: '500px' alt="desktop version of party information"/>
+<img src="/eventr/public/images/desktoppartyinfo.png" height='500' alt="desktop version of party information"/>
 
 <h3>Showcases how party invitees can cross off certain items to indicate they are bringing those to the party.</h3>
-<img src="/images/mobilescreenshot2.png" height: '500px' alt="mobile version of party information"/>
+<img src="/eventr/public/images/mobilescreenshot2.png" height='500' alt="mobile version of party information"/>
 
 <h3>Guides through event creation process.</h3>
 <div display: 'flex'>
-<img src="/images/eventname.png" width: '300px' alt="mobile version of party information"/>
-<img src="/images/eventwhenandwhere.png" width: '300px' alt="mobile version of party information"/>
-<img src="/images/eventinvites.png" width: '300px' alt="mobile version of party information"/>
-<img src="/images/eventitems.png" width: '300px' alt="mobile version of party information"/>
+<img src="/eventr/public/images/eventname.png" width='300' alt="mobile version of party information"/>
+<img src="/eventr/public/images/eventwhenandwhere.png" width= '300' alt="mobile version of party information"/>
+<img src="/eventr/public/images/eventinvites.png" width= '300' alt="mobile version of party information"/>
+<img src="/eventr/public/images/eventitems.png" width='300' alt="mobile version of party information"/>
 </div>
 
 ### Code Snippites
@@ -167,7 +167,8 @@ Demo: https://youtu.be/-iItbDLkB2s
 </Router>
 
 ```
-<h3>Example of use of paths within server for ease of use of common HTTP request
+<h3>Example of use of paths within server for ease of use of common HTTP request</h3>
+
 ``` javascript 
 
 server.put('/api/v1/users/:id', updateUser);
