@@ -75,3 +75,16 @@
 
 <h3>Mobile responsive design for user section when signed in.</h3>
 <img src="/images/mobilescreenshot.png" height: '500px' alt="mobile version of application"/>
+
+<h3>Desktop version of party information after clicking on event on user calendar</h3>
+<img src="/images/desktoppartyinfo.png" height: '500px' alt="desktop version of party information"/>
+
+<h3>Showcases how party invitees can cross off certain items to indicate they are bringing those to the party.</h3>
+<img src="/images/mobilescreenshot2.png" height: '500px' alt="mobile version of party information"/>
+
+<div>
+<img src="/images/eventname.png" width: '300px' alt="mobile version of party information"/>
+<img src="/images/eventwhenandwhere.png" width: '300px' alt="mobile version of party information"/>
+<img src="/images/eventinvites.png" width: '300px' alt="mobile version of party information"/>
+<img src="/images/eventitems.png" width: '300px' alt="mobile version of party information"/>
+</div>
