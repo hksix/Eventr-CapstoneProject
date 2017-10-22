@@ -36,8 +36,8 @@ import Confetti from 'react-dom-confetti';
 const config = {
   angle: 90,
   spread: 120,
-  startVelocity: 40,
-  elementCount: 60,
+  startVelocity: 20,
+  elementCount: 80,
   decay: 0.95
 };
 
@@ -238,7 +238,7 @@ export class SetEvent extends Component {
 
             {/* <p>Number of people invited: <u>{this.state.eventPeopleCount} {this.state.eventPeopleNames}</u></p> */}
             {/* <p>Items Needed: <u>{this.state.eventItems}</u></p> */}
-            <p>Items Needed: <u>Cake, Soda</u></p>
+            <p>Items Needed: <u>Cake, Soda, Streamers</u></p>
 
             <SubmitButton changeHandler={this._handleSubmit}></SubmitButton> 
         </div>
@@ -303,29 +303,29 @@ export class SetEvent extends Component {
   _handleSubmit=(e)=>{
     console.log(this.state)
     if(this.state.eventName === '' || this.state.eventDate === ''){
-      alert('woah chill.. before we continue please fill out all forms.' );
+      // alert('woah chill.. before we continue please fill out all forms.' );
       // console.log(this.state.eventName);
     } else{
       // console.log('this.state.current_user');
-    axios.post(`${ROOT_URL}/events`,{
+    // axios.post(`${ROOT_URL}/events`,{
 
-      'host_id': 3,
+    //   'host_id': 3,
 
-      //'host_id': `${this.props.user.userid}`,
+    //   //'host_id': `${this.props.user.userid}`,
 
-      'name': `${this.state.eventName}`,
-      'description': `${this.state.eventDiscription}`,
-      'date': `${this.state.eventDate.toString()}`,
-      'time': `${this.state.eventTime.toString()}`,
-      'location': `${this.state.eventLocation}`,
-      'category_id': `${this.state.eventID}`,
-    }).then(function(response){
-      console.log(response)
-    })
-    .catch(function(error){
-      console.log(error);
+    //   'name': `${this.state.eventName}`,
+    //   'description': `${this.state.eventDiscription}`,
+    //   'date': `${this.state.eventDate.toString()}`,
+    //   'time': `${this.state.eventTime.toString()}`,
+    //   'location': `${this.state.eventLocation}`,
+    //   'category_id': `${this.state.eventID}`,
+    // }).then(function(response){
+    //   console.log(response)
+    // })
+    // .catch(function(error){
+    //   console.log(error);
       
-    })
+    // })
   }
 }
 

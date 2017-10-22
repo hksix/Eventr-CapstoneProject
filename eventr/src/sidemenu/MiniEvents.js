@@ -15,7 +15,7 @@ export default class MiniEvents extends Component {
   
   componentDidMount = () => {
     const user = '10213816111942068';
-    axios.get(`${ROOT_URL}/events/guest/3`).then((res) => {
+    axios.get(`${ROOT_URL}/events/guest/${user}`).then((res) => {
       this.setState({
         data: res.data
       })
@@ -36,7 +36,7 @@ export default class MiniEvents extends Component {
     return(
       <Card >
         <CardTitle title="Events" subtitle="Here are your upcoming events" />
-        <CardText style={{height: '200px', overflow: 'scroll'}}>{events}</CardText>
+        <CardText style={{height: '175px', overflow: 'scroll'}}>{events}</CardText>
 
       </Card>
     )
