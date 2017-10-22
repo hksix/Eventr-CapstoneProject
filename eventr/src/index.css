@@ -45,9 +45,16 @@ body {
   font: 300 18px/20px "Open Sans",open-sans,sans-serif;
 }
 .eventr-logo > div > div > img {
-  height: 70px;
-  width: 190px;
+  height: 30px;
+  width: 80px;
 }
+@media screen and (min-width: 500px){
+  .eventr-logo > div > div > img {
+    height: 35px;
+    width: 100px;
+  }
+}
+
 @media screen and (min-width: 764px){
   .main-content-container {
     /* border: 1px solid violet; */
@@ -69,6 +76,10 @@ body {
   .side-content-container > div > div {
     margin-bottom: 30px;
   }
+  .eventr-logo > div > div > img {
+    height: 50px;
+    width: 140px;
+  }
 }
 
 @media screen and (min-width: 950px){
@@ -84,6 +95,10 @@ body {
   .side-content-container {
     display: unset;
     width: 25%;
+  }
+  .eventr-logo > div > div > img {
+    height: 50px;
+    width: 140px;
   }
 }
 @media screen and (min-width: 1400px) {
@@ -101,6 +116,10 @@ body {
   .side-content-container {
     display: unset;
     width: 25%;
+  }
+  .eventr-logo > div > div > img {
+    height: 70px;
+    width: 190px;
   }
 }
 

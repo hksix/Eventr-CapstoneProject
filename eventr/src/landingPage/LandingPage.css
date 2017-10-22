@@ -35,14 +35,17 @@
   align-content: center;
   box-shadow: 8px 8px 6px lightgray;
 }
-.main-headline {
-
-}
+/* .main-headline {
+  background-color: hsla(30, 2%, 25%, 0.75);
+  width: 100%;
+  padding: 30px;
+} */
 .navigation {
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
+
 .login a {
   text-decoration: none;
   font-style: none;
@@ -216,8 +219,8 @@
   .landing-description {
     width: 60%;
   }
-
   .landing-header-container {
     height: 900px;
   }
+
 }
