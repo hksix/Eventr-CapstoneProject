@@ -73,7 +73,7 @@ Demo: https://youtu.be/-iItbDLkB2s
 <h3>Guides through event creation process.</h3>
 <div display: 'flex'>
 <img src="/eventr/public/images/eventname.png" width='300' alt="mobile version of party information"/>
-<img src="/eventr/public/images/eventswhenandwhere.png" width= '300' alt="mobile version of party information"/>
+<img src="/eventr/public/images/eventswhenandwhere .png" width= '300' alt="mobile version of party information"/>
 <img src="/eventr/public/images/eventinvites.png" width='300' alt="mobile version of party information"/>
 <img src="/eventr/public/images/eventitems.png" width='300' alt="mobile version of party information"/>
 </div>
